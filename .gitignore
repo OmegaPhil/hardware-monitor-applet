@@ -1,8 +1,23 @@
-# Ignore generated makefile data
-Makefile.in
+# Temporary files
+*~
 
-# Ignore M4 cache directory associated with autotools
-autom4te.cache/
+# Ignore generated make and autotools files
+*.in
+aclocal.m4
+autom4te.cache
+config.cache
+config.guess
+config.h
+config.h.in
+config.log
+config.status
+config.sub
+configure
+depcomp
+INSTALL
+install-sh
+Makefile
+missing
 
 # Ignore custom build directory
 build/
