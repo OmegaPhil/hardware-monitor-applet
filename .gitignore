@@ -1,0 +1,16 @@
+# Ignore generated makefile data
+Makefile.in
+
+# Ignore M4 cache directory associated with autotools
+autom4te.cache/
+
+# Ignore custom build directory
+build/
+
+# Ignoring binaries
+*.o
+*.so
+*.so.*
+*.lib
+*.a
+*.deb
