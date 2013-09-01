@@ -1,0 +1,580 @@
+# Bulgarian translation of hardware-monitor.
+# Copyright (C) 2005, 2006, 2007 Free Software Foundation, Inc.
+# This file is distributed under the same license as the hardware-monitor package.
+# Yavor Doganov <yavor@doganov.org>, 2005, 2007.
+# Alexander Shopov <ash@contact.bg>, 2006. 
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: hardware-monitor HEAD\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2007-01-14 21:11+0200\n"
+"PO-Revision-Date: 2007-01-11 17:31+0200\n"
+"Last-Translator: Yavor Doganov <yavor@doganov.org>\n"
+"Language-Team: Bulgarian <dict@fsa-bg.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#: ../HardwareMonitor.server.in.in.h:1 ../src/applet.cpp:470
+msgid "Hardware Monitor"
+msgstr "Хардуерен датчик"
+
+#: ../HardwareMonitor.server.in.in.h:2
+msgid "Monitor hardware devices"
+msgstr "Следене на хардуерни устройства"
+
+#: ../HardwareMonitor.server.in.in.h:3
+msgid "Utility"
+msgstr "Инструмент"
+
+#: ../src/applet.cpp:70
+msgid "Hardware Monitor: cannot load the icon '%1'.\n"
+msgstr "Хардуерен датчик: не може да се зареди иконата „%1“.\n"
+
+#. pop-up menu strings
+#: ../src/applet.cpp:103
+msgid "_Preferences..."
+msgstr "_Настройки..."
+
+#: ../src/applet.cpp:103
+msgid "_Help"
+msgstr "_Помощ"
+
+#: ../src/applet.cpp:103
+msgid "_About..."
+msgstr "_Относно..."
+
+#. note to translators: %1 is the name of a monitor, e.g. "CPU 1", and %2 is
+#. the current measurement, e.g. "78%"
+#: ../src/applet.cpp:186
+msgid "%1: %2"
+msgstr "%1: %2"
+
+#. note to translators: this is used for composing a list of monitors; %1
+#. is the previous part of the list and %2 is the part to append
+#: ../src/applet.cpp:193
+msgid ""
+"%1\n"
+"%2"
+msgstr ""
+"%1\n"
+"%2"
+
+#: ../src/applet.cpp:464
+msgid ""
+"Monitor various hardware-related information, such as CPU usage, memory "
+"usage etc. Supports curve graphs, bar plots, column diagrams, textual "
+"monitoring and fluctuating flames."
+msgstr ""
+"Следене на различна хардуерна информация, като използване на процесор, памет "
+"и т.н. Поддържа плавни графики, хоризонтални ленти, диаграми с колони, текст "
+"и движещи се пламъци."
+
+#. %1 is the copyright symbol
+#: ../src/applet.cpp:473
+msgid "Copyright %1 2003 Ole Laursen"
+msgstr "Авторски права %1 2003 Ole Laursen"
+
+#. note to translators: please fill in your names and email addresses
+#: ../src/applet.cpp:480
+msgid "translator-credits"
+msgstr ""
+"Явор Доганов <yavor@doganov.org>\n"
+"\n"
+"Проектът за превод на GNOME има нужда от подкрепа.\n"
+"Научете повече за нас на http://gnome.cult.bg\n"
+"Докладвайте за грешки на http://gnome.cult.bg/bugs"
+
+#. %2 is a descriptive string from sensors.conf
+#: ../src/choose-monitor-window.cpp:115
+msgid "Sensor %1: \"%2\""
+msgstr "Сензор %1: „%2“"
+
+#: ../src/choose-monitor-window.cpp:117
+msgid "Sensor %1"
+msgstr "Сензор %1"
+
+#. %2 is a descriptive string from sensors.conf
+#: ../src/choose-monitor-window.cpp:139
+msgid "Fan %1: \"%2\""
+msgstr "Вентилатор %1: „%2“"
+
+#: ../src/choose-monitor-window.cpp:141 ../src/monitor-impls.cpp:1055
+msgid "Fan %1"
+msgstr "Вентилатор %1"
+
+#: ../src/ui.glade.h:1
+msgid "/"
+msgstr "/"
+
+#: ../src/ui.glade.h:2
+msgid "<b>Background</b>"
+msgstr "<b>Фон</b>"
+
+#: ../src/ui.glade.h:3
+msgid "<b>Devices</b>"
+msgstr "<b>Устройства</b>"
+
+#: ../src/ui.glade.h:4
+msgid "<b>Font</b>"
+msgstr "<b>Шрифт</b>"
+
+#: ../src/ui.glade.h:5
+msgid "<b>Size</b>"
+msgstr "<b>Размер</b>"
+
+#: ../src/ui.glade.h:6
+msgid "<b>Viewer</b>"
+msgstr "<b>Изглед</b>"
+
+#: ../src/ui.glade.h:7
+msgid "<i>Large</i>"
+msgstr "<i>Голям</i>"
+
+#: ../src/ui.glade.h:8
+msgid "<i>Small</i>"
+msgstr "<i>Малък</i>"
+
+#: ../src/ui.glade.h:9
+msgid "A running average of the number of simultanous processes"
+msgstr "Текуща средна стойност на броя едновременни процеси"
+
+#: ../src/ui.glade.h:10
+msgid "All CPUs"
+msgstr "Всички процесори"
+
+#: ../src/ui.glade.h:11
+msgid "All data"
+msgstr "Всички данни"
+
+#: ../src/ui.glade.h:12
+msgid "Background"
+msgstr "Фон"
+
+#: ../src/ui.glade.h:13
+msgid "C_PU usage"
+msgstr "Използване на _процесор"
+
+#: ../src/ui.glade.h:14
+msgid "C_hange"
+msgstr "П_ромяна"
+
+#: ../src/ui.glade.h:15
+msgid "C_olor:"
+msgstr "Ц_вят:"
+
+#: ../src/ui.glade.h:16
+msgid "C_olumns"
+msgstr "К_олони"
+
+#: ../src/ui.glade.h:17
+msgid "C_urves"
+msgstr "К_риви линии"
+
+#: ../src/ui.glade.h:18
+msgid "Choose a Device"
+msgstr "Избор на устройство"
+
+#: ../src/ui.glade.h:19
+msgid "Choose a Font"
+msgstr "Избор на шрифт"
+
+#: ../src/ui.glade.h:20
+msgid "Connection:"
+msgstr "Свързване:"
+
+#: ../src/ui.glade.h:21
+msgid "Devices"
+msgstr "Устройства"
+
+#: ../src/ui.glade.h:22
+msgid "Direction:"
+msgstr "Посока:"
+
+#: ../src/ui.glade.h:23
+msgid "Enter a folder residing on the disk to monitor"
+msgstr "Въведете папка на диска за следене"
+
+#: ../src/ui.glade.h:24 ../src/monitor-impls.cpp:698
+msgid "Ethernet (first)"
+msgstr "Етернет (първа)"
+
+#: ../src/ui.glade.h:25 ../src/monitor-impls.cpp:700
+msgid "Ethernet (second)"
+msgstr "Етернет (втора)"
+
+#: ../src/ui.glade.h:26 ../src/monitor-impls.cpp:702
+msgid "Ethernet (third)"
+msgstr "Етернет (трета)"
+
+#: ../src/ui.glade.h:27
+msgid "Folder:"
+msgstr "Папка:"
+
+#: ../src/ui.glade.h:28
+msgid "Hardware Monitor Preferences"
+msgstr "Настройки на хардуерния датчик"
+
+#: ../src/ui.glade.h:29
+msgid "Incoming data"
+msgstr "Входящ трафик"
+
+#: ../src/ui.glade.h:30 ../src/monitor-impls.cpp:704
+msgid "Modem"
+msgstr "Модем"
+
+#: ../src/ui.glade.h:31
+msgid "Monitor all CPUs"
+msgstr "Следене на всички процесори"
+
+#: ../src/ui.glade.h:32
+msgid "Monitor devices using fluctuating flames"
+msgstr "Следене на устройствата с движещи се пламъци"
+
+#: ../src/ui.glade.h:33
+msgid "Monitor devices using horizontal bars"
+msgstr "Следене на устройствата с хоризонтални ленти"
+
+#: ../src/ui.glade.h:34
+msgid "Monitor devices using line graphs"
+msgstr "Следене на устройствата с линейни графики"
+
+#: ../src/ui.glade.h:35
+msgid "Monitor devices using solid columns"
+msgstr "Следене на устройствата с плътни колони"
+
+#: ../src/ui.glade.h:36
+msgid "Monitor devices using text descriptions"
+msgstr "Следене на устройствата с текст"
+
+#: ../src/ui.glade.h:37
+msgid "Monitor devices using vertical bars"
+msgstr "Следене на устройствата с вертикални ленти"
+
+#: ../src/ui.glade.h:38
+msgid "Monitor only a single CPU"
+msgstr "Следене само на един процесор"
+
+#: ../src/ui.glade.h:39
+msgid "Network"
+msgstr "Мрежа"
+
+#: ../src/ui.glade.h:40
+msgid "No sensors detected"
+msgstr "Няма засечени сензори"
+
+#: ../src/ui.glade.h:41
+msgid "Only CPU:"
+msgstr "Само процесор:"
+
+#: ../src/ui.glade.h:42
+msgid "Outgoing data"
+msgstr "Изходящ трафик"
+
+#: ../src/ui.glade.h:43
+msgid "Select the sensor to monitor"
+msgstr "Избор на сензор за следене"
+
+#: ../src/ui.glade.h:44
+msgid "Select whether to monitor incoming or outgoing data or both"
+msgstr "Избиране дали да се следи входящия/изходящия трафик или и двата"
+
+#: ../src/ui.glade.h:45 ../src/monitor-impls.cpp:706
+msgid "Serial link"
+msgstr "Серийна връзка"
+
+#: ../src/ui.glade.h:46
+msgid "Show _free space instead of used"
+msgstr "Показване на _свободно пространство вместо използвано"
+
+#: ../src/ui.glade.h:47
+msgid "Storage"
+msgstr "Запаси"
+
+#: ../src/ui.glade.h:48
+msgid "System"
+msgstr "Система"
+
+#: ../src/ui.glade.h:49
+msgid "Temperature"
+msgstr "Температура"
+
+#: ../src/ui.glade.h:50
+msgid "The amount of data sent through a network connection"
+msgstr "Количеството данни, изпратено през мрежовата връзка"
+
+#: ../src/ui.glade.h:51
+msgid "The amount of disk space used"
+msgstr "Използваното дисково пространство"
+
+#: ../src/ui.glade.h:52
+msgid "The amount of disk-based memory used"
+msgstr "Използваната дискова памет"
+
+#: ../src/ui.glade.h:53
+msgid "The amount of memory used"
+msgstr "Използваната памет"
+
+#: ../src/ui.glade.h:54
+msgid "The percentage of time that is spent running foreground processes"
+msgstr "Процентно съотношение на времето, използвано за изпълнение на процеси"
+
+#: ../src/ui.glade.h:55
+msgid "The speed of the fans"
+msgstr "Скоростта на вентилаторите"
+
+#: ../src/ui.glade.h:56
+msgid "The temperature of the inside of the system"
+msgstr "Температурата в системата"
+
+#: ../src/ui.glade.h:57
+msgid ""
+"Type of connection - Ethernet is the most common local area network adapter "
+"type"
+msgstr "Тип връзка - Етернет е най-използвания тип адаптер за локални мрежи"
+
+#: ../src/ui.glade.h:58
+msgid "Use _panel background"
+msgstr "Използване на фона на _панела"
+
+#: ../src/ui.glade.h:59
+msgid "Use _this color:"
+msgstr "Използване на _този цвят:"
+
+#: ../src/ui.glade.h:60
+msgid "Use this f_ont:"
+msgstr "Използване на този _шрифт:"
+
+#: ../src/ui.glade.h:61
+msgid "Viewer"
+msgstr "Изглед"
+
+#: ../src/ui.glade.h:62
+msgid "Which CPU no. to monitor"
+msgstr "Кой от всички процесори да се следи"
+
+#: ../src/ui.glade.h:63 ../src/monitor-impls.cpp:708
+msgid "Wireless"
+msgstr "Безжична мрежа"
+
+#: ../src/ui.glade.h:64
+msgid "_Add"
+msgstr "_Добавяне"
+
+#: ../src/ui.glade.h:65
+msgid "_Disk usage"
+msgstr "_Използване на диска"
+
+#: ../src/ui.glade.h:66
+msgid "_Fan speed"
+msgstr "_Скорост на вентилатор"
+
+#: ../src/ui.glade.h:67
+msgid "_Flames"
+msgstr "_Пламъци"
+
+#: ../src/ui.glade.h:68
+msgid "_Horizontal bars"
+msgstr "_Хоризонтални ленти"
+
+#: ../src/ui.glade.h:69
+msgid "_Load average"
+msgstr "_Средна натовареност"
+
+#: ../src/ui.glade.h:70
+msgid "_Memory usage"
+msgstr "_Използване на паметта"
+
+#: ../src/ui.glade.h:71
+msgid "_Monitored devices:"
+msgstr "_Следени устройства:"
+
+#: ../src/ui.glade.h:72
+msgid "_Network throughput"
+msgstr "_Мрежова производителност"
+
+#: ../src/ui.glade.h:73
+msgid "_Remove"
+msgstr "_Премахване"
+
+#: ../src/ui.glade.h:74
+msgid "_Swap usage"
+msgstr "_Използване на виртуалната памет"
+
+#: ../src/ui.glade.h:75
+msgid "_Temperature"
+msgstr "_Температура"
+
+#: ../src/ui.glade.h:76
+msgid "_Text"
+msgstr "_Текст"
+
+#: ../src/ui.glade.h:77
+msgid "_Vertical bars"
+msgstr "_Вертикални ленти"
+
+#: ../src/helpers.cpp:34
+msgid "Fatal error"
+msgstr "Фатална грешка"
+
+#: ../src/monitor-impls.cpp:296
+msgid "%1%%"
+msgstr "%1%%"
+
+#: ../src/monitor-impls.cpp:302
+msgid "All processors"
+msgstr "Всички процесори"
+
+#: ../src/monitor-impls.cpp:304
+msgid "Processor no. %1"
+msgstr "Процесор №%1"
+
+#. must be short
+#: ../src/monitor-impls.cpp:311
+msgid "CPU"
+msgstr "Процесор"
+
+#. note to translators: %1 is the cpu no, e.g. "CPU 1"
+#: ../src/monitor-impls.cpp:314
+msgid "CPU %1"
+msgstr "Процесор %1"
+
+#: ../src/monitor-impls.cpp:362 ../src/monitor-impls.cpp:496
+msgid "%1 Mb"
+msgstr "%1 Mb"
+
+#: ../src/monitor-impls.cpp:367
+msgid "Disk-based memory"
+msgstr "Дискова памет"
+
+#. must be short
+#: ../src/monitor-impls.cpp:373
+msgid "Swap"
+msgstr "Виртуална памет"
+
+#: ../src/monitor-impls.cpp:431
+msgid "Load average"
+msgstr "Средна натовареност"
+
+#. note to translators: short for "load average" - it has nothing to do with
+#. loading data
+#: ../src/monitor-impls.cpp:438
+msgid "Load"
+msgstr "Натовареност"
+
+#: ../src/monitor-impls.cpp:501
+msgid "Memory"
+msgstr "Памет"
+
+#. short for memory
+#: ../src/monitor-impls.cpp:507
+msgid "Mem."
+msgstr "Памет"
+
+#: ../src/monitor-impls.cpp:562
+msgid "%1 GB"
+msgstr "%1 GB"
+
+#: ../src/monitor-impls.cpp:566
+msgid "%1 MB"
+msgstr "%1 MB"
+
+#: ../src/monitor-impls.cpp:570
+msgid "%1 kB"
+msgstr "%1 kB"
+
+#: ../src/monitor-impls.cpp:573
+msgid "%1 B"
+msgstr "%1 B"
+
+#: ../src/monitor-impls.cpp:578
+msgid "Disk (%1)"
+msgstr "Диск (%1)"
+
+#: ../src/monitor-impls.cpp:679
+msgid "%1 GB/s"
+msgstr "%1 GB/сек"
+
+#: ../src/monitor-impls.cpp:683
+msgid "%1 MB/s"
+msgstr "%1 MB/сек"
+
+#: ../src/monitor-impls.cpp:687
+msgid "%1 kB/s"
+msgstr "%1 kB/сек"
+
+#: ../src/monitor-impls.cpp:690
+msgid "%1 B/s"
+msgstr "%1 B/сек"
+
+#. %1 is the network connection, e.g. "Ethernet (first)", in signifies
+#. that this is incoming data
+#: ../src/monitor-impls.cpp:716 ../src/monitor-impls.cpp:746
+msgid "%1, in"
+msgstr "%1, вх."
+
+#. %1 is the network connection, e.g. "Ethernet (first)", out signifies
+#. that this is outgoing data
+#: ../src/monitor-impls.cpp:720 ../src/monitor-impls.cpp:748
+msgid "%1, out"
+msgstr "%1, изх."
+
+#. short for an ethernet card
+#: ../src/monitor-impls.cpp:731
+msgid "Eth. %1"
+msgstr "Ет. %1"
+
+#. short for modem
+#: ../src/monitor-impls.cpp:734
+msgid "Mod."
+msgstr "Модем"
+
+#. short for serial link
+#: ../src/monitor-impls.cpp:737
+msgid "Ser."
+msgstr "Серийна вр."
+
+#. short for wireless
+#: ../src/monitor-impls.cpp:740
+msgid "W.less."
+msgstr "Безж."
+
+#. %2 contains the degree sign (the following 'C' stands for Celsius)
+#: ../src/monitor-impls.cpp:958
+#, c-format
+msgid "%1%2C"
+msgstr "%1%2C"
+
+#. %2 is a descriptive string from sensors.conf
+#: ../src/monitor-impls.cpp:965
+msgid "Temperature %1: \"%2\""
+msgstr "Температура %1: „%2“"
+
+#: ../src/monitor-impls.cpp:968
+msgid "Temperature %1"
+msgstr "Температура %1"
+
+#. short for "temperature", %1 is sensor no.
+#: ../src/monitor-impls.cpp:974
+msgid "Temp. %1"
+msgstr "Темп. %1"
+
+#. rpm is rotations per minute
+#: ../src/monitor-impls.cpp:1040
+msgid "%1 rpm"
+msgstr "%1 об/мин"
+
+#. %2 is a descriptive string from sensors.conf
+#: ../src/monitor-impls.cpp:1047
+msgid "Fan %1 speed: \"%2\""
+msgstr "Скорост на вентилатор %1: „%2“"
+
+#: ../src/monitor-impls.cpp:1050
+msgid "Fan %1 speed"
+msgstr "Скорост на вентилатор %1"
+
+#: ../src/preferences-window.cpp:141
+msgid "Device"
+msgstr "Устройство"

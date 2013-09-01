@@ -1,0 +1,61 @@
+Things that should be done:
+
+* Add help
+
+* Implement reordering of monitors in devices tab
+
+* Persuade someone to make an icon
+
+* Fix bug with modem, apparently there's an integer overflow when the
+   connection is stopped.
+
+* Find out why the panel is lying about its size
+
+* Add Fahrenheit support
+
+* The applet displays Eth. 1 for eth0, Eth. 2 for eth1, etc. in
+   tooltip
+
+* Add support for launching gnome-system-monitor
+
+* Add a pause menu item
+
+* Add checkbox for CPU viewer whether to include nice'd processes
+   ("Include background processes").
+
+* Add HAL integration
+   
+Things to consider:
+   
+* Disk activity monitor like gkremll - seems really useful for silent
+   hard drives
+
+* Bubbling load monitor (check out http://www.nongnu.org/libbubblemon/)
+   
+* Use option widgets inside the monitor list view instead of below it
+   (just needs a color tree view cell renderer)
+   
+* Change DiskUsage to present a list of available mount points to
+   choose from in device chooser dialog, perhaps this should simply be
+   a ComboBox
+ 
+* Inject love into the text view 
+
+   - The labels don't really respect the panel size
+
+   - It isn't possible to change the font (or color)
+
+   - The labels are changing their size all the time (fix by fixing
+      the size to the maximal attained size)
+
+* Convert monitors to a plug-in architecture to break
+   down binary dependencies and support monitoring another host
+
+* Change the name to something more descriptive
+
+* Be included with standard GNOME instead of the stock system monitor applet
+
+External things:
+
+* Write to libsensors team and make them improve the API so that the
+   descriptive names can be unified and translated

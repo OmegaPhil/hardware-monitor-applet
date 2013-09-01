@@ -1,0 +1,15 @@
+POTFILES
+Makefile.in.in
+Makefile.in
+Makefile
+*.gmo
+*.mo
+*.pot
+.intltool-merge-cache
+messages
+missing
+notexist
+cat-id-tbl.c
+stamp-cat-id
+po2tbl.sed
+po2tbl.sed.in

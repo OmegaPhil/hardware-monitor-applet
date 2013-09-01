@@ -1,0 +1,612 @@
+# traditional Chinese translation for hardware-monitor.
+# Copyright (C) 2004 Free Software Foundation, Inc.
+# Chao-Hsiung Liao <pesder.liao@msa.hinet.net>, 2004.
+msgid ""
+msgstr ""
+"Project-Id-Version: hardware-monitor 1.3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2006-06-24 20:30+0200\n"
+"PO-Revision-Date: 2006-07-05 07:39+0800\n"
+"Last-Translator: Chao-Hsiung Liao <j_h_liau@yahoo.com.tw>\n"
+"Language-Team: Chinese (traditional) <community@linuxhall.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.3.1\n"
+
+#: ../HardwareMonitor.server.in.in.h:1
+#: ../src/applet.cpp:461
+msgid "Hardware Monitor"
+msgstr "硬件監視器"
+
+#: ../HardwareMonitor.server.in.in.h:2
+msgid "Monitor hardware devices"
+msgstr "監控硬件裝置"
+
+#: ../HardwareMonitor.server.in.in.h:3
+msgid "Utility"
+msgstr "公用程式"
+
+#: ../src/applet.cpp:70
+msgid "Hardware Monitor: cannot load the icon '%1'.\n"
+msgstr "硬件監視器：不能載入圖示‘%1’。\n"
+
+#. pop-up menu strings
+#: ../src/applet.cpp:103
+msgid "_Preferences..."
+msgstr "偏好設定(_P)..."
+
+#: ../src/applet.cpp:103
+msgid "_Help"
+msgstr "求助(_H)"
+
+#: ../src/applet.cpp:103
+msgid "_About..."
+msgstr "關於(_A)..."
+
+#. note to translators: %1 is the name of a monitor, e.g. "CPU 1", and %2 is
+#. the current measurement, e.g. "78%"
+#: ../src/applet.cpp:186
+msgid "%1: %2"
+msgstr "%1: %2"
+
+#. note to translators: this is used for composing a list of monitors; %1
+#. is the previous part of the list and %2 is the part to append
+#: ../src/applet.cpp:193
+msgid ""
+"%1\n"
+"%2"
+msgstr ""
+"%1\n"
+"%2"
+
+#: ../src/applet.cpp:455
+msgid "Monitor various hardware-related information, such as CPU usage, memory usage etc. Supports curve graphs, horizontal bar plots, column diagrams, textual monitoring and fluctuating flames."
+msgstr "監控各式硬件相關資訊，像是 CPU 使用率、記憶體使用率等。支援曲線圖、水平長條圖、欄位圖表文字模式監控和不規則火焰圖。"
+
+#. %1 is the copyright symbol
+#: ../src/applet.cpp:464
+msgid "Copyright %1 2003 Ole Laursen"
+msgstr "版權 %1 2003 Ole Laursen"
+
+#. note to translators: please fill in your names and email addresses
+#: ../src/applet.cpp:471
+msgid "translator-credits"
+msgstr ""
+"如對翻譯有任何意見，請送一封電郵給\n"
+"以下地址，GNOME 翻譯隊伍會盡快回覆你：\n"
+"community@linuxhall.org\n"
+"\n"
+"Chao-Hsiung Liao<pesder.liao@msa.hinet.net>, 2004"
+
+#. %2 is a descriptive string from sensors.conf
+#: ../src/choose-monitor-window.cpp:114
+msgid "Sensor %1: \"%2\""
+msgstr "偵測器 %1：“%2”"
+
+#: ../src/choose-monitor-window.cpp:116
+msgid "Sensor %1"
+msgstr "偵測器 %1"
+
+#. %2 is a descriptive string from sensors.conf
+#: ../src/choose-monitor-window.cpp:138
+msgid "Fan %1: \"%2\""
+msgstr "風扇 %1：“%2”"
+
+#: ../src/choose-monitor-window.cpp:140
+#: ../src/monitor-impls.cpp:1058
+msgid "Fan %1"
+msgstr "風扇 %1"
+
+#: ../src/ui.glade.h:1
+msgid "/"
+msgstr "/"
+
+#: ../src/ui.glade.h:2
+msgid "<b>Background</b>"
+msgstr "<b>背景</b>"
+
+#: ../src/ui.glade.h:3
+msgid "<b>Devices</b>"
+msgstr "<b>裝置</b>"
+
+#: ../src/ui.glade.h:4
+msgid "<b>Font</b>"
+msgstr "<b>字型</b>"
+
+#: ../src/ui.glade.h:5
+msgid "<b>Size</b>"
+msgstr "<b>尺寸</b>"
+
+#: ../src/ui.glade.h:6
+msgid "<b>Viewer</b>"
+msgstr "<b>檢視器</b>"
+
+#: ../src/ui.glade.h:7
+msgid "<i>Large</i>"
+msgstr "<i>大</i>"
+
+#: ../src/ui.glade.h:8
+msgid "<i>Small</i>"
+msgstr "<i>小</i>"
+
+#: ../src/ui.glade.h:9
+msgid "A running average of the number of simultanous processes"
+msgstr "虛擬處理器執行的平均數量"
+
+#: ../src/ui.glade.h:10
+msgid "All CPUs"
+msgstr "所有的 CPU"
+
+#: ../src/ui.glade.h:11
+msgid "All data"
+msgstr "所有的資料"
+
+#: ../src/ui.glade.h:12
+msgid "Background"
+msgstr "背景"
+
+#: ../src/ui.glade.h:13
+msgid "C_PU usage"
+msgstr "C_PU 使用率"
+
+#: ../src/ui.glade.h:14
+msgid "C_hange"
+msgstr "更改(_H)"
+
+#: ../src/ui.glade.h:15
+msgid "C_olor:"
+msgstr "色彩(_O):"
+
+#: ../src/ui.glade.h:16
+msgid "C_olumns"
+msgstr "欄位(_O)"
+
+#: ../src/ui.glade.h:17
+msgid "C_urves"
+msgstr "曲線(_U)"
+
+#: ../src/ui.glade.h:18
+msgid "Choose a Device"
+msgstr "選擇一個裝置"
+
+#: ../src/ui.glade.h:19
+msgid "Choose a Font"
+msgstr "選擇字型"
+
+#: ../src/ui.glade.h:20
+msgid "Connection:"
+msgstr "連線:"
+
+#: ../src/ui.glade.h:21
+msgid "Devices"
+msgstr "裝置"
+
+#: ../src/ui.glade.h:22
+msgid "Direction:"
+msgstr "方向:"
+
+#: ../src/ui.glade.h:23
+msgid "Enter a folder residing on the disk to monitor"
+msgstr "輸入磁碟上要監控的資料夾"
+
+#: ../src/ui.glade.h:24
+#: ../src/monitor-impls.cpp:701
+msgid "Ethernet (first)"
+msgstr "乙太網絡 (第一)"
+
+#: ../src/ui.glade.h:25
+#: ../src/monitor-impls.cpp:703
+msgid "Ethernet (second)"
+msgstr "乙太網絡 (第二)"
+
+#: ../src/ui.glade.h:26
+#: ../src/monitor-impls.cpp:705
+msgid "Ethernet (third)"
+msgstr "乙太網絡 (第三)"
+
+#: ../src/ui.glade.h:27
+msgid "Folder:"
+msgstr "資料夾:"
+
+#: ../src/ui.glade.h:28
+msgid "Hardware Monitor Preferences"
+msgstr "硬件監控偏好設定"
+
+#: ../src/ui.glade.h:29
+msgid "Incoming data"
+msgstr "收到的資料"
+
+#: ../src/ui.glade.h:30
+#: ../src/monitor-impls.cpp:707
+msgid "Modem"
+msgstr "數據機"
+
+#: ../src/ui.glade.h:31
+msgid "Monitor all CPUs"
+msgstr "監控所有的 CPU"
+
+#: ../src/ui.glade.h:32
+msgid "Monitor devices using fluctuating flames"
+msgstr "使用不規則火焰圖監控裝置"
+
+#: ../src/ui.glade.h:33
+msgid "Monitor devices using horizontal bars"
+msgstr "使用水平長條圖監控裝置"
+
+#: ../src/ui.glade.h:34
+msgid "Monitor devices using line graphs"
+msgstr "使用折線圖監控裝置"
+
+#: ../src/ui.glade.h:35
+msgid "Monitor devices using solid columns"
+msgstr "使用固體欄位監控裝置"
+
+#: ../src/ui.glade.h:36
+msgid "Monitor devices using text descriptions"
+msgstr "使用文字描述監控裝置"
+
+#: ../src/ui.glade.h:37
+msgid "Monitor only a single CPU"
+msgstr "只監控單顆 CPU"
+
+#: ../src/ui.glade.h:38
+msgid "Network"
+msgstr "網絡"
+
+#: ../src/ui.glade.h:39
+msgid "No sensors detected"
+msgstr "找不到偵測器"
+
+#: ../src/ui.glade.h:40
+msgid "Only CPU:"
+msgstr "只有 CPU:"
+
+#: ../src/ui.glade.h:41
+msgid "Outgoing data"
+msgstr "送出的資料"
+
+#: ../src/ui.glade.h:42
+msgid "Pick a Color"
+msgstr "選取色彩"
+
+#: ../src/ui.glade.h:43
+msgid "Select the sensor to monitor"
+msgstr "選擇要監控的偵測器"
+
+#: ../src/ui.glade.h:44
+msgid "Select whether to monitor incoming or outgoing data or both"
+msgstr "選擇要監控收到或送出的資料或兩者都監控"
+
+#: ../src/ui.glade.h:45
+#: ../src/monitor-impls.cpp:709
+msgid "Serial link"
+msgstr "序列埠連線"
+
+#: ../src/ui.glade.h:46
+msgid "Show _free space instead of used"
+msgstr "顯示可用空間而非使用空間(_F)"
+
+#: ../src/ui.glade.h:47
+msgid "Storage"
+msgstr "儲存區"
+
+#: ../src/ui.glade.h:48
+msgid "System"
+msgstr "系統"
+
+#: ../src/ui.glade.h:49
+msgid "Temperature"
+msgstr "溫度"
+
+#: ../src/ui.glade.h:50
+msgid "The amount of data sent through a network connection"
+msgstr "透過網絡連線送出的資料總數"
+
+#: ../src/ui.glade.h:51
+msgid "The amount of disk space used"
+msgstr "已使用磁碟空間總數"
+
+#: ../src/ui.glade.h:52
+msgid "The amount of disk-based memory used"
+msgstr "已使用磁碟虛擬記憶體總數"
+
+#: ../src/ui.glade.h:53
+msgid "The amount of memory used"
+msgstr "已使用記憶體總數"
+
+#: ../src/ui.glade.h:54
+msgid "The percentage of time that is spent running foreground processes"
+msgstr "執行前景程序花費的時間百分比"
+
+#: ../src/ui.glade.h:55
+msgid "The speed of the fans"
+msgstr "風扇的速度"
+
+#: ../src/ui.glade.h:56
+msgid "The temperature of the inside of the system"
+msgstr "系統內部的溫度"
+
+#: ../src/ui.glade.h:57
+msgid "Type of connection - Ethernet is the most common local area network adapter type"
+msgstr "連線的類型 - 乙太網絡是最常見的本地端區域網絡配接卡類型"
+
+#: ../src/ui.glade.h:58
+msgid "Use _panel background"
+msgstr "使用面板背景(_P)"
+
+#: ../src/ui.glade.h:59
+msgid "Use _this color:"
+msgstr "使用此色彩(_T):"
+
+#: ../src/ui.glade.h:60
+msgid "Use this f_ont:"
+msgstr "使用此字型(_O):"
+
+#: ../src/ui.glade.h:61
+msgid "Viewer"
+msgstr "檢視器"
+
+#: ../src/ui.glade.h:62
+msgid "Which CPU no. to monitor"
+msgstr "要監控的 CPU 編號"
+
+#: ../src/ui.glade.h:63
+#: ../src/monitor-impls.cpp:711
+msgid "Wireless"
+msgstr "無線網絡"
+
+#: ../src/ui.glade.h:64
+msgid "_Add"
+msgstr "加入(_A)"
+
+#: ../src/ui.glade.h:65
+msgid "_Bars"
+msgstr "長條(_B)"
+
+#: ../src/ui.glade.h:66
+msgid "_Disk usage"
+msgstr "磁碟使用率(_D)"
+
+#: ../src/ui.glade.h:67
+msgid "_Fan speed"
+msgstr "風扇速度(_F)"
+
+#: ../src/ui.glade.h:68
+msgid "_Flames"
+msgstr "火焰(_F)"
+
+#: ../src/ui.glade.h:69
+msgid "_Load average"
+msgstr "平均負載(_L)"
+
+#: ../src/ui.glade.h:70
+msgid "_Memory usage"
+msgstr "記憶體使用量(_M)"
+
+#: ../src/ui.glade.h:71
+msgid "_Monitored devices:"
+msgstr "已監控裝置(_M):"
+
+#: ../src/ui.glade.h:72
+msgid "_Network throughput"
+msgstr "網絡流量(_N)"
+
+#: ../src/ui.glade.h:73
+msgid "_Remove"
+msgstr "移除(_R)"
+
+#: ../src/ui.glade.h:74
+msgid "_Swap usage"
+msgstr "置換區使用量(_S)"
+
+#: ../src/ui.glade.h:75
+msgid "_Temperature"
+msgstr "溫度(_T)"
+
+#: ../src/ui.glade.h:76
+msgid "_Text"
+msgstr "文字(_T)"
+
+#: ../src/helpers.cpp:34
+msgid "Fatal error"
+msgstr "嚴重的錯誤"
+
+#: ../src/monitor-impls.cpp:299
+msgid "%1%%"
+msgstr "%1%%"
+
+#: ../src/monitor-impls.cpp:305
+msgid "All processors"
+msgstr "所有處理器"
+
+#: ../src/monitor-impls.cpp:307
+msgid "Processor no. %1"
+msgstr "處理器 no. %1"
+
+#. must be short
+#: ../src/monitor-impls.cpp:314
+msgid "CPU"
+msgstr "CPU"
+
+#. note to translators: %1 is the cpu no, e.g. "CPU 1"
+#: ../src/monitor-impls.cpp:317
+msgid "CPU %1"
+msgstr "CPU %1"
+
+#: ../src/monitor-impls.cpp:365
+#: ../src/monitor-impls.cpp:499
+msgid "%1 Mb"
+msgstr "%1 Mb"
+
+#: ../src/monitor-impls.cpp:370
+msgid "Disk-based memory"
+msgstr "磁碟模擬的記憶體"
+
+#. must be short
+#: ../src/monitor-impls.cpp:376
+msgid "Swap"
+msgstr "Swap"
+
+#: ../src/monitor-impls.cpp:434
+msgid "Load average"
+msgstr "平均負載"
+
+#. note to translators: short for "load average" - it has nothing to do with
+#. loading data
+#: ../src/monitor-impls.cpp:441
+msgid "Load"
+msgstr "負載"
+
+#: ../src/monitor-impls.cpp:504
+msgid "Memory"
+msgstr "記憶體"
+
+#. short for memory
+#: ../src/monitor-impls.cpp:510
+msgid "Mem."
+msgstr "記憶"
+
+#: ../src/monitor-impls.cpp:565
+msgid "%1 GB"
+msgstr "%1 GB"
+
+#: ../src/monitor-impls.cpp:569
+msgid "%1 MB"
+msgstr "%1 MB"
+
+#: ../src/monitor-impls.cpp:573
+msgid "%1 kB"
+msgstr "%1 kB"
+
+#: ../src/monitor-impls.cpp:576
+msgid "%1 B"
+msgstr "%1 B"
+
+#: ../src/monitor-impls.cpp:581
+msgid "Disk (%1)"
+msgstr "磁碟 (%1)"
+
+#: ../src/monitor-impls.cpp:682
+msgid "%1 GB/s"
+msgstr "%1 GB/s"
+
+#: ../src/monitor-impls.cpp:686
+msgid "%1 MB/s"
+msgstr "%1 MB/s"
+
+#: ../src/monitor-impls.cpp:690
+msgid "%1 kB/s"
+msgstr "%1 kB/s"
+
+#: ../src/monitor-impls.cpp:693
+msgid "%1 B/s"
+msgstr "%1 B/s"
+
+#. %1 is the network connection, e.g. "Ethernet (first)", in signifies
+#. that this is incoming data
+#: ../src/monitor-impls.cpp:719
+#: ../src/monitor-impls.cpp:749
+msgid "%1, in"
+msgstr "%1, 入"
+
+#. %1 is the network connection, e.g. "Ethernet (first)", out signifies
+#. that this is outgoing data
+#: ../src/monitor-impls.cpp:723
+#: ../src/monitor-impls.cpp:751
+msgid "%1, out"
+msgstr "%1, 出"
+
+#. short for an ethernet card
+#: ../src/monitor-impls.cpp:734
+msgid "Eth. %1"
+msgstr "Eth. %1"
+
+#. short for modem
+#: ../src/monitor-impls.cpp:737
+msgid "Mod."
+msgstr "Mod."
+
+#. short for serial link
+#: ../src/monitor-impls.cpp:740
+msgid "Ser."
+msgstr "Ser."
+
+#. short for wireless
+#: ../src/monitor-impls.cpp:743
+msgid "W.less."
+msgstr "無線"
+
+#. %2 contains the degree sign (the following 'C' stands for Celsius)
+#: ../src/monitor-impls.cpp:961
+#, c-format
+msgid "%1%2C"
+msgstr "%1%2C"
+
+#. %2 is a descriptive string from sensors.conf
+#: ../src/monitor-impls.cpp:968
+msgid "Temperature %1: \"%2\""
+msgstr "溫度 %1：\"%2\""
+
+#: ../src/monitor-impls.cpp:971
+msgid "Temperature %1"
+msgstr "溫度 %1"
+
+#. short for "temperature", %1 is sensor no.
+#: ../src/monitor-impls.cpp:977
+msgid "Temp. %1"
+msgstr "溫度 %1"
+
+#. rpm is rotations per minute
+#: ../src/monitor-impls.cpp:1043
+msgid "%1 rpm"
+msgstr "%1 rpm"
+
+#. %2 is a descriptive string from sensors.conf
+#: ../src/monitor-impls.cpp:1050
+msgid "Fan %1 speed: \"%2\""
+msgstr "風扇 %1 速度：\"%2\""
+
+#: ../src/monitor-impls.cpp:1053
+msgid "Fan %1 speed"
+msgstr "風扇 %1 速度"
+
+#: ../src/preferences-window.cpp:136
+msgid "Device"
+msgstr "裝置"
+
+#~ msgid "*"
+#~ msgstr "*"
+#~ msgid "15.0%"
+#~ msgstr "15.0%"
+#~ msgid "Color of the bar"
+#~ msgstr "長條的色彩"
+#~ msgid "Color of the curve"
+#~ msgstr "曲線的色彩"
+#~ msgid "Color of the flame"
+#~ msgstr "火焰的色彩"
+#~ msgid "<b>General</b>"
+#~ msgstr "<b>一般</b>"
+#~ msgid "Amount of time between measurements (in seconds)"
+#~ msgstr "測量間隔時間(以秒為計)"
+#~ msgid "Co_lumns:"
+#~ msgstr "欄(_L):"
+#~ msgid "General"
+#~ msgstr "一般"
+#~ msgid "Number of columns to show simultanously"
+#~ msgstr "同時顯示的欄數"
+#~ msgid "Number of measured points to show simultanously"
+#~ msgstr "同時顯示的測量點數"
+#~ msgid "S_amples:"
+#~ msgstr "樣本(_A):"
+#~ msgid "Size of the applet in pixels"
+#~ msgstr "小程式的尺寸(以像素計)"
+#~ msgid "Thickness of the curve (in pixels)"
+#~ msgstr "曲線的粗細(以像素計)"
+#~ msgid "_Line width:"
+#~ msgstr "線條粗細(_L):"
+#~ msgid "_Size:"
+#~ msgstr "大小(_S):"
+#~ msgid "_Update interval:"
+#~ msgstr "更新間隔(_U):"
+

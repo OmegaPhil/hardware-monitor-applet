@@ -1,0 +1,631 @@
+# Ukrainian translation to hardware-monitor.
+# Copyright (C) 2004 Free Software Foundation
+# This file is distributed under the same license as the hardware-monitor package.
+# Maxim Dziumanenko <mvd@mylinux.com.ua>, 2004.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: hardware-monitor\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-04-02 15:52+0300\n"
+"PO-Revision-Date: 2004-04-22 22:00+0200\n"
+"Last-Translator: Maxim Dziumanenko <mvd@mylinux.com.ua>\n"
+"Language-Team: Ukrainian <linux@linux.org.ua>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../HardwareMonitor.server.in.in.h:1 ../src/applet.cpp:471
+msgid "Hardware Monitor"
+msgstr "Монітор обладнання"
+
+#: ../HardwareMonitor.server.in.in.h:2
+msgid "Monitor hardware devices"
+msgstr "Контроль апаратних пристроїв"
+
+#: ../HardwareMonitor.server.in.in.h:3
+msgid "Utility"
+msgstr "Утиліти"
+
+#: ../src/applet.cpp:70
+msgid "Hardware Monitor: cannot load the icon '%1'.\n"
+msgstr "Монітор обладнання: не вдається завантажити значок '%1'.\n"
+
+#. pop-up menu strings
+#: ../src/applet.cpp:103
+msgid "_Preferences..."
+msgstr "Н_астройка..."
+
+#: ../src/applet.cpp:103
+msgid "_Help"
+msgstr "_Довідка"
+
+#: ../src/applet.cpp:103
+msgid "_About..."
+msgstr "_Про програму..."
+
+#. note to translators: %1 is the name of a monitor, e.g. "CPU 1", and %2 is
+#. the current measurement, e.g. "78%"
+#: ../src/applet.cpp:186
+msgid "%1: %2"
+msgstr "%1: %2"
+
+#. note to translators: this is used for composing a list of monitors; %1
+#. is the previous part of the list and %2 is the part to append
+#: ../src/applet.cpp:193
+msgid ""
+"%1\n"
+"%2"
+msgstr ""
+"%1\n"
+"%2"
+
+#: ../src/applet.cpp:465
+msgid ""
+"Monitor various hardware-related information, such as CPU usage, memory "
+"usage etc. Supports curve graphs, bar plots, column diagrams, textual "
+"monitoring and fluctuating flames."
+msgstr ""
+"Відображує різноманітну інформацію про обладнання, наприклад використання "
+"процесора, використання пам'яті. Підтримує відображення графіків, "
+"горизонтальних індикаторів, стовпчикових діаграм, текстове відображення та "
+"змінні світлові індикатори."
+
+#. %1 is the copyright symbol
+#: ../src/applet.cpp:474
+msgid "Copyright %1 2003 Ole Laursen"
+msgstr "Copyright %1 2003 Ole Laursen"
+
+#. note to translators: please fill in your names and email addresses
+#: ../src/applet.cpp:481
+msgid "translator-credits"
+msgstr "Максим Дзюманенко <mvd@mylinux.com.ua>"
+
+#. %2 is a descriptive string from sensors.conf
+#: ../src/choose-monitor-window.cpp:115
+msgid "Sensor %1: \"%2\""
+msgstr "Сенсор %1: \"%2\""
+
+#: ../src/choose-monitor-window.cpp:117
+msgid "Sensor %1"
+msgstr "Сенсор %1"
+
+#. %2 is a descriptive string from sensors.conf
+#: ../src/choose-monitor-window.cpp:139
+msgid "Fan %1: \"%2\""
+msgstr "Вентилятор %1: \"%2\""
+
+#: ../src/choose-monitor-window.cpp:141 ../src/monitor-impls.cpp:1049
+msgid "Fan %1"
+msgstr "Вентилятор %1"
+
+#: ../src/ui.glade.h:1
+msgid "/"
+msgstr "/"
+
+#: ../src/ui.glade.h:2
+msgid "<b>Background</b>"
+msgstr "<b>Тло</b>"
+
+#: ../src/ui.glade.h:3
+msgid "<b>Devices</b>"
+msgstr "<b>Пристрої</b>"
+
+#: ../src/ui.glade.h:4
+msgid "<b>Font</b>"
+msgstr "<b>Шрифти</b>"
+
+#: ../src/ui.glade.h:5
+msgid "<b>Size</b>"
+msgstr "<b>Розмір</b>"
+
+#: ../src/ui.glade.h:6
+msgid "<b>Viewer</b>"
+msgstr "<b>Перегляд</b>"
+
+#: ../src/ui.glade.h:7
+msgid "<i>Large</i>"
+msgstr "<i>Великий</i>"
+
+#: ../src/ui.glade.h:8
+msgid "<i>Small</i>"
+msgstr "<i>Маленький</i>"
+
+#: ../src/ui.glade.h:9
+msgid "A running average of the number of simultanous processes"
+msgstr "Середня кількість процесів, що виконуються одночасно"
+
+#: ../src/ui.glade.h:10
+msgid "All CPUs"
+msgstr "Всі процесори"
+
+#: ../src/ui.glade.h:11
+msgid "All data"
+msgstr "Всі дані"
+
+#: ../src/ui.glade.h:12
+msgid "Background"
+msgstr "Тло"
+
+#: ../src/ui.glade.h:13
+msgid "C_PU usage"
+msgstr "Використання _процесора"
+
+#: ../src/ui.glade.h:14
+msgid "C_hange"
+msgstr "З_мінити"
+
+#: ../src/ui.glade.h:15
+msgid "C_olor:"
+msgstr "_Колір:"
+
+#: ../src/ui.glade.h:16
+msgid "C_olumns"
+msgstr "_Стовпчики"
+
+#: ../src/ui.glade.h:17
+msgid "C_urves"
+msgstr "_Криві"
+
+#: ../src/ui.glade.h:18
+msgid "Choose a Device"
+msgstr "Вибір пристрою"
+
+#: ../src/ui.glade.h:19
+msgid "Choose a Font"
+msgstr "Вибір шрифту"
+
+#: ../src/ui.glade.h:20
+msgid "Connection:"
+msgstr "З'єднання:"
+
+#: ../src/ui.glade.h:21
+msgid "Devices"
+msgstr "Пристрої"
+
+#: ../src/ui.glade.h:22
+msgid "Direction:"
+msgstr "Напрямок:"
+
+#: ../src/ui.glade.h:23
+msgid "Enter a folder residing on the disk to monitor"
+msgstr "Введіть теку на диску, яку слід контролювати"
+
+#: ../src/ui.glade.h:24 ../src/monitor-impls.cpp:698
+msgid "Ethernet (first)"
+msgstr "Ethernet (перше)"
+
+#: ../src/ui.glade.h:25 ../src/monitor-impls.cpp:700
+msgid "Ethernet (second)"
+msgstr "Ethernet (друге)"
+
+#: ../src/ui.glade.h:26 ../src/monitor-impls.cpp:702
+msgid "Ethernet (third)"
+msgstr "Ethernet (третє)"
+
+#: ../src/ui.glade.h:27
+msgid "Folder:"
+msgstr "Тека:"
+
+#: ../src/ui.glade.h:28
+msgid "Hardware Monitor Preferences"
+msgstr "Настройка монітора обладнання"
+
+#: ../src/ui.glade.h:29
+msgid "Incoming data"
+msgstr "Дані на вході"
+
+#: ../src/ui.glade.h:30 ../src/monitor-impls.cpp:704
+msgid "Modem"
+msgstr "Модем"
+
+#: ../src/ui.glade.h:31
+msgid "Monitor all CPUs"
+msgstr "Контролювати всі процесори"
+
+#: ../src/ui.glade.h:32
+msgid "Monitor devices using fluctuating flames"
+msgstr "Індикація світловими індикаторами"
+
+#: ../src/ui.glade.h:33
+msgid "Monitor devices using horizontal bars"
+msgstr "Індикація горизонтальними смугами"
+
+#: ../src/ui.glade.h:34
+msgid "Monitor devices using line graphs"
+msgstr "Індикація у вигляді графіків"
+
+#: ../src/ui.glade.h:35
+msgid "Monitor devices using solid columns"
+msgstr "Індикація у вигляді стовпчиків"
+
+#: ../src/ui.glade.h:36
+msgid "Monitor devices using text descriptions"
+msgstr "Індикація у вигляді тестового опису"
+
+#: ../src/ui.glade.h:37
+msgid "Monitor devices using vertical bars"
+msgstr "Індикація пристроїв у вертикальних стовпчиках"
+
+#: ../src/ui.glade.h:38
+msgid "Monitor only a single CPU"
+msgstr "Контролювати лише один процесор"
+
+#: ../src/ui.glade.h:39
+msgid "Network"
+msgstr "Мережа"
+
+#: ../src/ui.glade.h:40
+msgid "No sensors detected"
+msgstr "Сенсорів не знайдено"
+
+#: ../src/ui.glade.h:41
+msgid "Only CPU:"
+msgstr "Лише процесор:"
+
+#: ../src/ui.glade.h:42
+msgid "Outgoing data"
+msgstr "Дані на виході"
+
+#: ../src/ui.glade.h:43
+msgid "Select the sensor to monitor"
+msgstr "Виберіть сенсор, який контролюватиметься"
+
+#: ../src/ui.glade.h:44
+msgid "Select whether to monitor incoming or outgoing data or both"
+msgstr "Виберіть, чи слід контролювати дані на вході, на виході, чи всі дані"
+
+#: ../src/ui.glade.h:45 ../src/monitor-impls.cpp:706
+msgid "Serial link"
+msgstr "Послідовна лінія"
+
+#: ../src/ui.glade.h:46
+msgid "Show _free space instead of used"
+msgstr "Показувати вільний простір замість використаного"
+
+#: ../src/ui.glade.h:47
+msgid "Storage"
+msgstr "Пам'ять"
+
+#: ../src/ui.glade.h:48
+msgid "System"
+msgstr "Система"
+
+#: ../src/ui.glade.h:49
+msgid "Temperature"
+msgstr "Температура"
+
+#: ../src/ui.glade.h:50
+msgid "The amount of data sent through a network connection"
+msgstr "Кількість відправлених даних через мережне з'єднання"
+
+#: ../src/ui.glade.h:51
+msgid "The amount of disk space used"
+msgstr "Кількість використаного дискового простору"
+
+#: ../src/ui.glade.h:52
+msgid "The amount of disk-based memory used"
+msgstr "Кількість використаної пам'яті на диску"
+
+#: ../src/ui.glade.h:53
+msgid "The amount of memory used"
+msgstr "Кількість використаної пам'яті"
+
+#: ../src/ui.glade.h:54
+msgid "The percentage of time that is spent running foreground processes"
+msgstr "Відсоток часу, витрачений на виконання активних процесів"
+
+#: ../src/ui.glade.h:55
+msgid "The speed of the fans"
+msgstr "Швидкість обертання вентилятора"
+
+#: ../src/ui.glade.h:56
+msgid "The temperature of the inside of the system"
+msgstr "Температура у системі"
+
+#: ../src/ui.glade.h:57
+msgid ""
+"Type of connection - Ethernet is the most common local area network adapter "
+"type"
+msgstr ""
+"Тип з'єднання - Ethernet найбільш уживаний тип адаптера локальної мережі"
+
+#: ../src/ui.glade.h:58
+msgid "Use _panel background"
+msgstr "Використовувати тло _панелі"
+
+#: ../src/ui.glade.h:59
+msgid "Use _this color:"
+msgstr "Використовувати _колір:"
+
+#: ../src/ui.glade.h:60
+msgid "Use this f_ont:"
+msgstr "Використовувати _шрифт:"
+
+#: ../src/ui.glade.h:61
+msgid "Viewer"
+msgstr "Перегляд"
+
+#: ../src/ui.glade.h:62
+msgid "Which CPU no. to monitor"
+msgstr "Номер процесора, який контролюватиметься"
+
+#: ../src/ui.glade.h:63 ../src/monitor-impls.cpp:708
+msgid "Wireless"
+msgstr "Бездротове"
+
+#: ../src/ui.glade.h:64
+msgid "_Add"
+msgstr "_Додати"
+
+#: ../src/ui.glade.h:65
+msgid "_Disk usage"
+msgstr "_Використання диску"
+
+#: ../src/ui.glade.h:66
+msgid "_Fan speed"
+msgstr "_Швидкість вентилятора"
+
+#: ../src/ui.glade.h:67
+msgid "_Flames"
+msgstr "_Лампочки"
+
+#: ../src/ui.glade.h:68
+msgid "_Horizontal bars"
+msgstr "_Горизонтальна панель"
+
+#: ../src/ui.glade.h:69
+msgid "_Load average"
+msgstr "_Середнє навантаження"
+
+#: ../src/ui.glade.h:70
+msgid "_Memory usage"
+msgstr "_Використання пам'яті"
+
+#: ../src/ui.glade.h:71
+msgid "_Monitored devices:"
+msgstr "_Пристрої:"
+
+#: ../src/ui.glade.h:72
+msgid "_Network throughput"
+msgstr "_Швидкодія мережі"
+
+#: ../src/ui.glade.h:73
+msgid "_Remove"
+msgstr "В_идалити"
+
+#: ../src/ui.glade.h:74
+msgid "_Swap usage"
+msgstr "Використання _підкачки"
+
+#: ../src/ui.glade.h:75
+msgid "_Temperature"
+msgstr "_Температура"
+
+#: ../src/ui.glade.h:76
+msgid "_Text"
+msgstr "_текст"
+
+#: ../src/ui.glade.h:77
+msgid "_Vertical bars"
+msgstr "_Вертикальна панель"
+
+#: ../src/helpers.cpp:34
+msgid "Fatal error"
+msgstr "Критична помилка"
+
+#: ../src/monitor-impls.cpp:296
+msgid "%1%%"
+msgstr "%1%%"
+
+#: ../src/monitor-impls.cpp:302
+msgid "All processors"
+msgstr "Всі процесори"
+
+#: ../src/monitor-impls.cpp:304
+msgid "Processor no. %1"
+msgstr "Процесор № %1"
+
+#. must be short
+#: ../src/monitor-impls.cpp:311
+msgid "CPU"
+msgstr "Процесор"
+
+#. note to translators: %1 is the cpu no, e.g. "CPU 1"
+#: ../src/monitor-impls.cpp:314
+msgid "CPU %1"
+msgstr "Процесор %1"
+
+#: ../src/monitor-impls.cpp:362 ../src/monitor-impls.cpp:496
+msgid "%1 Mb"
+msgstr "%1 МБ"
+
+#: ../src/monitor-impls.cpp:367
+msgid "Disk-based memory"
+msgstr "Дискова пам'яті"
+
+#. must be short
+#: ../src/monitor-impls.cpp:373
+msgid "Swap"
+msgstr "Підкачка"
+
+#: ../src/monitor-impls.cpp:431
+msgid "Load average"
+msgstr "Середнє навантаження"
+
+#. note to translators: short for "load average" - it has nothing to do with
+#. loading data
+#: ../src/monitor-impls.cpp:438
+msgid "Load"
+msgstr "Навантаження"
+
+#: ../src/monitor-impls.cpp:501
+msgid "Memory"
+msgstr "Пам'ять"
+
+#. short for memory
+#: ../src/monitor-impls.cpp:507
+msgid "Mem."
+msgstr "Пам."
+
+#: ../src/monitor-impls.cpp:562
+msgid "%1 GB"
+msgstr "%1 ГБ"
+
+#: ../src/monitor-impls.cpp:566
+msgid "%1 MB"
+msgstr "%1 Мб"
+
+#: ../src/monitor-impls.cpp:570
+msgid "%1 kB"
+msgstr "%1 Кб"
+
+#: ../src/monitor-impls.cpp:573
+msgid "%1 B"
+msgstr "%1 байт"
+
+#: ../src/monitor-impls.cpp:578
+msgid "Disk (%1)"
+msgstr "Диск (%1)"
+
+#: ../src/monitor-impls.cpp:679
+msgid "%1 GB/s"
+msgstr "%1 Гб/с"
+
+#: ../src/monitor-impls.cpp:683
+msgid "%1 MB/s"
+msgstr "%1 Мб/с"
+
+#: ../src/monitor-impls.cpp:687
+msgid "%1 kB/s"
+msgstr "%1 кб/с"
+
+#: ../src/monitor-impls.cpp:690
+msgid "%1 B/s"
+msgstr "%1 б/с"
+
+#. %1 is the network connection, e.g. "Ethernet (first)", in signifies
+#. that this is incoming data
+#: ../src/monitor-impls.cpp:716 ../src/monitor-impls.cpp:746
+msgid "%1, in"
+msgstr "%1, вхід"
+
+#. %1 is the network connection, e.g. "Ethernet (first)", out signifies
+#. that this is outgoing data
+#: ../src/monitor-impls.cpp:720 ../src/monitor-impls.cpp:748
+msgid "%1, out"
+msgstr "%1, вихід"
+
+#. short for an ethernet card
+#: ../src/monitor-impls.cpp:731
+msgid "Eth. %1"
+msgstr "Eth. %1"
+
+#. short for modem
+#: ../src/monitor-impls.cpp:734
+msgid "Mod."
+msgstr "Мод."
+
+#. short for serial link
+#: ../src/monitor-impls.cpp:737
+msgid "Ser."
+msgstr "Посл."
+
+#. short for wireless
+#: ../src/monitor-impls.cpp:740
+msgid "W.less."
+msgstr "Бездр."
+
+#. %2 contains the degree sign (the following 'C' stands for Celsius)
+#: ../src/monitor-impls.cpp:952
+msgid "%1%2C"
+msgstr "%1%2C"
+
+#. %2 is a descriptive string from sensors.conf
+#: ../src/monitor-impls.cpp:959
+msgid "Temperature %1: \"%2\""
+msgstr "Температура %1: \"%2\""
+
+#: ../src/monitor-impls.cpp:962
+msgid "Temperature %1"
+msgstr "Температура %1"
+
+#. short for "temperature", %1 is sensor no.
+#: ../src/monitor-impls.cpp:968
+msgid "Temp. %1"
+msgstr "Темпер. %1"
+
+#. rpm is rotations per minute
+#: ../src/monitor-impls.cpp:1034
+msgid "%1 rpm"
+msgstr "%1 об/хв"
+
+#. %2 is a descriptive string from sensors.conf
+#: ../src/monitor-impls.cpp:1041
+msgid "Fan %1 speed: \"%2\""
+msgstr "Швидкість %1 вентилятора: \"%2\""
+
+#: ../src/monitor-impls.cpp:1044
+msgid "Fan %1 speed"
+msgstr "Швидкість %1 вентилятора"
+
+#: ../src/preferences-window.cpp:141
+msgid "Device"
+msgstr "Пристрій"
+
+#~ msgid "*"
+#~ msgstr "*"
+
+#~ msgid "<b>General</b>"
+#~ msgstr "<b>Загальне</b>"
+
+#~ msgid "Amount of time between measurements (in seconds)"
+#~ msgstr "Інтервал між вимірюваннями (у секундах)"
+
+#~ msgid "CPU: 15.0%"
+#~ msgstr "Процесор: 15.0%"
+
+#~ msgid "Co_lumns:"
+#~ msgstr "_Стовпчиків:"
+
+#~ msgid "Color of the bar"
+#~ msgstr "Колір смуги"
+
+#~ msgid "Color of the curve"
+#~ msgstr "Колір кривої"
+
+#~ msgid "Color of the flame"
+#~ msgstr "Колір світлового індикатора"
+
+#~ msgid "General"
+#~ msgstr "Загальне"
+
+#~ msgid "Number of columns to show simultanously"
+#~ msgstr "Кількість рядків, що відображаються одночасно"
+
+#~ msgid "Number of measured points to show simultanously"
+#~ msgstr "Кількість виміряних точок, що одночасно відображаються"
+
+#~ msgid "Pick a Color"
+#~ msgstr "Вибір кольору"
+
+#~ msgid "S_amples:"
+#~ msgstr "_Вибірки:"
+
+#~ msgid "Size of the applet in pixels"
+#~ msgstr "Розмір аплету панелі у точках"
+
+#~ msgid "Thickness of the curve (in pixels)"
+#~ msgstr "Товщина кривої (у точках)"
+
+#~ msgid "_Bars"
+#~ msgstr "_Смуги"
+
+#~ msgid "_Line width:"
+#~ msgstr "_Ширина рядка:"
+
+#~ msgid "_Size:"
+#~ msgstr "_Розмір:"
+
+#~ msgid "_Update interval:"
+#~ msgstr "_Інтервал оновлення:"

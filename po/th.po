@@ -1,0 +1,572 @@
+# Thai translation of hardware-monitor.
+# Copyright (C) 2009 Free Software Foundation, Inc.
+# This file is distributed under the same license as the hardware-monitor package.
+# Akom C. <knight2000@gmail.com>, 2009.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: hardware-monitor\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=hardware-monitor&component=general\n"
+"POT-Creation-Date: 2009-05-14 19:48+0000\n"
+"PO-Revision-Date: 2009-06-02 17:05+0700\n"
+"Last-Translator: Akom C. <knight2000@gmail.com>\n"
+"Language-Team: Thai <thai-l10n@googlegroups.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../HardwareMonitor.server.in.in.h:1 ../src/applet.cpp:471
+msgid "Hardware Monitor"
+msgstr "เครื่องมือเฝ้าสังเกตฮาร์ดแวร์"
+
+#: ../HardwareMonitor.server.in.in.h:2
+msgid "Monitor hardware devices"
+msgstr "เฝ้าสังเกตอุปกรณ์ฮาร์ดแวร์"
+
+#: ../HardwareMonitor.server.in.in.h:3
+msgid "Utility"
+msgstr "เครื่องมืออรรถประโยชน์"
+
+#: ../src/applet.cpp:70
+msgid "Hardware Monitor: cannot load the icon '%1'.\n"
+msgstr "เครื่องมือเฝ้าสังเกตฮาร์ดแวร์: ไม่สามารถโหลดไอคอน '%1'.\n"
+
+#. pop-up menu strings
+#: ../src/applet.cpp:103
+msgid "_Preferences..."
+msgstr "_ปรับแต่ง..."
+
+#: ../src/applet.cpp:103
+msgid "_Help"
+msgstr "_วิธีใช้"
+
+#: ../src/applet.cpp:103
+msgid "_About..."
+msgstr "เ_กี่ยวกับ..."
+
+#. note to translators: %1 is the name of a monitor, e.g. "CPU 1", and %2 is
+#. the current measurement, e.g. "78%"
+#: ../src/applet.cpp:186
+msgid "%1: %2"
+msgstr "%1: %2"
+
+#. note to translators: this is used for composing a list of monitors; %1
+#. is the previous part of the list and %2 is the part to append
+#: ../src/applet.cpp:193
+msgid ""
+"%1\n"
+"%2"
+msgstr ""
+"%1\n"
+"%2"
+
+#: ../src/applet.cpp:465
+msgid ""
+"Monitor various hardware-related information, such as CPU usage, memory "
+"usage etc. Supports curve graphs, bar plots, column diagrams, textual "
+"monitoring and fluctuating flames."
+msgstr ""
+"เฝ้าสังเกตข้อมูลเกี่ยวกับฮาร์ดแวร์ต่างๆ เช่น การใช้ซีพียู การใช้หน่วยความจำ เป็นต้น "
+"รองรับการแสดงผลแบบกราฟเส้น กราฟแท่ง แผนภูมิขีดตั้ง การแสดงค่าด้วยตัวอักษร และเปลวกระเพื่อม"
+
+#. %1 is the copyright symbol
+#: ../src/applet.cpp:474
+msgid "Copyright %1 2003 Ole Laursen"
+msgstr "Copyright %1 2003 Ole Laursen"
+
+#. note to translators: please fill in your names and email addresses
+#: ../src/applet.cpp:481
+msgid "translator-credits"
+msgstr "อาคม โชติพันธวานนท์ <knight2000@gmail.com>"
+
+#. %2 is a descriptive string from sensors.conf
+#: ../src/choose-monitor-window.cpp:115
+msgid "Sensor %1: \"%2\""
+msgstr "เซนเซอร์ %1: \"%2\""
+
+#: ../src/choose-monitor-window.cpp:117
+msgid "Sensor %1"
+msgstr "เซนเซอร์ %1"
+
+#. %2 is a descriptive string from sensors.conf
+#: ../src/choose-monitor-window.cpp:139
+msgid "Fan %1: \"%2\""
+msgstr "พัดลม %1: \"%2\""
+
+#: ../src/choose-monitor-window.cpp:141 ../src/monitor-impls.cpp:1049
+msgid "Fan %1"
+msgstr "พัดลม %1"
+
+#: ../src/ui.glade.h:1
+msgid "/"
+msgstr "/"
+
+#: ../src/ui.glade.h:2
+msgid "<b>Background</b>"
+msgstr "<b>พื้นหลัง</b>"
+
+#: ../src/ui.glade.h:3
+msgid "<b>Devices</b>"
+msgstr "<b>อุปกรณ์</b>"
+
+#: ../src/ui.glade.h:4
+msgid "<b>Font</b>"
+msgstr "<b>แบบอักษร</b>"
+
+#: ../src/ui.glade.h:5
+msgid "<b>Size</b>"
+msgstr "<b>ขนาด</b>"
+
+#: ../src/ui.glade.h:6
+msgid "<b>Viewer</b>"
+msgstr "<b>การแสดงผล</b>"
+
+#: ../src/ui.glade.h:7
+msgid "<i>Large</i>"
+msgstr "<i>ใหญ่</i>"
+
+#: ../src/ui.glade.h:8
+msgid "<i>Small</i>"
+msgstr "<i>เล็ก</i>"
+
+#: ../src/ui.glade.h:9
+msgid "A running average of the number of simultanous processes"
+msgstr "จำนวนเฉลี่ยของโพรเซสที่ทำงานพร้อมกัน"
+
+#: ../src/ui.glade.h:10
+msgid "All CPUs"
+msgstr "ทุกซีพียู"
+
+#: ../src/ui.glade.h:11
+msgid "All data"
+msgstr "ทุกข้อมูล"
+
+#: ../src/ui.glade.h:12
+msgid "Background"
+msgstr "พื้นหลัง"
+
+#: ../src/ui.glade.h:13
+msgid "C_PU usage"
+msgstr "การใช้งานซี_พียู"
+
+#: ../src/ui.glade.h:14
+msgid "C_hange"
+msgstr "เ_ปลี่ยน"
+
+#: ../src/ui.glade.h:15
+msgid "C_olor:"
+msgstr "_สี:"
+
+#: ../src/ui.glade.h:16
+msgid "C_olumns"
+msgstr "_คอลัมน์"
+
+#: ../src/ui.glade.h:17
+msgid "C_urves"
+msgstr "กราฟเ_ส้น"
+
+#: ../src/ui.glade.h:18
+msgid "Choose a Device"
+msgstr "เลือกอุปกรณ์"
+
+#: ../src/ui.glade.h:19
+msgid "Choose a Font"
+msgstr "เลือกแบบอักษร"
+
+#: ../src/ui.glade.h:20
+msgid "Connection:"
+msgstr "การเชื่อมต่อ:"
+
+#: ../src/ui.glade.h:21
+msgid "Devices"
+msgstr "อุปกรณ์"
+
+#: ../src/ui.glade.h:22
+msgid "Direction:"
+msgstr "ทิศทาง:"
+
+#: ../src/ui.glade.h:23
+msgid "Enter a folder residing on the disk to monitor"
+msgstr "ป้อนโฟลเดอร์ในดิสก์ที่จะเฝ้าสังเกต"
+
+#: ../src/ui.glade.h:24 ../src/monitor-impls.cpp:698
+msgid "Ethernet (first)"
+msgstr "อีเทอร์เน็ต (ตัวแรก)"
+
+#: ../src/ui.glade.h:25 ../src/monitor-impls.cpp:700
+msgid "Ethernet (second)"
+msgstr "อีเทอร์เน็ต (ตัวที่สอง)"
+
+#: ../src/ui.glade.h:26 ../src/monitor-impls.cpp:702
+msgid "Ethernet (third)"
+msgstr "อีเทอร์เน็ต (ตัวที่สาม)"
+
+#: ../src/ui.glade.h:27
+msgid "Folder:"
+msgstr "โฟลเดอร์:"
+
+#: ../src/ui.glade.h:28
+msgid "Hardware Monitor Preferences"
+msgstr "ปรับแต่งเครื่องมือเฝ้าสังเกตฮาร์ดแวร์"
+
+#: ../src/ui.glade.h:29
+msgid "Incoming data"
+msgstr "ข้อมูลขาเข้า"
+
+#: ../src/ui.glade.h:30 ../src/monitor-impls.cpp:704
+msgid "Modem"
+msgstr "โมเด็ม"
+
+#: ../src/ui.glade.h:31
+msgid "Monitor all CPUs"
+msgstr "เฝ้าสังเกตทุกซีพียู"
+
+#: ../src/ui.glade.h:32
+msgid "Monitor devices using fluctuating flames"
+msgstr "เฝ้าสังเกตอุปกรณ์โดยแสดงเป็นเปลวกระเพื่อม"
+
+#: ../src/ui.glade.h:33
+msgid "Monitor devices using horizontal bars"
+msgstr "เฝ้าสังเกตอุปกรณ์โดยแสดงเป็นขีดแนวนอน"
+
+#: ../src/ui.glade.h:34
+msgid "Monitor devices using line graphs"
+msgstr "เฝ้าสังเกตอุปกรณ์โดยแสดงเป็นกราฟเส้น"
+
+#: ../src/ui.glade.h:35
+msgid "Monitor devices using solid columns"
+msgstr "เฝ้าสังเกตอุปกรณ์โดยแสดงเป็นคอลัมน์ทึบ"
+
+#: ../src/ui.glade.h:36
+msgid "Monitor devices using text descriptions"
+msgstr "เฝ้าสังเกตอุปกรณ์โดยแสดงเป็นข้อความบรรยาย"
+
+#: ../src/ui.glade.h:37
+msgid "Monitor devices using vertical bars"
+msgstr "เฝ้าสังเกตอุปกรณ์โดยแสดงเป็นขีดแนวตั้ง"
+
+#: ../src/ui.glade.h:38
+msgid "Monitor only a single CPU"
+msgstr "เฝ้าสังเกตเฉพาะซีพียูเดียว"
+
+#: ../src/ui.glade.h:39
+msgid "Network"
+msgstr "เครือข่าย"
+
+#: ../src/ui.glade.h:40
+msgid "No sensors detected"
+msgstr "ไม่พบเซนเซอร์"
+
+#: ../src/ui.glade.h:41
+msgid "Only CPU:"
+msgstr "เฉพาะซีพียู:"
+
+#: ../src/ui.glade.h:42
+msgid "Outgoing data"
+msgstr "ข้อมูลขาออก"
+
+#: ../src/ui.glade.h:43
+msgid "Select the sensor to monitor"
+msgstr "เลือกเซนเซอร์ที่จะเฝ้าสังเกต"
+
+#: ../src/ui.glade.h:44
+msgid "Select whether to monitor incoming or outgoing data or both"
+msgstr "เลือกว่าจะเฝ้าสังเกตข้อมูลขาเข้าหรือขาออกหรือทั้งคู่"
+
+#: ../src/ui.glade.h:45 ../src/monitor-impls.cpp:706
+msgid "Serial link"
+msgstr "ลิงก์อนุกรม"
+
+#: ../src/ui.glade.h:46
+msgid "Show _free space instead of used"
+msgstr "แสดง_พื้นที่ว่างแทนพื้นที่ที่ใช้"
+
+#: ../src/ui.glade.h:47
+msgid "Storage"
+msgstr "หน่วยเก็บข้อมูล"
+
+#: ../src/ui.glade.h:48
+msgid "System"
+msgstr "ระบบ"
+
+#: ../src/ui.glade.h:49
+msgid "Temperature"
+msgstr "อุณหภูมิ"
+
+#: ../src/ui.glade.h:50
+msgid "The amount of data sent through a network connection"
+msgstr "ปริมาณข้อมูลที่ส่งผ่านการเชื่อมต่อเครือข่าย"
+
+#: ../src/ui.glade.h:51
+msgid "The amount of disk space used"
+msgstr "พื้นที่ดิสก์ที่ใช้"
+
+#: ../src/ui.glade.h:52
+msgid "The amount of disk-based memory used"
+msgstr "ปริมาณหน่วยความจำแบบอาศัยดิสก์ที่ใช้"
+
+#: ../src/ui.glade.h:53
+msgid "The amount of memory used"
+msgstr "ปริมาณหน่วยความจำที่ใช้"
+
+#: ../src/ui.glade.h:54
+msgid "The percentage of time that is spent running foreground processes"
+msgstr "เปอร์เซ็นต์ของเวลาที่ใช้ทำงานโพรเซสเบื้องหน้า"
+
+#: ../src/ui.glade.h:55
+msgid "The speed of the fans"
+msgstr "ความเร็วของพัดลม"
+
+#: ../src/ui.glade.h:56
+msgid "The temperature of the inside of the system"
+msgstr "อุณหภูมิภายในเครื่อง"
+
+#: ../src/ui.glade.h:57
+msgid ""
+"Type of connection - Ethernet is the most common local area network adapter "
+"type"
+msgstr "ชนิดของการเชื่อมต่อ - อีเทอร์เน็ตเป็นการเชื่อมต่อเครือข่ายที่พบบ่อยที่สุด"
+
+#: ../src/ui.glade.h:58
+msgid "Use _panel background"
+msgstr "ใช้พื้นหลังของ_พาเนล"
+
+#: ../src/ui.glade.h:59
+msgid "Use _this color:"
+msgstr "ใช้_สีนี้:"
+
+#: ../src/ui.glade.h:60
+msgid "Use this f_ont:"
+msgstr "ใช้แ_บบอักษรนี้:"
+
+#: ../src/ui.glade.h:61
+msgid "Viewer"
+msgstr "การแสดงผล"
+
+#: ../src/ui.glade.h:62
+msgid "Which CPU no. to monitor"
+msgstr "หมายเลขซีพียูที่จะเฝ้าสังเกต"
+
+#: ../src/ui.glade.h:63 ../src/monitor-impls.cpp:708
+msgid "Wireless"
+msgstr "ไร้สาย"
+
+#: ../src/ui.glade.h:64
+msgid "_Add"
+msgstr "เ_พิ่ม"
+
+#: ../src/ui.glade.h:65
+msgid "_Disk usage"
+msgstr "การใช้_ดิสก์"
+
+#: ../src/ui.glade.h:66
+msgid "_Fan speed"
+msgstr "ความเร็ว_พัดลม"
+
+#: ../src/ui.glade.h:67
+msgid "_Flames"
+msgstr "เ_ปลว"
+
+#: ../src/ui.glade.h:68
+msgid "_Horizontal bars"
+msgstr "ขีดแนว_นอน"
+
+#: ../src/ui.glade.h:69
+msgid "_Load average"
+msgstr "โ_หลดเฉลี่ย"
+
+#: ../src/ui.glade.h:70
+msgid "_Memory usage"
+msgstr "การใช้_หน่วยความจำ"
+
+#: ../src/ui.glade.h:71
+msgid "_Monitored devices:"
+msgstr "อุปกรณ์ที่จะเ_ฝ้าสังเกต:"
+
+#: ../src/ui.glade.h:72
+msgid "_Network throughput"
+msgstr "_ปริมาณข้อมูลเครือข่าย"
+
+#: ../src/ui.glade.h:73
+msgid "_Remove"
+msgstr "เ_อาออก"
+
+#: ../src/ui.glade.h:74
+msgid "_Swap usage"
+msgstr "การใช้พื้นที่_สลับ"
+
+#: ../src/ui.glade.h:75
+msgid "_Temperature"
+msgstr "อุณ_หภูมิ"
+
+#: ../src/ui.glade.h:76
+msgid "_Text"
+msgstr "_ข้อความ"
+
+#: ../src/ui.glade.h:77
+msgid "_Vertical bars"
+msgstr "ขีดแนว_ตั้ง"
+
+#: ../src/helpers.cpp:34
+msgid "Fatal error"
+msgstr "ข้อผิดพลาดร้ายแรง"
+
+#: ../src/monitor-impls.cpp:296
+msgid "%1%%"
+msgstr "%1%%"
+
+#: ../src/monitor-impls.cpp:302
+msgid "All processors"
+msgstr "ทุกโพรเซสเซอร์"
+
+#: ../src/monitor-impls.cpp:304
+msgid "Processor no. %1"
+msgstr "โพรเซสเซอร์หมายเลข %1"
+
+#. must be short
+#: ../src/monitor-impls.cpp:311
+msgid "CPU"
+msgstr "ซีพียู"
+
+#. note to translators: %1 is the cpu no, e.g. "CPU 1"
+#: ../src/monitor-impls.cpp:314
+msgid "CPU %1"
+msgstr "ซีพียู %1"
+
+#: ../src/monitor-impls.cpp:362 ../src/monitor-impls.cpp:496
+msgid "%1 Mb"
+msgstr "%1 Mb"
+
+#: ../src/monitor-impls.cpp:367
+msgid "Disk-based memory"
+msgstr "หน่วยความจำแบบอาศัยดิสก์"
+
+#. must be short
+#: ../src/monitor-impls.cpp:373
+msgid "Swap"
+msgstr "สลับ"
+
+#: ../src/monitor-impls.cpp:431
+msgid "Load average"
+msgstr "โหลดเฉลี่ย"
+
+#. note to translators: short for "load average" - it has nothing to do with
+#. loading data
+#: ../src/monitor-impls.cpp:438
+msgid "Load"
+msgstr "โหลด"
+
+#: ../src/monitor-impls.cpp:501
+msgid "Memory"
+msgstr "หน่วยความจำ"
+
+#. short for memory
+#: ../src/monitor-impls.cpp:507
+msgid "Mem."
+msgstr "ความจำ"
+
+#: ../src/monitor-impls.cpp:562
+msgid "%1 GB"
+msgstr "%1 GB"
+
+#: ../src/monitor-impls.cpp:566
+msgid "%1 MB"
+msgstr "%1 MB"
+
+#: ../src/monitor-impls.cpp:570
+msgid "%1 kB"
+msgstr "%1 kB"
+
+#: ../src/monitor-impls.cpp:573
+msgid "%1 B"
+msgstr "%1 B"
+
+#: ../src/monitor-impls.cpp:578
+msgid "Disk (%1)"
+msgstr "ดิสก์ (%1)"
+
+#: ../src/monitor-impls.cpp:679
+msgid "%1 GB/s"
+msgstr "%1 GB/s"
+
+#: ../src/monitor-impls.cpp:683
+msgid "%1 MB/s"
+msgstr "%1 MB/s"
+
+#: ../src/monitor-impls.cpp:687
+msgid "%1 kB/s"
+msgstr "%1 kB/s"
+
+#: ../src/monitor-impls.cpp:690
+msgid "%1 B/s"
+msgstr "%1 B/s"
+
+#. %1 is the network connection, e.g. "Ethernet (first)", in signifies
+#. that this is incoming data
+#: ../src/monitor-impls.cpp:716 ../src/monitor-impls.cpp:746
+msgid "%1, in"
+msgstr "%1, เข้า"
+
+#. %1 is the network connection, e.g. "Ethernet (first)", out signifies
+#. that this is outgoing data
+#: ../src/monitor-impls.cpp:720 ../src/monitor-impls.cpp:748
+msgid "%1, out"
+msgstr "%1, ออก"
+
+#. short for an ethernet card
+#: ../src/monitor-impls.cpp:731
+msgid "Eth. %1"
+msgstr "อีเทอร์ %1"
+
+#. short for modem
+#: ../src/monitor-impls.cpp:734
+msgid "Mod."
+msgstr "โมเด็ม"
+
+#. short for serial link
+#: ../src/monitor-impls.cpp:737
+msgid "Ser."
+msgstr "อนุกรม"
+
+#. short for wireless
+#: ../src/monitor-impls.cpp:740
+msgid "W.less."
+msgstr "ไร้สาย"
+
+#. %2 contains the degree sign (the following 'C' stands for Celsius)
+#: ../src/monitor-impls.cpp:952
+msgid "%1%2C"
+msgstr "%1%2C"
+
+#. %2 is a descriptive string from sensors.conf
+#: ../src/monitor-impls.cpp:959
+msgid "Temperature %1: \"%2\""
+msgstr "อุณหภูมิ %1: \"%2\""
+
+#: ../src/monitor-impls.cpp:962
+msgid "Temperature %1"
+msgstr "อุณหภูมิ %1"
+
+#. short for "temperature", %1 is sensor no.
+#: ../src/monitor-impls.cpp:968
+msgid "Temp. %1"
+msgstr "อุณหภูมิ %1"
+
+#. rpm is rotations per minute
+#: ../src/monitor-impls.cpp:1034
+msgid "%1 rpm"
+msgstr "%1 rpm"
+
+#. %2 is a descriptive string from sensors.conf
+#: ../src/monitor-impls.cpp:1041
+msgid "Fan %1 speed: \"%2\""
+msgstr "ความเร็วพัดลม %1: \"%2\""
+
+#: ../src/monitor-impls.cpp:1044
+msgid "Fan %1 speed"
+msgstr "ความเร็วพัดลม %1"
+
+#: ../src/preferences-window.cpp:141
+msgid "Device"
+msgstr "อุปกรณ์"

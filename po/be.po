@@ -1,0 +1,626 @@
+# translation of be.po to Belarusian
+# translation of hardware-monitor.be.po to Belarusian
+# translation of hardware-monitor.po to Belarusian
+# This file is distributed under the same license as the PACKAGE package.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# Vital Khilko <dojlid@mova.org>, 2003
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: hardware-monitor.be\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2003-08-27 14:23+0200\n"
+"PO-Revision-Date: 2003-06-03 14:46+0300\n"
+"Last-Translator: Vital Khilko <dojlid@mova.org>\n"
+"Language-Team: Belarusian <i18n@mova.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.0\n"
+
+#: HardwareMonitor.server.in.in.h:1 src/applet.cpp:592
+msgid "Hardware Monitor"
+msgstr "Манітор загрузкі сыстэмы"
+
+#: HardwareMonitor.server.in.in.h:2
+msgid "Monitor hardware devices"
+msgstr "Манітор загрузкі прыладаў"
+
+#: HardwareMonitor.server.in.in.h:3
+msgid "Utility"
+msgstr "Загрузка"
+
+#: src/applet.cpp:69
+msgid "Hardware Monitor: cannot load the icon '%1'.\n"
+msgstr "Манітор загрузкі сыстэмы: немагчыма загрузіць значку '%1'.\n"
+
+#. pop-up menu strings
+#: src/applet.cpp:106
+msgid "_Preferences..."
+msgstr "_Перавагі..."
+
+#: src/applet.cpp:106
+msgid "_Help"
+msgstr "_Дапамога"
+
+#: src/applet.cpp:106
+msgid "_About..."
+msgstr "_Пра праграму..."
+
+#. note to translators: %1 is the name of a monitor, e.g. "CPU 1", and %2 is
+#. the current measurement, e.g. "78%"
+#: src/applet.cpp:203
+msgid "%1: %2"
+msgstr "%1: %2"
+
+#. note to translators: this is used for composing a list of monitors; %1
+#. is the previous part of the list and %2 is the part to append
+#: src/applet.cpp:210
+msgid ""
+"%1\n"
+"%2"
+msgstr ""
+"%1\n"
+"%2"
+
+#. add documenters here
+#. note to translators: please fill in your names and email addresses
+#: src/applet.cpp:584
+msgid "translator-credits"
+msgstr ""
+"Belarusian Language Linux Team \n"
+"http://www.mova.linux.by\n"
+"mail: i18n@mova.org"
+
+#: src/applet.cpp:587
+#, fuzzy
+msgid ""
+"Monitor various hardware-related information, such as CPU usage, memory "
+"usage etc. Supports curve graphs, horizontal bar plots, column diagrams, "
+"textual monitoring and fluctuating flames."
+msgstr ""
+"Маніторынг рознае спэцыфічнае для прыладаў інфармацыі, як то загрузка "
+"працэсараў, выкарыстаньне памяці й свопу, і г.д. Падтрымлівае разнастайныя "
+"графікі й тэкставыя паведамленьні."
+
+#. %1 is the copyright symbol
+#: src/applet.cpp:594
+msgid "Copyright %1 2003 Ole Laursen"
+msgstr "Аўтарскае права %1 2003 Оле Лаўрсэн"
+
+#. %2 is a descriptive string from sensors.conf
+#: src/choose-monitor-window.cpp:113
+msgid "Sensor %1: \"%2\""
+msgstr ""
+
+#: src/choose-monitor-window.cpp:115
+msgid "Sensor %1"
+msgstr ""
+
+#. %2 is a descriptive string from sensors.conf
+#: src/choose-monitor-window.cpp:137
+#, fuzzy
+msgid "Fan %1: \"%2\""
+msgstr "%1: %2"
+
+#: src/choose-monitor-window.cpp:139 src/monitor-impls.cpp:827
+msgid "Fan %1"
+msgstr ""
+
+#: src/hardware-monitor.glade.h:1
+msgid "*"
+msgstr "*"
+
+#: src/hardware-monitor.glade.h:2
+msgid "/"
+msgstr "/"
+
+#: src/hardware-monitor.glade.h:3
+msgid "<b>Background</b>"
+msgstr "<b>Тло</b>"
+
+#: src/hardware-monitor.glade.h:4
+msgid "<b>Devices</b>"
+msgstr "<b>Прылады</b>"
+
+#: src/hardware-monitor.glade.h:5
+msgid "<b>General</b>"
+msgstr "<b>Асноўнае</b>"
+
+#: src/hardware-monitor.glade.h:6
+msgid "<b>Options</b>"
+msgstr "<b>Парамэтры</b>"
+
+#: src/hardware-monitor.glade.h:7
+msgid "<b>Viewer</b>"
+msgstr "<b>Праглядальнік</b>"
+
+#: src/hardware-monitor.glade.h:8
+msgid "A running average of the number of simultanous processes"
+msgstr "Сярэдняя загрузка працэсара"
+
+#: src/hardware-monitor.glade.h:9
+msgid "All CPUs"
+msgstr "Усе працэсары"
+
+#: src/hardware-monitor.glade.h:10
+msgid "All data"
+msgstr "Усе даньні"
+
+#: src/hardware-monitor.glade.h:11
+msgid "Amount of time between measurements (in seconds)"
+msgstr "Час паміж атрыманьнем вымярэньняў (у сэкундах)"
+
+#: src/hardware-monitor.glade.h:13
+#, no-c-format
+msgid "CPU: 15.0%"
+msgstr "Працэсар: 15.0%"
+
+#: src/hardware-monitor.glade.h:14
+msgid "C_PU usage"
+msgstr "Выкарыстаньне _працэсара"
+
+#: src/hardware-monitor.glade.h:15
+msgid "C_hange"
+msgstr "_Зьмяніць"
+
+#: src/hardware-monitor.glade.h:16
+msgid "C_olor:"
+msgstr "_Колер:"
+
+#: src/hardware-monitor.glade.h:17
+msgid "C_olumns"
+msgstr ""
+
+#: src/hardware-monitor.glade.h:18
+msgid "C_urves"
+msgstr "_Графікі"
+
+#: src/hardware-monitor.glade.h:19
+msgid "Choose a Device"
+msgstr "Выбярыце прыладу"
+
+#: src/hardware-monitor.glade.h:20
+msgid "Choose a Font"
+msgstr "Выбярыце шрыфт"
+
+#: src/hardware-monitor.glade.h:21
+msgid "Co_lumns:"
+msgstr ""
+
+#: src/hardware-monitor.glade.h:22
+msgid "Color of the bar"
+msgstr "Колер палоскі"
+
+#: src/hardware-monitor.glade.h:23
+msgid "Color of the curve"
+msgstr "Колер графіка"
+
+#: src/hardware-monitor.glade.h:24
+msgid "Color of the flame"
+msgstr "Колер полымя"
+
+#: src/hardware-monitor.glade.h:25
+msgid "Connection:"
+msgstr "Далучэньне:"
+
+#: src/hardware-monitor.glade.h:26
+msgid "Devices"
+msgstr "Прылады"
+
+#: src/hardware-monitor.glade.h:27
+msgid "Direction:"
+msgstr "Накірунак:"
+
+#: src/hardware-monitor.glade.h:28
+msgid "Enter a folder residing on the disk to monitor"
+msgstr "Пазначце тэчку за якой будзе адбывацца сачэньне"
+
+#: src/hardware-monitor.glade.h:29 src/monitor-impls.cpp:520
+msgid "Ethernet (first)"
+msgstr "Ethernet (першы)"
+
+#: src/hardware-monitor.glade.h:30 src/monitor-impls.cpp:522
+msgid "Ethernet (second)"
+msgstr "Ethernet (другі)"
+
+#: src/hardware-monitor.glade.h:31 src/monitor-impls.cpp:524
+msgid "Ethernet (third)"
+msgstr "Ethernet (трэцьці)"
+
+#: src/hardware-monitor.glade.h:32
+msgid "Folder:"
+msgstr "Тэчка:"
+
+#: src/hardware-monitor.glade.h:33
+msgid "General"
+msgstr "Асноўнае"
+
+#: src/hardware-monitor.glade.h:34
+msgid "Hardware Monitor Preferences"
+msgstr "Перавагі манітора загрузкі сыстэмы"
+
+#: src/hardware-monitor.glade.h:35
+msgid "Incoming data"
+msgstr "Уваходныя даньні"
+
+#: src/hardware-monitor.glade.h:36 src/monitor-impls.cpp:526
+msgid "Modem"
+msgstr "Мадэм"
+
+#: src/hardware-monitor.glade.h:37
+msgid "Monitor all CPUs"
+msgstr "Сачыць за усімі працэсарамі"
+
+#: src/hardware-monitor.glade.h:38
+msgid "Monitor devices using fluctuating flames"
+msgstr "Выкарыстаньне графіка - полымя"
+
+#: src/hardware-monitor.glade.h:39
+msgid "Monitor devices using horizontal bars"
+msgstr "Выкарыстаньне графіка - гарызантальныя палоскі"
+
+#: src/hardware-monitor.glade.h:40
+msgid "Monitor devices using line graphs"
+msgstr "Выкарыстаньне графіка - рысы"
+
+#: src/hardware-monitor.glade.h:41
+#, fuzzy
+msgid "Monitor devices using solid columns"
+msgstr "Выкарыстаньне графіка - рысы"
+
+#: src/hardware-monitor.glade.h:42
+msgid "Monitor devices using text descriptions"
+msgstr "Выкарыстаньне тэкставых паведамленьняў"
+
+#: src/hardware-monitor.glade.h:43
+msgid "Monitor only a single CPU"
+msgstr "Назіраць толькі за адным працэсарам"
+
+#: src/hardware-monitor.glade.h:44
+msgid "Network"
+msgstr ""
+
+#: src/hardware-monitor.glade.h:45
+msgid "No sensors detected"
+msgstr ""
+
+#: src/hardware-monitor.glade.h:46
+#, fuzzy
+msgid "Number of columns to show simultanously"
+msgstr "Колькасьць пунктаў вымярэньня разрозьненьня"
+
+#: src/hardware-monitor.glade.h:47
+msgid "Number of measured points to show simultanously"
+msgstr "Колькасьць пунктаў вымярэньня разрозьненьня"
+
+#: src/hardware-monitor.glade.h:48
+msgid "Only CPU:"
+msgstr "Толькі працэсар:"
+
+#: src/hardware-monitor.glade.h:49
+msgid "Outgoing data"
+msgstr "Выходныя даньні"
+
+#: src/hardware-monitor.glade.h:50
+msgid "Pick a Color"
+msgstr "Выбярыце колер"
+
+#: src/hardware-monitor.glade.h:51
+msgid "S_amples:"
+msgstr "_Узоры:"
+
+#: src/hardware-monitor.glade.h:52
+#, fuzzy
+msgid "Select the sensor to monitor"
+msgstr "Нумар працэсара"
+
+#: src/hardware-monitor.glade.h:53
+msgid "Select whether to monitor incoming or outgoing data or both"
+msgstr ""
+"Выбярыце сачэньне за уваходнымі ці выходнымі даньнямі, ці за усімі агулам"
+
+#: src/hardware-monitor.glade.h:54 src/monitor-impls.cpp:528
+msgid "Serial link"
+msgstr "Пасьлядоўнае далучэньне"
+
+#: src/hardware-monitor.glade.h:55
+msgid "Size of the applet in pixels"
+msgstr "Памер аплета ў піксэлях"
+
+#: src/hardware-monitor.glade.h:56
+msgid "Storage"
+msgstr ""
+
+#: src/hardware-monitor.glade.h:57
+msgid "System"
+msgstr ""
+
+#: src/hardware-monitor.glade.h:58
+msgid "Temperature"
+msgstr "Тэмпература"
+
+#: src/hardware-monitor.glade.h:59
+msgid "The amount of data sent through a network connection"
+msgstr "Загрузка сеткавага далучэньня"
+
+#: src/hardware-monitor.glade.h:60
+msgid "The amount of disk space used"
+msgstr "Выкарыстаньне дыскавае прасторы"
+
+#: src/hardware-monitor.glade.h:61
+msgid "The amount of disk-based memory used"
+msgstr "Выкарыстаньне памяці разьмешчанай на дыске"
+
+#: src/hardware-monitor.glade.h:62
+msgid "The amount of memory used"
+msgstr "Выкарыстаньне памяці"
+
+#: src/hardware-monitor.glade.h:63
+msgid "The percentage of time that is spent running foreground processes"
+msgstr "Загрузка працэсара асноўнымі працэсамі"
+
+#: src/hardware-monitor.glade.h:64
+msgid "The speed of the fans"
+msgstr ""
+
+#: src/hardware-monitor.glade.h:65
+msgid "The temperature of the inside of the system"
+msgstr "Тэмпература сыстэмы"
+
+#: src/hardware-monitor.glade.h:66
+msgid "Thickness of the curve (in pixels)"
+msgstr "Шырыня рысы графіка (у піксэлях)"
+
+#: src/hardware-monitor.glade.h:67
+msgid ""
+"Type of connection - Ethernet is the most common local area network adapter "
+"type"
+msgstr "Тып далучэньня - Ethernet"
+
+#: src/hardware-monitor.glade.h:68
+msgid "Use _panel background"
+msgstr "Выкарыстоўваць _тло панэлі"
+
+#: src/hardware-monitor.glade.h:69
+msgid "Use _this color:"
+msgstr "Выкарыстоўваць _гэты колер:"
+
+#: src/hardware-monitor.glade.h:70
+msgid "Use this f_ont:"
+msgstr "Выкарыстоўваць гэты _шрыфт:"
+
+#: src/hardware-monitor.glade.h:71
+msgid "Viewer"
+msgstr "Праглядальнік"
+
+#: src/hardware-monitor.glade.h:72
+msgid "Which CPU no. to monitor"
+msgstr "Нумар працэсара"
+
+#: src/hardware-monitor.glade.h:73
+msgid "_Add"
+msgstr "_Дадаць"
+
+#: src/hardware-monitor.glade.h:74
+msgid "_Bars"
+msgstr "_Палоскі"
+
+#: src/hardware-monitor.glade.h:75
+msgid "_Disk usage"
+msgstr "_Выкарыстаньне дыска"
+
+#: src/hardware-monitor.glade.h:76
+msgid "_Fan speed"
+msgstr ""
+
+#: src/hardware-monitor.glade.h:77
+msgid "_Flames"
+msgstr "_Полымя"
+
+#: src/hardware-monitor.glade.h:78
+msgid "_Line width:"
+msgstr "Шырыня _рысы"
+
+#: src/hardware-monitor.glade.h:79
+msgid "_Load average"
+msgstr "_Сярэдняя загрузка"
+
+#: src/hardware-monitor.glade.h:80
+msgid "_Memory usage"
+msgstr "Загрузка _памяці"
+
+#: src/hardware-monitor.glade.h:81
+msgid "_Monitored devices:"
+msgstr "_Сачэньне за прыладамі:"
+
+#: src/hardware-monitor.glade.h:82
+msgid "_Network throughput"
+msgstr "Загрузка _сеткі"
+
+#: src/hardware-monitor.glade.h:83
+msgid "_Remove"
+msgstr "_Выдаліць"
+
+#: src/hardware-monitor.glade.h:84
+msgid "_Size:"
+msgstr "_Памер:"
+
+#: src/hardware-monitor.glade.h:85
+msgid "_Swap usage"
+msgstr "Выкарыстаньне _свопу"
+
+#: src/hardware-monitor.glade.h:86
+msgid "_Temperature"
+msgstr "_Тэмпература"
+
+#: src/hardware-monitor.glade.h:87
+msgid "_Text"
+msgstr "_Тэкст"
+
+#: src/hardware-monitor.glade.h:88
+msgid "_Update interval:"
+msgstr "_Інтэрвал абнаўленьня:"
+
+#: src/helpers.cpp:34
+msgid "Fatal error"
+msgstr "Фатальная памылка"
+
+#: src/monitor-impls.cpp:168
+msgid "%1%%"
+msgstr "%1%%"
+
+#: src/monitor-impls.cpp:174
+msgid "All processors"
+msgstr "Усе працэсары"
+
+#: src/monitor-impls.cpp:176
+msgid "Processor no. %1"
+msgstr "Працэсар нумар %1"
+
+#. must be short
+#: src/monitor-impls.cpp:183
+msgid "CPU"
+msgstr "Працэсар"
+
+#. note to translators: %1 is the cpu no, e.g. "CPU 1"
+#: src/monitor-impls.cpp:186
+msgid "CPU %1"
+msgstr "Працэсар %1"
+
+#: src/monitor-impls.cpp:229 src/monitor-impls.cpp:339
+#: src/monitor-impls.cpp:406
+msgid "%1 Mb"
+msgstr "%1 Мб"
+
+#: src/monitor-impls.cpp:234
+msgid "Disk-based memory"
+msgstr "Перанесеныя на дыск даньні з памяці"
+
+#. must be short
+#: src/monitor-impls.cpp:240
+msgid "Swap"
+msgstr "Свап"
+
+#: src/monitor-impls.cpp:290
+msgid "Load average"
+msgstr "Сярэдняя загрузка"
+
+#. note to translators: short for "load average" - it has nothing to do with
+#. loading data
+#: src/monitor-impls.cpp:297
+msgid "Load"
+msgstr "Загрузка"
+
+#: src/monitor-impls.cpp:344
+msgid "Memory"
+msgstr "Памяць"
+
+#. short for memory
+#: src/monitor-impls.cpp:350
+msgid "Mem."
+msgstr "Памяць"
+
+#: src/monitor-impls.cpp:402
+msgid "%1 Gb"
+msgstr "%1 Гб"
+
+#: src/monitor-impls.cpp:410
+msgid "%1 kb"
+msgstr "%1 Кб"
+
+#: src/monitor-impls.cpp:413
+msgid "%1 b"
+msgstr "%1 б"
+
+#: src/monitor-impls.cpp:418
+msgid "Disk (%1)"
+msgstr "Дыск (%1)"
+
+#: src/monitor-impls.cpp:501
+msgid "%1 Gb/s"
+msgstr "%1 Гб/с"
+
+#: src/monitor-impls.cpp:505
+msgid "%1 Mb/s"
+msgstr "%1 Mб/с"
+
+#: src/monitor-impls.cpp:509
+msgid "%1 kb/s"
+msgstr "%1 Кб/с"
+
+#: src/monitor-impls.cpp:512
+msgid "%1 b/s"
+msgstr "%1 б/с"
+
+#. %1 is the network connection, e.g. "Ethernet (first)", in signifies
+#. that this is incoming data
+#: src/monitor-impls.cpp:536 src/monitor-impls.cpp:563
+msgid "%1, in"
+msgstr "%1, у"
+
+#. %1 is the network connection, e.g. "Ethernet (first)", out signifies
+#. that this is outgoing data
+#: src/monitor-impls.cpp:540 src/monitor-impls.cpp:565
+msgid "%1, out"
+msgstr "%1, з"
+
+#. short for an ethernet card
+#: src/monitor-impls.cpp:551
+msgid "Eth. %1"
+msgstr "Ethernet %1"
+
+#. short for modem
+#: src/monitor-impls.cpp:554
+msgid "Mod."
+msgstr "Мадэм"
+
+#. short for serial link
+#: src/monitor-impls.cpp:557
+msgid "Ser."
+msgstr "Пас. далуч."
+
+#. %2 contains the degree sign (the following 'C' stands for Celsius)
+#: src/monitor-impls.cpp:748
+#, c-format
+msgid "%1%2C"
+msgstr "%1%2C"
+
+#. %2 is a descriptive string from sensors.conf
+#: src/monitor-impls.cpp:755
+#, fuzzy
+msgid "Temperature %1: \"%2\""
+msgstr "Тэмпература"
+
+#: src/monitor-impls.cpp:758
+#, fuzzy
+msgid "Temperature %1"
+msgstr "Тэмпература"
+
+#. short for "temperature", %1 is sensor no.
+#: src/monitor-impls.cpp:764
+#, fuzzy
+msgid "Temp. %1"
+msgstr "Тэмпература"
+
+#. rpm is rotations per minute
+#: src/monitor-impls.cpp:812
+#, fuzzy
+msgid "%1 rpm"
+msgstr "%1 б"
+
+#. %2 is a descriptive string from sensors.conf
+#: src/monitor-impls.cpp:819
+msgid "Fan %1 speed: \"%2\""
+msgstr ""
+
+#: src/monitor-impls.cpp:822
+msgid "Fan %1 speed"
+msgstr ""
+
+#: src/preferences-window.cpp:175
+msgid "Device"
+msgstr "Прылада"
+
+#~ msgid "<b>Choose what to monitor:</b>"
+#~ msgstr "<b>Выбярыце прыладу для сачэньня:</b>"

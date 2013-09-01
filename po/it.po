@@ -1,0 +1,625 @@
+# This is the italian locale for hardware-monitor.
+# Copyright (C) 2004 Free Software Foundation, Inc.
+# This file is distributed under the same license as the hardware-monitor package.
+# Alessio Dessì <alkex@inwind.it>, 2004.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: hardware-monitor 0.7\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-03-07 15:23+0100\n"
+"PO-Revision-Date: 2004-03-15 20:42+0100\n"
+"Last-Translator: Alessio Dessì <alkex@inwind.it>\n"
+"Language-Team: IT <tp@lists.linux.it>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit"
+
+#: HardwareMonitor.server.in.in.h:1 src/applet.cpp:600
+msgid "Hardware Monitor"
+msgstr "Hardware Monitor"
+
+#: HardwareMonitor.server.in.in.h:2
+msgid "Monitor hardware devices"
+msgstr "Monitor dei dispositivi hardware"
+
+#: HardwareMonitor.server.in.in.h:3
+msgid "Utility"
+msgstr "Utilità"
+
+#: src/applet.cpp:69
+msgid "Hardware Monitor: cannot load the icon '%1'.\n"
+msgstr "Hardware Monitor: impossibile caricare l'icona «%1».\n"
+
+#. pop-up menu strings
+#: src/applet.cpp:106
+msgid "_Preferences..."
+msgstr "Preferen_ze..."
+
+#: src/applet.cpp:106
+msgid "_Help"
+msgstr "A_iuto"
+
+#: src/applet.cpp:106
+msgid "_About..."
+msgstr "I_nformazioni..."
+
+#. note to translators: %1 is the name of a monitor, e.g. "CPU 1", and %2 is
+#. the current measurement, e.g. "78%"
+#: src/applet.cpp:203
+msgid "%1: %2"
+msgstr "%1: %2"
+
+#. note to translators: this is used for composing a list of monitors; %1
+#. is the previous part of the list and %2 is the part to append
+#: src/applet.cpp:210
+msgid ""
+"%1\n"
+"%2"
+msgstr ""
+"%1\n"
+"%2"
+
+#. add documenters here
+#. note to translators: please fill in your names and email addresses
+#: src/applet.cpp:592
+msgid "translator-credits"
+msgstr "Alessio Dessì <alkex@inwind.it>"
+
+#: src/applet.cpp:595
+#, aiuto 
+msgid ""
+"Monitor various hardware-related information, such as CPU usage, memory "
+"usage etc. Supports curve graphs, horizontal bar plots, column diagrams, "
+"textual monitoring and fluctuating flames."
+msgstr ""
+"Visualizza diverse informazioni relative all'hardware come l'utilizzo della "
+"CPU, della memoria, etc. Tipi di visualizzazione supportati sono grafici di curve, "
+"barre orizzontali, diagrammi a colonna, testo e fiamme fluttuanti."
+
+#. %1 is the copyright symbol
+#: src/applet.cpp:602
+msgid "Copyright %1 2003 Ole Laursen"
+msgstr "Copyright %1 2003 Ole Laursen"
+
+#. %2 is a descriptive string from sensors.conf
+#: src/choose-monitor-window.cpp:114
+msgid "Sensor %1: \"%2\""
+msgstr "Sensore %1: «%2»"
+
+#: src/choose-monitor-window.cpp:116
+msgid "Sensor %1"
+msgstr "Sensore %1"
+
+#. %2 is a descriptive string from sensors.conf
+#: src/choose-monitor-window.cpp:138
+msgid "Fan %1: \"%2\""
+msgstr "Ventola %1: «%2»"
+
+#: src/choose-monitor-window.cpp:140 src/monitor-impls.cpp:844
+msgid "Fan %1"
+msgstr "Ventola %1"
+
+#: src/ui.glade.h:1
+msgid "*"
+msgstr "*"
+
+#: src/ui.glade.h:2
+msgid "/"
+msgstr "/"
+
+#: src/ui.glade.h:3
+msgid "<b>Background</b>"
+msgstr "<b>Sfondo</b>"
+
+#: src/ui.glade.h:4
+msgid "<b>Devices</b>"
+msgstr "<b>Dispositivi</b>"
+
+#: src/ui.glade.h:5
+msgid "<b>General</b>"
+msgstr "<b>Generale</b>"
+
+#: src/ui.glade.h:6
+msgid "<b>Options</b>"
+msgstr "<b>Opzioni</b>"
+
+#: src/ui.glade.h:7
+msgid "<b>Viewer</b>"
+msgstr "<b>Visualizzatore</b>"
+
+#: src/ui.glade.h:8
+msgid "A running average of the number of simultanous processes"
+msgstr "Una media del numero di processi in esecuzione simultanea"
+
+#: src/ui.glade.h:9
+msgid "All CPUs"
+msgstr "Tutte le CPU"
+
+#: src/ui.glade.h:10
+msgid "All data"
+msgstr "Tutti i dati"
+
+#: src/ui.glade.h:11
+msgid "Amount of time between measurements (in seconds)"
+msgstr "Intervallo di misura (in secondi)"
+
+#: src/ui.glade.h:13
+#, no-c-format
+msgid "CPU: 15.0%"
+msgstr "CPU: 15.0%"
+
+#: src/ui.glade.h:14
+msgid "C_PU usage"
+msgstr "Utilizzo C_PU"
+
+#: src/ui.glade.h:15
+msgid "C_hange"
+msgstr "_Modifica"
+
+#: src/ui.glade.h:16
+msgid "C_olor:"
+msgstr "C_olore:"
+
+#: src/ui.glade.h:17
+msgid "C_olumns"
+msgstr "C_olonne"
+
+#: src/ui.glade.h:18
+msgid "C_urves"
+msgstr "C_urve"
+
+#: src/ui.glade.h:19
+msgid "Choose a Device"
+msgstr "Scelta del dispositivo"
+
+#: src/ui.glade.h:20
+msgid "Choose a Font"
+msgstr "Scelta del tipo di carattere"
+
+#: src/ui.glade.h:21
+msgid "Co_lumns:"
+msgstr "Co_lonne:"
+
+#: src/ui.glade.h:22
+msgid "Color of the bar"
+msgstr "Colore della barra"
+
+#: src/ui.glade.h:23
+msgid "Color of the curve"
+msgstr "Colore della curva"
+
+#: src/ui.glade.h:24
+msgid "Color of the flame"
+msgstr "Colore della fiamma"
+
+#: src/ui.glade.h:25
+msgid "Connection:"
+msgstr "Connessione:"
+
+#: src/ui.glade.h:26
+msgid "Devices"
+msgstr "Dispositivi"
+
+#: src/ui.glade.h:27
+msgid "Direction:"
+msgstr "Direzione:"
+
+#: src/ui.glade.h:28
+msgid "Enter a folder residing on the disk to monitor"
+msgstr "Inserire una cartella del disco da monitorare"
+
+#: src/ui.glade.h:29 src/monitor-impls.cpp:532
+msgid "Ethernet (first)"
+msgstr "Ethernet (prima)"
+
+#: src/ui.glade.h:30 src/monitor-impls.cpp:534
+msgid "Ethernet (second)"
+msgstr "Ethernet (seconda)"
+
+#: src/ui.glade.h:31 src/monitor-impls.cpp:536
+msgid "Ethernet (third)"
+msgstr "Ethernet (terza)"
+
+#: src/ui.glade.h:32
+msgid "Folder:"
+msgstr "Cartella:"
+
+#: src/ui.glade.h:33
+msgid "General"
+msgstr "Generale"
+
+#: src/ui.glade.h:34
+msgid "Hardware Monitor Preferences"
+msgstr "Preferenze di Hardware Monitor"
+
+#: src/ui.glade.h:35
+msgid "Incoming data"
+msgstr "Dati in ingresso"
+
+#: src/ui.glade.h:36 src/monitor-impls.cpp:538
+msgid "Modem"
+msgstr "Modem"
+
+#: src/ui.glade.h:37
+msgid "Monitor all CPUs"
+msgstr "Monitorare tutte le CPU"
+
+#: src/ui.glade.h:38
+msgid "Monitor devices using fluctuating flames"
+msgstr "Monitora i dispositivi usando le fiamme fluttuanti"
+
+#: src/ui.glade.h:39
+msgid "Monitor devices using horizontal bars"
+msgstr "Monitora i dispositivi usando le barre orizzontali"
+
+#: src/ui.glade.h:40
+msgid "Monitor devices using line graphs"
+msgstr "Monitora i dispositivi usando grafici di linee"
+
+#: src/ui.glade.h:41
+msgid "Monitor devices using solid columns"
+msgstr "Monitora i dispositivi usando colonne piene"
+
+#: src/ui.glade.h:42
+msgid "Monitor devices using text descriptions"
+msgstr "Monitora i dispositivi usando descrizioni di testo"
+
+#: src/ui.glade.h:43
+msgid "Monitor only a single CPU"
+msgstr "Monitora una sola CPU"
+
+#: src/ui.glade.h:44
+msgid "Network"
+msgstr "Rete"
+
+#: src/ui.glade.h:45
+msgid "No sensors detected"
+msgstr "Nessun sensore individuato"
+
+#: src/ui.glade.h:46
+msgid "Number of columns to show simultanously"
+msgstr "Numero di colonne da mostrare simultaneamente"
+
+#: src/ui.glade.h:47
+msgid "Number of measured points to show simultanously"
+msgstr "Numero di punti di misura da mostrare simultaneamente"
+
+#: src/ui.glade.h:48
+msgid "Only CPU:"
+msgstr "Solo CPU:"
+
+#: src/ui.glade.h:49
+msgid "Outgoing data"
+msgstr "Dati in uscita"
+
+#: src/ui.glade.h:50
+msgid "Pick a Color"
+msgstr "Seleziona un colore"
+
+#: src/ui.glade.h:51
+msgid "S_amples:"
+msgstr "Ca_mpioni:"
+
+#: src/ui.glade.h:52
+msgid "Select the sensor to monitor"
+msgstr "Seleziona il sensore da monitorare"
+
+#: src/ui.glade.h:53
+msgid "Select whether to monitor incoming or outgoing data or both"
+msgstr "Seleziona se monitorare i dati in ingresso, in uscita o entrambi"
+
+#: src/ui.glade.h:54 src/monitor-impls.cpp:540
+msgid "Serial link"
+msgstr "Collegamento seriale"
+
+#: src/ui.glade.h:55
+#, aiuto
+msgid "Show _free space instead of used"
+msgstr "Mostra lo s_pazio libero anziché utilizzato"
+
+#: src/ui.glade.h:56
+msgid "Size of the applet in pixels"
+msgstr "Dimensione dell'applet in pixel"
+
+#: src/ui.glade.h:57
+msgid "Storage"
+msgstr "Unità di memorizzazione"
+
+#: src/ui.glade.h:58
+msgid "System"
+msgstr "Sistema"
+
+#: src/ui.glade.h:59
+msgid "Temperature"
+msgstr "Temperatura"
+
+#: src/ui.glade.h:60
+msgid "The amount of data sent through a network connection"
+msgstr "La quantità di dati inviati attraverso una connessione di rete"
+
+#: src/ui.glade.h:61
+msgid "The amount of disk space used"
+msgstr "La quantità di spazio disco utilizzato"
+
+#: src/ui.glade.h:62
+msgid "The amount of disk-based memory used"
+msgstr "La quantità di memoria-disco utilizzata"
+
+#: src/ui.glade.h:63
+msgid "The amount of memory used"
+msgstr "La quantità di memoria utilizzata"
+
+#: src/ui.glade.h:64
+msgid "The percentage of time that is spent running foreground processes"
+msgstr "La percentuale di tempo utilizzato per eseguire i processi in primo piano"
+
+#: src/ui.glade.h:65
+msgid "The speed of the fans"
+msgstr "La velocità delle ventole"
+
+#: src/ui.glade.h:66
+msgid "The temperature of the inside of the system"
+msgstr "La temperatura interna del sistema"
+
+#: src/ui.glade.h:67
+msgid "Thickness of the curve (in pixels)"
+msgstr "Lo spessore della curva (in pixel)"
+
+#: src/ui.glade.h:68
+msgid ""
+"Type of connection - Ethernet is the most common local area network adapter "
+"type"
+msgstr ""
+"Tipo di connessione - ethernet è il tipo di scheda per reti locali più comune"
+
+#: src/ui.glade.h:69
+msgid "Use _panel background"
+msgstr "Usare _lo sfondo del pannello"
+
+#: src/ui.glade.h:70
+msgid "Use _this color:"
+msgstr "Usare _questo colore:"
+
+#: src/ui.glade.h:71
+msgid "Use this f_ont:"
+msgstr "Usare questo cara_ttere:"
+
+#: src/ui.glade.h:72
+msgid "Viewer"
+msgstr "Visualizzatore"
+
+#: src/ui.glade.h:73
+msgid "Which CPU no. to monitor"
+msgstr "Il numero della CPU da monitorare"
+
+#: src/ui.glade.h:74 src/monitor-impls.cpp:542
+msgid "Wireless"
+msgstr "Wireless"
+
+#: src/ui.glade.h:75
+msgid "_Add"
+msgstr "A_ggiungi"
+
+#: src/ui.glade.h:76
+msgid "_Bars"
+msgstr "_Barre"
+
+#: src/ui.glade.h:77
+msgid "_Disk usage"
+msgstr "Utilizzo del _disco"
+
+#: src/ui.glade.h:78
+msgid "_Fan speed"
+msgstr "Velocità _ventola"
+
+#: src/ui.glade.h:79
+msgid "_Flames"
+msgstr "_Fiamme"
+
+#: src/ui.glade.h:80
+msgid "_Line width:"
+msgstr "_Larghezza linea:"
+
+#: src/ui.glade.h:81
+msgid "_Load average"
+msgstr "Carico _medio"
+
+#: src/ui.glade.h:82
+msgid "_Memory usage"
+msgstr "Occupazione di _memoria"
+
+#: src/ui.glade.h:83
+msgid "_Monitored devices:"
+msgstr "Dispositivi _monitorati:"
+
+#: src/ui.glade.h:84
+#, fuzzy
+msgid "_Network throughput"
+msgstr "_Portata di rete"
+
+#: src/ui.glade.h:85
+msgid "_Remove"
+msgstr "_Rimuovi"
+
+#: src/ui.glade.h:86
+msgid "_Size:"
+msgstr "_Dimensione:"
+
+#: src/ui.glade.h:87
+msgid "_Swap usage"
+msgstr "Utilizzo dello s_wap"
+
+#: src/ui.glade.h:88
+msgid "_Temperature"
+msgstr "_Temperatura"
+
+#: src/ui.glade.h:89
+msgid "_Text"
+msgstr "_Testo"
+
+#: src/ui.glade.h:90
+msgid "_Update interval:"
+msgstr "Inter_vallo di aggiornamento:"
+
+#: src/helpers.cpp:34
+msgid "Fatal error"
+msgstr "Errore non recuperabile"
+
+#: src/monitor-impls.cpp:168
+msgid "%1%%"
+msgstr "%1%%"
+
+#: src/monitor-impls.cpp:174
+msgid "All processors"
+msgstr "Tutti i processori"
+
+#: src/monitor-impls.cpp:176
+msgid "Processor no. %1"
+msgstr "Processore n° %1"
+
+#. must be short
+#: src/monitor-impls.cpp:183
+msgid "CPU"
+msgstr "CPU"
+
+#. note to translators: %1 is the cpu no, e.g. "CPU 1"
+#: src/monitor-impls.cpp:186
+msgid "CPU %1"
+msgstr "CPU %1"
+
+#: src/monitor-impls.cpp:229 src/monitor-impls.cpp:342
+#: src/monitor-impls.cpp:417
+msgid "%1 Mb"
+msgstr "%1 Mb"
+
+#: src/monitor-impls.cpp:234
+msgid "Disk-based memory"
+msgstr "Memoria-disco"
+
+#. must be short
+#: src/monitor-impls.cpp:240
+msgid "Swap"
+msgstr "Swap"
+
+#: src/monitor-impls.cpp:293
+msgid "Load average"
+msgstr "Carico medio"
+
+#. note to translators: short for "load average" - it has nothing to do with
+#. loading data
+#: src/monitor-impls.cpp:300
+msgid "Load"
+msgstr "Carico"
+
+#: src/monitor-impls.cpp:347
+msgid "Memory"
+msgstr "Memoria"
+
+#. short for memory
+#: src/monitor-impls.cpp:353
+msgid "Mem."
+msgstr "Mem."
+
+#: src/monitor-impls.cpp:413
+msgid "%1 Gb"
+msgstr "%1 Gb"
+
+#: src/monitor-impls.cpp:421
+msgid "%1 kb"
+msgstr "%1 Kb"
+
+#: src/monitor-impls.cpp:424
+msgid "%1 b"
+msgstr "%1 b"
+
+#: src/monitor-impls.cpp:429
+msgid "Disk (%1)"
+msgstr "Disco (%1)"
+
+#: src/monitor-impls.cpp:513
+msgid "%1 Gb/s"
+msgstr "%1 Gb/s"
+
+#: src/monitor-impls.cpp:517
+msgid "%1 Mb/s"
+msgstr "%1 Mb/s"
+
+#: src/monitor-impls.cpp:521
+msgid "%1 kb/s"
+msgstr "%1 Kb/s"
+
+#: src/monitor-impls.cpp:524
+msgid "%1 b/s"
+msgstr "%1 b/s"
+
+#. %1 is the network connection, e.g. "Ethernet (first)", in signifies
+#. that this is incoming data
+#: src/monitor-impls.cpp:550 src/monitor-impls.cpp:580
+msgid "%1, in"
+msgstr "%1, ingresso"
+
+#. %1 is the network connection, e.g. "Ethernet (first)", out signifies
+#. that this is outgoing data
+#: src/monitor-impls.cpp:554 src/monitor-impls.cpp:582
+msgid "%1, out"
+msgstr "%1, uscita"
+
+#. short for an ethernet card
+#: src/monitor-impls.cpp:565
+msgid "Eth. %1"
+msgstr "Eth. %1"
+
+#. short for modem
+#: src/monitor-impls.cpp:568
+msgid "Mod."
+msgstr "Mod."
+
+#. short for serial link
+#: src/monitor-impls.cpp:571
+msgid "Ser."
+msgstr "Ser."
+
+#. short for wireless
+#: src/monitor-impls.cpp:574
+msgid "W.less."
+msgstr "W.less"
+
+#. %2 contains the degree sign (the following 'C' stands for Celsius)
+#: src/monitor-impls.cpp:765
+#, c-format
+msgid "%1%2C"
+msgstr "%1%2C"
+
+#. %2 is a descriptive string from sensors.conf
+#: src/monitor-impls.cpp:772
+msgid "Temperature %1: \"%2\""
+msgstr "Temperatura %1: «%2»"
+
+#: src/monitor-impls.cpp:775
+msgid "Temperature %1"
+msgstr "Temperatura %1"
+
+#. short for "temperature", %1 is sensor no.
+#: src/monitor-impls.cpp:781
+msgid "Temp. %1"
+msgstr "Temp. %1"
+
+#. rpm is rotations per minute
+#: src/monitor-impls.cpp:829
+msgid "%1 rpm"
+msgstr "%1 rpm"
+
+#. %2 is a descriptive string from sensors.conf
+#: src/monitor-impls.cpp:836
+msgid "Fan %1 speed: \"%2\""
+msgstr "Velocità ventola %1: «%2»"
+
+#: src/monitor-impls.cpp:839
+msgid "Fan %1 speed"
+msgstr "Velocità ventola %1"
+
+#: src/preferences-window.cpp:175
+msgid "Device"
+msgstr "Dispositivo"
+

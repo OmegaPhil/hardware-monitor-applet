@@ -1,0 +1,13 @@
+# List of source files containing translatable strings.
+# Please keep this file sorted alphabetically.
+HardwareMonitor.server.in.in
+src/applet.cpp
+src/bar-view.cpp
+src/choose-monitor-window.cpp
+src/curve-view.cpp
+src/ui.glade
+src/helpers.cpp
+src/main.cpp
+src/monitor-impls.cpp
+src/preferences-window.cpp
+src/text-view.cpp

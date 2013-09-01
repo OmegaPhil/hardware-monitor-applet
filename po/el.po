@@ -1,0 +1,650 @@
+# translation of el.po to Greek
+# This file is distributed under the same license as the PACKAGE package.
+# Copyright (C) Free Software Foundation, 2003
+# Kostas Papadimas <pkst@gnome.org>, 2003
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: el\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2006-09-12 13:55+0300\n"
+"PO-Revision-Date: 2003-10-14 10:47+0300\n"
+"Last-Translator: Kostas Papadimas <pkst@gnome.org>\n"
+"Language-Team: Greek <nls@tux.hellug.gr>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.0\n"
+
+#: ../HardwareMonitor.server.in.in.h:1 ../src/applet.cpp:470
+msgid "Hardware Monitor"
+msgstr "Παρακολούθηση υλικού"
+
+#: ../HardwareMonitor.server.in.in.h:2
+msgid "Monitor hardware devices"
+msgstr "Συσκευές παρακολούθησης υλικού"
+
+#: ../HardwareMonitor.server.in.in.h:3
+msgid "Utility"
+msgstr "Εργαλείο"
+
+#: ../src/applet.cpp:70
+msgid "Hardware Monitor: cannot load the icon '%1'.\n"
+msgstr "Παρακολούθηση υλικού: Αδυναμία φόρτωσης του εικονιδίου '%1'.\n"
+
+#. pop-up menu strings
+#: ../src/applet.cpp:103
+msgid "_Preferences..."
+msgstr "_Προτιμήσεις..."
+
+#: ../src/applet.cpp:103
+msgid "_Help"
+msgstr "_Βοήθεια"
+
+#: ../src/applet.cpp:103
+msgid "_About..."
+msgstr "Πε_ρί..."
+
+#. note to translators: %1 is the name of a monitor, e.g. "CPU 1", and %2 is
+#. the current measurement, e.g. "78%"
+#: ../src/applet.cpp:186
+msgid "%1: %2"
+msgstr "%1: %2"
+
+#. note to translators: this is used for composing a list of monitors; %1
+#. is the previous part of the list and %2 is the part to append
+#: ../src/applet.cpp:193
+msgid ""
+"%1\n"
+"%2"
+msgstr ""
+"%1\n"
+"%2"
+
+#: ../src/applet.cpp:464
+#, fuzzy
+msgid ""
+"Monitor various hardware-related information, such as CPU usage, memory "
+"usage etc. Supports curve graphs, bar plots, column diagrams, textual "
+"monitoring and fluctuating flames."
+msgstr ""
+"Παρακολούθηση διαφόρων πληροφοριών σχετικών με το υλικό, όπως χρήση CPU, "
+"χρήση μνήμης κτλ. Υποστηρίζει γραφήματα, σχεδιαγράμματα με οριζόντιες "
+"μπάρες, διαγράμματα με στήλες, παρακολούθηση μέσω κειμένου και φλόγες που "
+"ανεβοκατεβαίνουν."
+
+#. %1 is the copyright symbol
+#: ../src/applet.cpp:473
+msgid "Copyright %1 2003 Ole Laursen"
+msgstr "Πνευματικά Δικαιώματα %1 2003 Ole Laursen"
+
+#. note to translators: please fill in your names and email addresses
+#: ../src/applet.cpp:480
+msgid "translator-credits"
+msgstr "Κώστας Παπαδήμας <pkst@gnome.org>"
+
+#. %2 is a descriptive string from sensors.conf
+#: ../src/choose-monitor-window.cpp:114
+msgid "Sensor %1: \"%2\""
+msgstr "Αισθητήρας %1: \"%2\""
+
+#: ../src/choose-monitor-window.cpp:116
+msgid "Sensor %1"
+msgstr "Αισθητήρας %1"
+
+#. %2 is a descriptive string from sensors.conf
+#: ../src/choose-monitor-window.cpp:138
+msgid "Fan %1: \"%2\""
+msgstr "Ανεμιστήρας %1: \"%2\""
+
+#: ../src/choose-monitor-window.cpp:140 ../src/monitor-impls.cpp:1058
+msgid "Fan %1"
+msgstr "Ανεμιστήρας %1"
+
+#: ../src/ui.glade.h:1
+msgid "/"
+msgstr "/"
+
+#: ../src/ui.glade.h:2
+msgid "<b>Background</b>"
+msgstr "<b>Παρασκήνιο</b>"
+
+#: ../src/ui.glade.h:3
+msgid "<b>Devices</b>"
+msgstr "<b> Συσκευές</b>"
+
+#: ../src/ui.glade.h:4
+#, fuzzy
+msgid "<b>Font</b>"
+msgstr "<b>Επιλογές</b>"
+
+#: ../src/ui.glade.h:5
+#, fuzzy
+msgid "<b>Size</b>"
+msgstr "<b>Εφαρμογή προβολής</b>"
+
+#: ../src/ui.glade.h:6
+msgid "<b>Viewer</b>"
+msgstr "<b>Εφαρμογή προβολής</b>"
+
+#: ../src/ui.glade.h:7
+msgid "<i>Large</i>"
+msgstr ""
+
+#: ../src/ui.glade.h:8
+msgid "<i>Small</i>"
+msgstr ""
+
+#: ../src/ui.glade.h:9
+msgid "A running average of the number of simultanous processes"
+msgstr "Ένας τρέχων μέσος όρος από τον αριθμό των εκτελούμενων διεργασιών"
+
+#: ../src/ui.glade.h:10
+msgid "All CPUs"
+msgstr "Όλες οι CPUs"
+
+#: ../src/ui.glade.h:11
+msgid "All data"
+msgstr "Όλα τα δεδομένα"
+
+#: ../src/ui.glade.h:12
+#, fuzzy
+msgid "Background"
+msgstr "<b>Παρασκήνιο</b>"
+
+#: ../src/ui.glade.h:13
+msgid "C_PU usage"
+msgstr "Χρήση C_PU"
+
+#: ../src/ui.glade.h:14
+msgid "C_hange"
+msgstr "Α_λλαγή"
+
+#: ../src/ui.glade.h:15
+msgid "C_olor:"
+msgstr "Χ_ρώμα:"
+
+#: ../src/ui.glade.h:16
+msgid "C_olumns"
+msgstr "Σ_τήλες"
+
+#: ../src/ui.glade.h:17
+msgid "C_urves"
+msgstr "Κα_μπύλες"
+
+#: ../src/ui.glade.h:18
+msgid "Choose a Device"
+msgstr "Επιλέξτε μια συσκευή"
+
+#: ../src/ui.glade.h:19
+msgid "Choose a Font"
+msgstr "Επιλέξτε μια γραμματοσειρά"
+
+#: ../src/ui.glade.h:20
+msgid "Connection:"
+msgstr "Σύνδεση:"
+
+#: ../src/ui.glade.h:21
+msgid "Devices"
+msgstr "Συσκευές"
+
+#: ../src/ui.glade.h:22
+msgid "Direction:"
+msgstr "Κατεύθυνση:"
+
+#: ../src/ui.glade.h:23
+msgid "Enter a folder residing on the disk to monitor"
+msgstr "Είσαγετε ένα φάκελο που βρίσκεται στο δίσκο για παρακολούθηση"
+
+#: ../src/ui.glade.h:24 ../src/monitor-impls.cpp:701
+msgid "Ethernet (first)"
+msgstr "Ethernet (πρώτο)"
+
+#: ../src/ui.glade.h:25 ../src/monitor-impls.cpp:703
+msgid "Ethernet (second)"
+msgstr "Ethernet (δεύτερο)"
+
+#: ../src/ui.glade.h:26 ../src/monitor-impls.cpp:705
+msgid "Ethernet (third)"
+msgstr "Ethernet (τρίτο)"
+
+#: ../src/ui.glade.h:27
+msgid "Folder:"
+msgstr "Φάκελος:"
+
+#: ../src/ui.glade.h:28
+msgid "Hardware Monitor Preferences"
+msgstr "Προτιμήσεις Παρακολούθησης Υλικού"
+
+#: ../src/ui.glade.h:29
+msgid "Incoming data"
+msgstr "Εισερχόμενα δεδομένα"
+
+#: ../src/ui.glade.h:30 ../src/monitor-impls.cpp:707
+msgid "Modem"
+msgstr "Modem"
+
+#: ../src/ui.glade.h:31
+msgid "Monitor all CPUs"
+msgstr "Παρακολούθηση όλων των CPUs"
+
+#: ../src/ui.glade.h:32
+msgid "Monitor devices using fluctuating flames"
+msgstr "Παρακολούθηση συσκευών με τη χρήση κυμαινόμενων φλογών"
+
+#: ../src/ui.glade.h:33
+msgid "Monitor devices using horizontal bars"
+msgstr "Παρακολούθηση συσκευών με τη χρήση οριζόντιων bars"
+
+#: ../src/ui.glade.h:34
+msgid "Monitor devices using line graphs"
+msgstr "Παρακολούθηση συσκευών με τη χρήση γραμμικών γραφημάτων"
+
+#: ../src/ui.glade.h:35
+msgid "Monitor devices using solid columns"
+msgstr "Παρακολούθηση συσκευών με τη χρήση στέρεων στηλών"
+
+#: ../src/ui.glade.h:36
+msgid "Monitor devices using text descriptions"
+msgstr "Παρακολούθηση συσκευών με τη χρήση περιγραφών κειμένου"
+
+#: ../src/ui.glade.h:37
+#, fuzzy
+msgid "Monitor devices using vertical bars"
+msgstr "Παρακολούθηση συσκευών με τη χρήση οριζόντιων bars"
+
+#: ../src/ui.glade.h:38
+msgid "Monitor only a single CPU"
+msgstr "Παρακολούθηση μόνο μιας CPU"
+
+#: ../src/ui.glade.h:39
+msgid "Network"
+msgstr "Δίκτυο"
+
+#: ../src/ui.glade.h:40
+msgid "No sensors detected"
+msgstr "Δεν εντοπίστηκαν αισθητήρες"
+
+#: ../src/ui.glade.h:41
+msgid "Only CPU:"
+msgstr "Μόνο CPU:"
+
+#: ../src/ui.glade.h:42
+msgid "Outgoing data"
+msgstr "Εξερχόμενα δεδομένα"
+
+#: ../src/ui.glade.h:43
+msgid "Select the sensor to monitor"
+msgstr "Επιλέξτε τον αισθητήρα για παρακολούθηση"
+
+#: ../src/ui.glade.h:44
+msgid "Select whether to monitor incoming or outgoing data or both"
+msgstr ""
+"Επιλέξτε αν θα παρακολουθούνται τα εξερχόμενα ή τα εισερχόμενα δεδομένα ή "
+"και τα δύο"
+
+#: ../src/ui.glade.h:45 ../src/monitor-impls.cpp:709
+msgid "Serial link"
+msgstr "Σειριακός δεσμός"
+
+#: ../src/ui.glade.h:46
+msgid "Show _free space instead of used"
+msgstr ""
+
+#: ../src/ui.glade.h:47
+msgid "Storage"
+msgstr "Αποθηκευτικός χώρος"
+
+#: ../src/ui.glade.h:48
+msgid "System"
+msgstr "Σύστημα"
+
+#: ../src/ui.glade.h:49
+msgid "Temperature"
+msgstr "Θερμοκρασία"
+
+#: ../src/ui.glade.h:50
+msgid "The amount of data sent through a network connection"
+msgstr "Το μέγεθος των δεδομένων που στέλνονται μέσω μιας σύνδεσης δικτύου"
+
+#: ../src/ui.glade.h:51
+msgid "The amount of disk space used"
+msgstr "Το μέγεθος του χώρου του δίσκου που χρησιμοποιείται"
+
+#: ../src/ui.glade.h:52
+msgid "The amount of disk-based memory used"
+msgstr "Το μέγεθος της μνήμης του δίσκου που χρησιμοποιείται"
+
+#: ../src/ui.glade.h:53
+msgid "The amount of memory used"
+msgstr "Το μέγεθος της μνήμης που χρησιμοποιείται"
+
+#: ../src/ui.glade.h:54
+msgid "The percentage of time that is spent running foreground processes"
+msgstr ""
+"Το ποσοστό του χρόνου που ξοδεύεται στην εκτέλεση διεργασιών προσκηνίου"
+
+#: ../src/ui.glade.h:55
+msgid "The speed of the fans"
+msgstr "Η ταχύτητα των ανεμιστήρων"
+
+#: ../src/ui.glade.h:56
+msgid "The temperature of the inside of the system"
+msgstr "Η θερμοκρασία του εσωτερικού του συστήματος"
+
+#: ../src/ui.glade.h:57
+msgid ""
+"Type of connection - Ethernet is the most common local area network adapter "
+"type"
+msgstr ""
+"Τύπος σύνδεσης - Το Ethernet είναι ο πιό κοινός τύπος προσαρμοστή δικτύου "
+"τοπικού δικτύου"
+
+#: ../src/ui.glade.h:58
+msgid "Use _panel background"
+msgstr "Χρήση παρασκηνίου ταμ_πλώ"
+
+#: ../src/ui.glade.h:59
+msgid "Use _this color:"
+msgstr "Χρή_ση αυτού του χρώματος:"
+
+#: ../src/ui.glade.h:60
+msgid "Use this f_ont:"
+msgstr "Χρήση αυτής της γρα_μματοσειράς:"
+
+#: ../src/ui.glade.h:61
+msgid "Viewer"
+msgstr "Εφαρμογή προβολής"
+
+#: ../src/ui.glade.h:62
+msgid "Which CPU no. to monitor"
+msgstr "Ποιός αριθ. CPU θα παρακολουθείται"
+
+#: ../src/ui.glade.h:63 ../src/monitor-impls.cpp:711
+msgid "Wireless"
+msgstr ""
+
+#: ../src/ui.glade.h:64
+msgid "_Add"
+msgstr "_Προσθήκη"
+
+#: ../src/ui.glade.h:65
+msgid "_Disk usage"
+msgstr "Χρήση _δίσκου"
+
+#: ../src/ui.glade.h:66
+msgid "_Fan speed"
+msgstr "Ταχύτητα α_νεμιστήρα"
+
+#: ../src/ui.glade.h:67
+msgid "_Flames"
+msgstr "_Φλόγες"
+
+#: ../src/ui.glade.h:68
+msgid "_Horizontal bars"
+msgstr ""
+
+#: ../src/ui.glade.h:69
+msgid "_Load average"
+msgstr "Μέσος φό_ρτος"
+
+#: ../src/ui.glade.h:70
+msgid "_Memory usage"
+msgstr "Χρήση _μνήμης"
+
+#: ../src/ui.glade.h:71
+msgid "_Monitored devices:"
+msgstr "Παρακολου_θούμενες συσκευές:"
+
+#: ../src/ui.glade.h:72
+msgid "_Network throughput"
+msgstr "_Network throughput"
+
+#: ../src/ui.glade.h:73
+msgid "_Remove"
+msgstr "_Απομάκρυνση"
+
+#: ../src/ui.glade.h:74
+msgid "_Swap usage"
+msgstr "Χρήση _Swap"
+
+#: ../src/ui.glade.h:75
+msgid "_Temperature"
+msgstr "_Θερμοκρασία"
+
+#: ../src/ui.glade.h:76
+msgid "_Text"
+msgstr "Κεί_μενο"
+
+#: ../src/ui.glade.h:77
+msgid "_Vertical bars"
+msgstr ""
+
+#: ../src/helpers.cpp:34
+msgid "Fatal error"
+msgstr "Μοιραίο σφάλμα"
+
+#: ../src/monitor-impls.cpp:299
+msgid "%1%%"
+msgstr "%1%%"
+
+#: ../src/monitor-impls.cpp:305
+msgid "All processors"
+msgstr "Όλοι οι επεξεργαστές"
+
+#: ../src/monitor-impls.cpp:307
+msgid "Processor no. %1"
+msgstr "Επεξεργαστής αρ. %1"
+
+#. must be short
+#: ../src/monitor-impls.cpp:314
+msgid "CPU"
+msgstr "CPU"
+
+#. note to translators: %1 is the cpu no, e.g. "CPU 1"
+#: ../src/monitor-impls.cpp:317
+msgid "CPU %1"
+msgstr "CPU %1"
+
+#: ../src/monitor-impls.cpp:365 ../src/monitor-impls.cpp:499
+msgid "%1 Mb"
+msgstr "%1 Mb"
+
+#: ../src/monitor-impls.cpp:370
+msgid "Disk-based memory"
+msgstr "Μνήμη βασισμένη στο δίσκο"
+
+#. must be short
+#: ../src/monitor-impls.cpp:376
+msgid "Swap"
+msgstr "Swap"
+
+#: ../src/monitor-impls.cpp:434
+msgid "Load average"
+msgstr "Μέσος Φόρτος"
+
+#. note to translators: short for "load average" - it has nothing to do with
+#. loading data
+#: ../src/monitor-impls.cpp:441
+msgid "Load"
+msgstr "Φόρτος"
+
+#: ../src/monitor-impls.cpp:504
+msgid "Memory"
+msgstr "Μνήμη"
+
+#. short for memory
+#: ../src/monitor-impls.cpp:510
+msgid "Mem."
+msgstr "Μνήμη"
+
+#: ../src/monitor-impls.cpp:565
+#, fuzzy
+msgid "%1 GB"
+msgstr "%1 Gb"
+
+#: ../src/monitor-impls.cpp:569
+#, fuzzy
+msgid "%1 MB"
+msgstr "%1 Mb"
+
+#: ../src/monitor-impls.cpp:573
+#, fuzzy
+msgid "%1 kB"
+msgstr "%1 kb"
+
+#: ../src/monitor-impls.cpp:576
+#, fuzzy
+msgid "%1 B"
+msgstr "%1 b"
+
+#: ../src/monitor-impls.cpp:581
+msgid "Disk (%1)"
+msgstr "Δίσκος (%1)"
+
+#: ../src/monitor-impls.cpp:682
+#, fuzzy
+msgid "%1 GB/s"
+msgstr "%1 Gb/s"
+
+#: ../src/monitor-impls.cpp:686
+#, fuzzy
+msgid "%1 MB/s"
+msgstr "%1 Mb/s"
+
+#: ../src/monitor-impls.cpp:690
+#, fuzzy
+msgid "%1 kB/s"
+msgstr "%1 kb/s"
+
+#: ../src/monitor-impls.cpp:693
+#, fuzzy
+msgid "%1 B/s"
+msgstr "%1 b/s"
+
+#. %1 is the network connection, e.g. "Ethernet (first)", in signifies
+#. that this is incoming data
+#: ../src/monitor-impls.cpp:719 ../src/monitor-impls.cpp:749
+msgid "%1, in"
+msgstr "%1, in"
+
+#. %1 is the network connection, e.g. "Ethernet (first)", out signifies
+#. that this is outgoing data
+#: ../src/monitor-impls.cpp:723 ../src/monitor-impls.cpp:751
+msgid "%1, out"
+msgstr "%1, out"
+
+#. short for an ethernet card
+#: ../src/monitor-impls.cpp:734
+msgid "Eth. %1"
+msgstr "Eth. %1"
+
+#. short for modem
+#: ../src/monitor-impls.cpp:737
+msgid "Mod."
+msgstr "Mod."
+
+#. short for serial link
+#: ../src/monitor-impls.cpp:740
+msgid "Ser."
+msgstr "Ser."
+
+#. short for wireless
+#: ../src/monitor-impls.cpp:743
+msgid "W.less."
+msgstr ""
+
+#. %2 contains the degree sign (the following 'C' stands for Celsius)
+#: ../src/monitor-impls.cpp:961
+#, c-format
+msgid "%1%2C"
+msgstr "%1%2C"
+
+#. %2 is a descriptive string from sensors.conf
+#: ../src/monitor-impls.cpp:968
+msgid "Temperature %1: \"%2\""
+msgstr "Θερμοκρασία %1: \"%2\""
+
+#: ../src/monitor-impls.cpp:971
+msgid "Temperature %1"
+msgstr "Θερμοκρασία  %1"
+
+#. short for "temperature", %1 is sensor no.
+#: ../src/monitor-impls.cpp:977
+msgid "Temp. %1"
+msgstr "Θερμοκ. %1"
+
+#. rpm is rotations per minute
+#: ../src/monitor-impls.cpp:1043
+msgid "%1 rpm"
+msgstr "%1 rpm"
+
+#. %2 is a descriptive string from sensors.conf
+#: ../src/monitor-impls.cpp:1050
+msgid "Fan %1 speed: \"%2\""
+msgstr "Ανεμιστήρας %1 ταχύτητα: \"%2\""
+
+#: ../src/monitor-impls.cpp:1053
+msgid "Fan %1 speed"
+msgstr "Ανεμιστήρας %1 ταχύτητα"
+
+#: ../src/preferences-window.cpp:141
+msgid "Device"
+msgstr "Συσκευή"
+
+#~ msgid "*"
+#~ msgstr "*"
+
+#~ msgid "<b>General</b>"
+#~ msgstr "<b>Γενικά</b>"
+
+#~ msgid "Amount of time between measurements (in seconds)"
+#~ msgstr "Χρονικό διάστημα ανάμεσα στις μετρήσεις (σε δευτερόλεπτα)"
+
+#~ msgid "CPU: 15.0%"
+#~ msgstr "CPU: 15.0%"
+
+#~ msgid "Co_lumns:"
+#~ msgstr "Στή_λες:"
+
+#~ msgid "Color of the bar"
+#~ msgstr "Χρώμα της μπάρας"
+
+#~ msgid "Color of the curve"
+#~ msgstr "Χρώμα της καμπύλης"
+
+#~ msgid "Color of the flame"
+#~ msgstr "Χρώμα της φλόγας"
+
+#~ msgid "General"
+#~ msgstr "Γενικά"
+
+#~ msgid "Number of columns to show simultanously"
+#~ msgstr "Αριθμός από στήλες για ταυτόχρονη προβολή"
+
+#~ msgid "Number of measured points to show simultanously"
+#~ msgstr "Αριθμός μετρήσιμων σημείων για ταυτόχρονη προβολή"
+
+#~ msgid "Pick a Color"
+#~ msgstr "Διαλέξτε ένα χρώμα"
+
+#~ msgid "S_amples:"
+#~ msgstr "_Δείγματα:"
+
+#~ msgid "Size of the applet in pixels"
+#~ msgstr "Μέγεθος του εφαρμογιδίου σε εικονοστοιχεία"
+
+#~ msgid "Thickness of the curve (in pixels)"
+#~ msgstr "Το πάχος των καμπυλών (σε εικονοστοιχεία)"
+
+#~ msgid "_Bars"
+#~ msgstr "_Μπάρες"
+
+#~ msgid "_Line width:"
+#~ msgstr "Πάχος _γραμμής:"
+
+#~ msgid "_Size:"
+#~ msgstr "_Μέγεθος"
+
+#~ msgid "_Update interval:"
+#~ msgstr "_Διάστημα ανανέωσης:"

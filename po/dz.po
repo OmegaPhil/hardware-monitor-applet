@@ -1,0 +1,581 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Hardware-monitro\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2007-02-26 03:20+0000\n"
+"PO-Revision-Date: 2007-02-26 23:00+0530\n"
+"Last-Translator: translator <pemai_jurmey@hotmail.com>\n"
+"Language-Team: Dzongkha <pgeyleg@dit.gov.bt>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2;plural=(n!=1);\n"
+"X-Poedit-Language: Dzongkha\n"
+"X-Poedit-Country: Bhutan\n"
+"X-Poedit-SourceCharset: utf-8\n"
+
+#: ../HardwareMonitor.server.in.in.h:1
+#: ../src/applet.cpp:470
+msgid "Hardware Monitor"
+msgstr "སྲ་ཆས་གསལ་འཕྲུལ་"
+
+#: ../HardwareMonitor.server.in.in.h:2
+msgid "Monitor hardware devices"
+msgstr "གསལ་འཕྲུལ་སྲ་ཆས་ཐབས་འཕྲུལ་ཚུ་"
+
+#: ../HardwareMonitor.server.in.in.h:3
+msgid "Utility"
+msgstr "སྤྱོད་ཆས་"
+
+#: ../src/applet.cpp:70
+msgid "Hardware Monitor: cannot load the icon '%1'.\n"
+msgstr "སྲ་ཆས་གསལ་འཕྲུལ་: ངོས་པར་ '%1'འདི་ མངོན་གསལ་འབད་མི་ཚུགས།\n"
+
+#. pop-up menu strings
+#: ../src/applet.cpp:103
+msgid "_Preferences..."
+msgstr "དགའ་གདམ་ཚུ་་་་་(_P)"
+
+#: ../src/applet.cpp:103
+msgid "_Help"
+msgstr "གྲོགས་རམ་(_H)"
+
+#: ../src/applet.cpp:103
+msgid "_About..."
+msgstr "སྐོར་ལས་་་་(_A)"
+
+#. note to translators: %1 is the name of a monitor, e.g. "CPU 1", and %2 is
+#. the current measurement, e.g. "78%"
+#: ../src/applet.cpp:186
+msgid "%1: %2"
+msgstr "%1: %2"
+
+#. note to translators: this is used for composing a list of monitors; %1
+#. is the previous part of the list and %2 is the part to append
+#: ../src/applet.cpp:193
+msgid ""
+"%1\n"
+"%2"
+msgstr ""
+"%1\n"
+"%2"
+
+#: ../src/applet.cpp:464
+msgid "Monitor various hardware-related information, such as CPU usage, memory usage etc. Supports curve graphs, bar plots, column diagrams, textual monitoring and fluctuating flames."
+msgstr "སྲ་ཆས་དང་འབྲེལ་བ་ཡོད་པའི་བརྡ་དོན་འདྲ་མིན་སྣ་ཚོགས་ དཔེར་ན་ སི་པི་ཡུ་ བེད་སྤྱོད་དང་དྲན་ཚད་བེད་སྤྱོད་སོགས་ ལྟ་རྟོག་འབད། གུག་གུག་པའི་ཚད་ཁྲམ་ ཕྲ་རིང་བཀོད་རིས་ ཀེར་ཐིག་བཀོད་རིས་དང་ཚིག་ཡིག་ལྟ་རྟོག་འབད་ནི་ དེ་ལས་ འགྱུར་བའི་མེ་ལྷབ་ཚུ་རྒྱབ་སྐྱོར་འབདཝ་ཨིན།"
+
+#. %1 is the copyright symbol
+#: ../src/applet.cpp:473
+msgid "Copyright %1 2003 Ole Laursen"
+msgstr "འདྲ་བཤུས་དབང་ཆ་ %1 ༢༠༠༣ ཨོ་ལི་ ལ་འུར་སེན་"
+
+#. note to translators: please fill in your names and email addresses
+#: ../src/applet.cpp:480
+msgid "translator-credits"
+msgstr "སྐད་སྒྱུར་པ་-ངོ་བསྟོད་"
+
+#. %2 is a descriptive string from sensors.conf
+#: ../src/choose-monitor-window.cpp:115
+msgid "Sensor %1: \"%2\""
+msgstr "ཚོར་འཕྲུལ་ %1: \"%2\""
+
+#: ../src/choose-monitor-window.cpp:117
+msgid "Sensor %1"
+msgstr "ཚོར་འཕྲུལ་ %1"
+
+#. %2 is a descriptive string from sensors.conf
+#: ../src/choose-monitor-window.cpp:139
+msgid "Fan %1: \"%2\""
+msgstr "རླུང་འཁོར་ %1: \"%2\""
+
+#: ../src/choose-monitor-window.cpp:141
+#: ../src/monitor-impls.cpp:1059
+msgid "Fan %1"
+msgstr "རླུང་འཁོར་ %1"
+
+#: ../src/ui.glade.h:1
+msgid "/"
+msgstr "/"
+
+#: ../src/ui.glade.h:2
+msgid "<b>Background</b>"
+msgstr "<b>རྒྱབ་གཞི་</b>"
+
+#: ../src/ui.glade.h:3
+msgid "<b>Devices</b>"
+msgstr "<b>ཐབས་འཕྲུལ་ཚུ་</b>"
+
+#: ../src/ui.glade.h:4
+msgid "<b>Font</b>"
+msgstr "<b>ཡིག་གཟུགས་</b>"
+
+#: ../src/ui.glade.h:5
+msgid "<b>Size</b>"
+msgstr "<b>ཚད་</b>"
+
+#: ../src/ui.glade.h:6
+msgid "<b>Viewer</b>"
+msgstr "<b>སྟོན་མི་</b>"
+
+#: ../src/ui.glade.h:7
+msgid "<i>Large</i>"
+msgstr "<i>སྦོམ་</i>"
+
+#: ../src/ui.glade.h:8
+msgid "<i>Small</i>"
+msgstr "<i>ཆུང་ཀུ་</i>"
+
+#: ../src/ui.glade.h:9
+msgid "A running average of the number of simultanous processes"
+msgstr "དུས་མཉམ་ལས་སྦྱོར་ཨང་གྲངས་ཀྱི་གཡོག་བཀོལ་བསྡོམས་"
+
+#: ../src/ui.glade.h:10
+msgid "All CPUs"
+msgstr "སི་པི་ཡུ་ཨེསི་ ཆ་མཉམ་"
+
+#: ../src/ui.glade.h:11
+msgid "All data"
+msgstr "གནད་སྡུད་ཆ་མཉམ་"
+
+#: ../src/ui.glade.h:12
+msgid "Background"
+msgstr "རྒྱབ་གཞི་"
+
+#: ../src/ui.glade.h:13
+msgid "C_PU usage"
+msgstr "སི་པི་ཡུ་ བེད་སྤྱོད་(_P)"
+
+#: ../src/ui.glade.h:14
+msgid "C_hange"
+msgstr "བསྒྱུར་བཅོས་(_h)"
+
+#: ../src/ui.glade.h:15
+msgid "C_olor:"
+msgstr "ཚོས་གཞི་:(_o)"
+
+#: ../src/ui.glade.h:16
+msgid "C_olumns"
+msgstr "ཀེར་ཐིག་ཚུ་(_o)"
+
+#: ../src/ui.glade.h:17
+msgid "C_urves"
+msgstr "གུག་གུགཔ་ཚུ་(_u)"
+
+#: ../src/ui.glade.h:18
+msgid "Choose a Device"
+msgstr "ཐབས་འཕྲུལ་ཅིག་ གདམ་ཁ་རྐྱབས་"
+
+#: ../src/ui.glade.h:19
+msgid "Choose a Font"
+msgstr "ཡིག་གཟུགས་ཅིག་ གདམ་ཁ་རྐྱབས་"
+
+#: ../src/ui.glade.h:20
+msgid "Connection:"
+msgstr "མཐུད་ལམ་:"
+
+#: ../src/ui.glade.h:21
+msgid "Devices"
+msgstr "ཐབས་འཕྲུལ་ཚུ་"
+
+#: ../src/ui.glade.h:22
+msgid "Direction:"
+msgstr "ཁ་ཕྱོགས་:"
+
+#: ../src/ui.glade.h:23
+msgid "Enter a folder residing on the disk to monitor"
+msgstr "ཌིཀསི་ལས་གསལ་འཕྲུལ་གུ་གནས་ཡོད་མི་ལུ་ སྣོད་འཛིན་ཅིག་བཙུགས་"
+
+#: ../src/ui.glade.h:24
+#: ../src/monitor-impls.cpp:702
+msgid "Ethernet (first)"
+msgstr "ཨི་ཐར་ནེཊི་(དང་པ་)"
+
+#: ../src/ui.glade.h:25
+#: ../src/monitor-impls.cpp:704
+msgid "Ethernet (second)"
+msgstr "ཨི་ཐར་ནེཊི་(གཉིས་པ་)"
+
+#: ../src/ui.glade.h:26
+#: ../src/monitor-impls.cpp:706
+msgid "Ethernet (third)"
+msgstr "ཨི་ཐར་ནེཊི་(གསུམ་པ་)"
+
+#: ../src/ui.glade.h:27
+msgid "Folder:"
+msgstr "སྣོད་འཛིན་:"
+
+#: ../src/ui.glade.h:28
+msgid "Hardware Monitor Preferences"
+msgstr "སྲ་ཆས་ཐབས་འཕྲུལ་དགའ་གདམ་ཚུ་"
+
+#: ../src/ui.glade.h:29
+msgid "Incoming data"
+msgstr "ནང་འབྱོར་གནད་སྡུད་"
+
+#: ../src/ui.glade.h:30
+#: ../src/monitor-impls.cpp:708
+msgid "Modem"
+msgstr "མོ་ཌེམ་"
+
+#: ../src/ui.glade.h:31
+msgid "Monitor all CPUs"
+msgstr "སི་པི་ཡུ་ཨེསི་ཆ་མཉམ་ ལྟ་རྟོག་འབད་"
+
+#: ../src/ui.glade.h:32
+msgid "Monitor devices using fluctuating flames"
+msgstr "འགྱུར་བའི་མེ་ལྷབ་ལག་ལེན་གྱི་ཐོག་ལས་ གསལ་འཕྲུལ་ལྟ་རྟོག་འབད་"
+
+#: ../src/ui.glade.h:33
+msgid "Monitor devices using horizontal bars"
+msgstr "ཐད་སྙོམས་ཕྲ་རིང་ལག་ལེན་འཐབ་ཐོག་ལས་ ཐབས་འཕྲུལ་ཚུ་ལྟ་རྟོག་འབད་"
+
+#: ../src/ui.glade.h:34
+msgid "Monitor devices using line graphs"
+msgstr "གྲལ་ཐིག་ཚད་ཁྲམ་ལག་ལེན་གྱི་ཐོག་ལས་ ཐབས་འཕྲུལ་ཚུ་ ལྟ་རྟོག་འབད་"
+
+#: ../src/ui.glade.h:35
+msgid "Monitor devices using solid columns"
+msgstr "ཀེར་ཐིག་རགས་པ་ལག་ལེན་འཐབ་པའི་ཐོག་ལས་ ཐབས་འཕྲུལ་ཚུ་ ལྟ་རྟོག་འབད་"
+
+#: ../src/ui.glade.h:36
+msgid "Monitor devices using text descriptions"
+msgstr "ཚིག་ཡིག་འགྲེལ་བཤད་ལག་ལེན་གྱི་ཐོག་ལས་ ཐབས་འཕྲུལ་ཚུ་ ལྟ་རྟོག་འབད་"
+
+#: ../src/ui.glade.h:37
+msgid "Monitor devices using vertical bars"
+msgstr "ཀེར་ཕྲང་ཕྲ་རིང་ལག་ལེན་གྱི་ཐོག་ལས་ ཐབས་འཕྲུལ་ལྟ་རྟོག་འབད་"
+
+#: ../src/ui.glade.h:38
+msgid "Monitor only a single CPU"
+msgstr "སི་པི་ཡུ་རྐྱང་པ་རྐྱངམ་ཅིག་ ལྟ་རྟོག་འབད་"
+
+#: ../src/ui.glade.h:39
+msgid "Network"
+msgstr "ཡོངས་འབྲེལ་"
+
+#: ../src/ui.glade.h:40
+msgid "No sensors detected"
+msgstr "ཚོར་འཕྲུལ་ཚུ་ སྐྱོན་འཛིན་མ་འབད་"
+
+#: ../src/ui.glade.h:41
+msgid "Only CPU:"
+msgstr "སི་པི་ཡུ་ རྐྱངམ་ཅིག་:"
+
+#: ../src/ui.glade.h:42
+msgid "Outgoing data"
+msgstr "ཕྱིར་བསྐྱོད་གནད་སྡུད་"
+
+#: ../src/ui.glade.h:43
+msgid "Select the sensor to monitor"
+msgstr "ཚོར་འཕྲུལ་འདི་ གསལ་འཕྲུལ་གྱི་དོན་ལུ་ སེལ་འཐུ་འབད་"
+
+#: ../src/ui.glade.h:44
+msgid "Select whether to monitor incoming or outgoing data or both"
+msgstr "ནང་འབྱོར་ ཡང་ན་ ཕྱིར་བསྐྱོད་གནད་སྡུད་ ཡངན་ གཉིས་ཀར་ལྟ་རྟོག་འབད་ནི་ཨིན་ན་ སེལ་འཐུ་འབད་"
+
+#: ../src/ui.glade.h:45
+#: ../src/monitor-impls.cpp:710
+msgid "Serial link"
+msgstr "ཨང་རིམ་འབྲེལ་ལམ་"
+
+#: ../src/ui.glade.h:46
+msgid "Show _free space instead of used"
+msgstr "ལག་ལེན་འཐབ་ཡོད་མི་གི་ཚབ་མ་ལུ་ བར་སྟོང་དལཝ་སྟོན་(_f)"
+
+#: ../src/ui.glade.h:47
+msgid "Storage"
+msgstr "གསག་མཛོད་"
+
+#: ../src/ui.glade.h:48
+msgid "System"
+msgstr "རིམ་ལུགས་"
+
+#: ../src/ui.glade.h:49
+msgid "Temperature"
+msgstr "ཚ་དྲོད་"
+
+#: ../src/ui.glade.h:50
+msgid "The amount of data sent through a network connection"
+msgstr "ཡོངས་འབྲེལ་མཐུད་ལམ་ལས་བརྒྱུད་དེ་བཏང་ཡོད་པའི་གནད་སྡུད་བསྡོམས་"
+
+#: ../src/ui.glade.h:51
+msgid "The amount of disk space used"
+msgstr "ལག་ལེན་འཐབ་ཡོད་པའི་ཌིཀསི་བར་སྟོང་བསྡོམས་"
+
+#: ../src/ui.glade.h:52
+msgid "The amount of disk-based memory used"
+msgstr "ལག་ལེན་་འཐབ་ཡོད་པའི་ཌིཀསི་ལུ་བརྟེན་པའི་དྲན་ཚད་བསྡོམས་"
+
+#: ../src/ui.glade.h:53
+msgid "The amount of memory used"
+msgstr "ལག་ལེན་འཐབ་ཡོད་པའི་དྲན་ཚད་བསྡོམས་"
+
+#: ../src/ui.glade.h:54
+msgid "The percentage of time that is spent running foreground processes"
+msgstr "གདོང་གཞིའི་ལས་སྦྱོར་གཡོག་བཀོལ་བའི་སྐབས་བཏང་ཡོད་པའི་ཆུ་ཚོད་ཀྱི་བརྒྱ་ཆ་"
+
+#: ../src/ui.glade.h:55
+msgid "The speed of the fans"
+msgstr "རླུང་འཁོར་གྱི་མགྱོགས་ཚད་"
+
+#: ../src/ui.glade.h:56
+msgid "The temperature of the inside of the system"
+msgstr "རིམ་ལུགས་ནང་གི་ཚ་དྲོད་"
+
+#: ../src/ui.glade.h:57
+msgid "Type of connection - Ethernet is the most common local area network adapter type"
+msgstr "མཐུད་ལམ་དབྱེ་བ་ - ཨི་ཐར་ནེཊི་འདི་ ཐུན་མོང་ཉེ་གནས་མངའ་ཁོངས་ཀྱི་ཡོངས་འབྲེལ་མཐུན་བྱེད་དབྱེ་བ་ཅིག་ཨིན་"
+
+#: ../src/ui.glade.h:58
+msgid "Use _panel background"
+msgstr "པེ་ནཱལ་རྒྱབ་གཞི་ ལག་ལེན་འཐབ་(_p)"
+
+#: ../src/ui.glade.h:59
+msgid "Use _this color:"
+msgstr "ཚོས་གཞི་འདི་ ལག་ལེན་འཐབ་:(_t)"
+
+#: ../src/ui.glade.h:60
+msgid "Use this f_ont:"
+msgstr "ཡིག་གཟུགས་འདི་ ལག་ལེན་འཐབ་:(_o)"
+
+#: ../src/ui.glade.h:61
+msgid "Viewer"
+msgstr "སྟོན་མི་"
+
+#: ../src/ui.glade.h:62
+msgid "Which CPU no. to monitor"
+msgstr "སི་པི་ཡུ་ཨང་ག་འདི་ ལྟ་རྟོག་འབད་ནི་"
+
+#: ../src/ui.glade.h:63
+#: ../src/monitor-impls.cpp:712
+msgid "Wireless"
+msgstr "རླུང་འཕྲིན་"
+
+#: ../src/ui.glade.h:64
+msgid "_Add"
+msgstr "ཁ་སྐོང་(_A)"
+
+#: ../src/ui.glade.h:65
+msgid "_Disk usage"
+msgstr "ཌིཀསི་བེད་སྤྱོད་(_D)"
+
+#: ../src/ui.glade.h:66
+msgid "_Fan speed"
+msgstr "རླུང་འཁོར་མགྱོགས་ཚད་(_F)"
+
+#: ../src/ui.glade.h:67
+msgid "_Flames"
+msgstr "མེ་ལྷབ་(_F)"
+
+#: ../src/ui.glade.h:68
+msgid "_Horizontal bars"
+msgstr "ཐད་སྙོམས་ཕྲ་རིང་ཚུ་(_H)"
+
+#: ../src/ui.glade.h:69
+msgid "_Load average"
+msgstr "མངོན་གསལ་ཆ་སྙོམས་(_L)"
+
+#: ../src/ui.glade.h:70
+msgid "_Memory usage"
+msgstr "དྲན་ཚད་བེད་སྤྱོད་(_M)"
+
+#: ../src/ui.glade.h:71
+msgid "_Monitored devices:"
+msgstr "ལྟ་རྟོག་འབད་ཡོད་པའི་ཐབས་འཕྲུལ་ཚུ་:(_M)"
+
+#: ../src/ui.glade.h:72
+msgid "_Network throughput"
+msgstr "ཡོངས་འབྲེལ་ཐུ་རུ་པུཊི་(_N)"
+
+#: ../src/ui.glade.h:73
+msgid "_Remove"
+msgstr "རྩ་བསྐྲད་གཏང་(_R)"
+
+#: ../src/ui.glade.h:74
+msgid "_Swap usage"
+msgstr "བརྗེ་སོར་ བེད་སྤྱོད་(_S)"
+
+#: ../src/ui.glade.h:75
+msgid "_Temperature"
+msgstr "ཚ་དྲོད་(_T)"
+
+#: ../src/ui.glade.h:76
+msgid "_Text"
+msgstr "ཚིག་ཡིག་(_T)"
+
+#: ../src/ui.glade.h:77
+msgid "_Vertical bars"
+msgstr "ཀེར་ཕྲང་ཕྲ་རིང་(_V)"
+
+#: ../src/helpers.cpp:34
+msgid "Fatal error"
+msgstr "འཛོལ་བ་འཚུབ་ཆེན་"
+
+#: ../src/monitor-impls.cpp:300
+msgid "%1%%"
+msgstr "%1%%"
+
+#: ../src/monitor-impls.cpp:306
+msgid "All processors"
+msgstr "སྔ་གོང་ལས་སྦྱོར་འཕྲུལ་ཆས་ཆ་མཉམ་"
+
+#: ../src/monitor-impls.cpp:308
+msgid "Processor no. %1"
+msgstr "སྔ་གོང་ལས་སྦྱོར་འཕྲུལ་ཆས་ཨང་ %1"
+
+#. must be short
+#: ../src/monitor-impls.cpp:315
+msgid "CPU"
+msgstr "སི་པི་ཡུ་"
+
+#. note to translators: %1 is the cpu no, e.g. "CPU 1"
+#: ../src/monitor-impls.cpp:318
+msgid "CPU %1"
+msgstr "སི་པི་ཡུ་ %1"
+
+#: ../src/monitor-impls.cpp:366
+#: ../src/monitor-impls.cpp:500
+msgid "%1 Mb"
+msgstr "%1 ཨེམ་བི་"
+
+#: ../src/monitor-impls.cpp:371
+msgid "Disk-based memory"
+msgstr "ཌིཀསི་ལུ་བརྟེན་པའི་དྲན་ཚད་"
+
+#. must be short
+#: ../src/monitor-impls.cpp:377
+msgid "Swap"
+msgstr "བརྗེ་སོར་"
+
+#: ../src/monitor-impls.cpp:435
+msgid "Load average"
+msgstr "མངོན་གསལ་ཆ་སྙོམས་"
+
+#. note to translators: short for "load average" - it has nothing to do with
+#. loading data
+#: ../src/monitor-impls.cpp:442
+msgid "Load"
+msgstr "མངོན་གསལ་"
+
+#: ../src/monitor-impls.cpp:505
+msgid "Memory"
+msgstr "དྲན་ཚད་"
+
+#. short for memory
+#: ../src/monitor-impls.cpp:511
+msgid "Mem."
+msgstr "དྲན་ཚད་"
+
+#: ../src/monitor-impls.cpp:566
+msgid "%1 GB"
+msgstr "%1 ཇི་བི་"
+
+#: ../src/monitor-impls.cpp:570
+msgid "%1 MB"
+msgstr "%1 ཨེམ་བི་"
+
+#: ../src/monitor-impls.cpp:574
+msgid "%1 kB"
+msgstr "%1 ཀེ་བི་"
+
+#: ../src/monitor-impls.cpp:577
+msgid "%1 B"
+msgstr "%1 བི་"
+
+#: ../src/monitor-impls.cpp:582
+msgid "Disk (%1)"
+msgstr "ཌིཀསི་ (%1)"
+
+#: ../src/monitor-impls.cpp:683
+msgid "%1 GB/s"
+msgstr "%1 ཇི་བི་/ཨེསི་"
+
+#: ../src/monitor-impls.cpp:687
+msgid "%1 MB/s"
+msgstr "%1 ཨེམ་བི་/ཨེསི་"
+
+#: ../src/monitor-impls.cpp:691
+msgid "%1 kB/s"
+msgstr "%1 ཀེ་བི་/ཨེསི་"
+
+#: ../src/monitor-impls.cpp:694
+msgid "%1 B/s"
+msgstr "%1 བི་/ཨེསི་"
+
+#. %1 is the network connection, e.g. "Ethernet (first)", in signifies
+#. that this is incoming data
+#: ../src/monitor-impls.cpp:720
+#: ../src/monitor-impls.cpp:750
+msgid "%1, in"
+msgstr "%1, ནང་"
+
+#. %1 is the network connection, e.g. "Ethernet (first)", out signifies
+#. that this is outgoing data
+#: ../src/monitor-impls.cpp:724
+#: ../src/monitor-impls.cpp:752
+msgid "%1, out"
+msgstr "%1, ཕྱི་"
+
+#. short for an ethernet card
+#: ../src/monitor-impls.cpp:735
+msgid "Eth. %1"
+msgstr "ཨི་ཐར་ནེཊི་ %1"
+
+#. short for modem
+#: ../src/monitor-impls.cpp:738
+msgid "Mod."
+msgstr "མོ་ཌེམ་"
+
+#. short for serial link
+#: ../src/monitor-impls.cpp:741
+msgid "Ser."
+msgstr "ཞབས་ཏོག་"
+
+#. short for wireless
+#: ../src/monitor-impls.cpp:744
+msgid "W.less."
+msgstr "རླུང་འཕྲིན་"
+
+#. %2 contains the degree sign (the following 'C' stands for Celsius)
+#: ../src/monitor-impls.cpp:962
+#, c-format
+msgid "%1%2C"
+msgstr "%1%2C"
+
+#. %2 is a descriptive string from sensors.conf
+#: ../src/monitor-impls.cpp:969
+msgid "Temperature %1: \"%2\""
+msgstr "ཚ་དྲོད་ %1: \"%2\""
+
+#: ../src/monitor-impls.cpp:972
+msgid "Temperature %1"
+msgstr "ཚ་དྲོད་ %1"
+
+#. short for "temperature", %1 is sensor no.
+#: ../src/monitor-impls.cpp:978
+msgid "Temp. %1"
+msgstr "ཚ་དྲོད་ %1"
+
+#. rpm is rotations per minute
+#: ../src/monitor-impls.cpp:1044
+msgid "%1 rpm"
+msgstr "%1 ཨར་པི་ཨེམ་"
+
+#. %2 is a descriptive string from sensors.conf
+#: ../src/monitor-impls.cpp:1051
+msgid "Fan %1 speed: \"%2\""
+msgstr "རླུང་འཁོར་ %1 མགྱོགས་ཚད་: \"%2\""
+
+#: ../src/monitor-impls.cpp:1054
+msgid "Fan %1 speed"
+msgstr "རླུང་འཁོར་ %1 མགྱོགས་ཚད་"
+
+#: ../src/preferences-window.cpp:141
+msgid "Device"
+msgstr "ཐབས་འཕྲུལ་"
+

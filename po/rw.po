@@ -1,0 +1,714 @@
+# translation of hardware-monitor to Kinyarwanda.
+# Copyright (C) 2005 Free Software Foundation, Inc.
+# This file is distributed under the same license as the hardware-monitor package.
+# Steve Murphy <murf@e-tools.com>, 2005
+# Steve performed initial rough translation from compendium built from translations provided by the following translators:
+# Philibert Ndandali  <ndandali@yahoo.fr>, 2005.
+# Viateur MUGENZI <muvia1@yahoo.fr>, 2005.
+# Noëlla Mupole <s24211045@tuks.co.za>, 2005.
+# Carole Karema <karemacarole@hotmail.com>, 2005.
+# JEAN BAPTISTE NGENDAHAYO <ngenda_denis@yahoo.co.uk>, 2005.
+# Augustin KIBERWA  <akiberwa@yahoo.co.uk>, 2005.
+# Donatien NSENGIYUMVA <ndonatienuk@yahoo.co.uk>, 2005..
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: hardware-monitor HEAD\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2005-04-01 20:49-0700\n"
+"PO-Revision-Date: 2005-03-31 20:55-0700\n"
+"Last-Translator: Steve Murphy <murf@e-tools.com>\n"
+"Language-Team: Kinyarwanda <translation-team-rw@lists.sourceforge.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"ULL NAME <EMAIL@ADDRESS>\n"
+
+#: HardwareMonitor.server.in.in.h:1 src/applet.cpp:463
+msgid "Hardware Monitor"
+msgstr ""
+
+#: HardwareMonitor.server.in.in.h:2
+msgid "Monitor hardware devices"
+msgstr ""
+
+#: HardwareMonitor.server.in.in.h:3
+msgid "Utility"
+msgstr ""
+
+#: src/applet.cpp:70
+#, fuzzy
+msgid "Hardware Monitor: cannot load the icon '%1'.\n"
+msgstr "Ibirimo i Agashushondanga"
+
+#. pop-up menu strings
+#: src/applet.cpp:103
+#, fuzzy
+msgid "_Preferences..."
+msgstr "Ibyahiswemo..."
+
+#: src/applet.cpp:103
+#, fuzzy
+msgid "_Help"
+msgstr "Ifashayobora"
+
+# offmgr/source\offapp\intro\intro.hrc:TEXT_DEFAULTABOUT.text
+#: src/applet.cpp:103
+#, fuzzy
+msgid "_About..."
+msgstr "Ibyerekeye"
+
+# desktop/source\app\ssodlg.src:DLG_SSOLOGIN.text
+#. note to translators: %1 is the name of a monitor, e.g. "CPU 1", and %2 is
+#. the current measurement, e.g. "78%"
+#: src/applet.cpp:186
+#, fuzzy
+msgid "%1: %2"
+msgstr "%1:%2"
+
+# #-#-#-#-#  dbaccess.pot (PACKAGE VERSION)  #-#-#-#-#
+# #-#-#-#-#  dbaccess.pot (PACKAGE VERSION)  #-#-#-#-#
+# #-#-#-#-#  dbaccess.pot (PACKAGE VERSION)  #-#-#-#-#
+#. note to translators: this is used for composing a list of monitors; %1
+#. is the previous part of the list and %2 is the part to append
+#: src/applet.cpp:193
+#, fuzzy
+msgid ""
+"%1\n"
+"%2"
+msgstr "%1%2"
+
+#. add documenters here
+#. note to translators: please fill in your names and email addresses
+#: src/applet.cpp:455
+#, fuzzy
+msgid "translator-credits"
+msgstr "Umusemuzi"
+
+#: src/applet.cpp:458
+#, fuzzy
+msgid ""
+"Monitor various hardware-related information, such as CPU usage, memory "
+"usage etc. Supports curve graphs, horizontal bar plots, column diagrams, "
+"textual monitoring and fluctuating flames."
+msgstr ""
+"Ibisobanuro Nka Ikoresha: Ububiko Ikoresha: Agaheto Gitambitse Inkingi Na"
+
+#. %1 is the copyright symbol
+#: src/applet.cpp:465
+msgid "Copyright %1 2003 Ole Laursen"
+msgstr ""
+
+#. %2 is a descriptive string from sensors.conf
+#: src/choose-monitor-window.cpp:114
+msgid "Sensor %1: \"%2\""
+msgstr ""
+
+#: src/choose-monitor-window.cpp:116
+msgid "Sensor %1"
+msgstr ""
+
+#. %2 is a descriptive string from sensors.conf
+#: src/choose-monitor-window.cpp:138
+msgid "Fan %1: \"%2\""
+msgstr ""
+
+#: src/choose-monitor-window.cpp:140 src/monitor-impls.cpp:1056
+msgid "Fan %1"
+msgstr ""
+
+#: src/ui.glade.h:1
+msgid "*"
+msgstr "*"
+
+#: src/ui.glade.h:2
+msgid "/"
+msgstr "/"
+
+#: src/ui.glade.h:4
+#, fuzzy, no-c-format
+msgid "15.0%"
+msgstr "15."
+
+#: src/ui.glade.h:5
+#, fuzzy
+msgid "<b>Background</b>"
+msgstr "<B B"
+
+#: src/ui.glade.h:6
+#, fuzzy
+msgid "<b>Devices</b>"
+msgstr "<B B"
+
+#: src/ui.glade.h:7
+#, fuzzy
+msgid "<b>Font</b>"
+msgstr "<B B"
+
+#: src/ui.glade.h:8
+#, fuzzy
+msgid "<b>Size</b>"
+msgstr "<B B"
+
+#: src/ui.glade.h:9
+#, fuzzy
+msgid "<b>Viewer</b>"
+msgstr "<B B"
+
+#: src/ui.glade.h:10
+#, fuzzy
+msgid "<i>Large</i>"
+msgstr "<i i"
+
+#: src/ui.glade.h:11
+#, fuzzy
+msgid "<i>Small</i>"
+msgstr "<i i"
+
+#: src/ui.glade.h:12
+#, fuzzy
+msgid "A running average of the number of simultanous processes"
+msgstr "A Impuzandengo Bya i Umubare Bya"
+
+#: src/ui.glade.h:13
+msgid "All CPUs"
+msgstr ""
+
+#: src/ui.glade.h:14
+#, fuzzy
+msgid "All data"
+msgstr "Ibyatanzwe"
+
+# #-#-#-#-#  officecfg.pot (PACKAGE VERSION)  #-#-#-#-#
+# officecfg/registry\schema\org\openoffice\Office\WriterWeb.xcs:....Print.Content.Background.text
+# #-#-#-#-#  officecfg.pot (PACKAGE VERSION)  #-#-#-#-#
+# officecfg/registry\schema\org\openoffice\Office\Writer.xcs:....Print.Content.Background.text
+#: src/ui.glade.h:15
+msgid "Background"
+msgstr "Mbuganyuma"
+
+#: src/ui.glade.h:16
+#, fuzzy
+msgid "C_PU usage"
+msgstr "Ikoresha:"
+
+#: src/ui.glade.h:17
+#, fuzzy
+msgid "C_hange"
+msgstr "Guhindura"
+
+#: src/ui.glade.h:18
+#, fuzzy
+msgid "C_olor:"
+msgstr "Ibara:"
+
+#: src/ui.glade.h:19
+#, fuzzy
+msgid "C_olumns"
+msgstr "Inkingi"
+
+#: src/ui.glade.h:20
+#, fuzzy
+msgid "C_urves"
+msgstr "Imirongo Ihese"
+
+#: src/ui.glade.h:21
+#, fuzzy
+msgid "Choose a Device"
+msgstr "a"
+
+# Font Face SubMenu
+#: src/ui.glade.h:22
+#, fuzzy
+msgid "Choose a Font"
+msgstr "Guhitamo Imyandikire"
+
+#: src/ui.glade.h:23
+#, fuzzy
+msgid "Color of the bar"
+msgstr "Bya i"
+
+#: src/ui.glade.h:24
+#, fuzzy
+msgid "Color of the curve"
+msgstr "Bya i Agaheto"
+
+#: src/ui.glade.h:25
+#, fuzzy
+msgid "Color of the flame"
+msgstr "Bya i"
+
+#: src/ui.glade.h:26
+#, fuzzy
+msgid "Connection:"
+msgstr "Ukwihuza"
+
+#: src/ui.glade.h:27
+msgid "Devices"
+msgstr ""
+
+# #-#-#-#-#  sc.pot (PACKAGE VERSION)  #-#-#-#-#
+# sc/source\ui\src\miscdlgs.src:RID_SCDLG_FILLSERIES.FL_DIRECTION.text
+# #-#-#-#-#  sc.pot (PACKAGE VERSION)  #-#-#-#-#
+# sc/source\ui\src\sortdlg.src:RID_SCPAGE_SORT_OPTIONS.FL_DIRECTION.text
+#: src/ui.glade.h:28
+#, fuzzy
+msgid "Direction:"
+msgstr "Icyerekezo"
+
+#: src/ui.glade.h:29
+#, fuzzy
+msgid "Enter a folder residing on the disk to monitor"
+msgstr "a Ububiko ku i Kuri"
+
+#: src/ui.glade.h:30 src/monitor-impls.cpp:699
+#, fuzzy
+msgid "Ethernet (first)"
+msgstr "Itangira"
+
+#: src/ui.glade.h:31 src/monitor-impls.cpp:701
+#, fuzzy
+msgid "Ethernet (second)"
+msgstr "ISEGONDA"
+
+#: src/ui.glade.h:32 src/monitor-impls.cpp:703
+msgid "Ethernet (third)"
+msgstr ""
+
+#: src/ui.glade.h:33
+#, fuzzy
+msgid "Folder:"
+msgstr "Ububiko..."
+
+#: src/ui.glade.h:34
+msgid "Hardware Monitor Preferences"
+msgstr ""
+
+#: src/ui.glade.h:35
+#, fuzzy
+msgid "Incoming data"
+msgstr "Ibyatanzwe"
+
+# VCARD_LDAP_MODEM_TYPE
+# # @name VCARD_LDAP_MODEM_TYPE
+# # @loc None
+#: src/ui.glade.h:36 src/monitor-impls.cpp:705
+msgid "Modem"
+msgstr "Modemu"
+
+#: src/ui.glade.h:37
+#, fuzzy
+msgid "Monitor all CPUs"
+msgstr "Byose"
+
+#: src/ui.glade.h:38
+#, fuzzy
+msgid "Monitor devices using fluctuating flames"
+msgstr "ikoresha"
+
+#: src/ui.glade.h:39
+#, fuzzy
+msgid "Monitor devices using horizontal bars"
+msgstr "ikoresha Gitambitse Imirongo- ntambike"
+
+#: src/ui.glade.h:40
+#, fuzzy
+msgid "Monitor devices using line graphs"
+msgstr "ikoresha Umurongo"
+
+#: src/ui.glade.h:41
+#, fuzzy
+msgid "Monitor devices using solid columns"
+msgstr "ikoresha Gikomeye Inkingi"
+
+#: src/ui.glade.h:42
+#, fuzzy
+msgid "Monitor devices using text descriptions"
+msgstr "ikoresha Umwandiko"
+
+#: src/ui.glade.h:43
+#, fuzzy
+msgid "Monitor only a single CPU"
+msgstr "a UMWE"
+
+# 4032
+#: src/ui.glade.h:44
+msgid "Network"
+msgstr "urusobe"
+
+#: src/ui.glade.h:45
+msgid "No sensors detected"
+msgstr ""
+
+#: src/ui.glade.h:46
+msgid "Only CPU:"
+msgstr ""
+
+#: src/ui.glade.h:47
+#, fuzzy
+msgid "Outgoing data"
+msgstr "Ibyatanzwe"
+
+#: src/ui.glade.h:48
+#, fuzzy
+msgid "Pick a Color"
+msgstr "a"
+
+#: src/ui.glade.h:49
+#, fuzzy
+msgid "Select the sensor to monitor"
+msgstr "i Kuri"
+
+#: src/ui.glade.h:50
+#, fuzzy
+msgid "Select whether to monitor incoming or outgoing data or both"
+msgstr "Kuri Cyangwa Ibyatanzwe Cyangwa Byombi"
+
+#: src/ui.glade.h:51 src/monitor-impls.cpp:707
+#, fuzzy
+msgid "Serial link"
+msgstr "Ihuza"
+
+#: src/ui.glade.h:52
+#, fuzzy
+msgid "Show _free space instead of used"
+msgstr "Kigenga Umwanya Bya"
+
+#: src/ui.glade.h:53
+msgid "Storage"
+msgstr ""
+
+#: src/ui.glade.h:54
+msgid "System"
+msgstr "Sisitemu"
+
+#: src/ui.glade.h:55
+msgid "Temperature"
+msgstr ""
+
+#: src/ui.glade.h:56
+#, fuzzy
+msgid "The amount of data sent through a network connection"
+msgstr "Igiteranyo Bya Ibyatanzwe Yoherejwe: Gihinguranya a urusobe Ukwihuza"
+
+#: src/ui.glade.h:57
+#, fuzzy
+msgid "The amount of disk space used"
+msgstr "Igiteranyo Bya Umwanya"
+
+#: src/ui.glade.h:58
+#, fuzzy
+msgid "The amount of disk-based memory used"
+msgstr "Igiteranyo Bya Ububiko"
+
+#: src/ui.glade.h:59
+#, fuzzy
+msgid "The amount of memory used"
+msgstr "Igiteranyo Bya Ububiko"
+
+#: src/ui.glade.h:60
+#, fuzzy
+msgid "The percentage of time that is spent running foreground processes"
+msgstr "Ijanisha Bya Igihe ni"
+
+#: src/ui.glade.h:61
+#, fuzzy
+msgid "The speed of the fans"
+msgstr "Umuvuduko Bya i"
+
+#: src/ui.glade.h:62
+#, fuzzy
+msgid "The temperature of the inside of the system"
+msgstr "Bya i Mo Imbere Bya i Sisitemu"
+
+#: src/ui.glade.h:63
+#, fuzzy
+msgid ""
+"Type of connection - Ethernet is the most common local area network adapter "
+"type"
+msgstr "Bya Ukwihuza ni i Ubuso urusobe Ubwoko"
+
+#: src/ui.glade.h:64
+#, fuzzy
+msgid "Use _panel background"
+msgstr "Mbuganyuma"
+
+#: src/ui.glade.h:65
+#, fuzzy
+msgid "Use _this color:"
+msgstr "iyi Ibara"
+
+#: src/ui.glade.h:66
+#, fuzzy
+msgid "Use this f_ont:"
+msgstr "iyi Intego- nyuguti"
+
+#: src/ui.glade.h:67
+msgid "Viewer"
+msgstr ""
+
+#: src/ui.glade.h:68
+#, fuzzy
+msgid "Which CPU no. to monitor"
+msgstr "Oya Kuri"
+
+#: src/ui.glade.h:69 src/monitor-impls.cpp:709
+msgid "Wireless"
+msgstr ""
+
+#: src/ui.glade.h:70
+#, fuzzy
+msgid "_Add"
+msgstr "Kongeramo"
+
+# sch/source\ui\app\strings.src:STR_BARS.text
+#: src/ui.glade.h:71
+#, fuzzy
+msgid "_Bars"
+msgstr "Imirongo- ntambike"
+
+#: src/ui.glade.h:72
+#, fuzzy
+msgid "_Disk usage"
+msgstr "Ikoresha:"
+
+#: src/ui.glade.h:73
+#, fuzzy
+msgid "_Fan speed"
+msgstr "Umuvuduko"
+
+#: src/ui.glade.h:74
+msgid "_Flames"
+msgstr ""
+
+#: src/ui.glade.h:75
+#, fuzzy
+msgid "_Load average"
+msgstr "Impuzandengo"
+
+#: src/ui.glade.h:76
+#, fuzzy
+msgid "_Memory usage"
+msgstr "Ikoresha:"
+
+#: src/ui.glade.h:77
+msgid "_Monitored devices:"
+msgstr ""
+
+#: src/ui.glade.h:78
+msgid "_Network throughput"
+msgstr ""
+
+# #-#-#-#-#  padmin.pot (PACKAGE VERSION)  #-#-#-#-#
+# padmin/source\rtsetup.src:RID_RTS_FONTSUBSTPAGE.RID_RTS_FS_REMOVE_BTN.text
+# #-#-#-#-#  padmin.pot (PACKAGE VERSION)  #-#-#-#-#
+# padmin/source\rtsetup.src:RID_RTS_COMMANDPAGE.RID_RTS_CMD_BTN_REMOVE.text
+#: src/ui.glade.h:79
+#, fuzzy
+msgid "_Remove"
+msgstr "Gukuraho"
+
+#: src/ui.glade.h:80
+#, fuzzy
+msgid "_Swap usage"
+msgstr "Ikoresha:"
+
+#: src/ui.glade.h:81
+msgid "_Temperature"
+msgstr ""
+
+#: src/ui.glade.h:82
+#, fuzzy
+msgid "_Text"
+msgstr "Umwandiko"
+
+#: src/helpers.cpp:34
+#, fuzzy
+msgid "Fatal error"
+msgstr "Ikosa"
+
+# desktop/source\app\ssodlg.src:DLG_SSOLOGIN.text
+#: src/monitor-impls.cpp:299
+#, fuzzy
+msgid "%1%%"
+msgstr "%1%%"
+
+#: src/monitor-impls.cpp:305
+msgid "All processors"
+msgstr ""
+
+#: src/monitor-impls.cpp:307
+#, fuzzy
+msgid "Processor no. %1"
+msgstr "Oya"
+
+# 1227
+#. must be short
+#: src/monitor-impls.cpp:314
+msgid "CPU"
+msgstr "CPU"
+
+# 1227
+#. note to translators: %1 is the cpu no, e.g. "CPU 1"
+#: src/monitor-impls.cpp:317
+#, fuzzy
+msgid "CPU %1"
+msgstr "CPU"
+
+#: src/monitor-impls.cpp:365 src/monitor-impls.cpp:499
+#: src/monitor-impls.cpp:569
+msgid "%1 Mb"
+msgstr ""
+
+#: src/monitor-impls.cpp:370
+#, fuzzy
+msgid "Disk-based memory"
+msgstr "Ububiko"
+
+#. must be short
+#: src/monitor-impls.cpp:376
+msgid "Swap"
+msgstr ""
+
+#: src/monitor-impls.cpp:434
+#, fuzzy
+msgid "Load average"
+msgstr "Impuzandengo"
+
+# basctl/source\basicide\basidesh.src:RID_STR_OPEN.text
+#. note to translators: short for "load average" - it has nothing to do with
+#. loading data
+#: src/monitor-impls.cpp:441
+msgid "Load"
+msgstr "Ibirimo"
+
+# offmgr/source\offapp\dialog\treeopt.src:RID_OFADLG_OPTIONS_TREE_PAGES.SID_GENERAL_OPTIONS.4.text
+#: src/monitor-impls.cpp:504
+msgid "Memory"
+msgstr "Ububiko"
+
+# sw/source\ui\wizard\wizmmdlg.src:TXT_DLG_Dok_Edit_AutoFN.text
+#. short for memory
+#: src/monitor-impls.cpp:510
+#, fuzzy
+msgid "Mem."
+msgstr "mem"
+
+#: src/monitor-impls.cpp:565
+msgid "%1 Gb"
+msgstr ""
+
+#: src/monitor-impls.cpp:573
+#, fuzzy
+msgid "%1 kb"
+msgstr "%1KB"
+
+#: src/monitor-impls.cpp:576
+#, fuzzy
+msgid "%1 b"
+msgstr "%1B"
+
+#: src/monitor-impls.cpp:581
+msgid "Disk (%1)"
+msgstr ""
+
+#: src/monitor-impls.cpp:680
+#, fuzzy
+msgid "%1 Gb/s"
+msgstr "%1S"
+
+#: src/monitor-impls.cpp:684
+#, fuzzy
+msgid "%1 Mb/s"
+msgstr "%1S"
+
+#: src/monitor-impls.cpp:688
+#, fuzzy
+msgid "%1 kb/s"
+msgstr "%1KB S"
+
+#: src/monitor-impls.cpp:691
+#, fuzzy
+msgid "%1 b/s"
+msgstr "%1B S"
+
+#. %1 is the network connection, e.g. "Ethernet (first)", in signifies
+#. that this is incoming data
+#: src/monitor-impls.cpp:717 src/monitor-impls.cpp:747
+#, fuzzy
+msgid "%1, in"
+msgstr "%1,in"
+
+#. %1 is the network connection, e.g. "Ethernet (first)", out signifies
+#. that this is outgoing data
+#: src/monitor-impls.cpp:721 src/monitor-impls.cpp:749
+#, fuzzy
+msgid "%1, out"
+msgstr "%1,Inyuma"
+
+#. short for an ethernet card
+#: src/monitor-impls.cpp:732
+msgid "Eth. %1"
+msgstr ""
+
+# sc/source\core\src\compiler.src:RID_SC_FUNCTION_NAMES.SC_OPCODE_MOD.text
+#. short for modem
+#: src/monitor-impls.cpp:735
+#, fuzzy
+msgid "Mod."
+msgstr "MOD"
+
+#. short for serial link
+#: src/monitor-impls.cpp:738
+msgid "Ser."
+msgstr ""
+
+#. short for wireless
+#: src/monitor-impls.cpp:741
+#, fuzzy
+msgid "W.less."
+msgstr "Birutwa."
+
+# #-#-#-#-#  dbaccess.pot (PACKAGE VERSION)  #-#-#-#-#
+# #-#-#-#-#  dbaccess.pot (PACKAGE VERSION)  #-#-#-#-#
+# #-#-#-#-#  dbaccess.pot (PACKAGE VERSION)  #-#-#-#-#
+#. %2 contains the degree sign (the following 'C' stands for Celsius)
+#: src/monitor-impls.cpp:959
+#, fuzzy, c-format
+msgid "%1%2C"
+msgstr "%1%2C"
+
+#. %2 is a descriptive string from sensors.conf
+#: src/monitor-impls.cpp:966
+msgid "Temperature %1: \"%2\""
+msgstr ""
+
+#: src/monitor-impls.cpp:969
+msgid "Temperature %1"
+msgstr ""
+
+#. short for "temperature", %1 is sensor no.
+#: src/monitor-impls.cpp:975
+msgid "Temp. %1"
+msgstr ""
+
+#. rpm is rotations per minute
+#: src/monitor-impls.cpp:1041
+msgid "%1 rpm"
+msgstr ""
+
+#. %2 is a descriptive string from sensors.conf
+#: src/monitor-impls.cpp:1048
+#, fuzzy
+msgid "Fan %1 speed: \"%2\""
+msgstr "Umuvuduko"
+
+#: src/monitor-impls.cpp:1051
+#, fuzzy
+msgid "Fan %1 speed"
+msgstr "Umuvuduko"
+
+# padmin/source\rtsetup.src:RID_RTS_RTSDIALOG.RID_RTS_RTSDIALOG_TABCONTROL.RID_RTS_DEVICEPAGE.text
+#: src/preferences-window.cpp:129
+msgid "Device"
+msgstr "Ububiko"

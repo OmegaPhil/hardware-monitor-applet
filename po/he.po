@@ -1,0 +1,584 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: GNOME\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=hardware-monitor&component=general\n"
+"POT-Creation-Date: 2009-03-02 11:46+0000\n"
+"PO-Revision-Date: 2009-04-05 01:37+0200\n"
+"Last-Translator: Mark Krapivner <mark125@gmail.com>\n"
+"Language-Team: HEBREW <sh.yaron@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\\n\n"
+"X-Poedit-Language: Hebrew\n"
+"X-Poedit-Country: ISRAEL\n"
+"X-Poedit-SourceCharset: utf-8\n"
+
+#: ../HardwareMonitor.server.in.in.h:1
+#: ../src/applet.cpp:470
+msgid "Hardware Monitor"
+msgstr "צג החומרה"
+
+#: ../HardwareMonitor.server.in.in.h:2
+msgid "Monitor hardware devices"
+msgstr "מעקב אחר התקני חומרה"
+
+#: ../HardwareMonitor.server.in.in.h:3
+msgid "Utility"
+msgstr "כלי"
+
+#: ../src/applet.cpp:70
+msgid "Hardware Monitor: cannot load the icon '%1'.\n"
+msgstr "צג החומרה: לא ניתן לטעון את הסמל '%1'.\n"
+
+#. pop-up menu strings
+#: ../src/applet.cpp:103
+msgid "_Preferences..."
+msgstr "_העדפות..."
+
+#: ../src/applet.cpp:103
+msgid "_Help"
+msgstr "_עזרה"
+
+#: ../src/applet.cpp:103
+msgid "_About..."
+msgstr "_אודות..."
+
+#. note to translators: %1 is the name of a monitor, e.g. "CPU 1", and %2 is
+#. the current measurement, e.g. "78%"
+#: ../src/applet.cpp:186
+msgid "%1: %2"
+msgstr "‏%1: %2"
+
+#. note to translators: this is used for composing a list of monitors; %1
+#. is the previous part of the list and %2 is the part to append
+#: ../src/applet.cpp:193
+msgid ""
+"%1\n"
+"%2"
+msgstr ""
+"%1\n"
+"%2"
+
+#: ../src/applet.cpp:464
+msgid "Monitor various hardware-related information, such as CPU usage, memory usage etc. Supports curve graphs, bar plots, column diagrams, textual monitoring and fluctuating flames."
+msgstr "מעקב אחר נתונים שונים אודות החומרה, כגון פעילות המעבד, השימוש בזיכרון וכו'. תמיכה בגרפי עקומות, תרשימי טורים, תרשימי עמודות מעקב טקסטואלי ופיזור להבות."
+
+#. %1 is the copyright symbol
+#: ../src/applet.cpp:473
+msgid "Copyright %1 2003 Ole Laursen"
+msgstr "כל הזכויות שמורות %1 2003 Ole Laursen"
+
+#. note to translators: please fill in your names and email addresses
+#: ../src/applet.cpp:480
+msgid "translator-credits"
+msgstr ""
+"ירון שהרבני <sh.yaron@gmail.com>\n"
+"\n"
+"פרוייקט תרגום GNOME לעברית:\n"
+"http://gnome-il.berlios.de"
+
+#. %2 is a descriptive string from sensors.conf
+#: ../src/choose-monitor-window.cpp:115
+msgid "Sensor %1: \"%2\""
+msgstr "חיישן %1: \"%2\""
+
+#: ../src/choose-monitor-window.cpp:117
+msgid "Sensor %1"
+msgstr "חיישן %1"
+
+#. %2 is a descriptive string from sensors.conf
+#: ../src/choose-monitor-window.cpp:139
+msgid "Fan %1: \"%2\""
+msgstr "מאוורר %1: \"%2\""
+
+#: ../src/choose-monitor-window.cpp:141
+#: ../src/monitor-impls.cpp:1059
+msgid "Fan %1"
+msgstr "מאוורר %1"
+
+#: ../src/ui.glade.h:1
+msgid "/"
+msgstr "/"
+
+#: ../src/ui.glade.h:2
+msgid "<b>Background</b>"
+msgstr "<b>רקע</b>"
+
+#: ../src/ui.glade.h:3
+msgid "<b>Devices</b>"
+msgstr "<b>התקנים</b>"
+
+#: ../src/ui.glade.h:4
+msgid "<b>Font</b>"
+msgstr "<b>גופן</b>"
+
+#: ../src/ui.glade.h:5
+msgid "<b>Size</b>"
+msgstr "<b>נפח</b>"
+
+#: ../src/ui.glade.h:6
+msgid "<b>Viewer</b>"
+msgstr "<b>מציג</b>"
+
+#: ../src/ui.glade.h:7
+msgid "<i>Large</i>"
+msgstr "<i>גדול</i>"
+
+#: ../src/ui.glade.h:8
+msgid "<i>Small</i>"
+msgstr "<i>קטן</i>"
+
+#: ../src/ui.glade.h:9
+msgid "A running average of the number of simultanous processes"
+msgstr "ממוצע פעיל של מספר התהליכים הפעילים בו־זמנית"
+
+#: ../src/ui.glade.h:10
+msgid "All CPUs"
+msgstr "כל המעבדים"
+
+#: ../src/ui.glade.h:11
+msgid "All data"
+msgstr "כל הנתונים"
+
+#: ../src/ui.glade.h:12
+msgid "Background"
+msgstr "רקע"
+
+#: ../src/ui.glade.h:13
+msgid "C_PU usage"
+msgstr "פעילות המ_עבד"
+
+#: ../src/ui.glade.h:14
+msgid "C_hange"
+msgstr "_שינוי"
+
+#: ../src/ui.glade.h:15
+msgid "C_olor:"
+msgstr "_צבע:"
+
+#: ../src/ui.glade.h:16
+msgid "C_olumns"
+msgstr "_עמודות"
+
+#: ../src/ui.glade.h:17
+msgid "C_urves"
+msgstr "ע_קומות"
+
+#: ../src/ui.glade.h:18
+msgid "Choose a Device"
+msgstr "בחירת התקן"
+
+#: ../src/ui.glade.h:19
+msgid "Choose a Font"
+msgstr "בחירת גופן"
+
+#: ../src/ui.glade.h:20
+msgid "Connection:"
+msgstr "חיבור:"
+
+#: ../src/ui.glade.h:21
+msgid "Devices"
+msgstr "התקנים"
+
+#: ../src/ui.glade.h:22
+msgid "Direction:"
+msgstr "כיוון:"
+
+#: ../src/ui.glade.h:23
+msgid "Enter a folder residing on the disk to monitor"
+msgstr "הזנת תיקייה שבכונן לצורכי מעקב"
+
+#: ../src/ui.glade.h:24
+#: ../src/monitor-impls.cpp:702
+msgid "Ethernet (first)"
+msgstr "אתרנט (ראשון)"
+
+#: ../src/ui.glade.h:25
+#: ../src/monitor-impls.cpp:704
+msgid "Ethernet (second)"
+msgstr "אתרנט (שני)"
+
+#: ../src/ui.glade.h:26
+#: ../src/monitor-impls.cpp:706
+msgid "Ethernet (third)"
+msgstr "אתרנט (שלישי)"
+
+#: ../src/ui.glade.h:27
+msgid "Folder:"
+msgstr "תיקייה:"
+
+#: ../src/ui.glade.h:28
+msgid "Hardware Monitor Preferences"
+msgstr "העדפות צג החומרה"
+
+#: ../src/ui.glade.h:29
+msgid "Incoming data"
+msgstr "נתונים נכנסים"
+
+#: ../src/ui.glade.h:30
+#: ../src/monitor-impls.cpp:708
+msgid "Modem"
+msgstr "מודם"
+
+#: ../src/ui.glade.h:31
+msgid "Monitor all CPUs"
+msgstr "מעקב אחר כל המעבדים"
+
+#: ../src/ui.glade.h:32
+msgid "Monitor devices using fluctuating flames"
+msgstr "מעקב אחר התקנים באמצעות פיזור להבות"
+
+#: ../src/ui.glade.h:33
+msgid "Monitor devices using horizontal bars"
+msgstr "מעקב אחר התקנים באמצעות תרשים עמודות"
+
+#: ../src/ui.glade.h:34
+msgid "Monitor devices using line graphs"
+msgstr "מעקב אחר התקנים באמצעות תרשים קווים"
+
+#: ../src/ui.glade.h:35
+msgid "Monitor devices using solid columns"
+msgstr "מעקב אחר התקנים באמצעות טורים אחידים"
+
+#: ../src/ui.glade.h:36
+msgid "Monitor devices using text descriptions"
+msgstr "מעקב אחר התקנים באמצעות תיאורי טקסט"
+
+#: ../src/ui.glade.h:37
+msgid "Monitor devices using vertical bars"
+msgstr "מעקב אחר התקנים באמצעות טורים אנכיים"
+
+#: ../src/ui.glade.h:38
+msgid "Monitor only a single CPU"
+msgstr "מעקב אחר מעבד יחיד"
+
+#: ../src/ui.glade.h:39
+msgid "Network"
+msgstr "רשת"
+
+#: ../src/ui.glade.h:40
+msgid "No sensors detected"
+msgstr "לא נמצאו חיישנים"
+
+#: ../src/ui.glade.h:41
+msgid "Only CPU:"
+msgstr "המעבד היחיד:"
+
+#: ../src/ui.glade.h:42
+msgid "Outgoing data"
+msgstr "נתונים יוצאים"
+
+#: ../src/ui.glade.h:43
+msgid "Select the sensor to monitor"
+msgstr "בחירת החיישן למעקב"
+
+#: ../src/ui.glade.h:44
+msgid "Select whether to monitor incoming or outgoing data or both"
+msgstr "בחירה האם לעקוב אחרי הנתונים הנכנסים או היוצאים או שניהם"
+
+#: ../src/ui.glade.h:45
+#: ../src/monitor-impls.cpp:710
+msgid "Serial link"
+msgstr "קישור טורי"
+
+#: ../src/ui.glade.h:46
+msgid "Show _free space instead of used"
+msgstr "הצגת השטח ה_פנוי במקום המנוצל"
+
+#: ../src/ui.glade.h:47
+msgid "Storage"
+msgstr "אחסון"
+
+#: ../src/ui.glade.h:48
+msgid "System"
+msgstr "מערכת"
+
+#: ../src/ui.glade.h:49
+msgid "Temperature"
+msgstr "טמפרטורה"
+
+#: ../src/ui.glade.h:50
+msgid "The amount of data sent through a network connection"
+msgstr "כמות הנתונים שנשלחו באמצעות חיבור הרשת"
+
+#: ../src/ui.glade.h:51
+msgid "The amount of disk space used"
+msgstr "כמות שטח הכונן המנוצל"
+
+#: ../src/ui.glade.h:52
+msgid "The amount of disk-based memory used"
+msgstr "כמות הזיכרון מבוסס הכונן המנוצל"
+
+#: ../src/ui.glade.h:53
+msgid "The amount of memory used"
+msgstr "כמות הזיכרון המנוצל"
+
+#: ../src/ui.glade.h:54
+msgid "The percentage of time that is spent running foreground processes"
+msgstr "אחוז הזמן המושקע בהרצת תהליכי שולחן עבודה"
+
+#: ../src/ui.glade.h:55
+msgid "The speed of the fans"
+msgstr "מהירות המאווררים"
+
+#: ../src/ui.glade.h:56
+msgid "The temperature of the inside of the system"
+msgstr "הטמפרטורה שבתוך מערכת המחשב"
+
+#: ../src/ui.glade.h:57
+msgid "Type of connection - Ethernet is the most common local area network adapter type"
+msgstr "סוג החיבור - אתרנט הוא סוג מתאם חיבור הרשת המקומית הנפוץ ביותר"
+
+#: ../src/ui.glade.h:58
+msgid "Use _panel background"
+msgstr "שימוש ברקע ה_לוח"
+
+#: ../src/ui.glade.h:59
+msgid "Use _this color:"
+msgstr "שימוש בצבע _זה:"
+
+#: ../src/ui.glade.h:60
+msgid "Use this f_ont:"
+msgstr "שימוש ב_גופן זה:"
+
+#: ../src/ui.glade.h:61
+msgid "Viewer"
+msgstr "מציג"
+
+#: ../src/ui.glade.h:62
+msgid "Which CPU no. to monitor"
+msgstr "אחר כמה מעבדים לעקוב"
+
+#: ../src/ui.glade.h:63
+#: ../src/monitor-impls.cpp:712
+msgid "Wireless"
+msgstr "אלחוטי"
+
+#: ../src/ui.glade.h:64
+msgid "_Add"
+msgstr "_הוספה"
+
+#: ../src/ui.glade.h:65
+msgid "_Disk usage"
+msgstr "שימוש ב_כונן"
+
+#: ../src/ui.glade.h:66
+msgid "_Fan speed"
+msgstr "_מהירות המאוורר"
+
+#: ../src/ui.glade.h:67
+msgid "_Flames"
+msgstr "לה_בות"
+
+#: ../src/ui.glade.h:68
+msgid "_Horizontal bars"
+msgstr "טורים _אופקיים"
+
+#: ../src/ui.glade.h:69
+msgid "_Load average"
+msgstr "_ממוצע העומס"
+
+#: ../src/ui.glade.h:70
+msgid "_Memory usage"
+msgstr "שימוש ב_זכרון"
+
+#: ../src/ui.glade.h:71
+msgid "_Monitored devices:"
+msgstr "ה_תקנים במעקב:"
+
+#: ../src/ui.glade.h:72
+msgid "_Network throughput"
+msgstr "_תפוקת הרשת"
+
+#: ../src/ui.glade.h:73
+msgid "_Remove"
+msgstr "_הסרה"
+
+#: ../src/ui.glade.h:74
+msgid "_Swap usage"
+msgstr "שימוש במחיצת הה_חלפה"
+
+#: ../src/ui.glade.h:75
+msgid "_Temperature"
+msgstr "_טמפרטורה"
+
+#: ../src/ui.glade.h:76
+msgid "_Text"
+msgstr "ט_קסט"
+
+#: ../src/ui.glade.h:77
+msgid "_Vertical bars"
+msgstr "טורים א_נכיים"
+
+#: ../src/helpers.cpp:34
+msgid "Fatal error"
+msgstr "שגיאה חמורה"
+
+#: ../src/monitor-impls.cpp:300
+msgid "%1%%"
+msgstr "%1%%"
+
+#: ../src/monitor-impls.cpp:306
+msgid "All processors"
+msgstr "כל המעבדים"
+
+#: ../src/monitor-impls.cpp:308
+msgid "Processor no. %1"
+msgstr "מעבד מס' %1"
+
+#. must be short
+#: ../src/monitor-impls.cpp:315
+msgid "CPU"
+msgstr "מעבד"
+
+#. note to translators: %1 is the cpu no, e.g. "CPU 1"
+#: ../src/monitor-impls.cpp:318
+msgid "CPU %1"
+msgstr "מעבד %1"
+
+#: ../src/monitor-impls.cpp:366
+#: ../src/monitor-impls.cpp:500
+msgid "%1 Mb"
+msgstr "%1 Mb"
+
+#: ../src/monitor-impls.cpp:371
+msgid "Disk-based memory"
+msgstr "זכרון מבוסס כונן"
+
+#. must be short
+#: ../src/monitor-impls.cpp:377
+msgid "Swap"
+msgstr "החלפה"
+
+#: ../src/monitor-impls.cpp:435
+msgid "Load average"
+msgstr "ממוצע עומס"
+
+#. note to translators: short for "load average" - it has nothing to do with
+#. loading data
+#: ../src/monitor-impls.cpp:442
+msgid "Load"
+msgstr "עומס"
+
+#: ../src/monitor-impls.cpp:505
+msgid "Memory"
+msgstr "זכרון"
+
+#. short for memory
+#: ../src/monitor-impls.cpp:511
+msgid "Mem."
+msgstr "זכר'"
+
+#: ../src/monitor-impls.cpp:566
+msgid "%1 GB"
+msgstr "%1 GB"
+
+#: ../src/monitor-impls.cpp:570
+msgid "%1 MB"
+msgstr "%1 MB"
+
+#: ../src/monitor-impls.cpp:574
+msgid "%1 kB"
+msgstr "%1 kB"
+
+#: ../src/monitor-impls.cpp:577
+msgid "%1 B"
+msgstr "%1 B"
+
+#: ../src/monitor-impls.cpp:582
+msgid "Disk (%1)"
+msgstr "‏כונן (%1)"
+
+#: ../src/monitor-impls.cpp:683
+msgid "%1 GB/s"
+msgstr "%1 GB/s"
+
+#: ../src/monitor-impls.cpp:687
+msgid "%1 MB/s"
+msgstr "%1 MB/s"
+
+#: ../src/monitor-impls.cpp:691
+msgid "%1 kB/s"
+msgstr "%1 kB/s"
+
+#: ../src/monitor-impls.cpp:694
+msgid "%1 B/s"
+msgstr "%1 B/s"
+
+#. %1 is the network connection, e.g. "Ethernet (first)", in signifies
+#. that this is incoming data
+#: ../src/monitor-impls.cpp:720
+#: ../src/monitor-impls.cpp:750
+msgid "%1, in"
+msgstr "%1, פנימה"
+
+#. %1 is the network connection, e.g. "Ethernet (first)", out signifies
+#. that this is outgoing data
+#: ../src/monitor-impls.cpp:724
+#: ../src/monitor-impls.cpp:752
+msgid "%1, out"
+msgstr "%1, החוצה"
+
+#. short for an ethernet card
+#: ../src/monitor-impls.cpp:735
+msgid "Eth. %1"
+msgstr "את' %1"
+
+#. short for modem
+#: ../src/monitor-impls.cpp:738
+msgid "Mod."
+msgstr "מוד'"
+
+#. short for serial link
+#: ../src/monitor-impls.cpp:741
+msgid "Ser."
+msgstr "טור'"
+
+#. short for wireless
+#: ../src/monitor-impls.cpp:744
+msgid "W.less."
+msgstr "אלח'"
+
+#. %2 contains the degree sign (the following 'C' stands for Celsius)
+#: ../src/monitor-impls.cpp:962
+msgid "%1%2C"
+msgstr "%1%2C"
+
+#. %2 is a descriptive string from sensors.conf
+#: ../src/monitor-impls.cpp:969
+msgid "Temperature %1: \"%2\""
+msgstr "טמפרטורה %1: \"%2\""
+
+#: ../src/monitor-impls.cpp:972
+msgid "Temperature %1"
+msgstr "טמפרטורה %1"
+
+#. short for "temperature", %1 is sensor no.
+#: ../src/monitor-impls.cpp:978
+msgid "Temp. %1"
+msgstr "טמפ' %1"
+
+#. rpm is rotations per minute
+#: ../src/monitor-impls.cpp:1044
+msgid "%1 rpm"
+msgstr "%1 סל\"ד"
+
+#. %2 is a descriptive string from sensors.conf
+#: ../src/monitor-impls.cpp:1051
+msgid "Fan %1 speed: \"%2\""
+msgstr "מהירות מאוורר %1: \"%2\""
+
+#: ../src/monitor-impls.cpp:1054
+msgid "Fan %1 speed"
+msgstr "מהירות מאוורר %1"
+
+#: ../src/preferences-window.cpp:141
+msgid "Device"
+msgstr "התקן"
+

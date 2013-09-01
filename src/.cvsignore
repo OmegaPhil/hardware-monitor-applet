@@ -1,0 +1,8 @@
+.emacs.desktop
+Makefile
+Makefile.in
+hardware-monitor
+monitor-impls.cpp.backup
+semantic.cache
+template.cpp
+tmp

@@ -1,0 +1,579 @@
+# translation of hardware-monitor.HEAD.ne.po to Nepali
+# This file is distributed under the same license as the PACKAGE package.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
+#
+# Pawan Chitrakar <pawan@mpp.org.np>, 2005.
+# Jaydeep Bhusal <zaydeep@hotmail.com>, 2005.
+# Ganesh Ghimire <gghimire@gmail.com>, 2005.
+# Kapil Timilsina <lipak21@gmail.com>, 2005.
+# Shyam Krishna Bal <shyamkrishna_bal@yahoo.com>, 2006, 2007.
+msgid ""
+msgstr ""
+"Project-Id-Version: hardware-monitor.HEAD.ne\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2007-01-02 03:13+0000\n"
+"PO-Revision-Date: 2007-10-17 21:19+0545\n"
+"Last-Translator: Shyam Krishna Bal <shyamkrishna_bal@yahoo.com>\n"
+"Language-Team: Nepali <info@mpp.org.np>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms: nplurals=2; plural=n !=1\n"
+
+#: ../HardwareMonitor.server.in.in.h:1 ../src/applet.cpp:470
+msgid "Hardware Monitor"
+msgstr "हार्डवयेर मोनिटर"
+
+#: ../HardwareMonitor.server.in.in.h:2
+msgid "Monitor hardware devices"
+msgstr "मोनिटर हार्डवयेर यन्त्रहरू"
+
+#: ../HardwareMonitor.server.in.in.h:3
+msgid "Utility"
+msgstr "उपयोगिता"
+
+#: ../src/applet.cpp:70
+msgid "Hardware Monitor: cannot load the icon '%1'.\n"
+msgstr "हार्डवयेर मोनिटर: प्रतिमा लोड गर्न सकेन '%1'।\n"
+
+#. pop-up menu strings
+#: ../src/applet.cpp:103
+msgid "_Preferences..."
+msgstr "प्राथमिकताहरू..."
+
+#: ../src/applet.cpp:103
+msgid "_Help"
+msgstr "मद्दत"
+
+#: ../src/applet.cpp:103
+msgid "_About..."
+msgstr "_बारेमा..."
+
+#. note to translators: %1 is the name of a monitor, e.g. "CPU 1", and %2 is
+#. the current measurement, e.g. "78%"
+#: ../src/applet.cpp:186
+msgid "%1: %2"
+msgstr "%1: %2"
+
+#. note to translators: this is used for composing a list of monitors; %1
+#. is the previous part of the list and %2 is the part to append
+#: ../src/applet.cpp:193
+msgid ""
+"%1\n"
+"%2"
+msgstr ""
+"%1\n"
+"%2"
+
+#: ../src/applet.cpp:464
+msgid ""
+"Monitor various hardware-related information, such as CPU usage, memory "
+"usage etc. Supports curve graphs, bar plots, column diagrams, textual "
+"monitoring and fluctuating flames."
+msgstr ""
+"विविध हार्डवयेर सम्बन्धि जानकारी मोनिटर गर्दछ, जस्तै सीपीयू उपयोग, स्मृति प्रयोग आदि । "
+"वक्ररेखा ग्राफ, पट्टी प्लटहरू,स्तम्भ चित्रहरू, बनावटी अनुगमण र अस्थिर फ्लेम समर्थन गर्दछ ।"
+
+#. %1 is the copyright symbol
+#: ../src/applet.cpp:473
+msgid "Copyright %1 2003 Ole Laursen"
+msgstr "प्रतिलिपि अधिकार %1 २००३ ओले लार्सन"
+
+#. note to translators: please fill in your names and email addresses
+#: ../src/applet.cpp:480
+msgid "translator-credits"
+msgstr "shyam krishna ball<shyamkrishna_bal@yahoo.com>"
+
+#. %2 is a descriptive string from sensors.conf
+#: ../src/choose-monitor-window.cpp:114
+msgid "Sensor %1: \"%2\""
+msgstr "सेन्सर %1: \"%2\""
+
+#: ../src/choose-monitor-window.cpp:116
+msgid "Sensor %1"
+msgstr "सेन्सर %1"
+
+#. %2 is a descriptive string from sensors.conf
+#: ../src/choose-monitor-window.cpp:138
+msgid "Fan %1: \"%2\""
+msgstr "फ्यान %1: \"%2\""
+
+#: ../src/choose-monitor-window.cpp:140 ../src/monitor-impls.cpp:1058
+msgid "Fan %1"
+msgstr "फ्यान %1"
+
+#: ../src/ui.glade.h:1
+msgid "/"
+msgstr "/"
+
+#: ../src/ui.glade.h:2
+msgid "<b>Background</b>"
+msgstr "<b>पृष्ठभूमि</b>"
+
+#: ../src/ui.glade.h:3
+msgid "<b>Devices</b>"
+msgstr "<b>यन्त्रहरू</b>"
+
+#: ../src/ui.glade.h:4
+msgid "<b>Font</b>"
+msgstr "<b>फन्ट</b>"
+
+#: ../src/ui.glade.h:5
+msgid "<b>Size</b>"
+msgstr "<b>साइज</b>"
+
+#: ../src/ui.glade.h:6
+msgid "<b>Viewer</b>"
+msgstr "<b>दर्शक</b>"
+
+#: ../src/ui.glade.h:7
+msgid "<i>Large</i>"
+msgstr "<i>ठूलो</i>"
+
+#: ../src/ui.glade.h:8
+msgid "<i>Small</i>"
+msgstr "<i>सानो</i>"
+
+#: ../src/ui.glade.h:9
+msgid "A running average of the number of simultanous processes"
+msgstr "संगसँगै का प्रक्रियो संख्यहरूाको चालु औसत"
+
+#: ../src/ui.glade.h:10
+msgid "All CPUs"
+msgstr "सबै CPU हरू"
+
+#: ../src/ui.glade.h:11
+msgid "All data"
+msgstr "सबै डेटा"
+
+#: ../src/ui.glade.h:12
+msgid "Background"
+msgstr "पृष्ठभूमि"
+
+#: ../src/ui.glade.h:13
+msgid "C_PU usage"
+msgstr "CPU प्रयोग"
+
+#: ../src/ui.glade.h:14
+msgid "C_hange"
+msgstr "परिवर्तन"
+
+#: ../src/ui.glade.h:15
+msgid "C_olor:"
+msgstr "रङ:"
+
+#: ../src/ui.glade.h:16
+msgid "C_olumns"
+msgstr "स्तम्भहरू"
+
+#: ../src/ui.glade.h:17
+msgid "C_urves"
+msgstr "वक्ररेखाहरू"
+
+#: ../src/ui.glade.h:18
+msgid "Choose a Device"
+msgstr "एउटा यन्त्र रोज्नुहोस्"
+
+#: ../src/ui.glade.h:19
+msgid "Choose a Font"
+msgstr "एउटा फन्ट रोज्नुहोस्"
+
+#: ../src/ui.glade.h:20
+msgid "Connection:"
+msgstr "जडान:"
+
+#: ../src/ui.glade.h:21
+msgid "Devices"
+msgstr "यन्त्रहरू"
+
+#: ../src/ui.glade.h:22
+msgid "Direction:"
+msgstr "दिशा:"
+
+#: ../src/ui.glade.h:23
+msgid "Enter a folder residing on the disk to monitor"
+msgstr "डिस्कमा बसेको फोल्डरलाई मोनिटरमा प्रविष्ट गर्नुहोस्"
+
+#: ../src/ui.glade.h:24 ../src/monitor-impls.cpp:701
+msgid "Ethernet (first)"
+msgstr "इदरनेट (पहिलो)"
+
+#: ../src/ui.glade.h:25 ../src/monitor-impls.cpp:703
+msgid "Ethernet (second)"
+msgstr "इदरनेट (दोस्रो)"
+
+#: ../src/ui.glade.h:26 ../src/monitor-impls.cpp:705
+msgid "Ethernet (third)"
+msgstr "इदरनेट (तेस्रो)"
+
+#: ../src/ui.glade.h:27
+msgid "Folder:"
+msgstr "फोल्डर:"
+
+#: ../src/ui.glade.h:28
+msgid "Hardware Monitor Preferences"
+msgstr "हार्डवयेर मोनिटर प्राथमिकताहरू"
+
+#: ../src/ui.glade.h:29
+msgid "Incoming data"
+msgstr "आउने डेटा"
+
+#: ../src/ui.glade.h:30 ../src/monitor-impls.cpp:707
+msgid "Modem"
+msgstr "मोडेम"
+
+#: ../src/ui.glade.h:31
+msgid "Monitor all CPUs"
+msgstr "सबै CPU हरू मोनिटर गर्नुहोस्"
+
+#: ../src/ui.glade.h:32
+msgid "Monitor devices using fluctuating flames"
+msgstr "अस्थिर ज्वालाहरू प्रयोग गर्ने यन्त्रहरू मोनिटर गर्नुहोस्"
+
+#: ../src/ui.glade.h:33
+msgid "Monitor devices using horizontal bars"
+msgstr "तेर्सो पट्टिहरू प्रयोग गर्ने यन्त्रहरू मोनिटर गर्नुहोस्"
+
+#: ../src/ui.glade.h:34
+msgid "Monitor devices using line graphs"
+msgstr "रेखा ग्राफहरू प्रयोग गर्ने यन्त्रहरू मोनिटर गर्नुहोस्"
+
+#: ../src/ui.glade.h:35
+msgid "Monitor devices using solid columns"
+msgstr "ठोस स्तम्भहरू प्रयोग गर्ने यन्त्रहरू मोनिटर गर्नुहोस्"
+
+#: ../src/ui.glade.h:36
+msgid "Monitor devices using text descriptions"
+msgstr "पाठ वर्णनहरू प्रयोग गर्ने यन्त्रहरू मोनिटर गर्नुहोस्"
+
+#: ../src/ui.glade.h:37
+msgid "Monitor devices using vertical bars"
+msgstr "ठाडो पट्टीहरू प्रयोग गरेर यन्त्रहरू मोनिटर गर्नुहोस्"
+
+#: ../src/ui.glade.h:38
+msgid "Monitor only a single CPU"
+msgstr "एउटा एकल CPU मात्र मोनिटर गर्नुहोस्"
+
+#: ../src/ui.glade.h:39
+msgid "Network"
+msgstr "सञ्जाल"
+
+#: ../src/ui.glade.h:40
+msgid "No sensors detected"
+msgstr "कुनै पनि सेन्सरहरू पत्ता लगाइएन"
+
+#: ../src/ui.glade.h:41
+msgid "Only CPU:"
+msgstr "केवल CPU"
+
+#: ../src/ui.glade.h:42
+msgid "Outgoing data"
+msgstr "जाने डेटा"
+
+#: ../src/ui.glade.h:43
+msgid "Select the sensor to monitor"
+msgstr "मोनिटर गर्नका लागि सेन्सर छान्नुहोस्"
+
+#: ../src/ui.glade.h:44
+msgid "Select whether to monitor incoming or outgoing data or both"
+msgstr "आउने अथवा जाने डेटा वा दुवै मोनिटर गर्ने कि नगर्ने चयन गर्नुहोस्"
+
+#: ../src/ui.glade.h:45 ../src/monitor-impls.cpp:709
+msgid "Serial link"
+msgstr "सिरियल लिङ्क"
+
+#: ../src/ui.glade.h:46
+msgid "Show _free space instead of used"
+msgstr "प्रयोग गरिएको सट्टामा खाली स्थान देखाउनुहोस्"
+
+#: ../src/ui.glade.h:47
+msgid "Storage"
+msgstr "सङ्ग्रह"
+
+#: ../src/ui.glade.h:48
+msgid "System"
+msgstr "प्रणाली"
+
+#: ../src/ui.glade.h:49
+msgid "Temperature"
+msgstr "तापक्रम"
+
+#: ../src/ui.glade.h:50
+msgid "The amount of data sent through a network connection"
+msgstr "सञ्जाल जडान द्वारा पठाइएको डेटाको अनुपात"
+
+#: ../src/ui.glade.h:51
+msgid "The amount of disk space used"
+msgstr "प्रयोग गरिएको डिस्क खाली स्थानको मात्रा"
+
+#: ../src/ui.glade.h:52
+msgid "The amount of disk-based memory used"
+msgstr "प्रयोग गरिएको डिस्क-आधारित स्मृति को मात्रा"
+
+#: ../src/ui.glade.h:53
+msgid "The amount of memory used"
+msgstr "प्रयोग गरिएको स्मृतिको मात्रा"
+
+#: ../src/ui.glade.h:54
+msgid "The percentage of time that is spent running foreground processes"
+msgstr "अग्रभूमि प्रक्रियाहरू चल्दा खर्च भएको समयको प्रतिशत"
+
+#: ../src/ui.glade.h:55
+msgid "The speed of the fans"
+msgstr "पंखाहरूको गति"
+
+#: ../src/ui.glade.h:56
+msgid "The temperature of the inside of the system"
+msgstr "प्रणालीको भित्रपट्टिको तापक्रम"
+
+#: ../src/ui.glade.h:57
+msgid ""
+"Type of connection - Ethernet is the most common local area network adapter "
+"type"
+msgstr "जडानको प्रकार - इदरनेट सबै भन्दा साधारण स्थानीय क्षेत्र सञ्जाल एडप्टर प्रकार हो "
+
+#: ../src/ui.glade.h:58
+msgid "Use _panel background"
+msgstr "प्यानल पृष्ठभुमि प्रयोग गर्नुहोस्"
+
+#: ../src/ui.glade.h:59
+msgid "Use _this color:"
+msgstr "यो रङ प्रयोग गर्नुहोस्"
+
+#: ../src/ui.glade.h:60
+msgid "Use this f_ont:"
+msgstr "यो फन्ट प्रयोग गर्नुहोस्"
+
+#: ../src/ui.glade.h:61
+msgid "Viewer"
+msgstr "दर्शक"
+
+#: ../src/ui.glade.h:62
+msgid "Which CPU no. to monitor"
+msgstr "कुन CPU सङ्ख्या मोनिटर गर्ने"
+
+#: ../src/ui.glade.h:63 ../src/monitor-impls.cpp:711
+msgid "Wireless"
+msgstr "ताररहित"
+
+#: ../src/ui.glade.h:64
+msgid "_Add"
+msgstr "_थप्नुहोस्"
+
+#: ../src/ui.glade.h:65
+msgid "_Disk usage"
+msgstr "डिस्क प्रयोग"
+
+#: ../src/ui.glade.h:66
+msgid "_Fan speed"
+msgstr "पंखा गति"
+
+#: ../src/ui.glade.h:67
+msgid "_Flames"
+msgstr "ज्वालाहरू"
+
+#: ../src/ui.glade.h:68
+msgid "_Horizontal bars"
+msgstr "तेर्सो पट्टी"
+
+#: ../src/ui.glade.h:69
+msgid "_Load average"
+msgstr "लोड औसत"
+
+#: ../src/ui.glade.h:70
+msgid "_Memory usage"
+msgstr "स्मृति प्रयोग"
+
+#: ../src/ui.glade.h:71
+msgid "_Monitored devices:"
+msgstr "मोनिटर गरिएको यन्त्रहरू"
+
+#: ../src/ui.glade.h:72
+msgid "_Network throughput"
+msgstr "सञ्जाल थ्रोपुट"
+
+#: ../src/ui.glade.h:73
+msgid "_Remove"
+msgstr "_हटाउनुहोस्"
+
+#: ../src/ui.glade.h:74
+msgid "_Swap usage"
+msgstr "प्रयोग साटासाट गर्नुहोस्"
+
+#: ../src/ui.glade.h:75
+msgid "_Temperature"
+msgstr "तापक्रम"
+
+#: ../src/ui.glade.h:76
+msgid "_Text"
+msgstr "पाठ"
+
+#: ../src/ui.glade.h:77
+msgid "_Vertical bars"
+msgstr "ठाडो पट्टी"
+
+#: ../src/helpers.cpp:34
+msgid "Fatal error"
+msgstr "भावि त्रुटि"
+
+#: ../src/monitor-impls.cpp:299
+msgid "%1%%"
+msgstr "%1%%"
+
+#: ../src/monitor-impls.cpp:305
+msgid "All processors"
+msgstr "सबै प्रोशेसरहरू"
+
+#: ../src/monitor-impls.cpp:307
+msgid "Processor no. %1"
+msgstr "प्रोसेसर सङ्ख्या. %1"
+
+#. must be short
+#: ../src/monitor-impls.cpp:314
+msgid "CPU"
+msgstr "CPU"
+
+#. note to translators: %1 is the cpu no, e.g. "CPU 1"
+#: ../src/monitor-impls.cpp:317
+msgid "CPU %1"
+msgstr "CPU %1"
+
+#: ../src/monitor-impls.cpp:365 ../src/monitor-impls.cpp:499
+msgid "%1 Mb"
+msgstr "%1 एमबि"
+
+#: ../src/monitor-impls.cpp:370
+msgid "Disk-based memory"
+msgstr "डिस्क आधारित स्मृति"
+
+#. must be short
+#: ../src/monitor-impls.cpp:376
+msgid "Swap"
+msgstr "साटासाट"
+
+#: ../src/monitor-impls.cpp:434
+msgid "Load average"
+msgstr "लोड औसत"
+
+#. note to translators: short for "load average" - it has nothing to do with
+#. loading data
+#: ../src/monitor-impls.cpp:441
+msgid "Load"
+msgstr "लोड"
+
+#: ../src/monitor-impls.cpp:504
+msgid "Memory"
+msgstr "स्मृति"
+
+#. short for memory
+#: ../src/monitor-impls.cpp:510
+msgid "Mem."
+msgstr "स्मृति"
+
+#: ../src/monitor-impls.cpp:565
+msgid "%1 GB"
+msgstr "%1 GB"
+
+#: ../src/monitor-impls.cpp:569
+msgid "%1 MB"
+msgstr "%1 MB"
+
+#: ../src/monitor-impls.cpp:573
+msgid "%1 kB"
+msgstr "%1 kB"
+
+#: ../src/monitor-impls.cpp:576
+msgid "%1 B"
+msgstr "%1 B"
+
+#: ../src/monitor-impls.cpp:581
+msgid "Disk (%1)"
+msgstr "डिस्क (%1)"
+
+#: ../src/monitor-impls.cpp:682
+msgid "%1 GB/s"
+msgstr "%1 GB/s"
+
+#: ../src/monitor-impls.cpp:686
+msgid "%1 MB/s"
+msgstr "%1 MB/s"
+
+#: ../src/monitor-impls.cpp:690
+msgid "%1 kB/s"
+msgstr "%1 kB/s"
+
+#: ../src/monitor-impls.cpp:693
+msgid "%1 B/s"
+msgstr "%1 B/s"
+
+#. %1 is the network connection, e.g. "Ethernet (first)", in signifies
+#. that this is incoming data
+#: ../src/monitor-impls.cpp:719 ../src/monitor-impls.cpp:749
+msgid "%1, in"
+msgstr "%1, भित्र"
+
+#. %1 is the network connection, e.g. "Ethernet (first)", out signifies
+#. that this is outgoing data
+#: ../src/monitor-impls.cpp:723 ../src/monitor-impls.cpp:751
+msgid "%1, out"
+msgstr "%1, बाहिर"
+
+#. short for an ethernet card
+#: ../src/monitor-impls.cpp:734
+msgid "Eth. %1"
+msgstr "इटिएच. %1"
+
+#. short for modem
+#: ../src/monitor-impls.cpp:737
+msgid "Mod."
+msgstr "मोड"
+
+#. short for serial link
+#: ../src/monitor-impls.cpp:740
+msgid "Ser."
+msgstr "श्रेणि"
+
+#. short for wireless
+#: ../src/monitor-impls.cpp:743
+msgid "W.less."
+msgstr "ताररहित"
+
+#. %2 contains the degree sign (the following 'C' stands for Celsius)
+#: ../src/monitor-impls.cpp:961
+#, c-format
+msgid "%1%2C"
+msgstr "%1%2सि"
+
+#. %2 is a descriptive string from sensors.conf
+#: ../src/monitor-impls.cpp:968
+msgid "Temperature %1: \"%2\""
+msgstr "तापक्रम %1: \"%2\""
+
+#: ../src/monitor-impls.cpp:971
+msgid "Temperature %1"
+msgstr "तापक्रम %1"
+
+#. short for "temperature", %1 is sensor no.
+#: ../src/monitor-impls.cpp:977
+msgid "Temp. %1"
+msgstr "तापक्रम. %1"
+
+#. rpm is rotations per minute
+#: ../src/monitor-impls.cpp:1043
+msgid "%1 rpm"
+msgstr "%1 आरपिएम"
+
+#. %2 is a descriptive string from sensors.conf
+#: ../src/monitor-impls.cpp:1050
+msgid "Fan %1 speed: \"%2\""
+msgstr "पंखा %1 गति: \"%2\""
+
+#: ../src/monitor-impls.cpp:1053
+msgid "Fan %1 speed"
+msgstr "पंखा %1 गति"
+
+#: ../src/preferences-window.cpp:141
+msgid "Device"
+msgstr "यन्त्र"
+

@@ -1,0 +1,48 @@
+Hardware Monitor
+----------------
+
+Hardware Monitor is a monitor applet for the Gnome panel. It supports
+a variety of monitoring capabilities (CPU usage, network throughput
+etc.) and different kinds of viewers (curves, bars, columns, text,
+flames).
+
+It is licensed under the GNU GPL.
+
+
+Requirements
+------------
+
+You need a modern Gnome desktop (i.e. at least Gnome 2.6) with the
+related libraries and the C++ wrappers for GTK+ and Gnome libraries,
+gtkmm and gnomemm (more specifically gtkmm, gconfmm and libglademm).
+These can be fetched from http://www.gtkmm.org, or are alternatively
+probably available as packages from your distributor.
+
+Also, to compile the program you need the development files for the
+Gnome panel-applet library and libgtop.
+
+If you have libsensors from the lm-sensors package installed at
+compile time, the configure script will detect it and add support for
+monitoring temperatures and fan speeds (if the library is not found,
+the relevant UI is hidden).
+
+
+Compiling from source
+---------------------
+
+Note that when you compile from source, the file
+HardwareMonitor.server must end up a place where the panel can find
+it. Else you will not be able to find the applet in the right-click
+panel menu. This place is usually /usr/lib/bonobo/servers/. If you run
+configure with 
+
+  ./configure --prefix=/usr
+
+and install the applet, it will most likely work.
+
+Bugs
+----
+
+Report bugs and suggestions to the maintainer:
+
+  $ cat MAINTAINERS

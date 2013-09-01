@@ -1,0 +1,575 @@
+# Czech translation of hardware-monitor.
+# Copyright (C) 2003 Free Software Foundation, Inc.
+# This file is distributed under the same license as the hardware-monitor package.
+# Miloslav Trmac <mitr@volny.cz>, 2003.
+# Lucas Lommer <llommer@svn.gnome.org>, 2008.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: hardware-monitor\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-03-04 22:39+0100\n"
+"PO-Revision-Date: 2008-02-29 18:51+0100\n"
+"Last-Translator: Lucas Lommer <llommer@svn.gnome.org>\n"
+"Language-Team: Czech <gnome-cs-list@gnome.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../HardwareMonitor.server.in.in.h:1 ../src/applet.cpp:470
+msgid "Hardware Monitor"
+msgstr "Sledování hardware"
+
+#: ../HardwareMonitor.server.in.in.h:2
+msgid "Monitor hardware devices"
+msgstr "Sledovat zařízení hardware"
+
+#: ../HardwareMonitor.server.in.in.h:3
+msgid "Utility"
+msgstr "Nástroj"
+
+#: ../src/applet.cpp:70
+msgid "Hardware Monitor: cannot load the icon '%1'.\n"
+msgstr "Sledování hardware: nemohu načíst ikonu '%1'.\n"
+
+#. pop-up menu strings
+#: ../src/applet.cpp:103
+msgid "_Preferences..."
+msgstr "Na_stavení..."
+
+#: ../src/applet.cpp:103
+msgid "_Help"
+msgstr "_Nápověda"
+
+#: ../src/applet.cpp:103
+msgid "_About..."
+msgstr "O _aplikaci..."
+
+#. note to translators: %1 is the name of a monitor, e.g. "CPU 1", and %2 is
+#. the current measurement, e.g. "78%"
+#: ../src/applet.cpp:186
+msgid "%1: %2"
+msgstr "%1: %2"
+
+#. note to translators: this is used for composing a list of monitors; %1
+#. is the previous part of the list and %2 is the part to append
+#: ../src/applet.cpp:193
+msgid ""
+"%1\n"
+"%2"
+msgstr ""
+"%1\n"
+"%2"
+
+#: ../src/applet.cpp:464
+msgid ""
+"Monitor various hardware-related information, such as CPU usage, memory "
+"usage etc. Supports curve graphs, bar plots, column diagrams, textual "
+"monitoring and fluctuating flames."
+msgstr ""
+"Sleduje různé informace související s hardware, např. využití CPU, paměti, "
+"atd. Podporuje křivkové grafy, pruhové vykreslení, sloupcové diagramy, "
+"textové sledování a fluktující plameny."
+
+#. %1 is the copyright symbol
+#: ../src/applet.cpp:473
+msgid "Copyright %1 2003 Ole Laursen"
+msgstr "Copyright %1 2003 Ole Laursen"
+
+#. note to translators: please fill in your names and email addresses
+#: ../src/applet.cpp:480
+msgid "translator-credits"
+msgstr ""
+"Miloslav Trmač <mitr@volny.cz>\n"
+"Lucas Lommer <llommer@svn.gnome.org>"
+
+#. %2 is a descriptive string from sensors.conf
+#: ../src/choose-monitor-window.cpp:115
+msgid "Sensor %1: \"%2\""
+msgstr "Senzor %1: \"%2\""
+
+#: ../src/choose-monitor-window.cpp:117
+msgid "Sensor %1"
+msgstr "Senzor %1"
+
+#. %2 is a descriptive string from sensors.conf
+#: ../src/choose-monitor-window.cpp:139
+msgid "Fan %1: \"%2\""
+msgstr "Větrák %1: \"%2\""
+
+#: ../src/choose-monitor-window.cpp:141 ../src/monitor-impls.cpp:1059
+msgid "Fan %1"
+msgstr "Větrák %1"
+
+#: ../src/ui.glade.h:1
+msgid "/"
+msgstr "/"
+
+#: ../src/ui.glade.h:2
+msgid "<b>Background</b>"
+msgstr "<b>Pozadí</b>"
+
+#: ../src/ui.glade.h:3
+msgid "<b>Devices</b>"
+msgstr "<b>Zařízení</b>"
+
+#: ../src/ui.glade.h:4
+msgid "<b>Font</b>"
+msgstr "<b>Písmo</b>"
+
+#: ../src/ui.glade.h:5
+msgid "<b>Size</b>"
+msgstr "<b>Velikost</b>"
+
+#: ../src/ui.glade.h:6
+msgid "<b>Viewer</b>"
+msgstr "<b>Prohlížeč</b>"
+
+#: ../src/ui.glade.h:7
+msgid "<i>Large</i>"
+msgstr "<i>Velká</i>"
+
+#: ../src/ui.glade.h:8
+msgid "<i>Small</i>"
+msgstr "<i>Malá</i>"
+
+#: ../src/ui.glade.h:9
+msgid "A running average of the number of simultanous processes"
+msgstr "Průběžný průměr počtu souběžných procesů"
+
+#: ../src/ui.glade.h:10
+msgid "All CPUs"
+msgstr "Všechny CPU"
+
+#: ../src/ui.glade.h:11
+msgid "All data"
+msgstr "Všechna data"
+
+#: ../src/ui.glade.h:12
+msgid "Background"
+msgstr "Pozadí"
+
+#: ../src/ui.glade.h:13
+msgid "C_PU usage"
+msgstr "Využití _CPU"
+
+#: ../src/ui.glade.h:14
+msgid "C_hange"
+msgstr "Z_měna"
+
+#: ../src/ui.glade.h:15
+msgid "C_olor:"
+msgstr "_Barva:"
+
+#: ../src/ui.glade.h:16
+msgid "C_olumns"
+msgstr "_Sloupce"
+
+#: ../src/ui.glade.h:17
+msgid "C_urves"
+msgstr "_Křivky"
+
+#: ../src/ui.glade.h:18
+msgid "Choose a Device"
+msgstr "Vyberte zařízení"
+
+#: ../src/ui.glade.h:19
+msgid "Choose a Font"
+msgstr "Vyberte písmo"
+
+#: ../src/ui.glade.h:20
+msgid "Connection:"
+msgstr "Spojení:"
+
+#: ../src/ui.glade.h:21
+msgid "Devices"
+msgstr "Zařízení"
+
+#: ../src/ui.glade.h:22
+msgid "Direction:"
+msgstr "Směr:"
+
+#: ../src/ui.glade.h:23
+msgid "Enter a folder residing on the disk to monitor"
+msgstr "Zadejte adresář umístěný na disku, který sledovat"
+
+#: ../src/ui.glade.h:24 ../src/monitor-impls.cpp:702
+msgid "Ethernet (first)"
+msgstr "Ethernet (první)"
+
+#: ../src/ui.glade.h:25 ../src/monitor-impls.cpp:704
+msgid "Ethernet (second)"
+msgstr "Ethernet (druhý)"
+
+#: ../src/ui.glade.h:26 ../src/monitor-impls.cpp:706
+msgid "Ethernet (third)"
+msgstr "Ethernet (třetí)"
+
+#: ../src/ui.glade.h:27
+msgid "Folder:"
+msgstr "Adresář:"
+
+#: ../src/ui.glade.h:28
+msgid "Hardware Monitor Preferences"
+msgstr "Nastavení sledování hardware"
+
+#: ../src/ui.glade.h:29
+msgid "Incoming data"
+msgstr "Příchozí data"
+
+#: ../src/ui.glade.h:30 ../src/monitor-impls.cpp:708
+msgid "Modem"
+msgstr "Modem"
+
+#: ../src/ui.glade.h:31
+msgid "Monitor all CPUs"
+msgstr "Sledovat všechny CPU"
+
+#: ../src/ui.glade.h:32
+msgid "Monitor devices using fluctuating flames"
+msgstr "Sledovat zařízení pomocí fluktujících plamenů"
+
+#: ../src/ui.glade.h:33
+msgid "Monitor devices using horizontal bars"
+msgstr "Sledovat zařízení pomocí vodorovných pruhů"
+
+#: ../src/ui.glade.h:34
+msgid "Monitor devices using line graphs"
+msgstr "Sledovat zařízení pomocí čárových grafů"
+
+#: ../src/ui.glade.h:35
+msgid "Monitor devices using solid columns"
+msgstr "Sledovat zařízení pomocí jednolitých sloupců"
+
+#: ../src/ui.glade.h:36
+msgid "Monitor devices using text descriptions"
+msgstr "Sledovat zařízení pomocí textových popisů"
+
+#: ../src/ui.glade.h:37
+msgid "Monitor devices using vertical bars"
+msgstr "Sledovat zařízení pomocí vertikálních pruhů"
+
+#: ../src/ui.glade.h:38
+msgid "Monitor only a single CPU"
+msgstr "Sledovat jen jednu CPU"
+
+#: ../src/ui.glade.h:39
+msgid "Network"
+msgstr "Síť"
+
+#: ../src/ui.glade.h:40
+msgid "No sensors detected"
+msgstr "Nedetekovány žádné senzory"
+
+#: ../src/ui.glade.h:41
+msgid "Only CPU:"
+msgstr "Jen CPU:"
+
+#: ../src/ui.glade.h:42
+msgid "Outgoing data"
+msgstr "Odchozí data"
+
+#: ../src/ui.glade.h:43
+msgid "Select the sensor to monitor"
+msgstr "Vyberte senzor, který sledovat"
+
+#: ../src/ui.glade.h:44
+msgid "Select whether to monitor incoming or outgoing data or both"
+msgstr "Vyberte, jestli sledovat příchozí nebo odchozí data nebo obojí"
+
+#: ../src/ui.glade.h:45 ../src/monitor-impls.cpp:710
+msgid "Serial link"
+msgstr "Sériová linka"
+
+#: ../src/ui.glade.h:46
+msgid "Show _free space instead of used"
+msgstr "Zobrazovat _volné místo místo používaného"
+
+#: ../src/ui.glade.h:47
+msgid "Storage"
+msgstr "Úložný prostor"
+
+#: ../src/ui.glade.h:48
+msgid "System"
+msgstr "Systém"
+
+#: ../src/ui.glade.h:49
+msgid "Temperature"
+msgstr "Teplota"
+
+#: ../src/ui.glade.h:50
+msgid "The amount of data sent through a network connection"
+msgstr "Objem dat poslaných síťovým spojením"
+
+#: ../src/ui.glade.h:51
+msgid "The amount of disk space used"
+msgstr "Objem použitého prostoru na disku"
+
+#: ../src/ui.glade.h:52
+msgid "The amount of disk-based memory used"
+msgstr "Objem použité paměti na disku"
+
+#: ../src/ui.glade.h:53
+msgid "The amount of memory used"
+msgstr "Objem použité paměti"
+
+#: ../src/ui.glade.h:54
+msgid "The percentage of time that is spent running foreground processes"
+msgstr "Procento času nestrávené prováděním procesů v popředí"
+
+#: ../src/ui.glade.h:55
+msgid "The speed of the fans"
+msgstr "Rychlost větráků"
+
+#: ../src/ui.glade.h:56
+msgid "The temperature of the inside of the system"
+msgstr "Teplota uvnitř systému"
+
+#: ../src/ui.glade.h:57
+msgid ""
+"Type of connection - Ethernet is the most common local area network adapter "
+"type"
+msgstr "Typ spojení - Ethernet je nejčastější typ adaptérů pro místní síť"
+
+#: ../src/ui.glade.h:58
+msgid "Use _panel background"
+msgstr "Použít pozadí _panelu"
+
+#: ../src/ui.glade.h:59
+msgid "Use _this color:"
+msgstr "Použít _tuto barvu:"
+
+#: ../src/ui.glade.h:60
+msgid "Use this f_ont:"
+msgstr "Použít toto pí_smo:"
+
+#: ../src/ui.glade.h:61
+msgid "Viewer"
+msgstr "Prohlížeč"
+
+#: ../src/ui.glade.h:62
+msgid "Which CPU no. to monitor"
+msgstr "Kterou CPU sledovat"
+
+#: ../src/ui.glade.h:63 ../src/monitor-impls.cpp:712
+msgid "Wireless"
+msgstr "Bezdrátové"
+
+#: ../src/ui.glade.h:64
+msgid "_Add"
+msgstr "_Přidat"
+
+#: ../src/ui.glade.h:65
+msgid "_Disk usage"
+msgstr "_Použití disku"
+
+#: ../src/ui.glade.h:66
+msgid "_Fan speed"
+msgstr "_Rychlost větráků"
+
+#: ../src/ui.glade.h:67
+msgid "_Flames"
+msgstr "_Plameny"
+
+#: ../src/ui.glade.h:68
+msgid "_Horizontal bars"
+msgstr "_Horizontální pruhy"
+
+#: ../src/ui.glade.h:69
+msgid "_Load average"
+msgstr "_Průměrná zátěž"
+
+#: ../src/ui.glade.h:70
+msgid "_Memory usage"
+msgstr "_Použití paměti"
+
+#: ../src/ui.glade.h:71
+msgid "_Monitored devices:"
+msgstr "_Sledovaná zařízení:"
+
+#: ../src/ui.glade.h:72
+msgid "_Network throughput"
+msgstr "_Propustnost sítě"
+
+#: ../src/ui.glade.h:73
+msgid "_Remove"
+msgstr "_Odstranit"
+
+#: ../src/ui.glade.h:74
+msgid "_Swap usage"
+msgstr "Použití _odkládacího prostoru"
+
+#: ../src/ui.glade.h:75
+msgid "_Temperature"
+msgstr "_Teplota"
+
+#: ../src/ui.glade.h:76
+msgid "_Text"
+msgstr "_Text"
+
+#: ../src/ui.glade.h:77
+msgid "_Vertical bars"
+msgstr "_Vertikální pruhy"
+
+#: ../src/helpers.cpp:34
+msgid "Fatal error"
+msgstr "Fatální chyba"
+
+#: ../src/monitor-impls.cpp:300
+msgid "%1%%"
+msgstr "%1%%"
+
+#: ../src/monitor-impls.cpp:306
+msgid "All processors"
+msgstr "Všechny procesory"
+
+#: ../src/monitor-impls.cpp:308
+msgid "Processor no. %1"
+msgstr "Procesor č. %1"
+
+#. must be short
+#: ../src/monitor-impls.cpp:315
+msgid "CPU"
+msgstr "CPU"
+
+#. note to translators: %1 is the cpu no, e.g. "CPU 1"
+#: ../src/monitor-impls.cpp:318
+msgid "CPU %1"
+msgstr "CPU %1"
+
+#: ../src/monitor-impls.cpp:366 ../src/monitor-impls.cpp:500
+msgid "%1 Mb"
+msgstr "%1 Mb"
+
+#: ../src/monitor-impls.cpp:371
+msgid "Disk-based memory"
+msgstr "Paměť na disku"
+
+#. must be short
+#: ../src/monitor-impls.cpp:377
+msgid "Swap"
+msgstr "Swap"
+
+#: ../src/monitor-impls.cpp:435
+msgid "Load average"
+msgstr "Průměrná zátěž"
+
+#. note to translators: short for "load average" - it has nothing to do with
+#. loading data
+#: ../src/monitor-impls.cpp:442
+msgid "Load"
+msgstr "Zátěž"
+
+#: ../src/monitor-impls.cpp:505
+msgid "Memory"
+msgstr "Paměť"
+
+#. short for memory
+#: ../src/monitor-impls.cpp:511
+msgid "Mem."
+msgstr "Pam."
+
+#: ../src/monitor-impls.cpp:566
+msgid "%1 GB"
+msgstr "%1 GB"
+
+#: ../src/monitor-impls.cpp:570
+msgid "%1 MB"
+msgstr "%1 MB"
+
+#: ../src/monitor-impls.cpp:574
+msgid "%1 kB"
+msgstr "%1 kB"
+
+#: ../src/monitor-impls.cpp:577
+msgid "%1 B"
+msgstr "%1 B"
+
+#: ../src/monitor-impls.cpp:582
+msgid "Disk (%1)"
+msgstr "Disk (%1)"
+
+#: ../src/monitor-impls.cpp:683
+msgid "%1 GB/s"
+msgstr "%1 GB/s"
+
+#: ../src/monitor-impls.cpp:687
+msgid "%1 MB/s"
+msgstr "%1 MB/s"
+
+#: ../src/monitor-impls.cpp:691
+msgid "%1 kB/s"
+msgstr "%1 kB/s"
+
+#: ../src/monitor-impls.cpp:694
+msgid "%1 B/s"
+msgstr "%1 B/s"
+
+#. %1 is the network connection, e.g. "Ethernet (first)", in signifies
+#. that this is incoming data
+#: ../src/monitor-impls.cpp:720 ../src/monitor-impls.cpp:750
+msgid "%1, in"
+msgstr "%1, dovnitř"
+
+#. %1 is the network connection, e.g. "Ethernet (first)", out signifies
+#. that this is outgoing data
+#: ../src/monitor-impls.cpp:724 ../src/monitor-impls.cpp:752
+msgid "%1, out"
+msgstr "%1, ven"
+
+#. short for an ethernet card
+#: ../src/monitor-impls.cpp:735
+msgid "Eth. %1"
+msgstr "Eth. %1"
+
+#. short for modem
+#: ../src/monitor-impls.cpp:738
+msgid "Mod."
+msgstr "Mod."
+
+#. short for serial link
+#: ../src/monitor-impls.cpp:741
+msgid "Ser."
+msgstr "Sér."
+
+#. short for wireless
+#: ../src/monitor-impls.cpp:744
+msgid "W.less."
+msgstr "Bezdr."
+
+#. %2 contains the degree sign (the following 'C' stands for Celsius)
+#: ../src/monitor-impls.cpp:962
+msgid "%1%2C"
+msgstr "%1%2C"
+
+#. %2 is a descriptive string from sensors.conf
+#: ../src/monitor-impls.cpp:969
+msgid "Temperature %1: \"%2\""
+msgstr "Teplota %1: \"%2\""
+
+#: ../src/monitor-impls.cpp:972
+msgid "Temperature %1"
+msgstr "Teplota %1"
+
+#. short for "temperature", %1 is sensor no.
+#: ../src/monitor-impls.cpp:978
+msgid "Temp. %1"
+msgstr "Tepl. %1"
+
+#. rpm is rotations per minute
+#: ../src/monitor-impls.cpp:1044
+msgid "%1 rpm"
+msgstr "%1 ot/m"
+
+#. %2 is a descriptive string from sensors.conf
+#: ../src/monitor-impls.cpp:1051
+msgid "Fan %1 speed: \"%2\""
+msgstr "Rychlost větráku %1: \"%2\""
+
+#: ../src/monitor-impls.cpp:1054
+msgid "Fan %1 speed"
+msgstr "Rychlost větráku %1"
+
+#: ../src/preferences-window.cpp:141
+msgid "Device"
+msgstr "Zařízení"

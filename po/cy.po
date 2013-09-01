@@ -1,0 +1,616 @@
+# Hardware Monitor yn Gymraeg.
+# This file is distributed under the same license as the hardware-monitor
+# package.
+# Steve Griff <steve@stevegriff.com>, 2004.
+# Dafydd Harries <daf@muse.19inch.net>, 2004.
+#
+# DAF! I've done all translations except line 78.
+# It's a meaty one and I didn't feel that I could translate it accurately
+# enough.
+#
+# Hmm, pretty tricky. I've translated it, but it's slightly iffy.
+# - daf
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: hardware-monitor\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-02-07 04:24+0100\n"
+"PO-Revision-Date: 2004-03-08 15:55+0100\n"
+"Last-Translator: Steve Griff <steve@stevegriff.com>\n"
+"Language-Team: Cymraeg <gnome-cy@pengwyn.linux.org.uk>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: HardwareMonitor.server.in.in.h:1 src/applet.cpp:592
+msgid "Hardware Monitor"
+msgstr "Arsylwydd Caledwedd"
+
+#: HardwareMonitor.server.in.in.h:2
+msgid "Monitor hardware devices"
+msgstr "Arsylwydd dyfeisiadau caledwedd"
+
+#: HardwareMonitor.server.in.in.h:3
+msgid "Utility"
+msgstr "Cyfleuster"
+
+#: src/applet.cpp:69
+msgid "Hardware Monitor: cannot load the icon '%1'.\n"
+msgstr "Arsylwydd Caledwedd: ni ellir llwytho'r eicon '%1'.\n"
+
+#. pop-up menu strings
+#: src/applet.cpp:106
+msgid "_Preferences..."
+msgstr "_Hoffiannau..."
+
+#: src/applet.cpp:106
+msgid "_Help"
+msgstr "_Cymorth"
+
+#: src/applet.cpp:106
+msgid "_About..."
+msgstr "_Ynghylch..."
+
+#. note to translators: %1 is the name of a monitor, e.g. "CPU 1", and %2 is
+#. the current measurement, e.g. "78%"
+#: src/applet.cpp:203
+msgid "%1: %2"
+msgstr "%1: %2"
+
+#. note to translators: this is used for composing a list of monitors; %1
+#. is the previous part of the list and %2 is the part to append
+#: src/applet.cpp:210
+msgid ""
+"%1\n"
+"%2"
+msgstr ""
+"%1\n"
+"%2"
+
+#. add documenters here
+#. note to translators: please fill in your names and email addresses
+#: src/applet.cpp:584
+msgid "translator-credits"
+msgstr "diolchiadau_cyfieithwyr"
+
+#: src/applet.cpp:587
+msgid ""
+"Monitor various hardware-related information, such as CPU usage, memory "
+"usage etc. Supports curve graphs, horizontal bar plots, column diagrams, "
+"textual monitoring and fluctuating flames."
+msgstr ""
+"Arsylwi gwahannol wybodaeth yn gysylltiedig â'r caledwedd, megis defnydd "
+"CPI, defnydd cof, a.y.y.b. Mae'n cefnogi graffiau cromlin, plotiau bar "
+"llorweddol, deiagramau colofn, arsylwi testun a fflamau."
+
+#. %1 is the copyright symbol
+#: src/applet.cpp:594
+msgid "Copyright %1 2003 Ole Laursen"
+msgstr "Hawlfraint %1 2003 Ole Laursen"
+
+#. %2 is a descriptive string from sensors.conf
+#: src/choose-monitor-window.cpp:113
+msgid "Sensor %1: \"%2\""
+msgstr "Synhwyrydd %1: \"%2\""
+
+#: src/choose-monitor-window.cpp:115
+msgid "Sensor %1"
+msgstr "Synhwyrydd %1"
+
+#. %2 is a descriptive string from sensors.conf
+#: src/choose-monitor-window.cpp:137
+msgid "Fan %1: \"%2\""
+msgstr "Gwyntyll %1: \"%2\""
+
+#: src/choose-monitor-window.cpp:139 src/monitor-impls.cpp:830
+msgid "Fan %1"
+msgstr "Gwyntyll %1"
+
+#: src/hardware-monitor.glade.h:1
+msgid "*"
+msgstr "*"
+
+#: src/hardware-monitor.glade.h:2
+msgid "/"
+msgstr "/"
+
+#: src/hardware-monitor.glade.h:3
+msgid "<b>Background</b>"
+msgstr "<b>Cefndir</b>"
+
+#: src/hardware-monitor.glade.h:4
+msgid "<b>Devices</b>"
+msgstr "<b>Dyfeisiadau</b>"
+
+#: src/hardware-monitor.glade.h:5
+msgid "<b>General</b>"
+msgstr "<b>Cyffredinol</b>"
+
+#: src/hardware-monitor.glade.h:6
+msgid "<b>Options</b>"
+msgstr "<b>Dewisiadau</b>"
+
+#: src/hardware-monitor.glade.h:7
+msgid "<b>Viewer</b>"
+msgstr "<b>Gwelydd</b>"
+
+#: src/hardware-monitor.glade.h:8
+msgid "A running average of the number of simultanous processes"
+msgstr "Cyfartaledd rhedeg o rhif o prosesau sy'n rhedeg ei gilydd"
+
+#: src/hardware-monitor.glade.h:9
+msgid "All CPUs"
+msgstr "Holl CPUs"
+
+#: src/hardware-monitor.glade.h:10
+msgid "All data"
+msgstr "Holl ddata"
+
+#: src/hardware-monitor.glade.h:11
+msgid "Amount of time between measurements (in seconds)"
+msgstr "Faint o amser rhwng unedau (yn eiliadau)"
+
+#: src/hardware-monitor.glade.h:13
+#, no-c-format
+msgid "CPU: 15.0%"
+msgstr "CPU: 15.0%"
+
+#: src/hardware-monitor.glade.h:14
+msgid "C_PU usage"
+msgstr "Defnydd C_PU"
+
+#: src/hardware-monitor.glade.h:15
+msgid "C_hange"
+msgstr "_Newid"
+
+#: src/hardware-monitor.glade.h:16
+msgid "C_olor:"
+msgstr "Llyw"
+
+#: src/hardware-monitor.glade.h:17
+msgid "C_olumns"
+msgstr "C_olofnau:"
+
+#: src/hardware-monitor.glade.h:18
+msgid "C_urves"
+msgstr "C_romlinau"
+
+#: src/hardware-monitor.glade.h:19
+msgid "Choose a Device"
+msgstr "Dewiswch Dyfais"
+
+#: src/hardware-monitor.glade.h:20
+msgid "Choose a Font"
+msgstr "Dewiswch Ffont"
+
+#: src/hardware-monitor.glade.h:21
+msgid "Co_lumns:"
+msgstr "Co_lofnau:"
+
+#: src/hardware-monitor.glade.h:22
+msgid "Color of the bar"
+msgstr "Lliw yr bar"
+
+#: src/hardware-monitor.glade.h:23
+msgid "Color of the curve"
+msgstr "Lliw yr cromlin"
+
+#: src/hardware-monitor.glade.h:24
+msgid "Color of the flame"
+msgstr "Lliw yr fflam"
+
+#: src/hardware-monitor.glade.h:25
+msgid "Connection:"
+msgstr "Cysylltiad:"
+
+#: src/hardware-monitor.glade.h:26
+msgid "Devices"
+msgstr "Dyfeisiau"
+
+#: src/hardware-monitor.glade.h:27
+msgid "Direction:"
+msgstr "Cyfeiriad:"
+
+#: src/hardware-monitor.glade.h:28
+msgid "Enter a folder residing on the disk to monitor"
+msgstr "Rhowch plygell sydd ar yr ddisg yw arsylwyddo"
+
+#: src/hardware-monitor.glade.h:29 src/monitor-impls.cpp:523
+msgid "Ethernet (first)"
+msgstr "Ethernet (cyntaf)"
+
+#: src/hardware-monitor.glade.h:30 src/monitor-impls.cpp:525
+msgid "Ethernet (second)"
+msgstr "Ethernet (ail)"
+
+#: src/hardware-monitor.glade.h:31 src/monitor-impls.cpp:527
+msgid "Ethernet (third)"
+msgstr "Ethernet (trydydd)"
+
+#: src/hardware-monitor.glade.h:32
+msgid "Folder:"
+msgstr "Plygell:"
+
+#: src/hardware-monitor.glade.h:33
+msgid "General"
+msgstr "Cyffredin"
+
+#: src/hardware-monitor.glade.h:34
+msgid "Hardware Monitor Preferences"
+msgstr "Hoffiannau Arsylwydd Caledwedd"
+
+#: src/hardware-monitor.glade.h:35
+msgid "Incoming data"
+msgstr "Data i mewn"
+
+#: src/hardware-monitor.glade.h:36 src/monitor-impls.cpp:529
+msgid "Modem"
+msgstr "Modem"
+
+#: src/hardware-monitor.glade.h:37
+msgid "Monitor all CPUs"
+msgstr "Arsylwydd pob CPUs"
+
+#: src/hardware-monitor.glade.h:38
+msgid "Monitor devices using fluctuating flames"
+msgstr "Arsylwydd dyfeisiau wrth defnyddio fflamiau symudol"
+
+#: src/hardware-monitor.glade.h:39
+msgid "Monitor devices using horizontal bars"
+msgstr "Arsylwydd dyfeisiau wrth defnyddio barrau llorweddol"
+
+#: src/hardware-monitor.glade.h:40
+msgid "Monitor devices using line graphs"
+msgstr "Arsylwydd dyfeisiau wrth defnyddio graffau llinell"
+
+#: src/hardware-monitor.glade.h:41
+msgid "Monitor devices using solid columns"
+msgstr "Arsylwydd dyfeisiau wrth defnyddio colofnau solet"
+
+#: src/hardware-monitor.glade.h:42
+msgid "Monitor devices using text descriptions"
+msgstr "Arsylwydd dyfeisiau wrth defnyddio disgrifiadau testun"
+
+#: src/hardware-monitor.glade.h:43
+msgid "Monitor only a single CPU"
+msgstr "Arsylwydd CPU unigol yn unig"
+
+#: src/hardware-monitor.glade.h:44
+msgid "Network"
+msgstr "Rwydwaith"
+
+#: src/hardware-monitor.glade.h:45
+msgid "No sensors detected"
+msgstr "Dim synwyryddion ei canfyddwyd"
+
+#: src/hardware-monitor.glade.h:46
+msgid "Number of columns to show simultanously"
+msgstr "Nifer o colofnau yw ddangos gyda'i gilydd"
+
+#: src/hardware-monitor.glade.h:47
+msgid "Number of measured points to show simultanously"
+msgstr "Nifer o pwyntiau cymedrol yw ddangos gyda'i gilydd"
+
+#: src/hardware-monitor.glade.h:48
+msgid "Only CPU:"
+msgstr "CPU yn unig:"
+
+#: src/hardware-monitor.glade.h:49
+msgid "Outgoing data"
+msgstr "Data yn gadael"
+
+#: src/hardware-monitor.glade.h:50
+msgid "Pick a Color"
+msgstr "Dewiswch liw"
+
+#: src/hardware-monitor.glade.h:51
+msgid "S_amples:"
+msgstr "S_ampliau"
+
+#: src/hardware-monitor.glade.h:52
+msgid "Select the sensor to monitor"
+msgstr "Dewiswch yr synhwyrydd i'w arsywi"
+
+#: src/hardware-monitor.glade.h:53
+msgid "Select whether to monitor incoming or outgoing data or both"
+msgstr "Dewiswch os rydych chi eisiau arsywi yr data gadael neu gyraedd neu y ddau"
+
+#: src/hardware-monitor.glade.h:54 src/monitor-impls.cpp:531
+msgid "Serial link"
+msgstr "Cyswllt cyfresol"
+
+#: src/hardware-monitor.glade.h:55
+msgid "Size of the applet in pixels"
+msgstr "Maint yr rhaglennig yn picseli"
+
+#: src/hardware-monitor.glade.h:56
+msgid "Storage"
+msgstr "Storfa"
+
+#: src/hardware-monitor.glade.h:57
+msgid "System"
+msgstr "Cysawd"
+
+#: src/hardware-monitor.glade.h:58
+msgid "Temperature"
+msgstr "Tymheredd"
+
+#: src/hardware-monitor.glade.h:59
+msgid "The amount of data sent through a network connection"
+msgstr "Faint o data sydd wedi cael ei anfonir trwyddo'r cysylltiad rhwydwaith"
+
+#: src/hardware-monitor.glade.h:60
+msgid "The amount of disk space used"
+msgstr "Faint o disg gofod a ddefnyddir"
+
+#: src/hardware-monitor.glade.h:61
+msgid "The amount of disk-based memory used"
+msgstr "Faint o cof disg eiliedig a ddefnyddir"
+
+#: src/hardware-monitor.glade.h:62
+msgid "The amount of memory used"
+msgstr "Faint o cof sydd wedi cael a ddefnyddir"
+
+#: src/hardware-monitor.glade.h:63
+msgid "The percentage of time that is spent running foreground processes"
+msgstr "Canran o amser sy'n cael ei dylid yn rhedeg yr prosesau blaendir"
+
+#: src/hardware-monitor.glade.h:64
+msgid "The speed of the fans"
+msgstr "Gyflymder yr gwyntylliau"
+
+#: src/hardware-monitor.glade.h:65
+msgid "The temperature of the inside of the system"
+msgstr "Yr tymheredd tu fewn yr cysawd"
+
+#: src/hardware-monitor.glade.h:66
+msgid "Thickness of the curve (in pixels)"
+msgstr "Trwch yr cromlin (yn picseli)"
+
+#: src/hardware-monitor.glade.h:67
+msgid ""
+"Type of connection - Ethernet is the most common local area network adapter "
+"type"
+msgstr "Math o cysylltiad - Ethernet yw'r addasydd rhwydwaith leol mwyaf cyffredin "
+"math"
+
+#: src/hardware-monitor.glade.h:68
+msgid "Use _panel background"
+msgstr "Defyddiwch cefndir _panel"
+
+#: src/hardware-monitor.glade.h:69
+msgid "Use _this color:"
+msgstr "Defnyddiwch lliw _yma:"
+
+#: src/hardware-monitor.glade.h:70
+msgid "Use this f_ont:"
+msgstr "Defnyddiwch _ffont yma:"
+
+#: src/hardware-monitor.glade.h:71
+msgid "Viewer"
+msgstr "Gwelydd"
+
+#: src/hardware-monitor.glade.h:72
+msgid "Which CPU no. to monitor"
+msgstr "Pwy rhif CPU i'w arsylwi"
+
+#: src/hardware-monitor.glade.h:73
+msgid "_Add"
+msgstr "_Ychwanegu"
+
+#: src/hardware-monitor.glade.h:74
+msgid "_Bars"
+msgstr "_Bariau"
+
+#: src/hardware-monitor.glade.h:75
+msgid "_Disk usage"
+msgstr "_Defnydd ddisg"
+
+#: src/hardware-monitor.glade.h:76
+msgid "_Fan speed"
+msgstr "Cyflymder _swyntyll"
+
+#: src/hardware-monitor.glade.h:77
+msgid "_Flames"
+msgstr "_Fflamau"
+
+#: src/hardware-monitor.glade.h:78
+msgid "_Line width:"
+msgstr "Lled _llinell"
+
+#: src/hardware-monitor.glade.h:79
+msgid "_Load average"
+msgstr "Cyfartaledd _llwyth"
+
+#: src/hardware-monitor.glade.h:80
+msgid "_Memory usage"
+msgstr "Defnydd _cof"
+
+#: src/hardware-monitor.glade.h:81
+msgid "_Monitored devices:"
+msgstr "Dyfeisiadau arsylwedig:"
+
+#: src/hardware-monitor.glade.h:82
+msgid "_Network throughput"
+msgstr "Dyfais _Rwydwaith"
+
+#: src/hardware-monitor.glade.h:83
+msgid "_Remove"
+msgstr "_Gwaredu"
+
+#: src/hardware-monitor.glade.h:84
+msgid "_Size:"
+msgstr "_Maint:"
+
+#: src/hardware-monitor.glade.h:85
+msgid "_Swap usage"
+msgstr "_Defnydd cyfnewidfa"
+
+#: src/hardware-monitor.glade.h:86
+msgid "_Temperature"
+msgstr "_Tymheredd"
+
+#: src/hardware-monitor.glade.h:87
+msgid "_Text"
+msgstr "_Testun"
+
+#: src/hardware-monitor.glade.h:88
+msgid "_Update interval:"
+msgstr "Cyfnod diweddaru:"
+
+#: src/helpers.cpp:34
+msgid "Fatal error"
+msgstr "Gwall angheuol"
+
+#: src/monitor-impls.cpp:168
+msgid "%1%%"
+msgstr "%1%%"
+
+#: src/monitor-impls.cpp:174
+msgid "All processors"
+msgstr "Pob Prosesydd"
+
+#: src/monitor-impls.cpp:176
+msgid "Processor no. %1"
+msgstr "Prosesydd na. %1"
+
+#. must be short
+#: src/monitor-impls.cpp:183
+msgid "CPU"
+msgstr "CPU"
+
+#. note to translators: %1 is the cpu no, e.g. "CPU 1"
+#: src/monitor-impls.cpp:186
+msgid "CPU %1"
+msgstr "CPU %1"
+
+#: src/monitor-impls.cpp:229 src/monitor-impls.cpp:342
+#: src/monitor-impls.cpp:409
+msgid "%1 Mb"
+msgstr "%1 Mb"
+
+#: src/monitor-impls.cpp:234
+msgid "Disk-based memory"
+msgstr "Seiliwyd Cof Disg"
+
+#. must be short
+#: src/monitor-impls.cpp:240
+msgid "Swap"
+msgstr "Cyfnewidfa"
+
+#: src/monitor-impls.cpp:293
+msgid "Load average"
+msgstr "Cyfartaledd llwyth"
+
+#. note to translators: short for "load average" - it has nothing to do with
+#. loading data
+#: src/monitor-impls.cpp:300
+msgid "Load"
+msgstr "Llwyth"
+
+#: src/monitor-impls.cpp:347
+msgid "Memory"
+msgstr "Cof"
+
+#. short for memory
+#: src/monitor-impls.cpp:353
+msgid "Mem."
+msgstr "Cof"
+
+#: src/monitor-impls.cpp:405
+msgid "%1 Gb"
+msgstr "%1 Gb"
+
+#: src/monitor-impls.cpp:413
+msgid "%1 kb"
+msgstr "%1 kb"
+
+#: src/monitor-impls.cpp:416
+msgid "%1 b"
+msgstr "%1 b"
+
+#: src/monitor-impls.cpp:421
+msgid "Disk (%1)"
+msgstr "Disg (%1)"
+
+#: src/monitor-impls.cpp:504
+msgid "%1 Gb/s"
+msgstr "%1 Gb/e"
+
+#: src/monitor-impls.cpp:508
+msgid "%1 Mb/s"
+msgstr "%1 Mb/e"
+
+#: src/monitor-impls.cpp:512
+msgid "%1 kb/s"
+msgstr "%1 kb/e"
+
+#: src/monitor-impls.cpp:515
+msgid "%1 b/s"
+msgstr "%1 b/e"
+
+#. %1 is the network connection, e.g. "Ethernet (first)", in signifies
+#. that this is incoming data
+#: src/monitor-impls.cpp:539 src/monitor-impls.cpp:566
+msgid "%1, in"
+msgstr "%1, newn"
+
+#. %1 is the network connection, e.g. "Ethernet (first)", out signifies
+#. that this is outgoing data
+#: src/monitor-impls.cpp:543 src/monitor-impls.cpp:568
+msgid "%1, out"
+msgstr "%1, allan"
+
+#. short for an ethernet card
+#: src/monitor-impls.cpp:554
+msgid "Eth. %1"
+msgstr "Eth. %1"
+
+#. short for modem
+#: src/monitor-impls.cpp:557
+msgid "Mod."
+msgstr "Mod."
+
+#. short for serial link
+#: src/monitor-impls.cpp:560
+msgid "Ser."
+msgstr "Cyf."
+
+#. %2 contains the degree sign (the following 'C' stands for Celsius)
+#: src/monitor-impls.cpp:751
+#, c-format
+msgid "%1%2C"
+msgstr "%1%C"
+
+#. %2 is a descriptive string from sensors.conf
+#: src/monitor-impls.cpp:758
+msgid "Temperature %1: \"%2\""
+msgstr "Tymheredd %1: \"%2\""
+
+#: src/monitor-impls.cpp:761
+msgid "Temperature %1"
+msgstr "Tymheredd %1"
+
+#. short for "temperature", %1 is sensor no.
+#: src/monitor-impls.cpp:767
+msgid "Temp. %1"
+msgstr "Tym. %1"
+
+#. rpm is rotations per minute
+#: src/monitor-impls.cpp:815
+msgid "%1 rpm"
+msgstr "%1 rpm"
+
+#. %2 is a descriptive string from sensors.conf
+#: src/monitor-impls.cpp:822
+msgid "Fan %1 speed: \"%2\""
+msgstr "Cyflymder gwyntyll %1: \"%2\""
+
+#: src/monitor-impls.cpp:825
+msgid "Fan %1 speed"
+msgstr "Cyflymder gwyntyll %1"
+
+#: src/preferences-window.cpp:175
+msgid "Device"
+msgstr "Dyfais"
