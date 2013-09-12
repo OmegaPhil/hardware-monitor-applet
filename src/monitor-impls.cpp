@@ -52,124 +52,110 @@ double const max_decay = 0.999;
 //
 
 std::list<Monitor *>
-load_monitors(const Glib::RefPtr<Gnome::Conf::Client> &client,
-	      const Glib::ustring &dir)
+load_monitors(const XfceRc* const settings)
 {
   std::list<Monitor *> monitors;
-  
-  Glib::SListHandle<Glib::ustring> gconf_list
-    = client->all_dirs(dir + "/monitors");
 
-  for (Glib::SListHandle<Glib::ustring>::const_iterator i = gconf_list.begin(),
-	 end = gconf_list.end(); i != end; ++i) {
-    const Glib::ustring &mon_dir = *i;
-    
-    Glib::ustring type = client->get_string(mon_dir + "/type");
-    
-    if (type == "cpu_usage") {
-      Gnome::Conf::Value v = client->get(mon_dir + "/cpu_no");
-      int cpu_no;
-      
-      if (v.get_type() == Gnome::Conf::VALUE_INT)
-	cpu_no = v.get_int();
-      else
-	cpu_no = -1;
+  // Checking if settings currently exist
+  if (settings)
+  {
+    // They do - fetching list of monitors
+    gchar** settings_monitors = xfce_rc_get_groups(settings);
 
-      if (cpu_no == -1)
-	monitors.push_back(new CpuUsageMonitor);
-      else
-	monitors.push_back(new CpuUsageMonitor(cpu_no));
-    }
-    else if (type == "memory_usage")
-      monitors.push_back(new MemoryUsageMonitor);
-    else if (type == "swap_usage")
-      monitors.push_back(new SwapUsageMonitor);
-    else if (type == "load_average")
-      monitors.push_back(new LoadAverageMonitor);
-    else if (type == "disk_usage") {
-      Gnome::Conf::Value v = client->get(mon_dir + "/mount_dir");
-      Glib::ustring mount_dir;
+    // They do - looping for all monitors
+    for (gchar** settings_monitor = settings_monitors; *settings_monitor;
+      ++settings_monitors)
+    {
+      // Setting the correct group prior to loading settings
+      xfce_rc_set_group(settings, settings_monitor);
       
-      if (v.get_type() == Gnome::Conf::VALUE_STRING)
-	mount_dir = v.get_string();
-      else
-	mount_dir = "/";	// FIXME: use schema?
+      // Obtaining monitor type
+      Glib::ustring type = xfce_rc_read_entry(settings, "type", "");
+      
+      if (type == "cpu_usage")
+      {
+        // Obtaining cpu_no
+        int cpu_no = xfce_rc_read_int_entry(settings, cpu_no, -1);
 
-      v = client->get(mon_dir + "/show_free");
-      bool show_free;
+        // Creating CPU usage monitor with provided number if valid
+        if (cpu_no == -1)
+          monitors.push_back(new CpuUsageMonitor);
+        else
+          monitors.push_back(new CpuUsageMonitor(cpu_no));
+      }
+      else if (type == "memory_usage")
+        monitors.push_back(new MemoryUsageMonitor);
+      else if (type == "swap_usage")
+        monitors.push_back(new SwapUsageMonitor);
+      else if (type == "load_average")
+        monitors.push_back(new LoadAverageMonitor);
+      else if (type == "disk_usage")
+      {
+        // Obtaining volume mount directory
+        Glib::ustring mount_dir = xfce_rc_read_entry(settings,
+          "mount_dir", "/");
 
-      if (v.get_type() == Gnome::Conf::VALUE_BOOL)
-	show_free = v.get_bool();
-      else
-	show_free = false;	// FIXME: use schema?
-      
-      monitors.push_back(new DiskUsageMonitor(mount_dir, show_free));
-    }
-    else if (type == "network_load") {
-      Glib::ustring inter;
-      int inter_no, inter_direction;
-      
-      Gnome::Conf::Value v = client->get(mon_dir + "/interface");
-      
-      if (v.get_type() == Gnome::Conf::VALUE_STRING)
-	inter = v.get_string();
-      else
-	inter = "eth";	// FIXME: use schema?
+        // Obtaining whether to show free space or not
+        bool show_free = xfce_rc_read_bool_entry(settings, "show_free",
+          false);
 
-      
-      v = client->get(mon_dir + "/interface_no");
-      
-      if (v.get_type() == Gnome::Conf::VALUE_INT)
-	inter_no = v.get_int();
-      else
-	inter_no = 0;	// FIXME: use schema?
+        // Creating disk usage monitor
+        monitors.push_back(new DiskUsageMonitor(mount_dir, show_free));
+      }
+      else if (type == "network_load")
+      {
+        // Fetching interface type
+        Glib::ustring inter = xfce_rc_read_entry(settings, "interface",
+          "eth");
 
-      
-      v = client->get(mon_dir + "/interface_direction");
-      
-      if (v.get_type() == Gnome::Conf::VALUE_INT)
-	inter_direction = v.get_int();
-      else
-	inter_direction = NetworkLoadMonitor::all_data; // FIXME: use schema?
+        // Fetching interface number
+        int inter_no = xfce_rc_read_int_entry(settings, "interface_no",
+          0);
+        
+        // Fetching interface 'direction' setting
+        int inter_direction = xfce_rc_read_int_entry(settings,
+          "interface_direction", NetworkLoadMonitor::all_data);
 
-      NetworkLoadMonitor::Direction dir;
-      
-      if (inter_direction == NetworkLoadMonitor::incoming_data)
-	dir = NetworkLoadMonitor::incoming_data;
-      else if (inter_direction == NetworkLoadMonitor::outgoing_data)
-	dir = NetworkLoadMonitor::outgoing_data;
-      else
-	dir = NetworkLoadMonitor::all_data;
+        // Converting direction setting into dedicated type
+        NetworkLoadMonitor::Direction dir;
+        
+        if (inter_direction == NetworkLoadMonitor::incoming_data)
+          dir = NetworkLoadMonitor::incoming_data;
+        else if (inter_direction == NetworkLoadMonitor::outgoing_data)
+          dir = NetworkLoadMonitor::outgoing_data;
+        else
+          dir = NetworkLoadMonitor::all_data;
 
-      monitors.push_back(new NetworkLoadMonitor(inter, inter_no, dir));
-    }
-    else if (type == "temperature") {
-      Gnome::Conf::Value v = client->get(mon_dir + "/temperature_no");
-      int temperature_no;
-      
-      if (v.get_type() == Gnome::Conf::VALUE_INT)
-	temperature_no = v.get_int();
-      else
-	temperature_no = 0;	// FIXME: use schema?
-      
-      monitors.push_back(new TemperatureMonitor(temperature_no));
-    }
-    else if (type == "fan_speed") {
-      Gnome::Conf::Value v = client->get(mon_dir + "/fan_no");
-      int fan_no;
-      
-      if (v.get_type() == Gnome::Conf::VALUE_INT)
-	fan_no = v.get_int();
-      else
-	fan_no = 0;	// FIXME: use schema?
-      
-      monitors.push_back(new FanSpeedMonitor(fan_no));
+        // Creating network load monitor
+        monitors.push_back(new NetworkLoadMonitor(inter, inter_no, dir));
+      }
+      else if (type == "temperature")
+      {
+        // Fetching temperature number
+        int temperature_no = xfce_rc_read_int_entry(settings,
+          "temperature_no", 0);
+
+        // Creating temperature monitor
+        monitors.push_back(new TemperatureMonitor(temperature_no));
+      }
+      else if (type == "fan_speed")
+      {
+        // Fetching fan number
+        int fan_no = xfce_rc_read_int_entry(settings, "fan_no", 0);
+        
+        // Creating fan monitor
+        monitors.push_back(new FanSpeedMonitor(fan_no));
+      }
+
+      // Saving the monitor's settings root
+      monitors.back()->set_settings_dir(settings_monitor);
     }
 
-    monitors.back()->set_gconf_dir(mon_dir);
+    // Clearing up
+    g_strfreev(settings_monitors);
   }
 
-  // always start with a CpuUsageMonitor - FIXME: use schema?
+  // Always start with a CpuUsageMonitor - FIXME: use schema?
   if (monitors.empty())
     monitors.push_back(new CpuUsageMonitor);
 
@@ -319,11 +305,15 @@ int CpuUsageMonitor::update_interval()
   return 1000;
 }
 
-void CpuUsageMonitor::save(const Glib::RefPtr<Gnome::Conf::Client> &client)
+void CpuUsageMonitor::save(XfceRc *settings)
 {
-  Glib::ustring dir = get_gconf_dir();
-  client->set(dir + "/type", Glib::ustring("cpu_usage"));
-  client->set(dir + "/cpu_no", cpu_no);
+  // Fetching assigned settings group
+  Glib::ustring dir = get_settings_dir();
+
+  // Saving settings
+  xfce_rc_set_group(settings, dir.c_str());
+  xfce_rc_write_entry(settings, "type", "cpu_usage");
+  xfce_rc_write_int_entry(settings, "cpu_no", cpu_no);
 }
 
 
@@ -378,10 +368,14 @@ int SwapUsageMonitor::update_interval()
   return 10 * 1000;
 }
 
-void SwapUsageMonitor::save(const Glib::RefPtr<Gnome::Conf::Client> &client)
+void SwapUsageMonitor::save(XfceRc *settings)
 {
-  Glib::ustring dir = get_gconf_dir();
-  client->set(dir + "/type", Glib::ustring("swap_usage"));
+  // Fetching assigned settings group
+  Glib::ustring dir = get_settings_dir();
+
+  // Saving settings
+  xfce_rc_set_group(settings, dir.c_str());
+  xfce_rc_write_entry(settings, "type", "swap_usage");
 }
 
 
@@ -443,20 +437,40 @@ int LoadAverageMonitor::update_interval()
   return 30 * 1000;
 }
 
-void LoadAverageMonitor::save(const Glib::RefPtr<Gnome::Conf::Client> &client)
+void LoadAverageMonitor::save(XfceRc *settings)
 {
-  Glib::ustring dir = get_gconf_dir();
-  client->set(dir + "/type", Glib::ustring("load_average"));
-  client->set(dir + "/max", max_value);
+  // Fetching assigned settings group
+  Glib::ustring dir = get_settings_dir();
+
+  // Saving settings
+  xfce_rc_set_group(settings, dir.c_str());
+  xfce_rc_write_entry(settings, "type", "load_average");
+
+  // No support for floats - stringifying
+  Glib::ustring setting = String::ucompose("%1", max_value);
+  xfce_rc_write_entry(settings, "max", setting.c_str());
 }
 
-void LoadAverageMonitor::load(const Glib::RefPtr<Gnome::Conf::Client> &client)
+void LoadAverageMonitor::load(XfceRc *settings)
 {
-  Glib::ustring dir = get_gconf_dir();
-  if (client->get_string(dir + "/type") == "load_average") {
-    Gnome::Conf::Value v = client->get(dir + "/max");
-    if (v.get_type() == Gnome::Conf::VALUE_FLOAT)
-      max_value = v.get_float();
+  // Fetching assigned settings group
+  Glib::ustring dir = get_settings_dir();
+
+  // Loading settings
+  xfce_rc_set_group(settings, dir.c_str());
+  if (xfce_rc_read_entry(settings, "type", "") == "load_average")
+  {
+    /* No support for floats - unstringifying, making sure the data is
+     * not corrupt */
+    Glib::ustring setting = xfce_rc_read_entry(settings, "max", "5");
+    if (dynamic_cast<float>(setting))
+      max_value = static_cast<float>(setting)
+    else
+    {
+      std::cerr << String::ucompose(_("Unable to configure max load "
+        "average for monitor %1 - cant cast '%2' to float!\n"),
+        dir, setting);
+    }
   }
 }
 
@@ -512,10 +526,14 @@ int MemoryUsageMonitor::update_interval()
   return 10 * 1000;
 }
 
-void MemoryUsageMonitor::save(const Glib::RefPtr<Gnome::Conf::Client> &client)
+void MemoryUsageMonitor::save(XfceRc *settings)
 {
-  Glib::ustring dir = get_gconf_dir();
-  client->set(dir + "/type", Glib::ustring("memory_usage"));
+  // Fetching assigned settings group
+  Glib::ustring dir = get_settings_dir();
+
+  // Saving settings
+  xfce_rc_set_group(settings, dir.c_str());
+  xfce_rc_write_entry(settings, "type", "memory_usage");
 }
 
 
@@ -589,12 +607,16 @@ int DiskUsageMonitor::update_interval()
   return 60 * 1000;
 }
 
-void DiskUsageMonitor::save(const Glib::RefPtr<Gnome::Conf::Client> &client)
+void DiskUsageMonitor::save(XfceRc *settings)
 {
-  Glib::ustring dir = get_gconf_dir();
-  client->set(dir + "/type", Glib::ustring("disk_usage"));
-  client->set(dir + "/mount_dir", mount_dir);
-  client->set(dir + "/show_free", show_free);
+  // Fetching assigned settings group
+  Glib::ustring dir = get_settings_dir();
+
+  // Saving settings
+  xfce_rc_set_group(settings, dir.c_str());
+  xfce_rc_write_entry(settings, "type", "disk_usage");
+  xfce_rc_write_entry(settings, "mount_dir", mount_dir.c_str());
+  xfce_rc_write_bool_entry(settings, "show_free", show_free);
 }
 
 
@@ -707,7 +729,7 @@ Glib::ustring NetworkLoadMonitor::get_name()
   else if (interface == "wlan" && interface_no == 0)
     str = _("Wireless");
   else
-    // unknown, someone must have been fiddling with GConf
+    // unknown, someone must have been fiddling with the config file
     str = String::ucompose("%1%2", interface, interface_no);
 
   if (direction == incoming_data)
@@ -739,7 +761,7 @@ Glib::ustring NetworkLoadMonitor::get_short_name()
     // short for wireless
     str = _("W.less.");
   else
-    // unknown, someone must have been fiddling with GConf
+    // unknown, someone must have been fiddling with the config file
     str = String::ucompose("%1%2", interface, interface_no);
 
   if (direction == incoming_data)
@@ -755,26 +777,36 @@ int NetworkLoadMonitor::update_interval()
   return 1000;
 }
 
-void NetworkLoadMonitor::save(const Glib::RefPtr<Gnome::Conf::Client> &client)
+void NetworkLoadMonitor::save(XfceRc *settings)
 {
-  Glib::ustring dir = get_gconf_dir();
-  client->set(dir + "/type", Glib::ustring("network_load"));
-  client->set(dir + "/interface", interface);
-  client->set(dir + "/interface_no", interface_no);
-  client->set(dir + "/interface_direction", int(direction));
-  client->set(dir + "/max", int(max_value)); // hopefully 32 bits is enough
+  // Fetching assigned settings group
+  Glib::ustring dir = get_settings_dir();
+
+  // Saving settings
+  xfce_rc_set_group(settings, dir.c_str());
+  xfce_rc_write_entry(settings, "type", "network_load");
+  xfce_rc_write_entry(settings, "interface", interface);
+  xfce_rc_write_int_entry(settings, "interface_no", interface_no);
+  xfce_rc_write_int_entry(settings, "interface_direction",
+    int(direction));
+  xfce_rc_write_int_entry(settings, "max", int(max_value));
 }
 
-void NetworkLoadMonitor::load(const Glib::RefPtr<Gnome::Conf::Client> &client)
+void NetworkLoadMonitor::load(XfceRc *settings)
 {
-  Glib::ustring dir = get_gconf_dir();
-  if (client->get_string(dir + "/type") == "network_load"
-      && client->get_string(dir + "/interface") == interface
-      && client->get_int(dir + "/interface_no") == interface_no
-      && client->get_int(dir + "/interface_direction") == int(direction)) {
-    Gnome::Conf::Value v = client->get(dir + "/max");
-    if (v.get_type() == Gnome::Conf::VALUE_INT)
-      max_value = v.get_int();
+  // Fetching assigned settings group
+  Glib::ustring dir = get_settings_dir();
+
+  /* Loading settings - ensuring the settings are for the particular
+   * network monitor?? */
+  xfce_rc_set_group(settings, dir.c_str());
+  if (xfce_rc_read_entry(settings, "type", "") == "network_load"
+    && xfce_rc_read_entry(settings, "interface", "") == interface
+    && xfce_rc_read_int_entry(settings, "interface_no", 0) == interface
+    && xfce_rc_read_int_entry(settings, "interface_direction",
+      incoming_data) s== interface)
+  {
+    max_value = xfce_rc_read_int_entry(settings, "max", 0);
   }
 }
 
@@ -973,22 +1005,43 @@ int TemperatureMonitor::update_interval()
   return 20 * 1000;
 }
 
-void TemperatureMonitor::save(const Glib::RefPtr<Gnome::Conf::Client> &client)
+void TemperatureMonitor::save(XfceRc *settings)
 {
-  Glib::ustring dir = get_gconf_dir();
-  client->set(dir + "/type", Glib::ustring("temperature"));
-  client->set(dir + "/temperature_no", sensors_no);
-  client->set(dir + "/max", max_value);
+  // Fetching assigned settings group
+  Glib::ustring dir = get_settings_dir();
+
+  // Saving settings
+  xfce_rc_set_group(settings, dir.c_str());
+  xfce_rc_write_entry(settings, "type", "temperature");
+  xfce_rc_write_int_entry(settings, "temperature_no", sensors_no);
+
+  // No support for floats - stringifying
+  Glib::ustring setting = String::ucompose("%1", max_value);
+  xfce_rc_write_entry(settings, "max", setting.c_str());
 }
 
-void TemperatureMonitor::load(const Glib::RefPtr<Gnome::Conf::Client> &client)
+void TemperatureMonitor::load(XfceRc *settings)
 {
-  Glib::ustring dir = get_gconf_dir();
-  if (client->get_string(dir + "/type") == "temperature"
-      && client->get_int(dir + "/temperature_no") == sensors_no) {
-    Gnome::Conf::Value v = client->get(dir + "/max");
-    if (v.get_type() == Gnome::Conf::VALUE_FLOAT)
-      max_value = v.get_float();
+  // Fetching assigned settings group
+  Glib::ustring dir = get_settings_dir();
+
+  // Loading settings, making sure the right sensor is loaded
+  xfce_rc_set_group(settings, dir.c_str());
+  if (xfce_rc_read_entry(settings, "type", "") == "temperature"
+    && xfce_rc_read_int_entry(settings, "temperature_no", 0) ==
+      sensors_no)
+  {
+    /* No support for floats - unstringifying, making sure the data is
+     * not corrupt */
+    Glib::ustring setting = xfce_rc_read_entry(settings, "max", "40");
+    if (dynamic_cast<float>(setting))
+      max_value = static_cast<float>(setting)
+    else
+    {
+      std::cerr << String::ucompose(_("Unable to configure max "
+        "temperature for monitor %1 - cant cast '%2' to float!\n"),
+        dir, setting);
+    }
   }
 }
 
@@ -1054,21 +1107,42 @@ int FanSpeedMonitor::update_interval()
   return 20 * 1000;
 }
 
-void FanSpeedMonitor::save(const Glib::RefPtr<Gnome::Conf::Client> &client)
+void FanSpeedMonitor::save(XfceRc *settings)
 {
-  Glib::ustring dir = get_gconf_dir();
-  client->set(dir + "/type", Glib::ustring("fan_speed"));
-  client->set(dir + "/fan_no", sensors_no);
-  client->set(dir + "/max", max_value);
+    // Fetching assigned settings group
+  Glib::ustring dir = get_settings_dir();
+
+  // Saving settings
+  xfce_rc_set_group(settings, dir.c_str());
+  xfce_rc_write_entry(settings, "type", "fan_speed");
+  xfce_rc_write_int_entry(settings, "fan_no", sensors_no);
+
+  // No support for floats - stringifying
+  Glib::ustring setting = String::ucompose("%1", max_value);
+  xfce_rc_write_entry(settings, "max", setting.c_str());
 }
 
-void FanSpeedMonitor::load(const Glib::RefPtr<Gnome::Conf::Client> &client)
+void FanSpeedMonitor::load(XfceRc *settings)
 {
-  Glib::ustring dir = get_gconf_dir();
-  if (client->get_string(dir + "/type") == "fan_speed"
-      && client->get_int(dir + "/fan_no") == sensors_no) {
-    Gnome::Conf::Value v = client->get(dir + "/max");
-    if (v.get_type() == Gnome::Conf::VALUE_FLOAT)
-      max_value = v.get_float();
+  // Fetching assigned settings group
+  Glib::ustring dir = get_settings_dir();
+
+  // Loading settings, making sure the right fan is loaded
+  xfce_rc_set_group(settings, dir.c_str());
+  if (xfce_rc_read_entry(settings, "type", "") == "fan_speed"
+    && xfce_rc_read_int_entry(settings, "fan_no", 0) ==
+      sensors_no)
+  {
+    /* No support for floats - unstringifying, making sure the data is
+     * not corrupt */
+    Glib::ustring setting = xfce_rc_read_entry(settings, "max", "1");
+    if (dynamic_cast<float>(setting))
+      max_value = static_cast<float>(setting)
+    else
+    {
+      std::cerr << String::ucompose(_("Unable to configure max fan RPM "
+        "for monitor %1 - cant cast '%2' to float!\n"),
+        dir, setting);
+    }
   }
 }

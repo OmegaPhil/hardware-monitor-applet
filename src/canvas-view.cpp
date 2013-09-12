@@ -21,7 +21,6 @@
 #include <config.h>
 
 #include <libgnomecanvasmm/pixbuf.h>
-#include <gconfmm/client.h>
 
 #include "canvas-view.hpp"
 #include "applet.hpp"
@@ -55,19 +54,66 @@ void CanvasView::do_display()
 
 void CanvasView::do_update()
 {
-  // first update the configured attributes
-  Glib::RefPtr<Gnome::Conf::Client> &client = applet->get_gconf_client();
-  Glib::ustring dir = applet->get_gconf_dir();
+  /* Obtaining size
+   * Keeping with the default settings group for viewer settings
+   * Search for settings file */
+  gchar* file = xfce_panel_plugin_lookup_rc_file(applet->panel_applet);
 
-  // FIXME: use schemas?
-  if (client->get(dir + "/viewer/size").get_type() == Gnome::Conf::VALUE_INT)
-    size = client->get_int(dir + "/viewer/size");
-  else {
-    size = 60;
-    client->set(dir + "/viewer/size", size);
+  if (file)
+  {
+    // One exists - loading readonly settings
+    settings = xfce_rc_simple_open(file, true);
+    g_free(file);
+
+    // Loading size
+    bool size_missing = false;
+    int size = 60;
+    if (xfce_rc_has_entry(settings, "viewer_size")
+    {
+      size = xfce_rc_read_int_entry(settings, "viewer_size", 60);
+    }
+    else
+      size_missing = true;
+
+    // Close settings file
+    xfce_rc_close(settings);
+
+    /* Viewer size not recorded - setting default then updating config. XFCE4
+     * configuration is done in read and write stages, so this needs to
+     * be separated */
+    if (size_missing)
+    {
+      // Search for a writeable settings file, create one if it doesnt exist
+      file = xfce_panel_plugin_save_location(applet->panel_applet, true);
+	
+      if (file)
+      {
+        // Opening setting file
+        settings = xfce_rc_simple_open(file, false);
+        g_free(file);
+
+        // Saving viewer size
+        xfce_write_int_entry(settings, "viewer_size", size);
+        
+        // Close settings file
+        xfce_rc_close(settings);
+      }
+      else
+      {
+        // Unable to obtain writeable config file - informing user
+        std::cerr << _("Unable to obtain writeable config file path in "
+          "order to update viewer size in CanvasView::do_update call!\n");
+      }
+    }
+  }
+  else
+  {
+    // Unable to obtain read only config file - informing user
+    std::cerr << _("Unable to obtain read-only config file path in order"
+      " to load viewer size in CanvasView::do_update call!\n");
   }
 
-  // ensure the canvas is shown
+  // Ensure the canvas is shown
   resize_canvas();
 }
 

@@ -23,7 +23,6 @@
 #include <vector>
 
 #include <libgnomecanvasmm/pixbuf.h>
-#include <gconfmm/client.h>
 
 #include "pixbuf-drawing.hpp"
 
@@ -67,67 +66,119 @@ Flame::Flame(Monitor *m)
 void Flame::update(Gnome::Canvas::Canvas &canvas,
 		   Applet *applet, int width, int height, int no, int total)
 {
-  Glib::RefPtr<Gnome::Conf::Client> &client = applet->get_gconf_client();
-    
-  // get color
-  
+  // Get color
   unsigned int color;
 
-  Gnome::Conf::Value v;
-  
-  v = client->get(monitor->get_gconf_dir() + "/color");
-  if (v.get_type() == Gnome::Conf::VALUE_INT)
-    color = v.get_int();
-  else {
-    color = applet->get_fg_color();
-    client->set(monitor->get_gconf_dir() + "/color", int(color));
+  // Fetching assigned settings group
+  Glib::ustring dir = monitor->get_settings_dir();
+
+  // Search for settings file
+  gchar* file = xfce_panel_plugin_lookup_rc_file(applet->panel_applet);
+
+  if (file)
+  {
+    // One exists - loading readonly settings
+    settings = xfce_rc_simple_open(file, true);
+    g_free(file);
+
+    // Loading color
+    bool color_missing = false;
+    xfce_rc_set_group(settings, dir.c_str());
+    if (xfce_rc_has_entry(settings, "color")
+    {
+      color = xfce_rc_read_int_entry(settings, "color",
+        applet->get_fg_color());
+    }
+    else
+      color_missing = true;
+
+    // Close settings file
+    xfce_rc_close(settings);
+
+    /* Color not recorded - setting default then updating config. XFCE4
+     * configuration is done in read and write stages, so this needs to
+     * be separated */
+    if (color_missing)
+    {
+      color = applet->get_fg_color();
+
+      // Search for a writeable settings file, create one if it doesnt exist
+      file = xfce_panel_plugin_save_location(applet->panel_applet, true);
+	
+      if (file)
+      {
+        // Opening setting file
+        settings = xfce_rc_simple_open(file, false);
+        g_free(file);
+
+        // Saving color
+        xfce_rc_set_group(settings, dir.c_str());
+        xfce_write_int_entry(settings, "color", int(color));
+
+        // Close settings file
+        xfce_rc_close(settings);
+      }
+      else
+      {
+        // Unable to obtain writeable config file - informing user
+        std::cerr << _("Unable to obtain writeable config file path in "
+          "order to update color in Flame::update call!\n");
+      }
+    }
+  }
+  else
+  {
+    // Unable to obtain read only config file - informing user
+    std::cerr << _("Unable to obtain read-only config file path in order"
+      " to load color in Flame::update call!\n");
   }
 
-  
-  // then make sure layer is correctly setup
-  
-  if (flame.get() == 0) {
+  // Then make sure layer is correctly setup
+  if (flame.get() == 0)
+  {
     Glib::RefPtr<Gdk::Pixbuf> p =
       Gdk::Pixbuf::create(Gdk::COLORSPACE_RGB, true, 8, width, height);
     p->fill(color & 0xFFFFFF00);
     
     flame.reset(new Gnome::Canvas::Pixbuf(*canvas.root(), 0, 0, p));
   }
-  else {
+  else
+  {
     Glib::RefPtr<Gdk::Pixbuf> pixbuf = flame->property_pixbuf();
 
     // perhaps the dimensions have changed
-    if (pixbuf->get_width() != width || pixbuf->get_height() != height) {
+    if (pixbuf->get_width() != width || pixbuf->get_height() != height)
+    {
       Glib::RefPtr<Gdk::Pixbuf> new_pixbuf =
 	Gdk::Pixbuf::create(Gdk::COLORSPACE_RGB, true, 8, width, height);
       new_pixbuf->fill(color & 0xFFFFFF00);
       
       flame->property_pixbuf() = new_pixbuf;
     }
-    else {
+    else
+    {
       // perhaps the color has changed
       PixelIterator i = begin(pixbuf);
-      unsigned char
-	red = color >> 24,
-	green = color >> 16,
-	blue = color >> 8;
+      unsigned char red = color >> 24,
+        green = color >> 16,
+        blue = color >> 8;
       
-      if (i->red() != red || i->green() != green || i->blue() != blue) {
-	for (PixelIterator e = end(pixbuf); i != e; ++i) {
-	  Pixel pixel = *i;
-	  pixel.red() = red;
-	  pixel.green() = green;
-	  pixel.blue() = blue;
-	}
+      if (i->red() != red || i->green() != green || i->blue() != blue)
+      {
+        for (PixelIterator e = end(pixbuf); i != e; ++i)
+        {
+          Pixel pixel = *i;
+          pixel.red() = red;
+          pixel.green() = green;
+          pixel.blue() = blue;
+        }
 	
-	flame->property_pixbuf() = pixbuf;
+        flame->property_pixbuf() = pixbuf;
       }
     }
   }
-
   
-  // finally just extract values, we don't draw here
-  
+  // Finally just extract values, we don't draw here
   monitor->measure();
   value = monitor->value();
   
@@ -157,24 +208,25 @@ void Flame::recompute_fuel()
   if (next_refuel <= 0) {
     next_refuel = random_between(5, 20);
 
-    // the fuel values are calculated from parabels with the branches
+    // The fuel values are calculated from parabels with the branches
     // turning downwards, concatenated at the roots; span is the
     // distance between the roots and max is the value at the summit
-    int span = 0, max = 0;
-
-    int i = 0;
+    int span = 0, max = 0, i = 0;
 
     for (std::vector<unsigned char>::iterator x = fuel.begin(),
-	   end = fuel.end(); x != end; ++x) {
-      if (i <= 0) {
-	// new graph, new parameters
-	i = span = random_between(6, 16);
-	max = random_between(255 + ratio * 3, 255 * 2 + ratio * 6) / 8;
+      end = fuel.end(); x != end; ++x)
+    {
+      if (i <= 0)
+      {
+        // new graph, new parameters
+        i = span = random_between(6, 16);
+        max = random_between(255 + ratio * 3, 255 * 2 + ratio * 6) / 8;
       }
-      else {
-	//    y = -(x - |r1-r2|/2)^2 + y_max
-	*x = - (i - span / 2) * (i - span / 2) + max;
-	--i;
+      else
+      {
+        //    y = -(x - |r1-r2|/2)^2 + y_max
+        *x = - (i - span / 2) * (i - span / 2) + max;
+        --i;
       }
     }
   }
@@ -194,19 +246,20 @@ void Flame::burn()
 
   recompute_fuel();
   
-  // process the lowest row
+  // Process the lowest row
   PixelPosition lowest = get_position(pixbuf, 0, height - 1);
   
-  for (int x = 0; x < width; ++x) {
+  for (int x = 0; x < width; ++x)
+  {
     lowest.pixel().alpha() = (lowest.pixel().alpha() * 3 + fuel[x]) / 4;
     lowest.right();
   }
   
-  // then process the rest of the pixbuf
-  for (int y = height - 2; y >= 0; --y) {
-    // setup positions
-    PixelPosition
-      pos = get_position(pixbuf, 0, y),
+  // Then process the rest of the pixbuf
+  for (int y = height - 2; y >= 0; --y)
+  {
+    // Setup positions
+    PixelPosition pos = get_position(pixbuf, 0, y),
       right = get_position(pixbuf, 2, y),
       below = get_position(pixbuf, 1, y + 1);
 
@@ -214,18 +267,19 @@ void Flame::burn()
     pos.right();
 
     // process row
-    for (int x = 1; x < width - 1; ++x) {
+    for (int x = 1; x < width - 1; ++x)
+    {
       // this is int to ensure enough precision in sum below
-      unsigned int
-	pos_alpha = pos.pixel().alpha(),
-	right_alpha = right.pixel().alpha(),
-	below_alpha = below.pixel().alpha();
+      unsigned int pos_alpha = pos.pixel().alpha(),
+        right_alpha = right.pixel().alpha(),
+        below_alpha = below.pixel().alpha();
 
       int tmp =
-	(left_alpha + 6 * pos_alpha + right_alpha + 8 * below_alpha) / 16;
+  (left_alpha + 6 * pos_alpha + right_alpha + 8 * below_alpha) / 16;
 
       pos.pixel().alpha()
 	= std::max(((256 + cooling) * tmp - cooling * 256) / 256, 0);
+  
 #if 0
       if (std::rand() / 4 == 0)
 	pos.pixel().alpha()
@@ -239,7 +293,6 @@ void Flame::burn()
       below.right();
     }
   }
-
   
   flame->property_pixbuf() = pixbuf;
 }
@@ -295,4 +348,3 @@ void FlameView::do_draw_loop()
   for (flame_iterator i = flames.begin(), end = flames.end(); i != end; ++i)
     (*i)->burn();
 }
-

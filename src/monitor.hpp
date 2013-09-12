@@ -24,7 +24,6 @@
 #include <string>
 #include <list>
 #include <glibmm/ustring.h>
-#include <gconfmm/client.h>
 
 #include "helpers.hpp"
 
@@ -53,14 +52,14 @@ public:
     return measured_value;
   }
 
-  void set_gconf_dir(const Glib::ustring &new_dir)
+  void set_settings_dir(const Glib::ustring &new_dir)
   {
-    gconf_dir = new_dir;
+    settings_dir = new_dir;
   }
   
-  Glib::ustring get_gconf_dir()
+  Glib::ustring get_settings_dir()
   {
-    return gconf_dir;
+    return settings_dir;
   }
   
   // the max value that the monitor may attain
@@ -80,10 +79,10 @@ public:
   virtual int update_interval() = 0;
 
   // save information about the monitor
-  virtual void save(const Glib::RefPtr<Gnome::Conf::Client> &client) = 0;
+  virtual void save(XfceRc *settings) = 0;
 
   // load any internal monitor state
-  virtual void load(const Glib::RefPtr<Gnome::Conf::Client> &client)
+  virtual void load(XfceRc *settings)
   {
   }
 
@@ -105,7 +104,7 @@ private:
   // perform actual measurement, for derived classes
   virtual double do_measure() = 0;
 
-  Glib::ustring gconf_dir;
+  Glib::ustring settings_dir;
 };
 
 

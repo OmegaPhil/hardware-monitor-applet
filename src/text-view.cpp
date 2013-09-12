@@ -98,16 +98,63 @@ void TextView::do_display()
 
 void TextView::do_update()
 {
-  // first update font
-  Glib::RefPtr<Gnome::Conf::Client> &client = applet->get_gconf_client();
-  Glib::ustring dir = applet->get_gconf_dir();
+  /* First update viewer font
+   * Keeping with the default settings group for viewer settings
+   * Search for settings file */
+  gchar* file = xfce_panel_plugin_lookup_rc_file(applet->panel_applet);
 
-  // FIXME: use schemas?
-  if (client->get(dir + "/viewer/font").get_type() == Gnome::Conf::VALUE_STRING)
-    font = client->get_string(dir + "/viewer/font");
-  else {
-    font = "";
-    client->set(dir + "/viewer/font", font);
+  if (file)
+  {
+    // One exists - loading readonly settings
+    settings = xfce_rc_simple_open(file, true);
+    g_free(file);
+
+    // Loading font_name
+    bool font_name_missing = false;
+    GLib::ustring font_name = "";
+    if (xfce_rc_has_entry(settings, "viewer_font")
+    {
+      font_name = xfce_rc_read_entry(settings, "viewer_font", "");
+    }
+    else
+      font_name_missing = true;
+
+    // Close settings file
+    xfce_rc_close(settings);
+
+    /* Viewer size not recorded - setting default then updating config. XFCE4
+     * configuration is done in read and write stages, so this needs to
+     * be separated */
+    if (font_name_missing)
+    {
+      // Search for a writeable settings file, create one if it doesnt exist
+      file = xfce_panel_plugin_save_location(applet->panel_applet, true);
+	
+      if (file)
+      {
+        // Opening setting file
+        settings = xfce_rc_simple_open(file, false);
+        g_free(file);
+
+        // Saving viewer size
+        xfce_write_entry(settings, "viewer_font", font_name);
+        
+        // Close settings file
+        xfce_rc_close(settings);
+      }
+      else
+      {
+        // Unable to obtain writeable config file - informing user
+        std::cerr << _("Unable to obtain writeable config file path in "
+          "order to update font name in TextView::do_update call!\n");
+      }
+    }
+  }
+  else
+  {
+    // Unable to obtain read only config file - informing user
+    std::cerr << _("Unable to obtain read-only config file path in order"
+      " to load font name in TextView::do_update call!\n");
   }
 
   // then update

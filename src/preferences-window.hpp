@@ -27,7 +27,6 @@
 #include <libglademm/xml.h>
 #include <sigc++/trackable.h>
 #include <sigc++/connection.h>
-#include <gconfmm/entry.h>
 #include <gtkmm/button.h>
 #include <gtkmm/checkbutton.h>
 #include <gtkmm/colorbutton.h>
@@ -104,13 +103,14 @@ private:
   Glib::RefPtr<Gtk::ListStore> monitor_store;
   typedef Gtk::ListStore::iterator store_iter;
   
-  // GConf
-  void viewer_type_listener(unsigned int, Gnome::Conf::Entry entry);
-  void background_color_listener(unsigned int, Gnome::Conf::Entry entry);
-  void use_background_color_listener(unsigned int, Gnome::Conf::Entry entry);
-  void size_listener(unsigned int, Gnome::Conf::Entry entry);
-  void font_listener(unsigned int, Gnome::Conf::Entry entry);
-  void monitor_color_listener(unsigned int, Gnome::Conf::Entry entry);
+  // Originally gconf callbacks
+  void viewer_type_listener(unsigned int, Glib::ustring &viewer_type);
+  void background_color_listener(unsigned int,
+    unsigned int background_color);
+  void use_background_color_listener(unsigned int, bool use_background_color);
+  void size_listener(unsigned int, int viewer_size);
+  void font_listener(unsigned int, Glib::ustring &viewer_font);
+  void monitor_color_listener(unsigned int, unsigned int color);
 
   void stop_monitor_listeners();
   
@@ -147,8 +147,8 @@ private:
   // for converting between size_scale units and pixels
   int size_scale_to_pixels(int size);
   int pixels_to_size_scale(int pixels);
-  void sync_conf_with_colorbutton(std::string gconf_path,
-				  Gtk::ColorButton *button);
+  void sync_conf_with_colorbutton(std::string settings_dir,
+    std::string setting_name, Gtk::ColorButton *button);
   void connect_monitor_colorbutton(Gtk::ColorButton *colorbutton);
   
   Applet &applet;

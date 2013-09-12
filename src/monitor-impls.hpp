@@ -47,7 +47,7 @@ public:
   virtual Glib::ustring get_name();
   virtual Glib::ustring get_short_name();
   virtual int update_interval();
-  virtual void save(const Glib::RefPtr<Gnome::Conf::Client> &client);
+  virtual void save(XfceRc *settings);
 
   static int const max_no_cpus;
   
@@ -73,7 +73,7 @@ public:
   virtual Glib::ustring get_name();
   virtual Glib::ustring get_short_name();
   virtual int update_interval();
-  virtual void save(const Glib::RefPtr<Gnome::Conf::Client> &client);
+  virtual void save(XfceRc *settings);
 
 private:
   virtual double do_measure();
@@ -92,8 +92,8 @@ public:
   virtual Glib::ustring get_name();
   virtual Glib::ustring get_short_name();
   virtual int update_interval();
-  virtual void save(const Glib::RefPtr<Gnome::Conf::Client> &client);
-  virtual void load(const Glib::RefPtr<Gnome::Conf::Client> &client);
+  virtual void save(XfceRc *settings);
+  virtual void load(XfceRc *settings);
 		
 private:
   virtual double do_measure();
@@ -112,7 +112,7 @@ public:
   virtual Glib::ustring get_name();
   virtual Glib::ustring get_short_name();
   virtual int update_interval();
-  virtual void save(const Glib::RefPtr<Gnome::Conf::Client> &client);
+  virtual void save(XfceRc *settings);
 
 private:
   virtual double do_measure();
@@ -131,7 +131,7 @@ public:
   virtual Glib::ustring get_name();
   virtual Glib::ustring get_short_name();
   virtual int update_interval();
-  virtual void save(const Glib::RefPtr<Gnome::Conf::Client> &client);
+  virtual void save(XfceRc *settings);
 
 private:
   virtual double do_measure();
@@ -157,8 +157,8 @@ public:
   virtual Glib::ustring get_name();
   virtual Glib::ustring get_short_name();
   virtual int update_interval();
-  virtual void save(const Glib::RefPtr<Gnome::Conf::Client> &client);
-  virtual void load(const Glib::RefPtr<Gnome::Conf::Client> &client);
+  virtual void save(XfceRc *settings);
+  virtual void load(XfceRc *settings);
   virtual void possibly_add_sync_with(Monitor *other);
   virtual void remove_sync_with(Monitor *other);
 
@@ -190,8 +190,8 @@ public:
   virtual Glib::ustring get_name();
   virtual Glib::ustring get_short_name();
   virtual int update_interval();
-  virtual void save(const Glib::RefPtr<Gnome::Conf::Client> &client);
-  virtual void load(const Glib::RefPtr<Gnome::Conf::Client> &client);
+  virtual void save(XfceRc *settings);
+  virtual void load(XfceRc *settings);
 
 private:
   virtual double do_measure();
@@ -212,8 +212,8 @@ public:
   virtual Glib::ustring get_name();
   virtual Glib::ustring get_short_name();
   virtual int update_interval();
-  virtual void save(const Glib::RefPtr<Gnome::Conf::Client> &client);
-  virtual void load(const Glib::RefPtr<Gnome::Conf::Client> &client);
+  virtual void save(XfceRc *settings);
+  virtual void load(XfceRc *settings);
 
 private:
   virtual double do_measure();

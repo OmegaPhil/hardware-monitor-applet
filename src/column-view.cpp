@@ -21,7 +21,6 @@
 #include <cmath>
 
 #include <libgnomecanvasmm/pixbuf.h>
-#include <gconfmm/client.h>
 
 #include "column-view.hpp"
 #include "applet.hpp"
@@ -79,7 +78,7 @@ void ColumnGraph::draw(Gnome::Canvas::Canvas &canvas,
   double time_offset = double(remaining_draws) / CanvasView::draw_iterations;
 
 
-  Glib::RefPtr<Gnome::Conf::Client> &client = applet->get_gconf_client();
+  Glib::RefPtr<Gnome::Conf::Client> &client = applet->panel_applet;
     
   ValueHistory::iterator vi = value_history.values.begin(),
     vend = value_history.values.end();
@@ -87,18 +86,71 @@ void ColumnGraph::draw(Gnome::Canvas::Canvas &canvas,
   if (vi == vend)		// there must be at least one point
     return;
 
-  
   // get colour
   unsigned int color;
 
-  Gnome::Conf::Value v;
-  
-  v = client->get(monitor->get_gconf_dir() + "/color");
-  if (v.get_type() == Gnome::Conf::VALUE_INT)
-    color = v.get_int();
-  else {
-    color = applet->get_fg_color();
-    client->set(monitor->get_gconf_dir() + "/color", int(color));
+  // Fetching assigned settings group
+  Glib::ustring dir = monitor->get_settings_dir();
+
+  // Search for settings file
+  gchar* file = xfce_panel_plugin_lookup_rc_file(applet->panel_applet);
+
+  if (file)
+  {
+    // One exists - loading readonly settings
+    settings = xfce_rc_simple_open(file, true);
+    g_free(file);
+
+    // Loading color
+    bool color_missing = false;
+    xfce_rc_set_group(settings, dir.c_str());
+    if (xfce_rc_has_entry(settings, "color")
+    {
+      color = xfce_rc_read_int_entry(settings, "color",
+        applet->get_fg_color());
+    }
+    else
+      color_missing = true;
+
+    // Close settings file
+    xfce_rc_close(settings);
+
+    /* Color not recorded - setting default then updating config. XFCE4
+     * configuration is done in read and write stages, so this needs to
+     * be separated */
+    if (color_missing)
+    {
+      color = applet->get_fg_color();
+
+      // Search for a writeable settings file, create one if it doesnt exist
+      file = xfce_panel_plugin_save_location(applet->panel_applet, true);
+	
+      if (file)
+      {
+        // Opening setting file
+        settings = xfce_rc_simple_open(file, false);
+        g_free(file);
+
+        // Saving color
+        xfce_rc_set_group(settings, dir.c_str());
+        xfce_write_int_entry(settings, "color", int(color));
+
+        // Close settings file
+        xfce_rc_close(settings);
+      }
+      else
+      {
+        // Unable to obtain writeable config file - informing user
+        std::cerr << _("Unable to obtain writeable config file path in "
+          "order to update color in ColumnGraph::draw call!\n");
+      }
+    }
+  }
+  else
+  {
+    // Unable to obtain read only config file - informing user
+    std::cerr << _("Unable to obtain read-only config file path in order"
+      " to load color in ColumnGraph::draw call!\n");
   }
 
   // make sure we got a pixbuf and that it has the right size
@@ -116,7 +168,6 @@ void ColumnGraph::draw(Gnome::Canvas::Canvas &canvas,
 
   pixbuf->fill(color & 0xFFFFFF00);
   
-
   double max = monitor->max();
   if (max <= 0)
     max = 0.0000001;
@@ -126,30 +177,31 @@ void ColumnGraph::draw(Gnome::Canvas::Canvas &canvas,
     + ColumnView::pixels_per_sample * time_offset;
 
   do {
-    if (*vi >= 0) {
+    if (*vi >= 0)
+    {
       // FIXME: the uppermost pixel should be scaled down too to avoid aliasing
       double r = l + ColumnView::pixels_per_sample;
-      int
-	t = int((1 - (*vi / max)) * (height - 1)),
-	b = height - 1;
+      int t = int((1 - (*vi / max)) * (height - 1)),
+        b = height - 1;
 
       if (t < 0)
-	t = 0;
+        t = 0;
     
-      for (int x = std::max(int(l), 0); x < std::min(r, double(width)); ++x) {
-	PixelPosition pos = get_position(pixbuf, x, t);
+      for (int x = std::max(int(l), 0); x < std::min(r, double(width)); ++x)
+      {
+        PixelPosition pos = get_position(pixbuf, x, t);
 
-	// anti-aliasing effect; if we are partly on a pixel, scale alpha down
-	double scale = 1.0;
-	if (x < l)
-	  scale -= l - std::floor(l);
-	if (x + 1 > r)
-	  scale -= std::ceil(r) - r;
+        // anti-aliasing effect; if we are partly on a pixel, scale alpha down
+        double scale = 1.0;
+        if (x < l)
+          scale -= l - std::floor(l);
+        if (x + 1 > r)
+          scale -= std::ceil(r) - r;
 
-	int alpha = int((color & 0xFF) * scale);
-      
-	for (int y = t; y <= b; ++y, pos.down())
-	  pos.pixel().alpha() = std::min(pos.pixel().alpha() + alpha, 255);
+        int alpha = int((color & 0xFF) * scale);
+            
+        for (int y = t; y <= b; ++y, pos.down())
+          pos.pixel().alpha() = std::min(pos.pixel().alpha() + alpha, 255);
       }
     }
     

@@ -1,6 +1,7 @@
 /* The applet class which coordinates everything.
  *
  * Copyright (c) 2003, 04, 05 Ole Laursen.
+ * Copyright (c) 2013 OmegaPhil (OmegaPhil+hardware.monitor@gmail.com)
  *
  * This program is free software; you can redistribute it and/or 
  * modify it under the terms of the GNU General Public License as 
@@ -33,11 +34,11 @@
 
 #include <glibmm/ustring.h>
 
-#include <gconfmm/client.h>
-#include <gconfmm/entry.h>
-
-
-#include <panel-applet.h>
+extern "C"
+{
+#include <gtk/gtk.h>  // TODO: Confirm this is needed
+#include <libxfce4panel/libxfce4panel.h>
+}
 
 #include "monitor.hpp"
 
@@ -58,9 +59,6 @@ public:
   int get_size() const;		// in pixels
   bool horizontal() const; 	// whether we're in horizontal mode
   void set_view(View *view);	// use this view to monitor
-
-  Glib::RefPtr<Gnome::Conf::Client> &get_gconf_client();
-  Glib::ustring get_gconf_dir() const;
 
   Glib::RefPtr<Gdk::Pixbuf> get_icon();	// get the application icon
 
@@ -85,18 +83,17 @@ private:
   bool main_loop();
   sigc::connection timer;
 
-  // GConf
-  Glib::RefPtr<Gnome::Conf::Client> gconf_client;
-  Glib::ustring gconf_dir;
-
-  void viewer_type_listener(unsigned int, Gnome::Conf::Entry entry);
-  void background_color_listener(unsigned int, Gnome::Conf::Entry entry);
-  void use_background_color_listener(unsigned int, Gnome::Conf::Entry entry);
-  
   Glib::ustring find_empty_monitor_dir();
   
   // data
-  PanelApplet *panel_applet;
+  XfcePanelPlugin *panel_applet;
+  Glib::ustring icon_path;
+  Glib::ustring viewer_type;
+  Glib::ustring viewer_font;
+  int viewer_size;  // Pixel size used with the viewer scale - nothing to do with the visible area
+  int background_color;
+  gboolean use_background_color;
+  int next_color;
   Glib::RefPtr<Gdk::Pixbuf> icon;
   std::auto_ptr<Gtk::AboutDialog> about;
   std::auto_ptr<View> view;

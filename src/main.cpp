@@ -24,7 +24,6 @@
 #include <libintl.h>
 
 #include <libgnomecanvasmm/init.h>
-#include <gconfmm/init.h>
 #include <gtkmm/main.h>
 
 #include <libgnomeui/gnome-ui-init.h>
@@ -35,6 +34,7 @@
 #include "helpers.hpp"
 #include "i18n.hpp"
 
+// TODO: How does this compare to applet.cpp?
 gboolean hardware_monitor_factory(PanelApplet *panel_applet, const gchar *iid,
 				  void *)
 {
@@ -53,7 +53,6 @@ int main(int argc, char *argv[])
   nice(5);			// don't eat up too much CPU
 
   Gtk::Main main(argc, argv);
-  Gnome::Conf::init();
   Gnome::Canvas::init();
 
   // this is necessary for panel applets

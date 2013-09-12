@@ -23,7 +23,6 @@
 #include <sigc++/bind.h>
 
 #include <gtkmm/button.h>
-#include <gconfmm/client.h>
 
 #include <cassert>
 
@@ -34,6 +33,9 @@
 #include "monitor.hpp"
 #include "i18n.hpp"
 
+
+// Private prototypes
+void save_font_name(Glib::ustring &font_name)
 
 void PreferencesWindow::connect_monitor_colorbutton(Gtk::ColorButton
 						    *colorbutton)
@@ -162,8 +164,9 @@ PreferencesWindow::PreferencesWindow(Applet &applet_, monitor_seq monitors)
   
   
   // connect GConf
+  // TODO: Do these even need to be set up? When a chnge is made, then the relevant function is to be called
+  /*
   Glib::RefPtr<Gnome::Conf::Client> &client = applet.get_gconf_client();
-  Glib::ustring dir = applet.get_gconf_dir();
   
   client->notify_add(dir + "/viewer_type",
 		     sigc::mem_fun(*this, &PreferencesWindow::
@@ -178,27 +181,27 @@ PreferencesWindow::PreferencesWindow(Applet &applet_, monitor_seq monitors)
 
   client->notify_add(dir + "/viewer/font",
 		     sigc::mem_fun(*this, &PreferencesWindow::font_listener));
+  */
 
   
-  // fill in values
-  viewer_type_listener(0, client->get_entry(dir + "/viewer_type"));
-  background_color_listener(0, client->get_entry(dir + "/background_color"));
-  use_background_color_listener(0, client
-				->get_entry(dir + "/use_background_color"));
-  size_listener(0, client->get_entry(dir + "/viewer/size"));
-  font_listener(0, client->get_entry(dir + "/viewer/font"));
+  // Fill in values
+  viewer_type_listener(0, &applet->viewer_type);
+  background_color_listener(0, applet->background_color);
+  use_background_color_listener(0, applet->use_background_color);
+  size_listener(0, applet->viewer_size);
+  font_listener(0, &applet->viewer_font);
 
   for (monitor_iter i = monitors.begin(), end = monitors.end(); i != end; ++i)
     add_to_monitors_list(*i);
   
-  // deselect all to allow the user to discover the relationship
+  // Deselect all to allow the user to discover the relationship
   // between the greyed-out buttons and the treeview
   monitor_treeview->get_selection()->unselect_all();
 
-  // make sure background colorbutton is grayed out
+  // Make sure background colorbutton is grayed out
   background_color_radiobutton->toggled();
   
-  // connect close operations
+  // Connect close operations
   Gtk::Button *close_button;
   ui->get_widget("close_button", close_button);
 
@@ -250,46 +253,46 @@ namespace
 }
 
 
-// GConf callbacks
-
+// Originally gconf callbacks
 void PreferencesWindow::viewer_type_listener(unsigned int,
-					     Gnome::Conf::Entry entry)
+					     Glib::ustring &viewer_type;)
 {
-  if (entry.get_value().get_type() != Gnome::Conf::VALUE_STRING)
-    return;
-
-  Glib::ustring s = entry.get_value().get_string();
-  
-  if (s == "curve") {
+  if (viewer_type == "curve")
+  {
     if (!curve_radiobutton->get_active())
       curve_radiobutton->property_active() = true;
     size_outer_vbox->property_visible() = true;
     monitor_curve_options->property_visible() = true;
   }
-  else if (s == "bar") {
+  else if (viewer_type == "bar")
+  {
     if (!bar_radiobutton->get_active())
       bar_radiobutton->property_active() = true;
     size_outer_vbox->property_visible() = true;
     monitor_bar_options->property_visible() = true;
   }
-  else if (s == "vbar") {
+  else if (viewer_type == "vbar")
+  {
     if (!vbar_radiobutton->get_active())
       vbar_radiobutton->property_active() = true;
     size_outer_vbox->property_visible() = true;
     monitor_vbar_options->property_visible() = true;
   }
-  else if (s == "column") {
+  else if (viewer_type == "column")
+  {
     if (!column_radiobutton->get_active())
       column_radiobutton->property_active() = true;
     size_outer_vbox->property_visible() = true;
     monitor_column_options->property_visible() = true;
   }
-  else if (s == "text") {
+  else if (viewer_type == "text")
+  {
     if (!text_radiobutton->get_active())
       text_radiobutton->property_active() = true;
     font_outer_vbox->property_visible() = true;
   }
-  else if (s == "flame") {
+  else if (viewer_type == "flame")
+  {
     if (!flame_radiobutton->get_active())
       flame_radiobutton->property_active() = true;
     size_outer_vbox->property_visible() = true;
@@ -298,69 +301,51 @@ void PreferencesWindow::viewer_type_listener(unsigned int,
 }
 
 void PreferencesWindow::background_color_listener(unsigned int,
-						  Gnome::Conf::Entry entry)
+						  unsigned int background_color)
 {
-  if (entry.get_value().get_type() != Gnome::Conf::VALUE_INT)
-    return;
-
-  unsigned int i = entry.get_value().get_int();
-  
-  unsigned char r = i >> 24, g = i >> 16, b = i >> 8, a = i;
+  unsigned char r = background_color >> 24,
+    g = background_color >> 16,
+    b = background_color >> 8,
+    a = background_color;
 
   update_colorbutton_if_different(background_colorbutton, r, g, b, a);
 }
 
 void PreferencesWindow::use_background_color_listener(unsigned int,
-						      Gnome::Conf::Entry entry)
+						      bool use_background_color)
 {
-  if (entry.get_value().get_type() != Gnome::Conf::VALUE_BOOL)
-    return;
-
-  bool b = entry.get_value().get_bool();
-
-  if (b)
+  if (use_background_color)
     background_color_radiobutton->set_active();
   else
     panel_background_radiobutton->set_active();
 }
 
 void PreferencesWindow::size_listener(unsigned int,
-				      Gnome::Conf::Entry entry)
+				      int viewer_size)
 {
-  if (entry.get_value().get_type() != Gnome::Conf::VALUE_INT)
-    return;
-
-  int i = entry.get_value().get_int();
-  
-  if (size_scale_to_pixels(int(size_scale->get_value())) != i)
-    size_scale->set_value(pixels_to_size_scale(i));
+  if (size_scale_to_pixels(int(size_scale->get_value())) != viewer_size)
+    size_scale->set_value(pixels_to_size_scale(viewer_size));
 }
 
-void PreferencesWindow::font_listener(unsigned int, Gnome::Conf::Entry entry)
+void PreferencesWindow::font_listener(unsigned int,
+  Glib::ustring &viewer_font)
 {
-  if (entry.get_value().get_type() != Gnome::Conf::VALUE_STRING)
-    return;
-
-  Glib::ustring font = entry.get_value().get_string();
-
-  if (font.empty())
+  if (viewer_font.empty())
     font_checkbutton->set_active(false);
   else {
     font_checkbutton->set_active(true);
-    if (fontbutton->get_font_name() != font)
-      fontbutton->set_font_name(font);
+    if (fontbutton->get_font_name() != viewer_font)
+      fontbutton->set_font_name(viewer_font);
   }
 }
 
 void PreferencesWindow::monitor_color_listener(unsigned int,
-					       Gnome::Conf::Entry entry)
+					       unsigned int color)
 {
-  if (entry.get_value().get_type() != Gnome::Conf::VALUE_INT)
-    return;
-
-  unsigned int i = entry.get_value().get_int();
-
-  unsigned char r = i >> 24, g = i >> 16, b = i >> 8, a = i;
+  unsigned char r = color >> 24,
+    g = color >> 16,
+    b = color >> 8,
+    a = color;
 
   update_colorbutton_if_different(line_colorbutton, r, g, b, a);
   update_colorbutton_if_different(bar_colorbutton,  r, g, b, a);
@@ -383,8 +368,8 @@ namespace
 
 }
 
-void PreferencesWindow::sync_conf_with_colorbutton(std::string path,
-						   Gtk::ColorButton *button)
+void PreferencesWindow::sync_conf_with_colorbutton(std::string settings_dir,
+  std::string setting_name, Gtk::ColorButton *button)
 {
   // extract info from button
   unsigned char a, r, g, b;
@@ -395,148 +380,344 @@ void PreferencesWindow::sync_conf_with_colorbutton(std::string path,
   r = c.get_red() >> 8;
   g = c.get_green() >> 8;
   b = c.get_blue() >> 8;
-  
-  // update configuration
-  Glib::RefPtr<Gnome::Conf::Client> &client = applet.get_gconf_client();
 
-  client->set(path, int(pack_int(r, g, b, a)));
+  // Search for a writeable settings file, create one if it doesnt exist
+  gchar* file = xfce_panel_plugin_save_location(applet->panel_applet, true);
+    
+  if (file)
+  {
+    // Opening setting file
+    XfceRc* settings = xfce_rc_simple_open(file, false);
+    g_free(file);
+
+    // Focussing settings group if requested
+    if (!settings_dir.empty())
+      xfce_rc_set_group(settings, settings_dir.c_str());
+    
+    // Updating configuration
+    xfce_rc_write_int_entry(settings, setting_name.c_str(),
+      int(pack_int(r, g, b, a)));
+
+    // Close settings file
+    xfce_rc_close(settings);
+  }
+  else
+  {
+    // Unable to obtain writeable config file - informing user and exiting
+    std::cerr << _("Unable to obtain writeable config file path in order to"
+      " save configuration change in "
+      "PreferencesWindow::sync_conf_with_colorbutton!\n");
+  }
 }
 
 
 void PreferencesWindow::on_background_colorbutton_set()
 {
-  sync_conf_with_colorbutton(applet.get_gconf_dir() + "/background_color",
+  sync_conf_with_colorbutton("", "background_color",
 			     background_colorbutton);
 }
 
 void PreferencesWindow::on_background_color_radiobutton_toggled()
 {
-  Glib::RefPtr<Gnome::Conf::Client> &client = applet.get_gconf_client();
-  Glib::ustring dir = applet.get_gconf_dir();
-
   bool on = background_color_radiobutton->get_active();
   
   background_colorbutton->set_sensitive(on);
-  
-  client->set(dir + "/use_background_color", on);
+  use_background_color_listener(0, on)
+
+  // Search for a writeable settings file, create one if it doesnt exist
+  gchar* file = xfce_panel_plugin_save_location(applet->panel_applet, true);
+    
+  if (file)
+  {
+    // Opening setting file
+    XfceRc* settings = xfce_rc_simple_open(file, false);
+    g_free(file);
+
+    // Updating configuration
+    xfce_rc_write_bool_entry(settings, "use_background_color", on);
+
+    // Close settings file
+    xfce_rc_close(settings);
+  }
+  else
+  {
+    // Unable to obtain writeable config file - informing user and exiting
+    std::cerr << _("Unable to obtain writeable config file path in order to"
+      " save use_background_color in "
+      "PreferencesWindow::on_background_color_radiobutton_toggled!\n");
+  }
 }
 
 void PreferencesWindow::on_curve_radiobutton_toggled()
 {
-  Glib::RefPtr<Gnome::Conf::Client> &client = applet.get_gconf_client();
-  Glib::ustring dir = applet.get_gconf_dir();
-
   bool active = curve_radiobutton->get_active();
   
   if (active)
-    client->set(dir + "/viewer_type", Glib::ustring("curve"));
+  {
+    // Search for a writeable settings file, create one if it doesnt exist
+    gchar* file = xfce_panel_plugin_save_location(applet->panel_applet, true);
+      
+    if (file)
+    {
+      // Opening setting file
+      XfceRc* settings = xfce_rc_simple_open(file, false);
+      g_free(file);
+
+      // Updating configuration
+      xfce_rc_write_entry(settings, "viewer_type", "curve");
+
+      // Close settings file
+      xfce_rc_close(settings);
+    }
+    else
+    {
+      // Unable to obtain writeable config file - informing user and exiting
+      std::cerr << _("Unable to obtain writeable config file path in order to"
+        " save viewer type in "
+        "PreferencesWindow::on_curve_radiobutton_toggled!\n");
+    }
+  }
 
   size_outer_vbox->property_visible() = active;
   monitor_curve_options->property_visible() = active;
+  viewer_type_listener(0, "curve");
 }
 
 void PreferencesWindow::on_bar_radiobutton_toggled()
 {
-  Glib::RefPtr<Gnome::Conf::Client> &client = applet.get_gconf_client();
-  Glib::ustring dir = applet.get_gconf_dir();
-
   bool active = bar_radiobutton->get_active();
   
   if (active)
-    client->set(dir + "/viewer_type", Glib::ustring("bar"));
+  {
+    // Search for a writeable settings file, create one if it doesnt exist
+    gchar* file = xfce_panel_plugin_save_location(applet->panel_applet, true);
+      
+    if (file)
+    {
+      // Opening setting file
+      XfceRc* settings = xfce_rc_simple_open(file, false);
+      g_free(file);
+
+      // Updating configuration
+      xfce_rc_write_entry(settings, "viewer_type", "bar");
+
+      // Close settings file
+      xfce_rc_close(settings);
+    }
+    else
+    {
+      // Unable to obtain writeable config file - informing user and exiting
+      std::cerr << _("Unable to obtain writeable config file path in order to"
+        " save viewer type in "
+        "PreferencesWindow::on_bar_radiobutton_toggled!\n");
+    }
+  }
 
   size_outer_vbox->property_visible() = active;
   monitor_bar_options->property_visible() = active;
+  viewer_type_listener(0, "bar");
 }
 
 void PreferencesWindow::on_vbar_radiobutton_toggled()
 {
-  Glib::RefPtr<Gnome::Conf::Client> &client = applet.get_gconf_client();
-  Glib::ustring dir = applet.get_gconf_dir();
-
   bool active = vbar_radiobutton->get_active();
   
   if (active)
-    client->set(dir + "/viewer_type", Glib::ustring("vbar"));
+  {
+    // Search for a writeable settings file, create one if it doesnt exist
+    gchar* file = xfce_panel_plugin_save_location(applet->panel_applet, true);
+      
+    if (file)
+    {
+      // Opening setting file
+      XfceRc* settings = xfce_rc_simple_open(file, false);
+      g_free(file);
+
+      // Updating configuration
+      xfce_rc_write_entry(settings, "viewer_type", "vbar");
+
+      // Close settings file
+      xfce_rc_close(settings);
+    }
+    else
+    {
+      // Unable to obtain writeable config file - informing user and exiting
+      std::cerr << _("Unable to obtain writeable config file path in order to"
+        " save viewer type in "
+        "PreferencesWindow::on_vbar_radiobutton_toggled!\n");
+    }
+  }
 
   size_outer_vbox->property_visible() = active;
   monitor_vbar_options->property_visible() = active;
+  viewer_type_listener(0, "vbar");
 }
 
 void PreferencesWindow::on_column_radiobutton_toggled()
 {
-  Glib::RefPtr<Gnome::Conf::Client> &client = applet.get_gconf_client();
-  Glib::ustring dir = applet.get_gconf_dir();
-
   bool active = column_radiobutton->get_active();
   
   if (active)
-    client->set(dir + "/viewer_type", Glib::ustring("column"));
+  {
+    // Search for a writeable settings file, create one if it doesnt exist
+    gchar* file = xfce_panel_plugin_save_location(applet->panel_applet, true);
+      
+    if (file)
+    {
+      // Opening setting file
+      XfceRc* settings = xfce_rc_simple_open(file, false);
+      g_free(file);
 
+      // Updating configuration
+      xfce_rc_write_entry(settings, "viewer_type", "column");
+
+      // Close settings file
+      xfce_rc_close(settings);
+    }
+    else
+    {
+      // Unable to obtain writeable config file - informing user and exiting
+      std::cerr << _("Unable to obtain writeable config file path in order to"
+        " save viewer type in "
+        "PreferencesWindow::on_column_radiobutton_toggled!\n");
+    }
+  }
+  
   size_outer_vbox->property_visible() = active;
   monitor_column_options->property_visible() = active;
+  viewer_type_listener(0, "column");
 }
 
 void PreferencesWindow::on_text_radiobutton_toggled()
 {
-  Glib::RefPtr<Gnome::Conf::Client> &client = applet.get_gconf_client();
-  Glib::ustring dir = applet.get_gconf_dir();
-
   bool active = text_radiobutton->get_active();
   
   if (active)
-    client->set(dir + "/viewer_type", Glib::ustring("text"));
+  {
+    // Search for a writeable settings file, create one if it doesnt exist
+    gchar* file = xfce_panel_plugin_save_location(applet->panel_applet, true);
+      
+    if (file)
+    {
+      // Opening setting file
+      XfceRc* settings = xfce_rc_simple_open(file, false);
+      g_free(file);
 
+      // Updating configuration
+      xfce_rc_write_entry(settings, "viewer_type", "text");
+
+      // Close settings file
+      xfce_rc_close(settings);
+    }
+    else
+    {
+      // Unable to obtain writeable config file - informing user and exiting
+      std::cerr << _("Unable to obtain writeable config file path in order to"
+        " save viewer type in "
+        "PreferencesWindow::on_text_radiobutton_toggled!\n");
+    }
+  }
+  
   font_outer_vbox->property_visible() = active;
+  viewer_type_listener(0, "text");
 }
 
 void PreferencesWindow::on_flame_radiobutton_toggled()
 {
-  Glib::RefPtr<Gnome::Conf::Client> &client = applet.get_gconf_client();
-  Glib::ustring dir = applet.get_gconf_dir();
-
   bool active = flame_radiobutton->get_active();
   
   if (active)
-    client->set(dir + "/viewer_type", Glib::ustring("flame"));
+  {
+    // Search for a writeable settings file, create one if it doesnt exist
+    gchar* file = xfce_panel_plugin_save_location(applet->panel_applet, true);
+      
+    if (file)
+    {
+      // Opening setting file
+      XfceRc* settings = xfce_rc_simple_open(file, false);
+      g_free(file);
+
+      // Updating configuration
+      xfce_rc_write_entry(settings, "viewer_type", "flame");
+
+      // Close settings file
+      xfce_rc_close(settings);
+    }
+    else
+    {
+      // Unable to obtain writeable config file - informing user and exiting
+      std::cerr << _("Unable to obtain writeable config file path in order to"
+        " save viewer type in "
+        "PreferencesWindow::on_flame_radiobutton_toggled!\n");
+    }
+  }
 
   size_outer_vbox->property_visible() = active;
   monitor_flame_options->property_visible() = active;
+  viewer_type_listener(0, "flame");
 }
 
 void PreferencesWindow::on_size_scale_changed()
 {
-  Glib::RefPtr<Gnome::Conf::Client> &client = applet.get_gconf_client();
-  Glib::ustring dir = applet.get_gconf_dir();
-
+  // Preventing further callbacks firing
   size_scale_cb.block();
+
+  // Adding 0.5 to current scale value??
   int i = int(size_scale->get_value() + 0.5);
   size_scale->set_value(i);
-  client->set(dir + "/viewer/size", size_scale_to_pixels(i));
+
+  /* Saving pixel value of scale
+   * Search for a writeable settings file, create one if it doesnt exist */
+  gchar* file = xfce_panel_plugin_save_location(applet->panel_applet, true);
+    
+  if (file)
+  {
+    // Opening setting file
+    XfceRc* settings = xfce_rc_simple_open(file, false);
+    g_free(file);
+
+    // Updating configuration
+    xfce_rc_write_int_entry(settings, "viewer_size",
+      size_scale_to_pixels(i));
+
+    // Close settings file
+    xfce_rc_close(settings);
+  }
+  else
+  {
+    // Unable to obtain writeable config file - informing user and exiting
+    std::cerr << _("Unable to obtain writeable config file path in order to"
+      " save scale pixel value in "
+      "PreferencesWindow::on_size_scale_changed!\n");
+  }
+
+  // Allowing further callbacks to fire
   size_scale_cb.unblock();
+  size_listener(0, size_scale_to_pixels(i));
 }
 
 void PreferencesWindow::on_font_checkbutton_toggled()
 {
-  Glib::RefPtr<Gnome::Conf::Client> &client = applet.get_gconf_client();
-  Glib::ustring dir = applet.get_gconf_dir();
-
   bool active = font_checkbutton->get_active();
   
   fontbutton->set_sensitive(active);
 
+  // Obtaining font_name to set
+  Glib::ustring font_name;
   if (active)
-    client->set(dir + "/viewer/font", fontbutton->get_font_name());
+    font_name = fontbutton->get_font_name();
   else
-    client->set(dir + "/viewer/font", Glib::ustring(""));
+    font_name = "";
+
+  // Saving
+  save_font_name(font_name);
+  font_listener(0, font_name);
 }
 
 void PreferencesWindow::on_fontbutton_set()
 {
-  Glib::RefPtr<Gnome::Conf::Client> &client = applet.get_gconf_client();
-  Glib::ustring dir = applet.get_gconf_dir();
-
-  client->set(dir + "/viewer/font", fontbutton->get_font_name());
+  // Saving
+  save_font_name(fontbutton->get_font_name());
 }
 
 void PreferencesWindow::on_add_button_clicked()
@@ -571,7 +752,7 @@ void PreferencesWindow::on_change_button_clicked()
   if (i) {
     Monitor *prev_monitor = (*i)[mc.monitor];
     Monitor *new_monitor
-      = run_choose_monitor_window(prev_monitor->get_gconf_dir());
+      = run_choose_monitor_window(prev_monitor->get_settings_dir());
 
     if (new_monitor) {
       applet.replace_monitor(prev_monitor, new_monitor);
@@ -595,26 +776,43 @@ void PreferencesWindow::stop_monitor_listeners()
 
 void PreferencesWindow::on_selection_changed()
 {
-  Glib::RefPtr<Gnome::Conf::Client> &client = applet.get_gconf_client();
-
   static MonitorColumns mc;
   store_iter i = monitor_treeview->get_selection()->get_selected();
 
   bool sel = i;
 
-  stop_monitor_listeners();
+  //stop_monitor_listeners();
 
-  if (sel) {
-    Glib::ustring key, mon_dir = (*(*i)[mc.monitor]).get_gconf_dir();
-    unsigned int con;
+  // Making sure the selection is available
+  if (sel)
+  {
+    unsigned int con, color;
 
-    key = mon_dir + "/color";
-    con = client->notify_add(key, sigc::mem_fun(*this, &PreferencesWindow::
-					     monitor_color_listener));
+    // Loading up new monitor colour
+    // Fetching assigned settings group
+    Glib::ustring key, mon_dir = (*(*i)[mc.monitor]).get_settings_dir();
 
-    monitor_color_listener(0, client->get_entry(key));
+    // Search for settings file
+    gchar* file = xfce_panel_plugin_lookup_rc_file(applet->panel_applet);
 
-    monitor_listeners.push_back(con);
+    if (file)
+    {
+      // One exists - loading readonly settings
+      settings = xfce_rc_simple_open(file, true);
+      g_free(file);
+
+      // Loading color
+      xfce_rc_set_group(settings, mon_dir.c_str());
+      color = xfce_rc_read_int_entry(settings, "color", 0);  // TODO: Is this an acceptable default? Can't seem to see how the normal default happens
+
+      // Close settings file
+      xfce_rc_close(settings);
+    }
+
+    // Applying colour
+    monitor_color_listener(0, color);
+
+    //monitor_listeners.push_back(con);
   }
   
   remove_button->set_sensitive(sel);
@@ -629,9 +827,9 @@ void PreferencesWindow::on_monitor_colorbutton_set(Gtk::ColorButton *colorbutton
   store_iter i = monitor_treeview->get_selection()->get_selected();
   
   if (i) {
-    Glib::ustring mon_dir = (*(*i)[mc.monitor]).get_gconf_dir();
+    Glib::ustring mon_dir = (*(*i)[mc.monitor]).get_settings_dir();
 
-    sync_conf_with_colorbutton(mon_dir + "/color", colorbutton);
+    sync_conf_with_colorbutton(mon_dir, "color", colorbutton);
   }
 }
 
@@ -649,8 +847,8 @@ bool PreferencesWindow::on_closed(GdkEventAny *)
 Monitor *PreferencesWindow::run_choose_monitor_window(const Glib::ustring &str)
 {
   ChooseMonitorWindow chooser(applet.get_icon(), *window);
-  
-  return chooser.run(applet.get_gconf_client(), str);
+
+  return chooser.run(applet->panel_applet, str);
 }
 
 void PreferencesWindow::add_to_monitors_list(Monitor *mon)
@@ -691,4 +889,31 @@ int PreferencesWindow::pixels_to_size_scale(int pixels)
   }
 
   return min_i;
+}
+
+void save_font_name(Glib::ustring &font_name)
+{
+  applet->font = font_name;
+  
+  // Search for a writeable settings file, create one if it doesnt exist */
+  gchar* file = xfce_panel_plugin_save_location(applet->panel_applet, true);
+    
+  if (file)
+  {
+    // Opening setting file
+    XfceRc* settings = xfce_rc_simple_open(file, false);
+    g_free(file);
+
+    // Updating configuration
+    xfce_rc_write_entry(settings, "viewer_font", font_name.c_str());
+
+    // Close settings file
+    xfce_rc_close(settings);
+  }
+  else
+  {
+    // Unable to obtain writeable config file - informing user and exiting
+    std::cerr << _("Unable to obtain writeable config file path in order to"
+      " save viewer font in save_font_name!\n");
+  }  
 }

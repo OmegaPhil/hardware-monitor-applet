@@ -20,8 +20,6 @@
 
 #include <config.h>
 
-#include <gconfmm/client.h>
-
 #include "choose-monitor-window.hpp"
 #include "gui-helpers.hpp"
 #include "monitor-impls.hpp"
@@ -165,111 +163,139 @@ ChooseMonitorWindow::~ChooseMonitorWindow()
 }
 
 
-Monitor *ChooseMonitorWindow::run(const Glib::RefPtr<Gnome::Conf::Client> &client,
-				  const Glib::ustring &mon_dir)
+Monitor *ChooseMonitorWindow::run(const XfcePanelPlugin* panel_applet,
+  const Glib::ustring &mon_dir)
 {
   // setup dialog
-  if (!mon_dir.empty()) {
-    Glib::ustring type = client->get_string(mon_dir + "/type");
+  if (!mon_dir.empty())
+  {
+    // Search for settings file
+    gchar* file = xfce_panel_plugin_lookup_rc_file(panel_applet);
+    
+    if (file)
+    {
+      // Loading settings
+      xfce_rc_set_group(settings, mon_dir.c_str());
+      Glib::ustring type = xfce_rc_read_entry(settings, "type", "");
 
-    if (type == "memory_usage") {
-      device_notebook->set_current_page(1);
-      memory_usage_radiobutton->set_active();
+      if (type == "memory_usage")
+      {
+	device_notebook->set_current_page(1);
+	memory_usage_radiobutton->set_active();
+      }
+      else if (type == "load_average")
+      {
+	device_notebook->set_current_page(0);
+	load_average_radiobutton->set_active();
+      }
+      else if (type == "disk_usage")
+      {
+	device_notebook->set_current_page(1); 
+	disk_usage_radiobutton->set_active();
+      }
+      else if (type == "swap_usage")
+      {
+	device_notebook->set_current_page(1);
+	swap_usage_radiobutton->set_active();
+      }
+      else if (type == "network_load")
+      {
+	device_notebook->set_current_page(2);
+	network_load_radiobutton->set_active();
+      }
+      else if (type == "temperature")
+      {
+	device_notebook->set_current_page(3);
+	temperature_radiobutton->set_active();
+      }
+      else
+      {
+	device_notebook->set_current_page(0);
+	// FIXME: use schema?
+	cpu_usage_radiobutton->set_active();
+      }
+      
+      // Fill in cpu info
+      if (xfce_rc_has_entry(settings, "cpu_no")
+      {
+	int no = xfce_rc_read_int_entry(settings, "cpu_no", -1)
+	if (no >= 0 && no < CpuUsageMonitor::max_no_cpus) {
+	  one_cpu_radiobutton->set_active();
+	  cpu_no_spinbutton->set_value(no + 1);
+	}
+	else {
+	  all_cpus_radiobutton->set_active();
+	}
+      }
+
+      // Fill in disk usage info
+      if (xfce_rc_has_entry(settings, "mount_dir")
+      {
+	GLib::ustring mount_dir = xfce_rc_read_entry(settings,
+	  "mount_dir", "");
+	mount_dir_entry->set_text(mount_dir);
+      }
+      if (xfce_rc_has_entry(settings, "show_free")
+      {
+	bool show_free  = xfce_rc_read_bool_entry(settings,
+	  "show_free", false);
+	show_free_checkbutton->set_active(show_free);
+      }
+
+      // Fill in network load info
+      if (xfce_rc_has_entry(settings, "interface")
+      {
+	Glib::ustring interface = xfce_rc_read_entry(settings,
+	  "interface", "eth");
+
+	int interface_no = xfce_rc_read_int_entry(settings,
+	  "interface_no", 0);
+	
+	if (interface == "eth" && interface_no == 0)
+	  network_type_optionmenu->set_history(0);
+	else if (interface == "eth" && interface_no == 1)
+	  network_type_optionmenu->set_history(1);
+	else if (interface == "eth" && interface_no == 2)
+	  network_type_optionmenu->set_history(2);
+	else if (interface == "ppp")
+	  network_type_optionmenu->set_history(3);
+	else if (interface == "slip")
+	  network_type_optionmenu->set_history(4);
+	else if (interface == "wlan")
+	  network_type_optionmenu->set_history(5);
+	else
+	  network_type_optionmenu->set_history(0);
+      }
+
+      if (xfce_rc_has_entry(settings, "interface_direction")
+      {
+	int direction = xfce_rc_read_int_entry(settings,
+	  "interface_direction", NetworkLoadMonitor::all_data);
+
+	if (direction == NetworkLoadMonitor::incoming_data)
+	  network_direction_optionmenu->set_history(1);
+	else if (direction == NetworkLoadMonitor::outgoing_data)
+	  network_direction_optionmenu->set_history(2);
+	else if (direction == NetworkLoadMonitor::all_data)
+	  network_direction_optionmenu->set_history(0);
+      }
+
+      int temperature_no = xfce_rc_read_int_entry(settings,
+	  "temperature_no", 0);
+
+      temperature_optionmenu->set_history(temperature_no);
     }
-    else if (type == "load_average") {
-      device_notebook->set_current_page(0);
-      load_average_radiobutton->set_active();
-    }
-    else if (type == "disk_usage") {
-      device_notebook->set_current_page(1); 
-      disk_usage_radiobutton->set_active();
-    }
-    else if (type == "swap_usage") {
-      device_notebook->set_current_page(1);
-      swap_usage_radiobutton->set_active();
-    }
-    else if (type == "network_load") {
-      device_notebook->set_current_page(2);
-      network_load_radiobutton->set_active();
-    }
-    else if (type == "temperature") {
-      device_notebook->set_current_page(3);
-      temperature_radiobutton->set_active();
-    }
-    else {
+    else
+    {
+      // Unable to obtain read-only config path
+      std::cerr << _("Unable to obtain read-only config file path in "
+	"order to configure monitor in ChooseMonitorWindow::run call!\n");
+
+      // Default setting?
       device_notebook->set_current_page(0);
       // FIXME: use schema?
       cpu_usage_radiobutton->set_active();
     }
-    
-    Gnome::Conf::Value v;
-    
-    // fill in cpu info
-    v = client->get(mon_dir + "/cpu_no");
-    if (v.get_type() == Gnome::Conf::VALUE_INT) {
-      int no = v.get_int();
-      if (no >= 0 && no < CpuUsageMonitor::max_no_cpus) {
-	one_cpu_radiobutton->set_active();
-	cpu_no_spinbutton->set_value(no + 1);
-      }
-      else {
-	all_cpus_radiobutton->set_active();
-      }
-    }
-
-    // fill in disk usage info
-    v = client->get(mon_dir + "/mount_dir");
-    if (v.get_type() == Gnome::Conf::VALUE_STRING)
-      mount_dir_entry->set_text(v.get_string());
-
-    v = client->get(mon_dir + "/show_free");
-    if (v.get_type() == Gnome::Conf::VALUE_BOOL)
-      show_free_checkbutton->set_active(v.get_bool());
-
-    // fill in network load info
-    v = client->get(mon_dir + "/interface");
-    if (v.get_type() == Gnome::Conf::VALUE_STRING) {
-      Glib::ustring interface = v.get_string();
-
-      int interface_no = 0;
-      v = client->get(mon_dir + "/interface_no");
-      if (v.get_type() == Gnome::Conf::VALUE_INT) 
-	interface_no = v.get_int();
-      
-      if (interface == "eth" && interface_no == 0)
-	network_type_optionmenu->set_history(0);
-      else if (interface == "eth" && interface_no == 1)
-	network_type_optionmenu->set_history(1);
-      else if (interface == "eth" && interface_no == 2)
-	network_type_optionmenu->set_history(2);
-      else if (interface == "ppp")
-	network_type_optionmenu->set_history(3);
-      else if (interface == "slip")
-	network_type_optionmenu->set_history(4);
-      else if (interface == "wlan")
-	network_type_optionmenu->set_history(5);
-      else
-	network_type_optionmenu->set_history(0);
-    }
-    
-    v = client->get(mon_dir + "/interface_direction");
-    if (v.get_type() == Gnome::Conf::VALUE_INT) {
-      int direction = v.get_int();
-
-      if (direction == NetworkLoadMonitor::incoming_data)
-	network_direction_optionmenu->set_history(1);
-      else if (direction == NetworkLoadMonitor::outgoing_data)
-	network_direction_optionmenu->set_history(2);
-      else if (direction == NetworkLoadMonitor::all_data)
-	network_direction_optionmenu->set_history(0);
-    }
-
-    int temperature_no = 0;
-    v = client->get(mon_dir + "/temperature_no");
-    if (v.get_type() == Gnome::Conf::VALUE_INT) 
-      temperature_no = v.get_int();
-      
-    temperature_optionmenu->set_history(temperature_no);
   }
 
   if (cpu_usage_radiobutton->get_active())
@@ -411,4 +437,3 @@ bool ChooseMonitorWindow::on_closed(GdkEventAny *)
   window->hide();
   return false;
 }
-

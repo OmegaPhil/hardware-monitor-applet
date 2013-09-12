@@ -45,8 +45,8 @@ public:
   ~ChooseMonitorWindow();
 
   // given a monitor directory (may be ""), return a new monitor or 0
-  Monitor *run(const Glib::RefPtr<Gnome::Conf::Client> &client,
-	       const Glib::ustring &mon_dir);
+  Monitor *run(const XfcePanelPlugin* panel_applet,
+    const Glib::ustring &mon_dir);
   
 private:
   Glib::RefPtr<Gnome::Glade::Xml> ui;

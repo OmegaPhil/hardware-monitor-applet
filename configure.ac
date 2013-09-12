@@ -16,12 +16,10 @@ AC_PROG_CC
 
 
 dnl checks for libraries
-PKG_CHECK_MODULES(DEPS, gconfmm-2.6 >= 2.6.0 \
-                        gtkmm-2.4 >= 2.6.0 \
+PKG_CHECK_MODULES(DEPS, gtkmm-2.4 >= 2.6.0 \
                         libgnomecanvasmm-2.6 >= 2.6.0 \
 			libgnomeui-2.0 >= 2.0.0 \
 			libglademm-2.4 >= 2.4.0 \
-			libpanelapplet-2.0 >= 2.0.0 \
                         libgtop-2.0 >= 2.6.0)
 AC_SUBST(DEPS_CFLAGS)
 AC_SUBST(DEPS_LIBS)
