@@ -5,7 +5,7 @@
  *
  * This program is free software; you can redistribute it and/or 
  * modify it under the terms of the GNU General Public License as 
- * published by the Free Software Foundation; either version 2 of the
+ * published by the Free Software Foundation; either version 3 of the
  * License, or (at your option) any later version.
  *
  * This program is distributed in the hope that it will be useful,
@@ -28,10 +28,11 @@
 #include <gtkmm/main.h>
 #include <cassert>
 #include <unistd.h>  // for nice
+#include <libgnomecanvasmm/init.h>
 
 extern "C"
 {
-#include <libxfce4panel/xfce-panel-plugin.h>  // Registration macro
+#include <libxfce4util/libxfce4util.h>
 }
 
 #include "ucompose.hpp"
@@ -48,26 +49,24 @@ extern "C"
 #include "preferences-window.hpp"
 #include "i18n.hpp"
 
-
+// TODO: GPL3+, add myself to copyright of all changed files
 
 // XFCE4 functions to create and destroy applet
 extern "C" void applet_construct(XfcePanelPlugin* plugin)
 {
   nice(5);  // Don't eat up too much CPU
 
-  // WIP: Try to compile!
-
   // Initialising GTK and GNOME canvas
-  Gtk::Main main(argc, argv);
+  Gtk::Main main(NULL, NULL);
   Gnome::Canvas::init();
 
   try {
 
     // i18n
-    xfce_textdomain(GETTEXT_PACKAGE, LOCALEDIR, "UTF-8");
+    xfce_textdomain(GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, "UTF-8");
 
     // Actually creating the applet/plugin
-    Applet *applet = manage(new Applet(plugin));
+    Applet *applet = Gtk::manage(new Applet(plugin));
     applet->show();
   }
   catch(const Glib::Error &ex)
@@ -87,19 +86,52 @@ extern "C" void applet_construct(XfcePanelPlugin* plugin)
 }*/
 
 // Helpers for popping up the various things
-void display_preferences(gpointer* applet)
+void display_preferences(void *applet)
 {
   static_cast<Applet *>(applet)->on_preferences_activated();
 }
 
-void display_help(gpointer* applet)
+void display_help(void *applet)
 {
   static_cast<Applet *>(applet)->on_help_activated();
 }
 
-void display_about(gpointer* applet)
+void display_about(void *applet)
 {
   static_cast<Applet *>(applet)->on_about_activated();
+}
+
+/* Function declared here as its a callback for a C signal, so cant be a
+ * method */
+void save_monitors(void *applet)
+{
+  // Getting at applet/plugin objects
+  Applet *tmp_applet = static_cast<Applet*>(applet);
+  XfcePanelPlugin *panel_applet = tmp_applet->panel_applet;
+
+  // Search for a writeable settings file, create one if it doesnt exist
+  gchar* file = xfce_panel_plugin_save_location(panel_applet, true);
+
+  if (file)
+  {
+    // Opening setting file
+    XfceRc* settings = xfce_rc_simple_open(file, false);
+    g_free(file);
+
+    // Looping for all monitors and calling save on each
+    for (monitor_iter i = tmp_applet->monitors.begin(),
+         end = tmp_applet->monitors.end(); i != end; ++i)
+      (*i)->save(settings);
+
+    // Close settings file
+    xfce_rc_close(settings);
+  }
+  else
+  {
+    // Unable to obtain writeable config file - informing user and exiting
+    std::cerr << _("Unable to obtain writeable config file path in order to"
+      " save monitors!\n");
+  }
 }
 
 
@@ -109,19 +141,20 @@ Applet::Applet(XfcePanelPlugin *plugin)
   // Setting defaults
   icon_path("/usr/share/pixmaps/hardware-monitor-applet.png"),
   viewer_type("curve"),
-  viewer_size(96),  // Arbitrary default
   viewer_font(""),
+  viewer_size(96),  // Arbitrary default
   background_color(0x00000000),  // black as the night
   use_background_color(false),
   next_color(0)
 {
   // Search for settings file
+  XfceRc* settings = NULL;
   gchar* file = xfce_panel_plugin_lookup_rc_file(panel_applet);
   
   if (file)
   {
     // One exists - loading readonly settings
-    XfceRc* settings = xfce_rc_simple_open(file, true);
+    settings = xfce_rc_simple_open(file, true);
     g_free(file);
 
     icon_path = xfce_rc_read_entry(settings, "icon-path", icon_path.c_str());
@@ -129,22 +162,20 @@ Applet::Applet(XfcePanelPlugin *plugin)
       viewer_type.c_str());
     viewer_size = xfce_rc_read_int_entry(settings, "viewer_size",
       viewer_size);
-    viewer_font = xfce_rc_read_entry(settings, "viewer_font", viewer_font);
+    viewer_font = xfce_rc_read_entry(settings, "viewer_font",
+      viewer_font.c_str());
     background_color = xfce_rc_read_int_entry(settings, "background_color",
       background_color);
     use_background_color = xfce_rc_read_bool_entry(settings,
       "use_background_color", use_background_color);
     next_color = xfce_rc_read_int_entry(settings, "next_color",
       next_color);
-
-    // All settings loaded
-    xfce_rc_close(settings);
   }
   
   // Loading icon
   try
   {
-    icon = Gdk::Pixbuf::create_from_file(icon_name);
+    icon = Gdk::Pixbuf::create_from_file(icon_path);
   }
   catch (...)
   {
@@ -207,6 +238,9 @@ Applet::Applet(XfcePanelPlugin *plugin)
   monitor_seq mon = load_monitors(settings);
   for (monitor_iter i = mon.begin(), end = mon.end(); i != end; ++i)
     add_monitor(*i);
+
+  // All settings loaded
+  xfce_rc_close(settings);
 
   /* TODO: This should be completely irrelevant as the view and background colour is already set above
   // Start displaying something
@@ -282,7 +316,7 @@ Applet::~Applet()
   view.reset();
 
   // Save monitors configuration
-  save_monitors();
+  save_monitors(this);
 
   // Delete monitors
   for (monitor_iter i = monitors.begin(), end = monitors.end(); i != end; ++i) {
@@ -346,7 +380,7 @@ unsigned int Applet::get_fg_color()
   
   // Updating next_color
   next_color = int((next_color + 1) %
-    (sizeof(colors) / sizeof(unsigned int))));
+    (sizeof(colors) / sizeof(unsigned int)));
   
   // Search for a writeable settings file, create one if it doesnt exist
   gchar* file = xfce_panel_plugin_save_location(panel_applet, true);
@@ -376,9 +410,8 @@ unsigned int Applet::get_fg_color()
 
 int Applet::get_size() const
 {
-  // FIXME: the panel appears to lie about its true size
-  // 2 pixels of frame decoration on both sides
-  return panel_applet_get_size(panel_applet) - 2 * 2;
+  // Return the width or height depending on the orientation
+  return xfce_panel_plugin_get_size(panel_applet);
 }
 
 bool Applet::horizontal() const
@@ -390,6 +423,31 @@ bool Applet::horizontal() const
 Glib::RefPtr<Gdk::Pixbuf> Applet::get_icon()
 {
   return icon;
+}
+
+const Glib::ustring Applet::get_viewer_type()
+{
+  return viewer_type;
+}
+
+int Applet::get_background_color() const
+{
+  return background_color;
+}
+
+gboolean Applet::get_use_background_color() const
+{
+  return use_background_color;
+}
+
+int Applet::get_viewer_size() const
+{
+  return viewer_size;
+}
+
+const Glib::ustring Applet::get_viewer_font()
+{
+  return viewer_font;
 }
 
 void Applet::add_monitor(Monitor *monitor)
@@ -433,7 +491,7 @@ void Applet::add_monitor(Monitor *monitor)
     if (file)
     {
       // One exists - loading readonly settings
-      settings = xfce_rc_simple_open(file, true);
+      XfceRc* settings = xfce_rc_simple_open(file, true);
       g_free(file);
 
       // Load settings for monitor
@@ -472,7 +530,8 @@ void Applet::remove_monitor(Monitor *monitor)
 
     // Removing settings group associated with the monitor if it exists
     if (xfce_rc_has_group(settings, monitor->get_settings_dir().c_str()))
-      xfce_rc_delete_group(settings, monitor->get_settings_dir().c_str())
+      xfce_rc_delete_group(settings, monitor->get_settings_dir().c_str(),
+        FALSE);
 
     // Close settings file
     xfce_rc_close(settings);
@@ -511,7 +570,7 @@ void Applet::replace_monitor(Monitor *prev_mon, Monitor *new_mon)
   if (file)
   {
     // One exists - loading readonly settings
-    settings = xfce_rc_simple_open(file, true);
+    XfceRc* settings = xfce_rc_simple_open(file, true);
     g_free(file);
 
     // Load settings
@@ -528,7 +587,7 @@ void Applet::replace_monitor(Monitor *prev_mon, Monitor *new_mon)
   }
 
   // Search for a writeable settings file, create one if it doesnt exist
-  gchar* file = xfce_panel_plugin_save_location(panel_applet, true);
+  file = xfce_panel_plugin_save_location(panel_applet, true);
     
   if (file)
   {
@@ -572,32 +631,6 @@ void Applet::remove_sync_for(Monitor *monitor)
     (*i)->remove_sync_with(monitor);
 }
 
-void Applet::save_monitors()
-{
-  // Search for a writeable settings file, create one if it doesnt exist
-  gchar* file = xfce_panel_plugin_save_location(panel_applet, true);
-    
-  if (file)
-  {
-    // Opening setting file
-    XfceRc* settings = xfce_rc_simple_open(file, false);
-    g_free(file);
-
-    // Looping for all monitors and calling save on each
-    for (monitor_iter i = monitors.begin(), end = monitors.end(); i != end; ++i)
-      (*i)->save(settings);
-
-    // Close settings file
-    xfce_rc_close(settings);
-  }
-  else
-  {
-    // Unable to obtain writeable config file - informing user and exiting
-    std::cerr << _("Unable to obtain writeable config file path in order to"
-      " save monitors!\n");
-  }
-}
-
 Glib::ustring Applet::find_empty_monitor_dir()
 {
   Glib::ustring mon_dir;
@@ -608,7 +641,7 @@ Glib::ustring Applet::find_empty_monitor_dir()
   if (file)
   {
     // One exists - loading readonly settings
-    settings = xfce_rc_simple_open(file, true);
+    XfceRc* settings = xfce_rc_simple_open(file, true);
     g_free(file);
 
     int c = 1;
@@ -678,11 +711,4 @@ void Applet::on_about_activated()
     about->show();
     about->raise();
   }
-}
-
-/* 'Registering' the applet - in reality this substitutes into a load
- * of functions including a main */
-extern "C"
-{
-  XFCE_PANEL_PLUGIN_REGISTER(applet_construct)
 }

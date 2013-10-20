@@ -4,7 +4,7 @@
  *
  * This program is free software; you can redistribute it and/or 
  * modify it under the terms of the GNU General Public License as 
- * published by the Free Software Foundation; either version 2 of the
+ * published by the Free Software Foundation; either version 3 of the
  * License, or (at your option) any later version.
  *
  * This program is distributed in the hope that it will be useful,
@@ -52,7 +52,7 @@ double const max_decay = 0.999;
 //
 
 std::list<Monitor *>
-load_monitors(const XfceRc* const settings)
+load_monitors(XfceRc* settings)
 {
   std::list<Monitor *> monitors;
 
@@ -63,7 +63,7 @@ load_monitors(const XfceRc* const settings)
     gchar** settings_monitors = xfce_rc_get_groups(settings);
 
     // They do - looping for all monitors
-    for (gchar** settings_monitor = settings_monitors; *settings_monitor;
+    for (gchar* settings_monitor = *settings_monitors; *settings_monitor;
       ++settings_monitors)
     {
       // Setting the correct group prior to loading settings
@@ -75,7 +75,7 @@ load_monitors(const XfceRc* const settings)
       if (type == "cpu_usage")
       {
         // Obtaining cpu_no
-        int cpu_no = xfce_rc_read_int_entry(settings, cpu_no, -1);
+        int cpu_no = xfce_rc_read_int_entry(settings, "cpu_no", -1);
 
         // Creating CPU usage monitor with provided number if valid
         if (cpu_no == -1)
@@ -456,22 +456,11 @@ void LoadAverageMonitor::load(XfceRc *settings)
   // Fetching assigned settings group
   Glib::ustring dir = get_settings_dir();
 
-  // Loading settings
+  // Loading settings - no support for floats, unstringifying
   xfce_rc_set_group(settings, dir.c_str());
-  if (xfce_rc_read_entry(settings, "type", "") == "load_average")
-  {
-    /* No support for floats - unstringifying, making sure the data is
-     * not corrupt */
-    Glib::ustring setting = xfce_rc_read_entry(settings, "max", "5");
-    if (dynamic_cast<float>(setting))
-      max_value = static_cast<float>(setting)
-    else
-    {
-      std::cerr << String::ucompose(_("Unable to configure max load "
-        "average for monitor %1 - cant cast '%2' to float!\n"),
-        dir, setting);
-    }
-  }
+  Glib::ustring type = xfce_rc_read_entry(settings, "type", "");
+  if (type == "load_average")
+    max_value = atof(xfce_rc_read_entry(settings, "max", "5"));
 }
 
 
@@ -785,7 +774,7 @@ void NetworkLoadMonitor::save(XfceRc *settings)
   // Saving settings
   xfce_rc_set_group(settings, dir.c_str());
   xfce_rc_write_entry(settings, "type", "network_load");
-  xfce_rc_write_entry(settings, "interface", interface);
+  xfce_rc_write_entry(settings, "interface", interface.c_str());
   xfce_rc_write_int_entry(settings, "interface_no", interface_no);
   xfce_rc_write_int_entry(settings, "interface_direction",
     int(direction));
@@ -800,11 +789,12 @@ void NetworkLoadMonitor::load(XfceRc *settings)
   /* Loading settings - ensuring the settings are for the particular
    * network monitor?? */
   xfce_rc_set_group(settings, dir.c_str());
-  if (xfce_rc_read_entry(settings, "type", "") == "network_load"
-    && xfce_rc_read_entry(settings, "interface", "") == interface
-    && xfce_rc_read_int_entry(settings, "interface_no", 0) == interface
+  Glib::ustring type = xfce_rc_read_entry(settings, "type", ""),
+    setting_interface = xfce_rc_read_entry(settings, "interface", "");
+  if (type == "network_load" && setting_interface == interface
+    && xfce_rc_read_int_entry(settings, "interface_no", 0) == interface_no
     && xfce_rc_read_int_entry(settings, "interface_direction",
-      incoming_data) s== interface)
+      int(incoming_data)) == int(direction))
   {
     max_value = xfce_rc_read_int_entry(settings, "max", 0);
   }
@@ -1025,24 +1015,13 @@ void TemperatureMonitor::load(XfceRc *settings)
   // Fetching assigned settings group
   Glib::ustring dir = get_settings_dir();
 
-  // Loading settings, making sure the right sensor is loaded
+  /* Loading settings, making sure the right sensor is loaded. No support
+   * for floats, unstringifying */
   xfce_rc_set_group(settings, dir.c_str());
-  if (xfce_rc_read_entry(settings, "type", "") == "temperature"
-    && xfce_rc_read_int_entry(settings, "temperature_no", 0) ==
-      sensors_no)
-  {
-    /* No support for floats - unstringifying, making sure the data is
-     * not corrupt */
-    Glib::ustring setting = xfce_rc_read_entry(settings, "max", "40");
-    if (dynamic_cast<float>(setting))
-      max_value = static_cast<float>(setting)
-    else
-    {
-      std::cerr << String::ucompose(_("Unable to configure max "
-        "temperature for monitor %1 - cant cast '%2' to float!\n"),
-        dir, setting);
-    }
-  }
+  Glib::ustring type = xfce_rc_read_entry(settings, "type", "");
+  if (type == "temperature" && xfce_rc_read_int_entry(settings,
+    "temperature_no", 0) == sensors_no)
+    max_value = atof(xfce_rc_read_entry(settings, "max", "40"));
 }
 
 
@@ -1127,22 +1106,11 @@ void FanSpeedMonitor::load(XfceRc *settings)
   // Fetching assigned settings group
   Glib::ustring dir = get_settings_dir();
 
-  // Loading settings, making sure the right fan is loaded
+  /* Loading settings, making sure the right fan is loaded. No support
+   * for floats, unstringifying */
   xfce_rc_set_group(settings, dir.c_str());
-  if (xfce_rc_read_entry(settings, "type", "") == "fan_speed"
-    && xfce_rc_read_int_entry(settings, "fan_no", 0) ==
-      sensors_no)
-  {
-    /* No support for floats - unstringifying, making sure the data is
-     * not corrupt */
-    Glib::ustring setting = xfce_rc_read_entry(settings, "max", "1");
-    if (dynamic_cast<float>(setting))
-      max_value = static_cast<float>(setting)
-    else
-    {
-      std::cerr << String::ucompose(_("Unable to configure max fan RPM "
-        "for monitor %1 - cant cast '%2' to float!\n"),
-        dir, setting);
-    }
-  }
+  Glib::ustring type = xfce_rc_read_entry(settings, "type", "");
+  if (type == "fan_speed" && xfce_rc_read_int_entry(settings, "fan_no",
+    0) == sensors_no)
+    max_value = atof(xfce_rc_read_entry(settings, "max", "1"));
 }

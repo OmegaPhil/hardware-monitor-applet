@@ -1,10 +1,11 @@
 /* Implementation of the bar view.
  *
  * Copyright (c) 2003, 04 Ole Laursen.
+ * Copyright (c) 2013 OmegaPhil (OmegaPhil+hardware.monitor@gmail.com)
  *
  * This program is free software; you can redistribute it and/or 
  * modify it under the terms of the GNU General Public License as 
- * published by the Free Software Foundation; either version 2 of the
+ * published by the Free Software Foundation; either version 3 of the
  * License, or (at your option) any later version.
  *
  * This program is distributed in the hope that it will be useful,
@@ -112,16 +113,16 @@ void Bar::draw(Gnome::Canvas::Canvas &canvas,
   if (file)
   {
     // One exists - loading readonly settings
-    settings = xfce_rc_simple_open(file, true);
+    XfceRc* settings = xfce_rc_simple_open(file, true);
     g_free(file);
 
     // Loading color
     bool color_missing = false;
     xfce_rc_set_group(settings, dir.c_str());
-    if (xfce_rc_has_entry(settings, "color")
+    if (xfce_rc_has_entry(settings, "color"))
     {
       fill_color = xfce_rc_read_int_entry(settings, "color",
-	applet->get_fg_color());
+                                          applet->get_fg_color());
     }
     else
       color_missing = true;
@@ -138,25 +139,25 @@ void Bar::draw(Gnome::Canvas::Canvas &canvas,
 
       // Search for a writeable settings file, create one if it doesnt exist
       file = xfce_panel_plugin_save_location(applet->panel_applet, true);
-	
+
       if (file)
       {
-	// Opening setting file
-	settings = xfce_rc_simple_open(file, false);
-	g_free(file);
+        // Opening setting file
+        settings = xfce_rc_simple_open(file, false);
+        g_free(file);
 
-	// Saving color
-	xfce_rc_set_group(settings, dir.c_str());
-	xfce_write_int_entry(settings, "color", int(fill_color));
-	
-	// Close settings file
-	xfce_rc_close(settings);
+        // Saving color
+        xfce_rc_set_group(settings, dir.c_str());
+        xfce_rc_write_int_entry(settings, "color", int(fill_color));
+
+        // Close settings file
+        xfce_rc_close(settings);
       }
       else
       {
-	// Unable to obtain writeable config file - informing user
-	std::cerr << _("Unable to obtain writeable config file path in "
-	  "order to update color in Bar::draw call!\n");
+        // Unable to obtain writeable config file - informing user
+        std::cerr << _("Unable to obtain writeable config file path in "
+          "order to update color in Bar::draw call!\n");
       }
     }
   }

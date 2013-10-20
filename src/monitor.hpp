@@ -4,7 +4,7 @@
  *
  * This program is free software; you can redistribute it and/or 
  * modify it under the terms of the GNU General Public License as 
- * published by the Free Software Foundation; either version 2 of the
+ * published by the Free Software Foundation; either version 3 of the
  * License, or (at your option) any later version.
  *
  * This program is distributed in the hope that it will be useful,
@@ -24,6 +24,11 @@
 #include <string>
 #include <list>
 #include <glibmm/ustring.h>
+
+extern "C"
+{
+#include <libxfce4util/libxfce4util.h>
+}
 
 #include "helpers.hpp"
 
@@ -115,7 +120,6 @@ private:
 typedef std::list<Monitor *> monitor_seq;
 typedef monitor_seq::iterator monitor_iter;
 
-monitor_seq load_monitors(const Glib::RefPtr<Gnome::Conf::Client> &client,
-			  const Glib::ustring &dir);
+monitor_seq load_monitors(const XfceRc* const settings);
 
 #endif

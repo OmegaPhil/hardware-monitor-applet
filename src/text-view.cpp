@@ -4,7 +4,7 @@
  *
  * This program is free software; you can redistribute it and/or 
  * modify it under the terms of the GNU General Public License as 
- * published by the Free Software Foundation; either version 2 of the
+ * published by the Free Software Foundation; either version 3 of the
  * License, or (at your option) any later version.
  *
  * This program is distributed in the hope that it will be useful,
@@ -19,6 +19,7 @@
  */
 
 #include <algorithm>
+#include <iostream>
 #include <cassert>
 
 #include <gtkmm/label.h>
@@ -106,13 +107,13 @@ void TextView::do_update()
   if (file)
   {
     // One exists - loading readonly settings
-    settings = xfce_rc_simple_open(file, true);
+    XfceRc* settings = xfce_rc_simple_open(file, true);
     g_free(file);
 
     // Loading font_name
     bool font_name_missing = false;
-    GLib::ustring font_name = "";
-    if (xfce_rc_has_entry(settings, "viewer_font")
+    Glib::ustring font_name = "";
+    if (xfce_rc_has_entry(settings, "viewer_font"))
     {
       font_name = xfce_rc_read_entry(settings, "viewer_font", "");
     }
@@ -137,7 +138,7 @@ void TextView::do_update()
         g_free(file);
 
         // Saving viewer size
-        xfce_write_entry(settings, "viewer_font", font_name);
+        xfce_rc_write_entry(settings, "viewer_font", font_name.c_str());
         
         // Close settings file
         xfce_rc_close(settings);

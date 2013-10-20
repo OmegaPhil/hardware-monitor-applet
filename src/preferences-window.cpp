@@ -4,7 +4,7 @@
  *
  * This program is free software; you can redistribute it and/or 
  * modify it under the terms of the GNU General Public License as 
- * published by the Free Software Foundation; either version 2 of the
+ * published by the Free Software Foundation; either version 3 of the
  * License, or (at your option) any later version.
  *
  * This program is distributed in the hope that it will be useful,
@@ -33,9 +33,6 @@
 #include "monitor.hpp"
 #include "i18n.hpp"
 
-
-// Private prototypes
-void save_font_name(Glib::ustring &font_name)
 
 void PreferencesWindow::connect_monitor_colorbutton(Gtk::ColorButton
 						    *colorbutton)
@@ -183,13 +180,12 @@ PreferencesWindow::PreferencesWindow(Applet &applet_, monitor_seq monitors)
 		     sigc::mem_fun(*this, &PreferencesWindow::font_listener));
   */
 
-  
   // Fill in values
-  viewer_type_listener(0, &applet->viewer_type);
-  background_color_listener(0, applet->background_color);
-  use_background_color_listener(0, applet->use_background_color);
-  size_listener(0, applet->viewer_size);
-  font_listener(0, &applet->viewer_font);
+  viewer_type_listener(0, applet.get_viewer_type());
+  background_color_listener(0, applet.get_background_color());
+  use_background_color_listener(0, applet.get_use_background_color());
+  size_listener(0, applet.get_viewer_size());
+  font_listener(0, applet.get_viewer_font());
 
   for (monitor_iter i = monitors.begin(), end = monitors.end(); i != end; ++i)
     add_to_monitors_list(*i);
@@ -255,7 +251,7 @@ namespace
 
 // Originally gconf callbacks
 void PreferencesWindow::viewer_type_listener(unsigned int,
-					     Glib::ustring &viewer_type;)
+					     const Glib::ustring viewer_type)
 {
   if (viewer_type == "curve")
   {
@@ -328,7 +324,7 @@ void PreferencesWindow::size_listener(unsigned int,
 }
 
 void PreferencesWindow::font_listener(unsigned int,
-  Glib::ustring &viewer_font)
+  const Glib::ustring viewer_font)
 {
   if (viewer_font.empty())
     font_checkbutton->set_active(false);
@@ -382,7 +378,7 @@ void PreferencesWindow::sync_conf_with_colorbutton(std::string settings_dir,
   b = c.get_blue() >> 8;
 
   // Search for a writeable settings file, create one if it doesnt exist
-  gchar* file = xfce_panel_plugin_save_location(applet->panel_applet, true);
+  gchar* file = xfce_panel_plugin_save_location(applet.panel_applet, true);
     
   if (file)
   {
@@ -422,10 +418,10 @@ void PreferencesWindow::on_background_color_radiobutton_toggled()
   bool on = background_color_radiobutton->get_active();
   
   background_colorbutton->set_sensitive(on);
-  use_background_color_listener(0, on)
+  use_background_color_listener(0, on);
 
   // Search for a writeable settings file, create one if it doesnt exist
-  gchar* file = xfce_panel_plugin_save_location(applet->panel_applet, true);
+  gchar* file = xfce_panel_plugin_save_location(applet.panel_applet, true);
     
   if (file)
   {
@@ -455,7 +451,7 @@ void PreferencesWindow::on_curve_radiobutton_toggled()
   if (active)
   {
     // Search for a writeable settings file, create one if it doesnt exist
-    gchar* file = xfce_panel_plugin_save_location(applet->panel_applet, true);
+    gchar* file = xfce_panel_plugin_save_location(applet.panel_applet, true);
       
     if (file)
     {
@@ -490,7 +486,7 @@ void PreferencesWindow::on_bar_radiobutton_toggled()
   if (active)
   {
     // Search for a writeable settings file, create one if it doesnt exist
-    gchar* file = xfce_panel_plugin_save_location(applet->panel_applet, true);
+    gchar* file = xfce_panel_plugin_save_location(applet.panel_applet, true);
       
     if (file)
     {
@@ -525,7 +521,7 @@ void PreferencesWindow::on_vbar_radiobutton_toggled()
   if (active)
   {
     // Search for a writeable settings file, create one if it doesnt exist
-    gchar* file = xfce_panel_plugin_save_location(applet->panel_applet, true);
+    gchar* file = xfce_panel_plugin_save_location(applet.panel_applet, true);
       
     if (file)
     {
@@ -560,7 +556,7 @@ void PreferencesWindow::on_column_radiobutton_toggled()
   if (active)
   {
     // Search for a writeable settings file, create one if it doesnt exist
-    gchar* file = xfce_panel_plugin_save_location(applet->panel_applet, true);
+    gchar* file = xfce_panel_plugin_save_location(applet.panel_applet, true);
       
     if (file)
     {
@@ -595,7 +591,7 @@ void PreferencesWindow::on_text_radiobutton_toggled()
   if (active)
   {
     // Search for a writeable settings file, create one if it doesnt exist
-    gchar* file = xfce_panel_plugin_save_location(applet->panel_applet, true);
+    gchar* file = xfce_panel_plugin_save_location(applet.panel_applet, true);
       
     if (file)
     {
@@ -629,7 +625,7 @@ void PreferencesWindow::on_flame_radiobutton_toggled()
   if (active)
   {
     // Search for a writeable settings file, create one if it doesnt exist
-    gchar* file = xfce_panel_plugin_save_location(applet->panel_applet, true);
+    gchar* file = xfce_panel_plugin_save_location(applet.panel_applet, true);
       
     if (file)
     {
@@ -668,7 +664,7 @@ void PreferencesWindow::on_size_scale_changed()
 
   /* Saving pixel value of scale
    * Search for a writeable settings file, create one if it doesnt exist */
-  gchar* file = xfce_panel_plugin_save_location(applet->panel_applet, true);
+  gchar* file = xfce_panel_plugin_save_location(applet.panel_applet, true);
     
   if (file)
   {
@@ -765,12 +761,6 @@ void PreferencesWindow::on_change_button_clicked()
 
 void PreferencesWindow::stop_monitor_listeners()
 {
-  Glib::RefPtr<Gnome::Conf::Client> &client = applet.get_gconf_client();
-  
-  for (std::vector<unsigned int>::iterator i = monitor_listeners.begin(),
-	 end = monitor_listeners.end(); i != end; ++i)
-    client->notify_remove(*i);
-
   monitor_listeners.clear();
 }
 
@@ -786,19 +776,19 @@ void PreferencesWindow::on_selection_changed()
   // Making sure the selection is available
   if (sel)
   {
-    unsigned int con, color;
+    unsigned int color = 0;  // TODO: Is this an acceptable default? Can't seem to see how the normal default happens
 
     // Loading up new monitor colour
     // Fetching assigned settings group
     Glib::ustring key, mon_dir = (*(*i)[mc.monitor]).get_settings_dir();
 
     // Search for settings file
-    gchar* file = xfce_panel_plugin_lookup_rc_file(applet->panel_applet);
+    gchar* file = xfce_panel_plugin_lookup_rc_file(applet.panel_applet);
 
     if (file)
     {
       // One exists - loading readonly settings
-      settings = xfce_rc_simple_open(file, true);
+      XfceRc* settings = xfce_rc_simple_open(file, true);
       g_free(file);
 
       // Loading color
@@ -848,7 +838,7 @@ Monitor *PreferencesWindow::run_choose_monitor_window(const Glib::ustring &str)
 {
   ChooseMonitorWindow chooser(applet.get_icon(), *window);
 
-  return chooser.run(applet->panel_applet, str);
+  return chooser.run(applet.panel_applet, str);
 }
 
 void PreferencesWindow::add_to_monitors_list(Monitor *mon)
@@ -891,12 +881,12 @@ int PreferencesWindow::pixels_to_size_scale(int pixels)
   return min_i;
 }
 
-void save_font_name(Glib::ustring &font_name)
+void PreferencesWindow::save_font_name(Glib::ustring font_name)
 {
-  applet->font = font_name;
+  applet.set_viewer_font(font_name);
   
   // Search for a writeable settings file, create one if it doesnt exist */
-  gchar* file = xfce_panel_plugin_save_location(applet->panel_applet, true);
+  gchar* file = xfce_panel_plugin_save_location(applet.panel_applet, true);
     
   if (file)
   {

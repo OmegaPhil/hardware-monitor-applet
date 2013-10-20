@@ -1,19 +1,29 @@
+# Based off original GNOME 2 applet build files copyright:
+#
+# 2003-2007 Ole Laursen <olau@hardworking.dk>
+#
+# XFCE4 modifications copyright:
+#
+# 2013 OmegaPhil (OmegaPhil+hardware.monitor@gmail.com)
+
+
+@SET_MAKE@
+
 SUBDIRS = src po # help
 
-# server file
-serverdir       = $(libdir)/bonobo/servers
-server_in_files = HardwareMonitor.server.in
-server_DATA     = $(server_in_files:.server.in=.server)
+# Defining optional macro directory
+ACLOCAL_AMFLAGS = -I m4
 
-$(server_in_files): $(server_in_files:.server.in=.server.in.in) Makefile
-	sed -e "s|\@LIBEXECDIR\@|$(libexecdir)|" -e "s|\@PACKAGE\@|$(PACKAGE)|" $< > $@
+# Installing the plugin's desktop file in the correct place, with
+# translations merged in
+desktopdir = $(datadir)/xfce4/panel/plugins
+desktop_DATA = $(PACKAGE_NAME).desktop
+@INTLTOOL_DESKTOP_RULE@
 
-@INTLTOOL_SERVER_RULE@
-
-# icon
+# Icon
 icondir = $(datadir)/pixmaps
-icon_DATA = $(PACKAGE)-applet.png
+icon_DATA = hardware-monitor-applet.png
 
-EXTRA_DIST = $(icon_DATA) $(server_DATA:.server=.server.in.in) \
-             intltool-merge.in intltool-extract.in intltool-update.in \
-             MAINTAINERS
+EXTRA_DIST = $(icon_DATA) $(desktop_DATA) intltool-merge.in \
+             intltool-extract.in intltool-update.in MAINTAINERS
+

@@ -4,7 +4,7 @@
  *
  * This program is free software; you can redistribute it and/or 
  * modify it under the terms of the GNU General Public License as 
- * published by the Free Software Foundation; either version 2 of the
+ * published by the Free Software Foundation; either version 3 of the
  * License, or (at your option) any later version.
  *
  * This program is distributed in the hope that it will be useful,
@@ -77,17 +77,14 @@ void ColumnGraph::draw(Gnome::Canvas::Canvas &canvas,
   
   double time_offset = double(remaining_draws) / CanvasView::draw_iterations;
 
-
-  Glib::RefPtr<Gnome::Conf::Client> &client = applet->panel_applet;
-    
   ValueHistory::iterator vi = value_history.values.begin(),
     vend = value_history.values.end();
 
   if (vi == vend)		// there must be at least one point
     return;
 
-  // get colour
-  unsigned int color;
+  // Get default colour
+  unsigned int color = applet->get_fg_color();
 
   // Fetching assigned settings group
   Glib::ustring dir = monitor->get_settings_dir();
@@ -98,13 +95,13 @@ void ColumnGraph::draw(Gnome::Canvas::Canvas &canvas,
   if (file)
   {
     // One exists - loading readonly settings
-    settings = xfce_rc_simple_open(file, true);
+    XfceRc* settings = xfce_rc_simple_open(file, true);
     g_free(file);
 
     // Loading color
     bool color_missing = false;
     xfce_rc_set_group(settings, dir.c_str());
-    if (xfce_rc_has_entry(settings, "color")
+    if (xfce_rc_has_entry(settings, "color"))
     {
       color = xfce_rc_read_int_entry(settings, "color",
         applet->get_fg_color());
@@ -120,8 +117,6 @@ void ColumnGraph::draw(Gnome::Canvas::Canvas &canvas,
      * be separated */
     if (color_missing)
     {
-      color = applet->get_fg_color();
-
       // Search for a writeable settings file, create one if it doesnt exist
       file = xfce_panel_plugin_save_location(applet->panel_applet, true);
 	
@@ -133,7 +128,7 @@ void ColumnGraph::draw(Gnome::Canvas::Canvas &canvas,
 
         // Saving color
         xfce_rc_set_group(settings, dir.c_str());
-        xfce_write_int_entry(settings, "color", int(color));
+        xfce_rc_write_int_entry(settings, "color", int(color));
 
         // Close settings file
         xfce_rc_close(settings);

@@ -5,7 +5,7 @@
  *
  * This program is free software; you can redistribute it and/or 
  * modify it under the terms of the GNU General Public License as 
- * published by the Free Software Foundation; either version 2 of the
+ * published by the Free Software Foundation; either version 3 of the
  * License, or (at your option) any later version.
  *
  * This program is distributed in the hope that it will be useful,
@@ -36,9 +36,9 @@
 
 extern "C"
 {
-#include <gtk/gtk.h>  // TODO: Confirm this is needed
 #include <libxfce4panel/libxfce4panel.h>
 }
+
 
 #include "monitor.hpp"
 
@@ -50,7 +50,7 @@ class View;
 class Applet: public Gtk::EventBox
 {
 public:
-  Applet(PanelApplet *panel_applet);
+  Applet(XfcePanelPlugin *plugin);
   ~Applet();
 
   Gtk::Container &get_container();
@@ -60,14 +60,27 @@ public:
   bool horizontal() const; 	// whether we're in horizontal mode
   void set_view(View *view);	// use this view to monitor
 
+  /* The following have been created to access properties that used to
+   * be publically available through GConf, but are private data in the
+   * object */
+  const Glib::ustring get_viewer_type();
+  int get_background_color() const;
+  gboolean get_use_background_color() const;
+  int get_viewer_size() const;
+  const Glib::ustring get_viewer_font();
+  void set_viewer_font(Glib::ustring font_name);
+
   Glib::RefPtr<Gdk::Pixbuf> get_icon();	// get the application icon
 
   void add_monitor(Monitor *monitor); // take over ownership of monitor
   void remove_monitor(Monitor *monitor); // get rid of the monitor
   void replace_monitor(Monitor *prev_monitor, Monitor *new_monitor);
 
+  // For opening settings file associated with the plugin
+  XfcePanelPlugin *panel_applet;
+
   static int const update_interval = 1000;
-  
+
 private:
   // monitors
   monitor_seq monitors;
@@ -84,9 +97,8 @@ private:
   sigc::connection timer;
 
   Glib::ustring find_empty_monitor_dir();
-  
+
   // data
-  XfcePanelPlugin *panel_applet;
   Glib::ustring icon_path;
   Glib::ustring viewer_type;
   Glib::ustring viewer_font;
@@ -100,11 +112,11 @@ private:
   std::auto_ptr<PreferencesWindow> preferences_window;
 
   Gtk::Tooltips tooltips;
-  
-  friend void display_preferences(BonoboUIComponent *, void *applet, const gchar *);
 
-  friend void display_help(BonoboUIComponent *, void *applet, const gchar *);
-  friend void display_about(BonoboUIComponent *, void *applet, const gchar *);
+  friend void display_preferences(void *applet);
+  friend void display_help(void *applet);
+  friend void display_about(void *applet);
+  friend void save_monitors(void *applet);
 };
 
 #endif

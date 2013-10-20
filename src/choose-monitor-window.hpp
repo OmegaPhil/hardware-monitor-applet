@@ -1,10 +1,11 @@
 /* The choose monitor window.
  *
  * Copyright (c) 2003, 04 Ole Laursen.
+ * Copyright (c) 2013 OmegaPhil (OmegaPhil+hardware.monitor@gmail.com)
  *
  * This program is free software; you can redistribute it and/or 
  * modify it under the terms of the GNU General Public License as 
- * published by the Free Software Foundation; either version 2 of the
+ * published by the Free Software Foundation; either version 3 of the
  * License, or (at your option) any later version.
  *
  * This program is distributed in the hope that it will be useful,
@@ -21,6 +22,7 @@
 #ifndef CHOOSE_MONITOR_WINDOW_HPP
 #define CHOOSE_MONITOR_WINDOW_HPP
 
+#include <iostream>
 #include <memory>
 
 #include <libglademm/xml.h>
@@ -34,6 +36,12 @@
 #include <gtkmm/optionmenu.h>
 #include <gtkmm/radiobutton.h>
 #include <gtkmm/spinbutton.h>
+#include <glibmm/ustring.h>
+
+extern "C"
+{
+#include <libxfce4panel/libxfce4panel.h>
+}
 
 class Applet;
 class Monitor;
@@ -44,8 +52,9 @@ public:
   ChooseMonitorWindow(Glib::RefPtr<Gdk::Pixbuf> icon, Gtk::Window &parent);
   ~ChooseMonitorWindow();
 
+  // WIP: Bullshit error saying that Glib is not declared. Glib::RefPtr above was present in the original code so this is nonsense. It definitely doesnt like this new run function signature though
   // given a monitor directory (may be ""), return a new monitor or 0
-  Monitor *run(const XfcePanelPlugin* panel_applet,
+  Monitor *run(XfcePanelPlugin* panel_applet,
     const Glib::ustring &mon_dir);
   
 private:

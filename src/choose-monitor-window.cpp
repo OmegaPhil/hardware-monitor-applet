@@ -1,10 +1,11 @@
 /* Implementation of the ChooseMonitorWindow class.
  *
  * Copyright (c) 2003, 04 Ole Laursen.
+ * Copyright (c) 2013 OmegaPhil (OmegaPhil+hardware.monitor@gmail.com)
  *
  * This program is free software; you can redistribute it and/or 
  * modify it under the terms of the GNU General Public License as 
- * published by the Free Software Foundation; either version 2 of the
+ * published by the Free Software Foundation; either version 3 of the
  * License, or (at your option) any later version.
  *
  * This program is distributed in the hope that it will be useful,
@@ -163,7 +164,7 @@ ChooseMonitorWindow::~ChooseMonitorWindow()
 }
 
 
-Monitor *ChooseMonitorWindow::run(const XfcePanelPlugin* panel_applet,
+Monitor *ChooseMonitorWindow::run(XfcePanelPlugin* panel_applet,
   const Glib::ustring &mon_dir)
 {
   // setup dialog
@@ -175,6 +176,8 @@ Monitor *ChooseMonitorWindow::run(const XfcePanelPlugin* panel_applet,
     if (file)
     {
       // Loading settings
+      XfceRc* settings = xfce_rc_simple_open(file, true);
+      g_free(file);
       xfce_rc_set_group(settings, mon_dir.c_str());
       Glib::ustring type = xfce_rc_read_entry(settings, "type", "");
 
@@ -216,9 +219,9 @@ Monitor *ChooseMonitorWindow::run(const XfcePanelPlugin* panel_applet,
       }
       
       // Fill in cpu info
-      if (xfce_rc_has_entry(settings, "cpu_no")
+      if (xfce_rc_has_entry(settings, "cpu_no"))
       {
-	int no = xfce_rc_read_int_entry(settings, "cpu_no", -1)
+	int no = xfce_rc_read_int_entry(settings, "cpu_no", -1);
 	if (no >= 0 && no < CpuUsageMonitor::max_no_cpus) {
 	  one_cpu_radiobutton->set_active();
 	  cpu_no_spinbutton->set_value(no + 1);
@@ -229,13 +232,13 @@ Monitor *ChooseMonitorWindow::run(const XfcePanelPlugin* panel_applet,
       }
 
       // Fill in disk usage info
-      if (xfce_rc_has_entry(settings, "mount_dir")
+      if (xfce_rc_has_entry(settings, "mount_dir"))
       {
-	GLib::ustring mount_dir = xfce_rc_read_entry(settings,
+	Glib::ustring mount_dir = xfce_rc_read_entry(settings,
 	  "mount_dir", "");
 	mount_dir_entry->set_text(mount_dir);
       }
-      if (xfce_rc_has_entry(settings, "show_free")
+      if (xfce_rc_has_entry(settings, "show_free"))
       {
 	bool show_free  = xfce_rc_read_bool_entry(settings,
 	  "show_free", false);
@@ -243,7 +246,7 @@ Monitor *ChooseMonitorWindow::run(const XfcePanelPlugin* panel_applet,
       }
 
       // Fill in network load info
-      if (xfce_rc_has_entry(settings, "interface")
+      if (xfce_rc_has_entry(settings, "interface"))
       {
 	Glib::ustring interface = xfce_rc_read_entry(settings,
 	  "interface", "eth");
@@ -267,7 +270,7 @@ Monitor *ChooseMonitorWindow::run(const XfcePanelPlugin* panel_applet,
 	  network_type_optionmenu->set_history(0);
       }
 
-      if (xfce_rc_has_entry(settings, "interface_direction")
+      if (xfce_rc_has_entry(settings, "interface_direction"))
       {
 	int direction = xfce_rc_read_int_entry(settings,
 	  "interface_direction", NetworkLoadMonitor::all_data);

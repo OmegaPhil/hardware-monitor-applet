@@ -1,6 +1,4 @@
-/* Helper functions.
- *
- * Copyright (c) 2003 Ole Laursen.
+/* Copyright (c) 2013 OmegaPhil (OmegaPhil+hardware.monitor@gmail.com)
  *
  * This program is free software; you can redistribute it and/or 
  * modify it under the terms of the GNU General Public License as 
@@ -18,34 +16,13 @@
  * USA.
  */
 
-#include <config.h>
 
-#include <gtkmm/messagedialog.h>
+#include <libxfce4panel/xfce-panel-plugin.h>
 
-#include "helpers.hpp"
-#include "i18n.hpp"
+/* It looks like plugin registration MUST happen in a pure C file - doing
+ * this in a C linkage block in applet.cpp is not good enough */
+extern void applet_construct(XfcePanelPlugin* plugin);
 
-
-void fatal_error(const Glib::ustring &msg)
-{
-  Gtk::MessageDialog d(msg, Gtk::MESSAGE_ERROR);
-
-  d.set_modal();
-  d.set_title(_("Fatal error"));
-
-  d.run();
-  
-  exit(1);
-}
-
-Glib::ustring truncate_string(Glib::ustring s, unsigned int n)
-{
-  // for when a string needs to be truncated
-  Glib::ustring ellipsis = "...";
-
-  if (s.length() > n && n - ellipsis.length() > 0)
-    s.replace(n - ellipsis.length(), Glib::ustring::npos, ellipsis);
-  
-  return s;
-}
-
+/* 'Registering' the applet - in reality this substitutes into a load
+ * of functions including a main */
+XFCE_PANEL_PLUGIN_REGISTER(applet_construct)

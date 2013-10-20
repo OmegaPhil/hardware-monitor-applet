@@ -4,7 +4,7 @@
  *
  * This program is free software; you can redistribute it and/or 
  * modify it under the terms of the GNU General Public License as 
- * published by the Free Software Foundation; either version 2 of the
+ * published by the Free Software Foundation; either version 3 of the
  * License, or (at your option) any later version.
  *
  * This program is distributed in the hope that it will be useful,
@@ -62,13 +62,13 @@ void CanvasView::do_update()
   if (file)
   {
     // One exists - loading readonly settings
-    settings = xfce_rc_simple_open(file, true);
+    XfceRc* settings = xfce_rc_simple_open(file, true);
     g_free(file);
 
     // Loading size
     bool size_missing = false;
     int size = 60;
-    if (xfce_rc_has_entry(settings, "viewer_size")
+    if (xfce_rc_has_entry(settings, "viewer_size"))
     {
       size = xfce_rc_read_int_entry(settings, "viewer_size", 60);
     }
@@ -93,7 +93,7 @@ void CanvasView::do_update()
         g_free(file);
 
         // Saving viewer size
-        xfce_write_int_entry(settings, "viewer_size", size);
+        xfce_rc_write_int_entry(settings, "viewer_size", size);
         
         // Close settings file
         xfce_rc_close(settings);

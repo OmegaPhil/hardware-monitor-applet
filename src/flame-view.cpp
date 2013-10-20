@@ -4,7 +4,7 @@
  *
  * This program is free software; you can redistribute it and/or 
  * modify it under the terms of the GNU General Public License as 
- * published by the Free Software Foundation; either version 2 of the
+ * published by the Free Software Foundation; either version 3 of the
  * License, or (at your option) any later version.
  *
  * This program is distributed in the hope that it will be useful,
@@ -66,8 +66,8 @@ Flame::Flame(Monitor *m)
 void Flame::update(Gnome::Canvas::Canvas &canvas,
 		   Applet *applet, int width, int height, int no, int total)
 {
-  // Get color
-  unsigned int color;
+  // Get color with default
+  unsigned int color = applet->get_fg_color();
 
   // Fetching assigned settings group
   Glib::ustring dir = monitor->get_settings_dir();
@@ -78,13 +78,13 @@ void Flame::update(Gnome::Canvas::Canvas &canvas,
   if (file)
   {
     // One exists - loading readonly settings
-    settings = xfce_rc_simple_open(file, true);
+    XfceRc* settings = xfce_rc_simple_open(file, true);
     g_free(file);
 
     // Loading color
     bool color_missing = false;
     xfce_rc_set_group(settings, dir.c_str());
-    if (xfce_rc_has_entry(settings, "color")
+    if (xfce_rc_has_entry(settings, "color"))
     {
       color = xfce_rc_read_int_entry(settings, "color",
         applet->get_fg_color());
@@ -100,8 +100,6 @@ void Flame::update(Gnome::Canvas::Canvas &canvas,
      * be separated */
     if (color_missing)
     {
-      color = applet->get_fg_color();
-
       // Search for a writeable settings file, create one if it doesnt exist
       file = xfce_panel_plugin_save_location(applet->panel_applet, true);
 	
@@ -113,7 +111,7 @@ void Flame::update(Gnome::Canvas::Canvas &canvas,
 
         // Saving color
         xfce_rc_set_group(settings, dir.c_str());
-        xfce_write_int_entry(settings, "color", int(color));
+        xfce_rc_write_int_entry(settings, "color", int(color));
 
         // Close settings file
         xfce_rc_close(settings);

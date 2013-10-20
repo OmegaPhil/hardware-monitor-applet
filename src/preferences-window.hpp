@@ -4,7 +4,7 @@
  *
  * This program is free software; you can redistribute it and/or 
  * modify it under the terms of the GNU General Public License as 
- * published by the Free Software Foundation; either version 2 of the
+ * published by the Free Software Foundation; either version 3 of the
  * License, or (at your option) any later version.
  *
  * This program is distributed in the hope that it will be useful,
@@ -104,12 +104,12 @@ private:
   typedef Gtk::ListStore::iterator store_iter;
   
   // Originally gconf callbacks
-  void viewer_type_listener(unsigned int, Glib::ustring &viewer_type);
+  void viewer_type_listener(unsigned int, const Glib::ustring viewer_type);
   void background_color_listener(unsigned int,
     unsigned int background_color);
   void use_background_color_listener(unsigned int, bool use_background_color);
   void size_listener(unsigned int, int viewer_size);
-  void font_listener(unsigned int, Glib::ustring &viewer_font);
+  void font_listener(unsigned int, const Glib::ustring viewer_font);
   void monitor_color_listener(unsigned int, unsigned int color);
 
   void stop_monitor_listeners();
@@ -150,6 +150,8 @@ private:
   void sync_conf_with_colorbutton(std::string settings_dir,
     std::string setting_name, Gtk::ColorButton *button);
   void connect_monitor_colorbutton(Gtk::ColorButton *colorbutton);
+
+  void save_font_name(Glib::ustring font_name);
   
   Applet &applet;
 };
