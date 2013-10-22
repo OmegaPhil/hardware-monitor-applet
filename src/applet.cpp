@@ -66,7 +66,7 @@ extern "C" void applet_construct(XfcePanelPlugin* plugin)
     xfce_textdomain(GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, "UTF-8");
 
     // Actually creating the applet/plugin
-    Applet *applet = Gtk::manage(new Applet(plugin));
+    Applet *applet = new Applet(plugin);
     applet->show();
   }
   catch(const Glib::Error &ex)
@@ -77,13 +77,12 @@ extern "C" void applet_construct(XfcePanelPlugin* plugin)
 }
 
 // Does not need C linkage as its called via a function pointer?
-// Not needed as GLib manages the lifetime of the applet
-/*void applet_free(XfcePanelPlugin*, Applet* applet)
+void applet_free(XfcePanelPlugin*, Applet* applet)
 {
   // Called by 'free-data' signal
   delete applet;
   applet = NULL;
-}*/
+}
 
 // Helpers for popping up the various things
 void display_preferences(void *applet)
@@ -272,9 +271,8 @@ Applet::Applet(XfcePanelPlugin *plugin)
     G_CALLBACK(display_preferences), this);
 
   // Hooking into plugin destruction signal
-  // Not needed as Glib manages the lifetime of the applet
-	/*g_signal_connect_swapped(panel_applet, "free-data", G_CALLBACK(applet_free),
-    this);*/
+  g_signal_connect_swapped(panel_applet, "free-data", G_CALLBACK(applet_free),
+    this);
 
   /* TODO: Not sure if I really need to support this
 #if (LIBXFCE4PANEL_CHECK_VERSION(4,10,0))
