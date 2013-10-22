@@ -450,6 +450,11 @@ const Glib::ustring Applet::get_viewer_font()
   return viewer_font;
 }
 
+void Applet::set_viewer_font(const Glib::ustring font_name)
+{
+  viewer_font = font_name;
+}
+
 void Applet::add_monitor(Monitor *monitor)
 {
   add_sync_for(monitor);

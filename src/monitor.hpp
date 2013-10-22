@@ -120,6 +120,6 @@ private:
 typedef std::list<Monitor *> monitor_seq;
 typedef monitor_seq::iterator monitor_iter;
 
-monitor_seq load_monitors(const XfceRc* const settings);
+monitor_seq load_monitors(XfceRc* settings);
 
 #endif
