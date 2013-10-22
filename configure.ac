@@ -37,7 +37,8 @@ AC_ISC_POSIX
 AC_MINIX
 
 dnl Check for basic programs - AM_PROG_AR gets around non-POSIX archiver
-dnl warning
+dnl warning, AC_PROG_CC is needed as there is one pure C file to compile
+AC_PROG_CC
 AC_PROG_CXX
 AC_PROG_INSTALL
 IT_PROG_INTLTOOL([0.40.0])
