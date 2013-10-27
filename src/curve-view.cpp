@@ -129,7 +129,7 @@ void Curve::draw(Gnome::Canvas::Canvas &canvas,
     if (file)
     {
       // Opening setting file
-      settings = xfce_rc_simple_open(file, false);
+      XfceRc* settings = xfce_rc_simple_open(file, false);
       g_free(file);
 
       // Saving color
