@@ -645,6 +645,7 @@ void Applet::remove_sync_for(Monitor *monitor)
 Glib::ustring Applet::find_empty_monitor_dir()
 {
   Glib::ustring mon_dir;
+  int c = 1;
 
   // Search for read-only settings file
   gchar* file = xfce_panel_plugin_lookup_rc_file(panel_applet);
@@ -655,7 +656,6 @@ Glib::ustring Applet::find_empty_monitor_dir()
     XfceRc* settings = xfce_rc_simple_open(file, true);
     g_free(file);
 
-    int c = 1;
     do {
       mon_dir = String::ucompose("%1", c++);
     } while (xfce_rc_has_group(settings, mon_dir.c_str()));
@@ -665,9 +665,9 @@ Glib::ustring Applet::find_empty_monitor_dir()
   }
   else
   {
-    // Unable to obtain read-only config file - informing user
-    std::cerr << _("Unable to obtain read-only config file path in "
-      "find_empty_monitor_dir call!\n");
+    /* No configuration file exists yet - setting mon_dir to 1 and
+     * informing user */
+    mon_dir = String::ucompose("%1", c);
   }  
 
   // Returning next free monitor directory (number)
