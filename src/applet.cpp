@@ -462,8 +462,12 @@ void Applet::add_monitor(Monitor *monitor)
 
   /* Read and write config locations and the open call are be different
    * in XFCE4 - hence the duplication here */
-  
-  if (monitor->get_settings_dir().empty()) {
+
+  /* Checking if monitor has a defined settings directory and therefore
+   * settings to load */
+  if (monitor->get_settings_dir().empty())
+  {
+    // It hasn't - creating one and saving
     monitor->set_settings_dir(find_empty_monitor_dir());
 
     // Search for a writeable settings file, create one if it doesnt exist
@@ -490,7 +494,9 @@ void Applet::add_monitor(Monitor *monitor)
   }
   else
   {
-    // Search for settings file
+    /* Monitor has a saved settings directory and therefore settings to
+     * load
+     * Search for settings file */
     gchar* file = xfce_panel_plugin_lookup_rc_file(panel_applet);
  
     if (file)

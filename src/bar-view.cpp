@@ -101,7 +101,7 @@ void Bar::draw(Gnome::Canvas::Canvas &canvas,
 	       Applet *applet, int width, int height, int no, int total,
 	       double time_offset)
 {
-  // get drawing attributes
+  // Get drawing attributes
   unsigned int fill_color;
 
   // Fetching assigned settings group
