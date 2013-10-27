@@ -472,11 +472,13 @@ void PreferencesWindow::on_curve_radiobutton_toggled()
         " save viewer type in "
         "PreferencesWindow::on_curve_radiobutton_toggled!\n");
     }
+
+    // Changing viewer type
+    viewer_type_listener(0, "curve");
   }
 
   size_outer_vbox->property_visible() = active;
   monitor_curve_options->property_visible() = active;
-  viewer_type_listener(0, "curve");
 }
 
 void PreferencesWindow::on_bar_radiobutton_toggled()
@@ -507,11 +509,13 @@ void PreferencesWindow::on_bar_radiobutton_toggled()
         " save viewer type in "
         "PreferencesWindow::on_bar_radiobutton_toggled!\n");
     }
+
+    // Changing viewer type
+    viewer_type_listener(0, "bar");
   }
 
   size_outer_vbox->property_visible() = active;
   monitor_bar_options->property_visible() = active;
-  viewer_type_listener(0, "bar");
 }
 
 void PreferencesWindow::on_vbar_radiobutton_toggled()
@@ -542,11 +546,13 @@ void PreferencesWindow::on_vbar_radiobutton_toggled()
         " save viewer type in "
         "PreferencesWindow::on_vbar_radiobutton_toggled!\n");
     }
+
+    // Changing viewer type
+    viewer_type_listener(0, "vbar");
   }
 
   size_outer_vbox->property_visible() = active;
   monitor_vbar_options->property_visible() = active;
-  viewer_type_listener(0, "vbar");
 }
 
 void PreferencesWindow::on_column_radiobutton_toggled()
@@ -577,11 +583,13 @@ void PreferencesWindow::on_column_radiobutton_toggled()
         " save viewer type in "
         "PreferencesWindow::on_column_radiobutton_toggled!\n");
     }
+
+    // Changing viewer type
+    viewer_type_listener(0, "column");
   }
   
   size_outer_vbox->property_visible() = active;
   monitor_column_options->property_visible() = active;
-  viewer_type_listener(0, "column");
 }
 
 void PreferencesWindow::on_text_radiobutton_toggled()
@@ -612,10 +620,12 @@ void PreferencesWindow::on_text_radiobutton_toggled()
         " save viewer type in "
         "PreferencesWindow::on_text_radiobutton_toggled!\n");
     }
+
+    // Changing viewer type
+    viewer_type_listener(0, "text");
   }
   
   font_outer_vbox->property_visible() = active;
-  viewer_type_listener(0, "text");
 }
 
 void PreferencesWindow::on_flame_radiobutton_toggled()
@@ -646,11 +656,13 @@ void PreferencesWindow::on_flame_radiobutton_toggled()
         " save viewer type in "
         "PreferencesWindow::on_flame_radiobutton_toggled!\n");
     }
+
+    // Changing viewer type
+    viewer_type_listener(0, "flame");
   }
 
   size_outer_vbox->property_visible() = active;
   monitor_flame_options->property_visible() = active;
-  viewer_type_listener(0, "flame");
 }
 
 void PreferencesWindow::on_size_scale_changed()
