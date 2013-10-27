@@ -56,11 +56,13 @@ extern "C" void applet_construct(XfcePanelPlugin* plugin)
 {
   nice(5);  // Don't eat up too much CPU
 
-  // Initialising GTK and GNOME canvas
-  Gtk::Main main(NULL, NULL);
-  Gnome::Canvas::init();
-
   try {
+
+    // Initialising GTK and GNOME canvas
+    /* Testing not initialising GTK, as this isn't a standalone application
+     * but a library? Otherwise seems to fail */
+    //Gtk::Main main(NULL, NULL);
+    Gnome::Canvas::init();
 
     // i18n
     xfce_textdomain(GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, "UTF-8");
