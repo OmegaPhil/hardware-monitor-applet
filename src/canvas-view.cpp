@@ -54,6 +54,9 @@ void CanvasView::do_display()
 
 void CanvasView::do_update()
 {
+  size = 60;
+  bool size_missing = true;
+
   /* Obtaining size
    * Keeping with the default settings group for viewer settings
    * Search for settings file */
@@ -66,51 +69,42 @@ void CanvasView::do_update()
     g_free(file);
 
     // Loading size
-    bool size_missing = false;
-    int size = 60;
     if (xfce_rc_has_entry(settings, "viewer_size"))
     {
       size = xfce_rc_read_int_entry(settings, "viewer_size", 60);
+      size_missing = false;
     }
-    else
-      size_missing = true;
 
     // Close settings file
     xfce_rc_close(settings);
-
-    /* Viewer size not recorded - setting default then updating config. XFCE4
-     * configuration is done in read and write stages, so this needs to
-     * be separated */
-    if (size_missing)
-    {
-      // Search for a writeable settings file, create one if it doesnt exist
-      file = xfce_panel_plugin_save_location(applet->panel_applet, true);
-	
-      if (file)
-      {
-        // Opening setting file
-        settings = xfce_rc_simple_open(file, false);
-        g_free(file);
-
-        // Saving viewer size
-        xfce_rc_write_int_entry(settings, "viewer_size", size);
-        
-        // Close settings file
-        xfce_rc_close(settings);
-      }
-      else
-      {
-        // Unable to obtain writeable config file - informing user
-        std::cerr << _("Unable to obtain writeable config file path in "
-          "order to update viewer size in CanvasView::do_update call!\n");
-      }
-    }
   }
-  else
+
+  /* Setting default viewer size then updating config if it hasn't been
+   * saved. XFCE4 configuration is done in read and write stages, so
+   * this needs to be separated */
+  if (size_missing)
   {
-    // Unable to obtain read only config file - informing user
-    std::cerr << _("Unable to obtain read-only config file path in order"
-      " to load viewer size in CanvasView::do_update call!\n");
+    // Search for a writeable settings file, create one if it doesnt exist
+    file = xfce_panel_plugin_save_location(applet->panel_applet, true);
+
+    if (file)
+    {
+      // Opening setting file
+      settings = xfce_rc_simple_open(file, false);
+      g_free(file);
+
+      // Saving viewer size
+      xfce_rc_write_int_entry(settings, "viewer_size", size);
+
+      // Close settings file
+      xfce_rc_close(settings);
+    }
+    else
+    {
+      // Unable to obtain writeable config file - informing user
+      std::cerr << _("Unable to obtain writeable config file path in "
+        "order to update viewer size in CanvasView::do_update call!\n");
+    }
   }
 
   // Ensure the canvas is shown

@@ -102,9 +102,11 @@ void Bar::draw(Gnome::Canvas::Canvas &canvas,
 	       double time_offset)
 {
   // Get drawing attributes
-  unsigned int fill_color;
+  unsigned int fill_color = applet->get_fg_color();
+  bool color_missing = true;
 
-  // Fetching assigned settings group
+  /* Loading fill_color from settings if it exists
+   * Fetching assigned settings group */
   Glib::ustring dir = monitor->get_settings_dir();
 
   // Search for settings file
@@ -117,55 +119,44 @@ void Bar::draw(Gnome::Canvas::Canvas &canvas,
     g_free(file);
 
     // Loading color
-    bool color_missing = false;
     xfce_rc_set_group(settings, dir.c_str());
     if (xfce_rc_has_entry(settings, "color"))
     {
       fill_color = xfce_rc_read_int_entry(settings, "color",
                                           applet->get_fg_color());
+      color_missing = false;
     }
-    else
-      color_missing = true;
 
     // Close settings file
     xfce_rc_close(settings);
-
-    /* Color not recorded - setting default then updating config. XFCE4
-     * configuration is done in read and write stages, so this needs to
-     * be separated */
-    if (color_missing)
-    {
-      fill_color = applet->get_fg_color();
-
-      // Search for a writeable settings file, create one if it doesnt exist
-      file = xfce_panel_plugin_save_location(applet->panel_applet, true);
-
-      if (file)
-      {
-        // Opening setting file
-        settings = xfce_rc_simple_open(file, false);
-        g_free(file);
-
-        // Saving color
-        xfce_rc_set_group(settings, dir.c_str());
-        xfce_rc_write_int_entry(settings, "color", int(fill_color));
-
-        // Close settings file
-        xfce_rc_close(settings);
-      }
-      else
-      {
-        // Unable to obtain writeable config file - informing user
-        std::cerr << _("Unable to obtain writeable config file path in "
-          "order to update color in Bar::draw call!\n");
-      }
-    }
   }
-  else
+
+  /* Saving color if it was not recorded. XFCE4 configuration is done in
+   * read and write stages, so this needs to be separated */
+  if (color_missing)
   {
-    // Unable to obtain read only config file - informing user
-    std::cerr << _("Unable to obtain read-only config file path in order"
-      " to load color in Bar::draw call!\n");
+    // Search for a writeable settings file, create one if it doesnt exist
+    file = xfce_panel_plugin_save_location(applet->panel_applet, true);
+
+    if (file)
+    {
+      // Opening setting file
+      settings = xfce_rc_simple_open(file, false);
+      g_free(file);
+
+      // Saving color
+      xfce_rc_set_group(settings, dir.c_str());
+      xfce_rc_write_int_entry(settings, "color", int(fill_color));
+
+      // Close settings file
+      xfce_rc_close(settings);
+    }
+    else
+    {
+      // Unable to obtain writeable config file - informing user
+      std::cerr << _("Unable to obtain writeable config file path in "
+        "order to update color in Bar::draw call!\n");
+    }
   }
   
   unsigned int outline_color = outlineified(fill_color);

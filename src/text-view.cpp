@@ -99,6 +99,8 @@ void TextView::do_display()
 
 void TextView::do_update()
 {
+  bool font_name_missing = true;
+
   /* First update viewer font
    * Keeping with the default settings group for viewer settings
    * Search for settings file */
@@ -111,51 +113,41 @@ void TextView::do_update()
     g_free(file);
 
     // Loading font_name
-    bool font_name_missing = false;
-    Glib::ustring font_name = "";
     if (xfce_rc_has_entry(settings, "viewer_font"))
     {
       font_name = xfce_rc_read_entry(settings, "viewer_font", "");
+      font_name_missing = false;
     }
-    else
-      font_name_missing = true;
 
     // Close settings file
     xfce_rc_close(settings);
-
-    /* Viewer size not recorded - setting default then updating config. XFCE4
-     * configuration is done in read and write stages, so this needs to
-     * be separated */
-    if (font_name_missing)
-    {
-      // Search for a writeable settings file, create one if it doesnt exist
-      file = xfce_panel_plugin_save_location(applet->panel_applet, true);
-	
-      if (file)
-      {
-        // Opening setting file
-        settings = xfce_rc_simple_open(file, false);
-        g_free(file);
-
-        // Saving viewer size
-        xfce_rc_write_entry(settings, "viewer_font", font_name.c_str());
-        
-        // Close settings file
-        xfce_rc_close(settings);
-      }
-      else
-      {
-        // Unable to obtain writeable config file - informing user
-        std::cerr << _("Unable to obtain writeable config file path in "
-          "order to update font name in TextView::do_update call!\n");
-      }
-    }
   }
-  else
+
+  /* Saving if font name was not recorded. XFCE4 configuration is done in
+   * read and write stages, so this needs to be separated */
+  if (font_name_missing)
   {
-    // Unable to obtain read only config file - informing user
-    std::cerr << _("Unable to obtain read-only config file path in order"
-      " to load font name in TextView::do_update call!\n");
+    // Search for a writeable settings file, create one if it doesnt exist
+    file = xfce_panel_plugin_save_location(applet->panel_applet, true);
+
+    if (file)
+    {
+      // Opening setting file
+      settings = xfce_rc_simple_open(file, false);
+      g_free(file);
+
+      // Saving viewer size
+      xfce_rc_write_entry(settings, "viewer_font", font_name.c_str());
+
+      // Close settings file
+      xfce_rc_close(settings);
+    }
+    else
+    {
+      // Unable to obtain writeable config file - informing user
+      std::cerr << _("Unable to obtain writeable config file path in "
+        "order to update font name in TextView::do_update call!\n");
+    }
   }
 
   // then update

@@ -290,11 +290,7 @@ Monitor *ChooseMonitorWindow::run(XfcePanelPlugin* panel_applet,
     }
     else
     {
-      // Unable to obtain read-only config path
-      std::cerr << _("Unable to obtain read-only config file path in "
-	"order to configure monitor in ChooseMonitorWindow::run call!\n");
-
-      // Default setting?
+      // No configuration file present - default setting?
       device_notebook->set_current_page(0);
       // FIXME: use schema?
       cpu_usage_radiobutton->set_active();

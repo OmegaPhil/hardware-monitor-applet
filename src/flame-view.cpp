@@ -68,6 +68,7 @@ void Flame::update(Gnome::Canvas::Canvas &canvas,
 {
   // Get color with default
   unsigned int color = applet->get_fg_color();
+  bool color_missing = true;
 
   // Fetching assigned settings group
   Glib::ustring dir = monitor->get_settings_dir();
@@ -82,53 +83,44 @@ void Flame::update(Gnome::Canvas::Canvas &canvas,
     g_free(file);
 
     // Loading color
-    bool color_missing = false;
     xfce_rc_set_group(settings, dir.c_str());
     if (xfce_rc_has_entry(settings, "color"))
     {
       color = xfce_rc_read_int_entry(settings, "color",
         applet->get_fg_color());
+      color_missing = false;
     }
-    else
-      color_missing = true;
 
     // Close settings file
     xfce_rc_close(settings);
-
-    /* Color not recorded - setting default then updating config. XFCE4
-     * configuration is done in read and write stages, so this needs to
-     * be separated */
-    if (color_missing)
-    {
-      // Search for a writeable settings file, create one if it doesnt exist
-      file = xfce_panel_plugin_save_location(applet->panel_applet, true);
-	
-      if (file)
-      {
-        // Opening setting file
-        settings = xfce_rc_simple_open(file, false);
-        g_free(file);
-
-        // Saving color
-        xfce_rc_set_group(settings, dir.c_str());
-        xfce_rc_write_int_entry(settings, "color", int(color));
-
-        // Close settings file
-        xfce_rc_close(settings);
-      }
-      else
-      {
-        // Unable to obtain writeable config file - informing user
-        std::cerr << _("Unable to obtain writeable config file path in "
-          "order to update color in Flame::update call!\n");
-      }
-    }
   }
-  else
+
+  /* Saving if color was not recorded. XFCE4 configuration is done in
+   * read and write stages, so this needs to be separated */
+  if (color_missing)
   {
-    // Unable to obtain read only config file - informing user
-    std::cerr << _("Unable to obtain read-only config file path in order"
-      " to load color in Flame::update call!\n");
+    // Search for a writeable settings file, create one if it doesnt exist
+    file = xfce_panel_plugin_save_location(applet->panel_applet, true);
+
+    if (file)
+    {
+      // Opening setting file
+      settings = xfce_rc_simple_open(file, false);
+      g_free(file);
+
+      // Saving color
+      xfce_rc_set_group(settings, dir.c_str());
+      xfce_rc_write_int_entry(settings, "color", int(color));
+
+      // Close settings file
+      xfce_rc_close(settings);
+    }
+    else
+    {
+      // Unable to obtain writeable config file - informing user
+      std::cerr << _("Unable to obtain writeable config file path in "
+        "order to update color in Flame::update call!\n");
+    }
   }
 
   // Then make sure layer is correctly setup
