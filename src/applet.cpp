@@ -296,6 +296,11 @@ Applet::Applet(XfcePanelPlugin *plugin)
 	xfce_panel_plugin_menu_show_configure(panel_applet);
   xfce_panel_plugin_menu_show_about(panel_applet);
 
+  /* Add applet to panel - I need to turn the Applet (which inherits from
+   * Gtk::EventBox) into a GtkWidget* - to do this I get at the GObject
+   * pointer underneath the gtkmm layer */
+  gtk_container_add(GTK_CONTAINER(plugin), GTK_WIDGET(this->gobj()));
+
   // Initialising timer to run every second (by default) to trigger main_loop
   timer =
     Glib::signal_timeout().connect(sigc::mem_fun(*this, &Applet::main_loop),
