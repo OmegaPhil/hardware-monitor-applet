@@ -241,7 +241,8 @@ Applet::Applet(XfcePanelPlugin *plugin)
     add_monitor(*i);
 
   // All settings loaded
-  xfce_rc_close(settings);
+  if (settings)
+    xfce_rc_close(settings);
 
   /* TODO: This should be completely irrelevant as the view and background colour is already set above
   // Start displaying something
