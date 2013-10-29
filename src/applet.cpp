@@ -348,7 +348,7 @@ bool Applet::main_loop()
   // Update view
   if (view.get())
     view->update();
-  
+
   // Update tooltip
   Glib::ustring tip;
   for (monitor_iter i = monitors.begin(), end = monitors.end(); i != end; ++i) {

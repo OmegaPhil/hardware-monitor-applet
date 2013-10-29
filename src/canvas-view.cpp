@@ -57,6 +57,9 @@ void CanvasView::do_update()
   size = 60;
   bool size_missing = true;
 
+  // Debug code
+  //std::cout << "In CanvasView::do_update!\n";
+
   /* Obtaining size
    * Keeping with the default settings group for viewer settings
    * Search for settings file */
@@ -162,6 +165,9 @@ void CanvasView::resize_canvas()
     canvas->set_scroll_region(0, 0, w, h);
     canvas->set_size_request(w, h);
   }
+
+  // Debug code
+  //std::cout << "In CanvasView::resize_canvas!\n" << w << "|" << h << "\n";
 }
 
 bool CanvasView::draw_loop()

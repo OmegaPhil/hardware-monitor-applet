@@ -170,6 +170,9 @@ void Curve::draw(Gnome::Canvas::Canvas &canvas,
   } while (++vi != vend);
 
   line->property_points() = points;
+
+  // Debug code
+  //std::cout << "In CurveView::draw!\n" << color << "\n";
 }
 
 
