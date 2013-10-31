@@ -63,11 +63,14 @@ load_monitors(XfceRc* settings)
     gchar** settings_monitors = xfce_rc_get_groups(settings);
 
     // They do - looping for all monitors
-    for (gchar* settings_monitor = *settings_monitors; *settings_monitor;
-      ++settings_monitors)
+    for (int i = 0; settings_monitors[i] != NULL; ++i)
     {
+      // Skipping default group
+      if (g_strcmp0(settings_monitors[i], "[NULL]") == 0)
+        continue;
+      
       // Setting the correct group prior to loading settings
-      xfce_rc_set_group(settings, settings_monitor);
+      xfce_rc_set_group(settings, settings_monitors[i]);
       
       // Obtaining monitor type
       Glib::ustring type = xfce_rc_read_entry(settings, "type", "");
@@ -148,7 +151,7 @@ load_monitors(XfceRc* settings)
       }
 
       // Saving the monitor's settings root
-      monitors.back()->set_settings_dir(settings_monitor);
+      monitors.back()->set_settings_dir(settings_monitors[i]);
     }
 
     // Clearing up
