@@ -36,11 +36,11 @@
 class Curve
 {
 public:
-  Curve(Monitor *monitor);
+  Curve(Monitor *monitor, unsigned int color);
 
   void update(unsigned int max_samples); // gather info from monitor
   void draw(Gnome::Canvas::Canvas &canvas, // redraw curve on canvas
-	    Applet *applet, int width, int height); 
+	    int width, int height);
 
   Monitor *monitor;
   
@@ -49,10 +49,11 @@ private:
 
   ValueHistory value_history;
   int remaining_draws;
+  unsigned int color;
 };
 
-Curve::Curve(Monitor *m)
-  : monitor(m), value_history(m), remaining_draws(0)
+Curve::Curve(Monitor *m, unsigned int c)
+  : monitor(m), value_history(m), remaining_draws(0), color(c)
 {}
 
 void Curve::update(unsigned int max_samples)
@@ -64,8 +65,7 @@ void Curve::update(unsigned int max_samples)
     remaining_draws = CanvasView::draw_iterations;
 }
 
-void Curve::draw(Gnome::Canvas::Canvas &canvas,
-		 Applet *applet, int width, int height)
+void Curve::draw(Gnome::Canvas::Canvas &canvas, int width, int height)
 {
   if (remaining_draws <= 0)
     return;
@@ -89,63 +89,7 @@ void Curve::draw(Gnome::Canvas::Canvas &canvas,
   }
 
   // Get drawing attributes with defaults
-  unsigned int color = applet->get_fg_color();
-  bool color_missing = true;
   double const line_width = 1.5;
-
-  // Obtaining color
-  // Fetching assigned settings group
-  Glib::ustring dir = monitor->get_settings_dir();
-
-  // Search for settings file
-  gchar* file = xfce_panel_plugin_lookup_rc_file(applet->panel_applet);
-
-  if (file)
-  {
-    // One exists - loading readonly settings
-    XfceRc* settings = xfce_rc_simple_open(file, true);
-    g_free(file);
-
-    // Loading color
-    xfce_rc_set_group(settings, dir.c_str());
-    if (xfce_rc_has_entry(settings, "color"))
-    {
-      color = xfce_rc_read_int_entry(settings, "color",
-        applet->get_fg_color());
-      color_missing = false;
-    }
-
-    // Close settings file
-    xfce_rc_close(settings);
-  }
-
-  /* Saving color if it was not recorded. XFCE4 configuration is done in
-   * read and write stages, so this needs to be separated */
-  if (color_missing)
-  {
-    // Search for a writeable settings file, create one if it doesnt exist
-    file = xfce_panel_plugin_save_location(applet->panel_applet, true);
-
-    if (file)
-    {
-      // Opening setting file
-      XfceRc* settings = xfce_rc_simple_open(file, false);
-      g_free(file);
-
-      // Saving color
-      xfce_rc_set_group(settings, dir.c_str());
-      xfce_rc_write_int_entry(settings, "color", int(color));
-
-      // Close settings file
-      xfce_rc_close(settings);
-    }
-    else
-    {
-      // Unable to obtain writeable config file - informing user
-      std::cerr << _("Unable to obtain writeable config file path in "
-        "order to update color in Curve::draw call!\n");
-    }
-  }
 
   line->property_fill_color_rgba() = color;
   line->property_width_units() = line_width;
@@ -205,7 +149,68 @@ void CurveView::do_update()
 
 void CurveView::do_attach(Monitor *monitor)
 {
-  curves.push_back(new Curve(monitor));
+  unsigned int color = 0;
+  bool color_missing = true;
+
+  // Obtaining color
+  // Fetching assigned settings group
+  Glib::ustring dir = monitor->get_settings_dir();
+
+  // Search for settings file
+  gchar* file = xfce_panel_plugin_lookup_rc_file(applet->panel_applet);
+
+  if (file)
+  {
+    // One exists - loading readonly settings
+    XfceRc* settings = xfce_rc_simple_open(file, true);
+    g_free(file);
+
+    // Loading color
+    xfce_rc_set_group(settings, dir.c_str());
+    if (xfce_rc_has_entry(settings, "color"))
+    {
+      color = xfce_rc_read_int_entry(settings, "color",
+        applet->get_fg_color());
+      color_missing = false;
+    }
+
+    // Close settings file
+    xfce_rc_close(settings);
+  }
+
+  /* Saving color if it was not recorded. XFCE4 configuration is done in
+   * read and write stages, so this needs to be separated */
+  if (color_missing)
+  {
+    // Setting color
+    color = applet->get_fg_color();
+
+    // Search for a writeable settings file, create one if it doesnt exist
+    file = xfce_panel_plugin_save_location(applet->panel_applet, true);
+
+    if (file)
+    {
+      // Opening setting file
+      XfceRc* settings = xfce_rc_simple_open(file, false);
+      g_free(file);
+
+      // Saving color
+      xfce_rc_set_group(settings, dir.c_str());
+      xfce_rc_write_int_entry(settings, "color", int(color));
+
+      // Close settings file
+      xfce_rc_close(settings);
+    }
+    else
+    {
+      // Unable to obtain writeable config file - informing user
+      std::cerr << _("Unable to obtain writeable config file path in "
+        "order to set color in Curve::do_attach call!\n");
+    }
+  }
+
+  // Instantiating curve with determined color
+  curves.push_back(new Curve(monitor, color));
 }
 
 void CurveView::do_detach(Monitor *monitor)
@@ -223,5 +228,5 @@ void CurveView::do_detach(Monitor *monitor)
 void CurveView::do_draw_loop()
 {
   for (curve_iterator i = curves.begin(), end = curves.end(); i != end; ++i)
-    (*i)->draw(*canvas, applet, width(), height());
+    (*i)->draw(*canvas, width(), height());
 }
