@@ -244,22 +244,6 @@ Applet::Applet(XfcePanelPlugin *plugin)
   if (settings)
     xfce_rc_close(settings);
 
-  /* TODO: This should be completely irrelevant as the view and background colour is already set above
-  // Start displaying something
-  // Ensure config values aren't null
-  get_entry_with_default( gconf_client, gconf_dir + "/viewer_type",
-    Glib::ustring("curve") );
-  get_entry_with_default( gconf_client, gconf_dir + "/background_color",
-    0x00000000 );
-  get_entry_with_default( gconf_client, gconf_dir + "/use_background_color",
-    false );
-  viewer_type_listener(0, gconf_client->get_entry(gconf_dir + "/viewer_type"));
-  background_color_listener(0, gconf_client->get_entry(gconf_dir
-						       + "/background_color"));
-  use_background_color_listener(0, gconf_client->get_entry(gconf_dir
-							   + "/use_background_color"));
-  */
-
 	/* Connect plugin signals to functions - since I'm not really interested
    * in the plugin but the applet pointer, swapped results in the signal
    * handler getting the applet reference first - the plugin pointer is
@@ -449,6 +433,11 @@ gboolean Applet::get_use_background_color() const
 int Applet::get_viewer_size() const
 {
   return viewer_size;
+}
+
+void Applet::set_viewer_size(const int size)
+{
+  viewer_size = size;
 }
 
 const Glib::ustring Applet::get_viewer_font()

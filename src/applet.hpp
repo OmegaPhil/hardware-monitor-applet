@@ -67,6 +67,7 @@ public:
   int get_background_color() const;
   gboolean get_use_background_color() const;
   int get_viewer_size() const;
+  void set_viewer_size(const int size);
   const Glib::ustring get_viewer_font();
   void set_viewer_font(const Glib::ustring font_name);
 
