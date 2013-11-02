@@ -54,61 +54,11 @@ void CanvasView::do_display()
 
 void CanvasView::do_update()
 {
-  size = 60;
-  bool size_missing = true;
-
   // Debug code
   //std::cout << "In CanvasView::do_update!\n";
 
-  /* Obtaining size
-   * Keeping with the default settings group for viewer settings
-   * Search for settings file */
-  gchar* file = xfce_panel_plugin_lookup_rc_file(applet->panel_applet);
-
-  if (file)
-  {
-    // One exists - loading readonly settings
-    XfceRc* settings = xfce_rc_simple_open(file, true);
-    g_free(file);
-
-    // Loading size
-    if (xfce_rc_has_entry(settings, "viewer_size"))
-    {
-      size = xfce_rc_read_int_entry(settings, "viewer_size", 60);
-      size_missing = false;
-    }
-
-    // Close settings file
-    xfce_rc_close(settings);
-  }
-
-  /* Setting default viewer size then updating config if it hasn't been
-   * saved. XFCE4 configuration is done in read and write stages, so
-   * this needs to be separated */
-  if (size_missing)
-  {
-    // Search for a writeable settings file, create one if it doesnt exist
-    file = xfce_panel_plugin_save_location(applet->panel_applet, true);
-
-    if (file)
-    {
-      // Opening setting file
-      XfceRc* settings = xfce_rc_simple_open(file, false);
-      g_free(file);
-
-      // Saving viewer size
-      xfce_rc_write_int_entry(settings, "viewer_size", size);
-
-      // Close settings file
-      xfce_rc_close(settings);
-    }
-    else
-    {
-      // Unable to obtain writeable config file - informing user
-      std::cerr << _("Unable to obtain writeable config file path in "
-        "order to update viewer size in CanvasView::do_update call!\n");
-    }
-  }
+  // Size is maintained in applet
+  size = applet->get_viewer_size();
 
   // Ensure the canvas is shown
   resize_canvas();
