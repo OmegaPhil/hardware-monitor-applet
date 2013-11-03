@@ -54,7 +54,7 @@ public:
   ~Applet();
 
   Gtk::Container &get_container();
-  
+
   unsigned int get_fg_color();	// return varying foreground colours
   int get_size() const;		// in pixels
   bool horizontal() const; 	// whether we're in horizontal mode
@@ -103,7 +103,7 @@ private:
   Glib::ustring icon_path;
   Glib::ustring viewer_type;
   Glib::ustring viewer_font;
-  int viewer_size;  // Pixel size used with the viewer scale - nothing to do with the visible area
+  int viewer_size;
   int background_color;
   gboolean use_background_color;
   int next_color;

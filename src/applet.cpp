@@ -24,6 +24,7 @@
 
 #include <algorithm>
 #include <vector>
+#include <iostream>
 
 #include <gtkmm/main.h>
 #include <cassert>
@@ -143,7 +144,7 @@ Applet::Applet(XfcePanelPlugin *plugin)
   icon_path("/usr/share/pixmaps/hardware-monitor-applet.png"),
   viewer_type("curve"),
   viewer_font(""),
-  viewer_size(96),  // Arbitrary default
+  viewer_size(96),  // Arbitrary default, see later in this function for notes
   background_color(0x00000000),  // black as the night
   use_background_color(false),
   next_color(0)
@@ -234,7 +235,10 @@ Applet::Applet(XfcePanelPlugin *plugin)
   // Setting the view background colour if desired
   if (use_background_color)
       view->set_background(background_color);
-  
+
+  /* Actually setting the viewer size has no effect in this function -
+   * seems that it needs to be done in or after the mainloop kicks off */
+
   // Loading up monitors
   monitor_seq mon = load_monitors(settings);
   for (monitor_iter i = mon.begin(), end = mon.end(); i != end; ++i)
@@ -437,7 +441,52 @@ int Applet::get_viewer_size() const
 
 void Applet::set_viewer_size(const int size)
 {
-  viewer_size = size;
+  // See header file viewer_size_configured notes
+
+  // Obtaining current widget dimensions
+  GtkRequisition req_size;
+  gtk_widget_size_request(GTK_WIDGET(panel_applet), &req_size);
+
+  /*
+  // Debug code
+  std::cout << "Size information: " << req_size.width << "x"
+    << req_size.height << "\n";
+  */
+
+  // Make sure on every call that the viewer size is being honoured
+  // TODO: This needs to deal with orientations
+  if (req_size.width < size)
+    gtk_widget_set_size_request(GTK_WIDGET(panel_applet), viewer_size, -1);
+
+  // Exiting if the size hasn't changed from this program's perspective
+  if (viewer_size == size)
+    return;
+
+  /* Saving
+   * Search for a writeable settings file, create one if it doesnt exist */
+  gchar* file = xfce_panel_plugin_save_location(panel_applet, true);
+
+  if (file)
+  {
+    // Opening setting file
+    XfceRc* settings = xfce_rc_simple_open(file, false);
+    g_free(file);
+
+    // Updating configuration
+    xfce_rc_write_int_entry(settings, "viewer_size", viewer_size);
+
+    // Close settings file
+    xfce_rc_close(settings);
+  }
+  else
+  {
+    // Unable to obtain writeable config file - informing user and exiting
+    std::cerr << _("Unable to obtain writeable config file path in order to"
+      " save new viewer_size in Applet::set_viewer_size!\n");
+  }
+
+  // Debug code
+  //std::cout << "Viewer size set to " << viewer_size << "\n";
 }
 
 const Glib::ustring Applet::get_viewer_font()

@@ -325,11 +325,6 @@ void PreferencesWindow::size_listener(unsigned int,
 
   // Actually change the size...
   applet.set_viewer_size(viewer_size);
-  gtk_widget_set_size_request(GTK_WIDGET(applet.panel_applet),
-    viewer_size, -1);
-
-  // Debug code
-  //std::cout << "Viewer size set to " << viewer_size << "\n";
 }
 
 void PreferencesWindow::font_listener(unsigned int,

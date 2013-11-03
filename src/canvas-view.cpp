@@ -60,6 +60,10 @@ void CanvasView::do_update()
   // Size is maintained in applet
   size = applet->get_viewer_size();
 
+  /* Ensure that the widget's requested size is being honoured on every
+   * call */
+  applet->set_viewer_size(size);
+
   // Ensure the canvas is shown
   resize_canvas();
 }
