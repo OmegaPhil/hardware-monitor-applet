@@ -433,6 +433,9 @@ void PreferencesWindow::on_background_color_radiobutton_toggled()
     XfceRc* settings = xfce_rc_simple_open(file, false);
     g_free(file);
 
+    // Ensuring default group is in focus
+    xfce_rc_set_group(settings, "[NULL]");
+
     // Updating configuration
     xfce_rc_write_bool_entry(settings, "use_background_color", on);
 
@@ -500,6 +503,9 @@ void PreferencesWindow::on_bar_radiobutton_toggled()
       XfceRc* settings = xfce_rc_simple_open(file, false);
       g_free(file);
 
+      // Ensuring default group is in focus
+      xfce_rc_set_group(settings, "[NULL]");
+
       // Updating configuration
       xfce_rc_write_entry(settings, "viewer_type", "bar");
 
@@ -536,6 +542,9 @@ void PreferencesWindow::on_vbar_radiobutton_toggled()
       // Opening setting file
       XfceRc* settings = xfce_rc_simple_open(file, false);
       g_free(file);
+
+      // Ensuring default group is in focus
+      xfce_rc_set_group(settings, "[NULL]");
 
       // Updating configuration
       xfce_rc_write_entry(settings, "viewer_type", "vbar");
@@ -574,6 +583,9 @@ void PreferencesWindow::on_column_radiobutton_toggled()
       XfceRc* settings = xfce_rc_simple_open(file, false);
       g_free(file);
 
+      // Ensuring default group is in focus
+      xfce_rc_set_group(settings, "[NULL]");
+
       // Updating configuration
       xfce_rc_write_entry(settings, "viewer_type", "column");
 
@@ -611,6 +623,9 @@ void PreferencesWindow::on_text_radiobutton_toggled()
       XfceRc* settings = xfce_rc_simple_open(file, false);
       g_free(file);
 
+      // Ensuring default group is in focus
+      xfce_rc_set_group(settings, "[NULL]");
+
       // Updating configuration
       xfce_rc_write_entry(settings, "viewer_type", "text");
 
@@ -646,6 +661,9 @@ void PreferencesWindow::on_flame_radiobutton_toggled()
       // Opening setting file
       XfceRc* settings = xfce_rc_simple_open(file, false);
       g_free(file);
+
+      // Ensuring default group is in focus
+      xfce_rc_set_group(settings, "[NULL]");
 
       // Updating configuration
       xfce_rc_write_entry(settings, "viewer_type", "flame");
@@ -687,6 +705,9 @@ void PreferencesWindow::on_size_scale_changed()
     // Opening setting file
     XfceRc* settings = xfce_rc_simple_open(file, false);
     g_free(file);
+
+    // Ensuring default group is in focus
+    xfce_rc_set_group(settings, "[NULL]");
 
     // Updating configuration
     xfce_rc_write_int_entry(settings, "viewer_size",
@@ -909,6 +930,9 @@ void PreferencesWindow::save_font_name(Glib::ustring font_name)
     // Opening setting file
     XfceRc* settings = xfce_rc_simple_open(file, false);
     g_free(file);
+
+    // Ensuring default group is in focus
+    xfce_rc_set_group(settings, "[NULL]");
 
     // Updating configuration
     xfce_rc_write_entry(settings, "viewer_font", font_name.c_str());

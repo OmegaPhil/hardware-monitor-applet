@@ -112,6 +112,9 @@ void TextView::do_update()
     XfceRc* settings = xfce_rc_simple_open(file, true);
     g_free(file);
 
+    // Ensuring default group is in focus
+    xfce_rc_set_group(settings, "[NULL]");
+
     // Loading font_name
     if (xfce_rc_has_entry(settings, "viewer_font"))
     {
@@ -135,6 +138,9 @@ void TextView::do_update()
       // Opening setting file
       XfceRc* settings = xfce_rc_simple_open(file, false);
       g_free(file);
+
+      // Ensuring default group is in focus
+      xfce_rc_set_group(settings, "[NULL]");
 
       // Saving viewer size
       xfce_rc_write_entry(settings, "viewer_font", font.c_str());

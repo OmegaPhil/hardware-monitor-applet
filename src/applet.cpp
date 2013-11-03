@@ -159,6 +159,9 @@ Applet::Applet(XfcePanelPlugin *plugin)
     settings = xfce_rc_simple_open(file, true);
     g_free(file);
 
+    // Ensuring default group is in focus
+    xfce_rc_set_group(settings, "[NULL]");
+
     icon_path = xfce_rc_read_entry(settings, "icon-path", icon_path.c_str());
     viewer_type = xfce_rc_read_entry(settings, "viewer_type",
       viewer_type.c_str());
@@ -385,6 +388,9 @@ unsigned int Applet::get_fg_color()
     XfceRc* settings = xfce_rc_simple_open(file, false);
     g_free(file);
 
+    // Ensuring default group is in focus
+    xfce_rc_set_group(settings, "[NULL]");
+
     // Saving next_color
     xfce_rc_write_int_entry(settings, "next_color", next_color);
     
@@ -471,6 +477,9 @@ void Applet::set_viewer_size(const int size)
     // Opening setting file
     XfceRc* settings = xfce_rc_simple_open(file, false);
     g_free(file);
+
+    // Ensuring default group is in focus
+    xfce_rc_set_group(settings, "[NULL]");
 
     // Updating configuration
     xfce_rc_write_int_entry(settings, "viewer_size", viewer_size);
