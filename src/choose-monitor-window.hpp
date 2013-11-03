@@ -52,7 +52,6 @@ public:
   ChooseMonitorWindow(Glib::RefPtr<Gdk::Pixbuf> icon, Gtk::Window &parent);
   ~ChooseMonitorWindow();
 
-  // WIP: Bullshit error saying that Glib is not declared. Glib::RefPtr above was present in the original code so this is nonsense. It definitely doesnt like this new run function signature though
   // given a monitor directory (may be ""), return a new monitor or 0
   Monitor *run(XfcePanelPlugin* panel_applet,
     const Glib::ustring &mon_dir);
