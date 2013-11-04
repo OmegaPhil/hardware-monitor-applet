@@ -50,8 +50,6 @@ extern "C"
 #include "preferences-window.hpp"
 #include "i18n.hpp"
 
-// TODO: GPL3+, add myself to copyright of all changed files
-
 // XFCE4 functions to create and destroy applet
 extern "C" void applet_construct(XfcePanelPlugin* plugin)
 {

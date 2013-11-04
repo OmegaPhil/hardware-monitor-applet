@@ -1,6 +1,7 @@
 /* A view which displays a (time, value) column plot.
  *
  * Copyright (c) 2003, 04 Ole Laursen.
+ * Copyright (c) 2013 OmegaPhil (OmegaPhil+hardware.monitor@gmail.com)
  *
  * This program is free software; you can redistribute it and/or 
  * modify it under the terms of the GNU General Public License as 
