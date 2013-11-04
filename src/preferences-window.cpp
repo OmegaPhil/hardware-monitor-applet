@@ -797,7 +797,7 @@ void PreferencesWindow::on_selection_changed()
   // Making sure the selection is available
   if (sel)
   {
-    unsigned int color = 0;  // TODO: Is this an acceptable default? Can't seem to see how the normal default happens
+    unsigned int color = 0;
 
     // Loading up new monitor colour
     // Fetching assigned settings group
@@ -814,7 +814,7 @@ void PreferencesWindow::on_selection_changed()
 
       // Loading color
       xfce_rc_set_group(settings, mon_dir.c_str());
-      color = xfce_rc_read_int_entry(settings, "color", 0);  // TODO: Is this an acceptable default? Can't seem to see how the normal default happens
+      color = xfce_rc_read_int_entry(settings, "color", 0);
 
       // Close settings file
       xfce_rc_close(settings);
