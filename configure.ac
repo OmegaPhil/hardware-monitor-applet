@@ -106,9 +106,6 @@ AC_SUBST([SENSORS_LIBS])
 CPPFLAGS=${_cppflags}
 LDFLAGS=${_ldflags}
 
-dnl Check for debugging support (XFCE4 xdt-features.m4). TODO: This macro appears to be buggy - complaints about AC_LANG_SOURCE?
-dnl XDT_FEATURE_DEBUG()
-
 dnl Create makefiles
 AC_CONFIG_FILES([Makefile 
 	src/Makefile
