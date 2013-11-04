@@ -46,9 +46,6 @@ libhardware_monitor_la_CPPFLAGS = \
                         @LIBXFCE4PANEL_CFLAGS@ \
                         @LIBXFCE4UI_CFLAGS@
 
-# TODO: This doesnt appear to be used?
-#                        -DGNOMEICONDIR=\""$(icondir)"\"
-
 libhardware_monitor_la_LIBADD = \
                         @LIBXFCE4PANEL_LIBS@ \
                         @LIBXFCE4UI_LIBS@ \
