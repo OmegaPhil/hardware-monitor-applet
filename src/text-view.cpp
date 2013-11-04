@@ -99,66 +99,9 @@ void TextView::do_display()
 
 void TextView::do_update()
 {
-  bool font_missing = true;
-
-  /* First update viewer font
-   * Keeping with the default settings group for viewer settings
-   * Search for settings file */
-  gchar* file = xfce_panel_plugin_lookup_rc_file(applet->panel_applet);
-
-  if (file)
-  {
-    // One exists - loading readonly settings
-    XfceRc* settings = xfce_rc_simple_open(file, true);
-    g_free(file);
-
-    // Ensuring default group is in focus
-    xfce_rc_set_group(settings, "[NULL]");
-
-    // Loading font_name
-    if (xfce_rc_has_entry(settings, "viewer_font"))
-    {
-      font = xfce_rc_read_entry(settings, "viewer_font", "");
-      font_missing = false;
-    }
-
-    // Close settings file
-    xfce_rc_close(settings);
-  }
-
-  /* Saving if font was not recorded. XFCE4 configuration is done in
-   * read and write stages, so this needs to be separated */
-  if (font_missing)
-  {
-    // Search for a writeable settings file, create one if it doesnt exist
-    file = xfce_panel_plugin_save_location(applet->panel_applet, true);
-
-    if (file)
-    {
-      // Opening setting file
-      XfceRc* settings = xfce_rc_simple_open(file, false);
-      g_free(file);
-
-      // Ensuring default group is in focus
-      xfce_rc_set_group(settings, "[NULL]");
-
-      // Saving viewer size
-      xfce_rc_write_entry(settings, "viewer_font", font.c_str());
-
-      // Close settings file
-      xfce_rc_close(settings);
-    }
-    else
-    {
-      // Unable to obtain writeable config file - informing user
-      std::cerr << _("Unable to obtain writeable config file path in "
-        "order to update font in TextView::do_update call!\n");
-    }
-  }
-
-  // then update
+  // Update
   for (text_iterator i = texts.begin(), end = texts.end(); i != end; ++i)
-    (*i)->update(font);
+    (*i)->update(applet->get_viewer_font());
 }
 
 void TextView::do_attach(Monitor *monitor)

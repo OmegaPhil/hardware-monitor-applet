@@ -159,21 +159,6 @@ PreferencesWindow::PreferencesWindow(Applet &applet_, monitor_seq monitors)
   ui->get_widget("monitor_flame_options", monitor_flame_options);
   ui->get_widget("flame_colorbutton", flame_colorbutton);
   connect_monitor_colorbutton(flame_colorbutton);
-  
-  
-  // connect GConf
-  // TODO: Do these even need to be set up? When a chnge is made, then the relevant function is to be called
-  /*
-  client->notify_add(dir + "/background_interval",
-		     sigc::mem_fun(*this, &PreferencesWindow::
-				background_color_listener));
-
-  client->notify_add(dir + "/viewer/size",
-		     sigc::mem_fun(*this, &PreferencesWindow::size_listener));
-
-  client->notify_add(dir + "/viewer/font",
-		     sigc::mem_fun(*this, &PreferencesWindow::font_listener));
-  */
 
   // Fill in values
   viewer_type_listener(0, applet.get_viewer_type());
