@@ -86,28 +86,27 @@ void applet_free(XfcePanelPlugin*, Applet* applet)
 }
 
 // Helpers for popping up the various things
-void display_preferences(void *applet)
+void display_preferences(Applet *applet)
 {
-  static_cast<Applet *>(applet)->on_preferences_activated();
+  applet->on_preferences_activated();
 }
 
-void display_help(void *applet)
+void display_help(Applet *applet)
 {
-  static_cast<Applet *>(applet)->on_help_activated();
+  applet->on_help_activated();
 }
 
-void display_about(void *applet)
+void display_about(Applet *applet)
 {
-  static_cast<Applet *>(applet)->on_about_activated();
+  applet->on_about_activated();
 }
 
 /* Function declared here as its a callback for a C signal, so cant be a
  * method */
-void save_monitors(void *applet)
+void save_monitors(Applet *applet)
 {
   // Getting at applet/plugin objects
-  Applet *tmp_applet = static_cast<Applet*>(applet);
-  XfcePanelPlugin *panel_applet = tmp_applet->panel_applet;
+  XfcePanelPlugin *panel_applet = applet->panel_applet;
 
   // Search for a writeable settings file, create one if it doesnt exist
   gchar* file = xfce_panel_plugin_save_location(panel_applet, true);
@@ -119,8 +118,8 @@ void save_monitors(void *applet)
     g_free(file);
 
     // Looping for all monitors and calling save on each
-    for (monitor_iter i = tmp_applet->monitors.begin(),
-         end = tmp_applet->monitors.end(); i != end; ++i)
+    for (monitor_iter i = applet->monitors.begin(),
+         end = applet->monitors.end(); i != end; ++i)
       (*i)->save(settings);
 
     // Close settings file

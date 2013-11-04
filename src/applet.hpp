@@ -116,10 +116,12 @@ private:
   std::auto_ptr<PreferencesWindow> preferences_window;
   Gtk::Tooltips tooltips;
 
-  friend void display_preferences(void *applet);
-  friend void display_help(void *applet);
-  friend void display_about(void *applet);
-  friend void save_monitors(void *applet);
+  friend void display_preferences(Applet *applet);
+  friend void display_help(Applet *applet);
+  friend void display_about(Applet *applet);
+  friend void save_monitors(Applet *applet);
+  friend gboolean size_changed(XfcePanelPlugin* plugin, gint size,
+    Applet* applet);
 };
 
 #endif
