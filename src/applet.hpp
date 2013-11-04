@@ -114,7 +114,6 @@ private:
   std::auto_ptr<Gtk::AboutDialog> about;
   std::auto_ptr<View> view;
   std::auto_ptr<PreferencesWindow> preferences_window;
-
   Gtk::Tooltips tooltips;
 
   friend void display_preferences(void *applet);

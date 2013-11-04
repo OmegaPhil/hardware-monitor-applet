@@ -222,14 +222,6 @@ Applet::Applet(XfcePanelPlugin *plugin)
   g_signal_connect_swapped(panel_applet, "free-data", G_CALLBACK(applet_free),
     this);
 
-  /* TODO: Not sure if I really need to support this
-#if (LIBXFCE4PANEL_CHECK_VERSION(4,10,0))
-	g_signal_connect(plugin, "mode-changed", G_CALLBACK(PanelPlugin::mode_changed_slot), this);
-#else
-	g_signal_connect(plugin, "orientation-changed", G_CALLBACK(PanelPlugin::orientation_changed_slot), this);
-#endif
-  */
-
   // Hooking into save signal
 	g_signal_connect_swapped(panel_applet, "save", G_CALLBACK(save_monitors),
     this);
