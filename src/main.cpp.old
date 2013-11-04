@@ -34,7 +34,7 @@
 #include "helpers.hpp"
 #include "i18n.hpp"
 
-// TODO: How does this compare to applet.cpp?
+// This file is no longer used - everything has been moved into applet.cpp
 gboolean hardware_monitor_factory(PanelApplet *panel_applet, const gchar *iid,
 				  void *)
 {
