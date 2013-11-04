@@ -480,32 +480,6 @@ void Applet::set_viewer_size(const int size)
 
   viewer_size = size;
 
-  /* Saving
-   * Search for a writeable settings file, create one if it doesnt exist */
-  gchar* file = xfce_panel_plugin_save_location(panel_applet, true);
-
-  if (file)
-  {
-    // Opening setting file
-    XfceRc* settings = xfce_rc_simple_open(file, false);
-    g_free(file);
-
-    // Ensuring default group is in focus
-    xfce_rc_set_group(settings, "[NULL]");
-
-    // Updating configuration
-    xfce_rc_write_int_entry(settings, "viewer_size", viewer_size);
-
-    // Close settings file
-    xfce_rc_close(settings);
-  }
-  else
-  {
-    // Unable to obtain writeable config file - informing user and exiting
-    std::cerr << _("Unable to obtain writeable config file path in order to"
-      " save new viewer_size in Applet::set_viewer_size!\n");
-  }
-
   // Debug code
   //std::cout << "Viewer size set to " << viewer_size << "\n";
 }
