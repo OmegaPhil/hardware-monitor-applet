@@ -162,11 +162,11 @@ PreferencesWindow::PreferencesWindow(Applet &applet_, monitor_seq monitors)
   connect_monitor_colorbutton(flame_colorbutton);
 
   // Fill in values
-  viewer_type_listener(0, applet.get_viewer_type());
-  background_color_listener(0, applet.get_background_color());
-  use_background_color_listener(0, applet.get_use_background_color());
-  size_listener(0, applet.get_viewer_size());
-  font_listener(0, applet.get_viewer_font());
+  viewer_type_listener(applet.get_viewer_type());
+  background_color_listener(applet.get_background_color());
+  use_background_color_listener(applet.get_use_background_color());
+  size_listener(applet.get_viewer_size());
+  font_listener(applet.get_viewer_font());
 
   for (monitor_iter i = monitors.begin(), end = monitors.end(); i != end; ++i)
     add_to_monitors_list(*i);
@@ -231,8 +231,7 @@ namespace
 
 
 // Originally gconf callbacks
-void PreferencesWindow::viewer_type_listener(unsigned int,
-					     const Glib::ustring viewer_type)
+void PreferencesWindow::viewer_type_listener(const Glib::ustring viewer_type)
 {
   if (viewer_type == "curve")
   {
@@ -281,8 +280,7 @@ void PreferencesWindow::viewer_type_listener(unsigned int,
   applet.viewer_type_listener(viewer_type);
 }
 
-void PreferencesWindow::background_color_listener(unsigned int,
-						  unsigned int background_color)
+void PreferencesWindow::background_color_listener(unsigned int background_color)
 {
   unsigned char r = background_color >> 24,
     g = background_color >> 16,
@@ -292,8 +290,7 @@ void PreferencesWindow::background_color_listener(unsigned int,
   update_colorbutton_if_different(background_colorbutton, r, g, b, a);
 }
 
-void PreferencesWindow::use_background_color_listener(unsigned int,
-						      bool use_background_color)
+void PreferencesWindow::use_background_color_listener(bool use_background_color)
 {
   if (use_background_color)
     background_color_radiobutton->set_active();
@@ -301,8 +298,7 @@ void PreferencesWindow::use_background_color_listener(unsigned int,
     panel_background_radiobutton->set_active();
 }
 
-void PreferencesWindow::size_listener(unsigned int,
-				      int viewer_size)
+void PreferencesWindow::size_listener(int viewer_size)
 {
   if (size_scale_to_pixels(int(size_scale->get_value())) != viewer_size)
     size_scale->set_value(pixels_to_size_scale(viewer_size));
@@ -311,8 +307,7 @@ void PreferencesWindow::size_listener(unsigned int,
   applet.set_viewer_size(viewer_size);
 }
 
-void PreferencesWindow::font_listener(unsigned int,
-  const Glib::ustring viewer_font)
+void PreferencesWindow::font_listener(const Glib::ustring viewer_font)
 {
   if (viewer_font.empty())
     font_checkbutton->set_active(false);
@@ -323,8 +318,7 @@ void PreferencesWindow::font_listener(unsigned int,
   }
 }
 
-void PreferencesWindow::monitor_color_listener(unsigned int,
-					       unsigned int color)
+void PreferencesWindow::monitor_color_listener(unsigned int color)
 {
   unsigned char r = color >> 24,
     g = color >> 16,
@@ -406,7 +400,7 @@ void PreferencesWindow::on_background_color_radiobutton_toggled()
   bool on = background_color_radiobutton->get_active();
   
   background_colorbutton->set_sensitive(on);
-  use_background_color_listener(0, on);
+  use_background_color_listener(on);
 
   // Search for a writeable settings file, create one if it doesnt exist
   gchar* file = xfce_panel_plugin_save_location(applet.panel_applet, true);
@@ -465,7 +459,7 @@ void PreferencesWindow::on_curve_radiobutton_toggled()
     }
 
     // Changing viewer type
-    viewer_type_listener(0, "curve");
+    viewer_type_listener("curve");
   }
 
   size_outer_vbox->property_visible() = active;
@@ -505,7 +499,7 @@ void PreferencesWindow::on_bar_radiobutton_toggled()
     }
 
     // Changing viewer type
-    viewer_type_listener(0, "bar");
+    viewer_type_listener("bar");
   }
 
   size_outer_vbox->property_visible() = active;
@@ -545,7 +539,7 @@ void PreferencesWindow::on_vbar_radiobutton_toggled()
     }
 
     // Changing viewer type
-    viewer_type_listener(0, "vbar");
+    viewer_type_listener("vbar");
   }
 
   size_outer_vbox->property_visible() = active;
@@ -585,7 +579,7 @@ void PreferencesWindow::on_column_radiobutton_toggled()
     }
 
     // Changing viewer type
-    viewer_type_listener(0, "column");
+    viewer_type_listener("column");
   }
   
   size_outer_vbox->property_visible() = active;
@@ -625,7 +619,7 @@ void PreferencesWindow::on_text_radiobutton_toggled()
     }
 
     // Changing viewer type
-    viewer_type_listener(0, "text");
+    viewer_type_listener("text");
   }
   
   font_outer_vbox->property_visible() = active;
@@ -664,7 +658,7 @@ void PreferencesWindow::on_flame_radiobutton_toggled()
     }
 
     // Changing viewer type
-    viewer_type_listener(0, "flame");
+    viewer_type_listener("flame");
   }
 
   size_outer_vbox->property_visible() = active;
@@ -710,7 +704,7 @@ void PreferencesWindow::on_size_scale_changed()
 
   // Allowing further callbacks to fire
   size_scale_cb.unblock();
-  size_listener(0, size_scale_to_pixels(i));
+  size_listener(size_scale_to_pixels(i));
 }
 
 void PreferencesWindow::on_font_checkbutton_toggled()
@@ -728,7 +722,7 @@ void PreferencesWindow::on_font_checkbutton_toggled()
 
   // Saving
   save_font_name(font_name);
-  font_listener(0, font_name);
+  font_listener(font_name);
 }
 
 void PreferencesWindow::on_fontbutton_set()
@@ -821,7 +815,7 @@ void PreferencesWindow::on_selection_changed()
     }
 
     // Applying colour
-    monitor_color_listener(0, color);
+    monitor_color_listener(color);
 
     //monitor_listeners.push_back(con);
   }

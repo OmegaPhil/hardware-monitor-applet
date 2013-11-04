@@ -106,13 +106,12 @@ private:
   
   // Originally gconf callbacks
   // TODO: Kill off superfluous ints in these function calls
-  void viewer_type_listener(unsigned int, const Glib::ustring viewer_type);
-  void background_color_listener(unsigned int,
-    unsigned int background_color);
-  void use_background_color_listener(unsigned int, bool use_background_color);
-  void size_listener(unsigned int, int viewer_size);
-  void font_listener(unsigned int, const Glib::ustring viewer_font);
-  void monitor_color_listener(unsigned int, unsigned int color);
+  void viewer_type_listener(const Glib::ustring viewer_type);
+  void background_color_listener(unsigned int background_color);
+  void use_background_color_listener(bool use_background_color);
+  void size_listener(int viewer_size);
+  void font_listener(const Glib::ustring viewer_font);
+  void monitor_color_listener(unsigned int color);
 
   void stop_monitor_listeners();
   
