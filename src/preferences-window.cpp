@@ -164,12 +164,6 @@ PreferencesWindow::PreferencesWindow(Applet &applet_, monitor_seq monitors)
   // connect GConf
   // TODO: Do these even need to be set up? When a chnge is made, then the relevant function is to be called
   /*
-  Glib::RefPtr<Gnome::Conf::Client> &client = applet.get_gconf_client();
-  
-  client->notify_add(dir + "/viewer_type",
-		     sigc::mem_fun(*this, &PreferencesWindow::
-				viewer_type_listener));
-
   client->notify_add(dir + "/background_interval",
 		     sigc::mem_fun(*this, &PreferencesWindow::
 				background_color_listener));
@@ -295,6 +289,10 @@ void PreferencesWindow::viewer_type_listener(unsigned int,
     size_outer_vbox->property_visible() = true;
     monitor_flame_options->property_visible() = true;
   }
+
+  /* Actually changing the viewer type - background color use etc is set
+   * separately */
+  applet.viewer_type_listener(viewer_type);
 }
 
 void PreferencesWindow::background_color_listener(unsigned int,

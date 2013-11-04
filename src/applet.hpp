@@ -70,6 +70,9 @@ public:
   void set_viewer_size(const int size);
   const Glib::ustring get_viewer_font();
   void set_viewer_font(const Glib::ustring font_name);
+  void viewer_type_listener(const Glib::ustring viewer_type,
+    bool use_background_color = false,
+    int background_color = 0);
 
   Glib::RefPtr<Gdk::Pixbuf> get_icon();	// get the application icon
 

@@ -193,51 +193,7 @@ Applet::Applet(XfcePanelPlugin *plugin)
   }
 
   // Configuring viewer type
-  if (viewer_type == "curve")
-  {
-    // Setting view to CurveView if it isnt already
-    if (!dynamic_cast<CurveView *>(view.get()))
-      set_view(new CurveView);
-  }
-  else if (viewer_type == "bar")
-  {
-    // Setting view to horizontal BarView if it isnt already
-    // It gets tricky here because them BarView can render 2 viewers.
-    // Thus, we much also check the oriententation
-    BarView *bar_view = dynamic_cast<BarView *>(view.get());
-    if (!(bar_view && bar_view->is_horizontal()) )
-      set_view(new BarView);
-  }
-  else if (viewer_type == "vbar")
-  {
-    // Setting view to vertical BarView if it isnt already
-    // Same situation as with "bar"
-    BarView *bar_view = dynamic_cast<BarView *>(view.get());
-    if (!(bar_view && !bar_view->is_horizontal()) )
-      set_view(new BarView(false));
-  }
-  else if (viewer_type == "text") {
-
-    // Setting view to TextView if it isnt already
-    if (!dynamic_cast<TextView *>(view.get()))
-      set_view(new TextView);
-  }
-  else if (viewer_type == "flame") {
-
-    // Setting view to FlameView if it isnt already
-    if (!dynamic_cast<FlameView *>(view.get()))
-      set_view(new FlameView);
-  }
-  else if (viewer_type == "column") {
-
-    // Setting view to ColumnView if it isnt already
-    if (!dynamic_cast<ColumnView *>(view.get()))
-      set_view(new ColumnView);
-  }
-
-  // Setting the view background colour if desired
-  if (use_background_color)
-      view->set_background(background_color);
+  viewer_type_listener(viewer_type, use_background_color, background_color);
 
   /* Actually setting the viewer size has no effect in this function -
    * seems that it needs to be done in or after the mainloop kicks off */
@@ -332,6 +288,60 @@ void Applet::set_view(View *v)
 
   for (monitor_iter i = monitors.begin(), end = monitors.end(); i != end; ++i)
     view->attach(*i);
+}
+
+// Note that the last two parameters have defaults in the declaration
+void Applet::viewer_type_listener(const Glib::ustring viewer_type,
+  bool use_background_color, int background_color)
+{
+  if (viewer_type == "curve")
+  {
+    // Setting view to CurveView if it isnt already
+    if (!dynamic_cast<CurveView *>(view.get()))
+      set_view(new CurveView);
+  }
+  else if (viewer_type == "bar")
+  {
+    // Setting view to horizontal BarView if it isnt already
+    // It gets tricky here because them BarView can render 2 viewers.
+    // Thus, we much also check the oriententation
+    BarView *bar_view = dynamic_cast<BarView *>(view.get());
+    if (!(bar_view && bar_view->is_horizontal()) )
+      set_view(new BarView);
+  }
+  else if (viewer_type == "vbar")
+  {
+    // Setting view to vertical BarView if it isnt already
+    // Same situation as with "bar"
+    BarView *bar_view = dynamic_cast<BarView *>(view.get());
+    if (!(bar_view && !bar_view->is_horizontal()) )
+      set_view(new BarView(false));
+  }
+  else if (viewer_type == "text") {
+
+    // Setting view to TextView if it isnt already
+    if (!dynamic_cast<TextView *>(view.get()))
+      set_view(new TextView);
+  }
+  else if (viewer_type == "flame") {
+
+    // Setting view to FlameView if it isnt already
+    if (!dynamic_cast<FlameView *>(view.get()))
+      set_view(new FlameView);
+  }
+  else if (viewer_type == "column") {
+
+    // Setting view to ColumnView if it isnt already
+    if (!dynamic_cast<ColumnView *>(view.get()))
+      set_view(new ColumnView);
+  }
+
+  // Setting the view background colour if desired
+  if (use_background_color)
+      view->set_background(background_color);
+
+  // Update recorded viewer type
+  this->viewer_type = viewer_type;
 }
 
 bool Applet::main_loop()

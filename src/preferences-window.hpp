@@ -104,6 +104,7 @@ private:
   typedef Gtk::ListStore::iterator store_iter;
   
   // Originally gconf callbacks
+  // TODO: Kill off superfluous ints in these function calls
   void viewer_type_listener(unsigned int, const Glib::ustring viewer_type);
   void background_color_listener(unsigned int,
     unsigned int background_color);
