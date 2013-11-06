@@ -21,6 +21,8 @@
 
 #include <config.h>
 
+#include <iostream>
+
 #include <libgnomecanvasmm/pixbuf.h>
 
 #include "canvas-view.hpp"
@@ -95,6 +97,13 @@ void CanvasView::do_unset_background()
 
 int CanvasView::width() const
 {
+  /* Remember that applet->get_size returns the thickness of the panel
+   * (i.e. height in the normal orientation or width in the vertical
+   * orientation) */
+
+  // Debug code
+  //std::cout << "CanvasView::width: " << ((applet->horizontal()) ? size : applet->get_size()) << "\n";
+
   if (applet->horizontal())
     return size;
   else
@@ -103,6 +112,9 @@ int CanvasView::width() const
 
 int CanvasView::height() const
 {
+  // Debug code
+  //std::cout << "CanvasView::height: " << ((applet->horizontal()) ? applet->get_size() : size) << "\n";
+
   if (applet->horizontal())
     return applet->get_size();
   else

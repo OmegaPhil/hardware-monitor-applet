@@ -133,6 +133,18 @@ void save_monitors(Applet *applet)
   }
 }
 
+// Same for this function
+// Not needed as the canvas resizes on the fly
+/*
+gboolean size_changed(XfcePanelPlugin* plugin, gint size, Applet* applet)
+{
+  // Debug code
+  std::cout << "Size changed event detected: " << size << "\n";
+
+  return true;
+}
+* */
+
 
 Applet::Applet(XfcePanelPlugin *plugin)
   : panel_applet(plugin),
@@ -225,8 +237,11 @@ Applet::Applet(XfcePanelPlugin *plugin)
 	g_signal_connect_swapped(panel_applet, "save", G_CALLBACK(save_monitors),
     this);
 
-  // TODO: No current code is responsible for resizing, so leaving this alone for now
-	//g_signal_connect(panel_applet, "size-changed", G_CALLBACK(PanelPlugin::size_changed_slot), this);
+  /* Not needed as the canvas resizes on the fly
+  // Hooking into size changed signal
+	g_signal_connect(panel_applet, "size-changed", G_CALLBACK(size_changed),
+    this);
+  */
 
   // Adding configure and about to the applet's right-click menu
 	xfce_panel_plugin_menu_show_configure(panel_applet);
@@ -409,7 +424,8 @@ unsigned int Applet::get_fg_color()
 
 int Applet::get_size() const
 {
-  // Return the width or height depending on the orientation
+  /* Returns the thickness of the panel (i.e. height in the normal
+   * orientation or width in the vertical orientation) */
   return xfce_panel_plugin_get_size(panel_applet);
 }
 
