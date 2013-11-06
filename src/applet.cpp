@@ -475,9 +475,16 @@ void Applet::set_viewer_size(const int size)
   */
 
   // Make sure on every call that the viewer size is being honoured
-  // TODO: This needs to deal with orientations
-  if (req_size.width != size)
-    gtk_widget_set_size_request(GTK_WIDGET(panel_applet), size, -1);
+  if (horizontal())
+  {
+    if (req_size.width != size)
+      gtk_widget_set_size_request(GTK_WIDGET(panel_applet), size, -1);
+  }
+  else
+  {
+    if (req_size.height != size)
+      gtk_widget_set_size_request(GTK_WIDGET(panel_applet), -1, size);
+  }
 
   // Exiting if the size hasn't changed from this program's perspective
   if (viewer_size == size)
