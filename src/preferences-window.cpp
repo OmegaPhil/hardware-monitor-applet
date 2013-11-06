@@ -391,7 +391,8 @@ void PreferencesWindow::sync_conf_with_colorbutton(std::string settings_dir,
 
 void PreferencesWindow::on_background_colorbutton_set()
 {
-  sync_conf_with_colorbutton("", "background_color",
+  // Settings dir here is the default XFCE4 settings group
+  sync_conf_with_colorbutton("[NULL]", "background_color",
 			     background_colorbutton);
 }
 
