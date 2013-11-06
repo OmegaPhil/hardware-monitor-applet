@@ -444,6 +444,9 @@ void PreferencesWindow::on_curve_radiobutton_toggled()
       XfceRc* settings = xfce_rc_simple_open(file, false);
       g_free(file);
 
+      // Ensuring default group is in focus
+      xfce_rc_set_group(settings, "[NULL]");
+
       // Updating configuration
       xfce_rc_write_entry(settings, "viewer_type", "curve");
 
@@ -795,7 +798,7 @@ void PreferencesWindow::on_selection_changed()
 
     // Loading up new monitor colour
     // Fetching assigned settings group
-    Glib::ustring key, mon_dir = (*(*i)[mc.monitor]).get_settings_dir();
+    Glib::ustring mon_dir = (*(*i)[mc.monitor]).get_settings_dir();
 
     // Search for settings file
     gchar* file = xfce_panel_plugin_lookup_rc_file(applet.panel_applet);
