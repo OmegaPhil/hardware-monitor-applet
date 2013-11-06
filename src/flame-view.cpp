@@ -39,7 +39,7 @@
 class Flame
 {
 public:
-  Flame(Monitor *monitor);
+  Flame(Monitor *monitor, unsigned int color);
 
   void update(Gnome::Canvas::Canvas &canvas,
 	      Applet *applet, int width, int height, int no, int total); 
@@ -58,72 +58,16 @@ private:
   int cooling; 			// cooling factor
 
   void recompute_fuel();
+  unsigned int color;
 };
 
-Flame::Flame(Monitor *m)
-  : monitor(m), value(0), next_refuel(0)
+Flame::Flame(Monitor *m, unsigned int c)
+  : monitor(m), value(0), next_refuel(0), color(c)
 {}
 
 void Flame::update(Gnome::Canvas::Canvas &canvas,
 		   Applet *applet, int width, int height, int no, int total)
 {
-  // Get color with default
-  unsigned int color = applet->get_fg_color();
-  bool color_missing = true;
-
-  // Fetching assigned settings group
-  Glib::ustring dir = monitor->get_settings_dir();
-
-  // Search for settings file
-  gchar* file = xfce_panel_plugin_lookup_rc_file(applet->panel_applet);
-
-  if (file)
-  {
-    // One exists - loading readonly settings
-    XfceRc* settings = xfce_rc_simple_open(file, true);
-    g_free(file);
-
-    // Loading color
-    xfce_rc_set_group(settings, dir.c_str());
-    if (xfce_rc_has_entry(settings, "color"))
-    {
-      color = xfce_rc_read_int_entry(settings, "color",
-        applet->get_fg_color());
-      color_missing = false;
-    }
-
-    // Close settings file
-    xfce_rc_close(settings);
-  }
-
-  /* Saving if color was not recorded. XFCE4 configuration is done in
-   * read and write stages, so this needs to be separated */
-  if (color_missing)
-  {
-    // Search for a writeable settings file, create one if it doesnt exist
-    file = xfce_panel_plugin_save_location(applet->panel_applet, true);
-
-    if (file)
-    {
-      // Opening setting file
-      XfceRc* settings = xfce_rc_simple_open(file, false);
-      g_free(file);
-
-      // Saving color
-      xfce_rc_set_group(settings, dir.c_str());
-      xfce_rc_write_int_entry(settings, "color", int(color));
-
-      // Close settings file
-      xfce_rc_close(settings);
-    }
-    else
-    {
-      // Unable to obtain writeable config file - informing user
-      std::cerr << _("Unable to obtain writeable config file path in "
-        "order to update color in Flame::update call!\n");
-    }
-  }
-
   // Then make sure layer is correctly setup
   if (flame.get() == 0)
   {
@@ -319,7 +263,68 @@ void FlameView::do_update()
 
 void FlameView::do_attach(Monitor *monitor)
 {
-  flames.push_back(new Flame(monitor));
+  unsigned int color = 0;
+  bool color_missing = true;
+
+  // Obtaining color
+  // Fetching assigned settings group
+  Glib::ustring dir = monitor->get_settings_dir();
+
+  // Search for settings file
+  gchar* file = xfce_panel_plugin_lookup_rc_file(applet->panel_applet);
+
+  if (file)
+  {
+    // One exists - loading readonly settings
+    XfceRc* settings = xfce_rc_simple_open(file, true);
+    g_free(file);
+
+    // Loading color
+    xfce_rc_set_group(settings, dir.c_str());
+    if (xfce_rc_has_entry(settings, "color"))
+    {
+      color = xfce_rc_read_int_entry(settings, "color",
+        applet->get_fg_color());
+      color_missing = false;
+    }
+
+    // Close settings file
+    xfce_rc_close(settings);
+  }
+
+  /* Saving color if it was not recorded. XFCE4 configuration is done in
+   * read and write stages, so this needs to be separated */
+  if (color_missing)
+  {
+    // Setting color
+    color = applet->get_fg_color();
+
+    // Search for a writeable settings file, create one if it doesnt exist
+    file = xfce_panel_plugin_save_location(applet->panel_applet, true);
+
+    if (file)
+    {
+      // Opening setting file
+      XfceRc* settings = xfce_rc_simple_open(file, false);
+      g_free(file);
+
+      // Saving color
+      xfce_rc_set_group(settings, dir.c_str());
+      xfce_rc_write_int_entry(settings, "color", int(color));
+
+      // Close settings file
+      xfce_rc_close(settings);
+    }
+    else
+    {
+      // Unable to obtain writeable config file - informing user
+      std::cerr << _("Unable to obtain writeable config file path in "
+        "order to set color in FlameView::do_attach call!\n");
+    }
+  }
+
+  // Instantiating flame with determined color
+  flames.push_back(new Flame(monitor, color));
 }
 
 void FlameView::do_detach(Monitor *monitor)

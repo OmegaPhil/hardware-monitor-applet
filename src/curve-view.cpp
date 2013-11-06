@@ -206,7 +206,7 @@ void CurveView::do_attach(Monitor *monitor)
     {
       // Unable to obtain writeable config file - informing user
       std::cerr << _("Unable to obtain writeable config file path in "
-        "order to set color in Curve::do_attach call!\n");
+        "order to set color in CurveView::do_attach call!\n");
     }
   }
 

@@ -38,7 +38,7 @@
 class ColumnGraph
 {
 public:
-  ColumnGraph(Monitor *monitor);
+  ColumnGraph(Monitor *monitor, unsigned int color);
 
   void update(unsigned int max_samples); // gather info from monitor
   void draw(Gnome::Canvas::Canvas &canvas, // redraw columns on canvas
@@ -52,10 +52,11 @@ private:
 
   ValueHistory value_history;
   int remaining_draws;
+  unsigned int color;
 };
 
-ColumnGraph::ColumnGraph(Monitor *m)
-  : monitor(m), value_history(m), remaining_draws(0)
+ColumnGraph::ColumnGraph(Monitor *m, unsigned int c)
+  : monitor(m), value_history(m), remaining_draws(0), color(c)
 {
 }
 
@@ -83,63 +84,6 @@ void ColumnGraph::draw(Gnome::Canvas::Canvas &canvas,
 
   if (vi == vend)		// there must be at least one point
     return;
-
-  // Get default colour
-  unsigned int color = applet->get_fg_color();
-  bool color_missing = true;
-
-  // Fetching assigned settings group
-  Glib::ustring dir = monitor->get_settings_dir();
-
-  // Search for settings file
-  gchar* file = xfce_panel_plugin_lookup_rc_file(applet->panel_applet);
-
-  if (file)
-  {
-    // One exists - loading readonly settings
-    XfceRc* settings = xfce_rc_simple_open(file, true);
-    g_free(file);
-
-    // Loading color
-    xfce_rc_set_group(settings, dir.c_str());
-    if (xfce_rc_has_entry(settings, "color"))
-    {
-      color = xfce_rc_read_int_entry(settings, "color",
-        applet->get_fg_color());
-      color_missing = false;
-    }
-
-    // Close settings file
-    xfce_rc_close(settings);
-  }
-
-  /* Saving color if it was not recorded. XFCE4 configuration is done in
-   * read and write stages, so this needs to be separated */
-  if (color_missing)
-  {
-    // Search for a writeable settings file, create one if it doesnt exist
-    file = xfce_panel_plugin_save_location(applet->panel_applet, true);
-
-    if (file)
-    {
-      // Opening setting file
-      XfceRc* settings = xfce_rc_simple_open(file, false);
-      g_free(file);
-
-      // Saving color
-      xfce_rc_set_group(settings, dir.c_str());
-      xfce_rc_write_int_entry(settings, "color", int(color));
-
-      // Close settings file
-      xfce_rc_close(settings);
-    }
-    else
-    {
-      // Unable to obtain writeable config file - informing user
-      std::cerr << _("Unable to obtain writeable config file path in "
-        "order to update color in ColumnGraph::draw call!\n");
-    }
-  }
 
   // make sure we got a pixbuf and that it has the right size
   Glib::RefPtr<Gdk::Pixbuf> pixbuf;
@@ -233,7 +177,68 @@ void ColumnView::do_update()
 
 void ColumnView::do_attach(Monitor *monitor)
 {
-  columns.push_back(new ColumnGraph(monitor));
+  unsigned int color = 0;
+  bool color_missing = true;
+
+  // Obtaining color
+  // Fetching assigned settings group
+  Glib::ustring dir = monitor->get_settings_dir();
+
+  // Search for settings file
+  gchar* file = xfce_panel_plugin_lookup_rc_file(applet->panel_applet);
+
+  if (file)
+  {
+    // One exists - loading readonly settings
+    XfceRc* settings = xfce_rc_simple_open(file, true);
+    g_free(file);
+
+    // Loading color
+    xfce_rc_set_group(settings, dir.c_str());
+    if (xfce_rc_has_entry(settings, "color"))
+    {
+      color = xfce_rc_read_int_entry(settings, "color",
+        applet->get_fg_color());
+      color_missing = false;
+    }
+
+    // Close settings file
+    xfce_rc_close(settings);
+  }
+
+  /* Saving color if it was not recorded. XFCE4 configuration is done in
+   * read and write stages, so this needs to be separated */
+  if (color_missing)
+  {
+    // Setting color
+    color = applet->get_fg_color();
+
+    // Search for a writeable settings file, create one if it doesnt exist
+    file = xfce_panel_plugin_save_location(applet->panel_applet, true);
+
+    if (file)
+    {
+      // Opening setting file
+      XfceRc* settings = xfce_rc_simple_open(file, false);
+      g_free(file);
+
+      // Saving color
+      xfce_rc_set_group(settings, dir.c_str());
+      xfce_rc_write_int_entry(settings, "color", int(color));
+
+      // Close settings file
+      xfce_rc_close(settings);
+    }
+    else
+    {
+      // Unable to obtain writeable config file - informing user
+      std::cerr << _("Unable to obtain writeable config file path in "
+        "order to set color in ColumnView::do_attach call!\n");
+    }
+  }
+
+  // Instantiating column graph with determined color
+  columns.push_back(new ColumnGraph(monitor, color));
 }
 
 void ColumnView::do_detach(Monitor *monitor)

@@ -37,7 +37,7 @@
 class Bar
 {
 public:
-  Bar(Monitor *monitor, bool horizontal = false);
+  Bar(Monitor *monitor, unsigned int fill_color, bool horizontal = false);
   ~Bar();
 
   void update();
@@ -53,10 +53,11 @@ private:
 
   double old_value, new_value;
   bool horizontal;
+  unsigned int fill_color;
 };
 
-Bar::Bar(Monitor *m, bool horizontal)
-  : monitor(m), old_value(0), new_value(0)
+Bar::Bar(Monitor *m, unsigned int c, bool horizontal)
+  : monitor(m), old_value(0), new_value(0), fill_color(c)
 {
   this->horizontal = horizontal;
 }
@@ -100,67 +101,9 @@ unsigned int outlineified(unsigned int color)
 void Bar::draw(Gnome::Canvas::Canvas &canvas,
 	       Applet *applet, int width, int height, int no, int total,
 	       double time_offset)
-{
-  // Get drawing attributes
-  unsigned int fill_color = applet->get_fg_color();
-  bool color_missing = true;
-
-  /* Loading fill_color from settings if it exists
-   * Fetching assigned settings group */
-  Glib::ustring dir = monitor->get_settings_dir();
-
-  // Search for settings file
-  gchar* file = xfce_panel_plugin_lookup_rc_file(applet->panel_applet);
-
-  if (file)
-  {
-    // One exists - loading readonly settings
-    XfceRc* settings = xfce_rc_simple_open(file, true);
-    g_free(file);
-
-    // Loading color
-    xfce_rc_set_group(settings, dir.c_str());
-    if (xfce_rc_has_entry(settings, "color"))
-    {
-      fill_color = xfce_rc_read_int_entry(settings, "color",
-                                          applet->get_fg_color());
-      color_missing = false;
-    }
-
-    // Close settings file
-    xfce_rc_close(settings);
-  }
-
-  /* Saving color if it was not recorded. XFCE4 configuration is done in
-   * read and write stages, so this needs to be separated */
-  if (color_missing)
-  {
-    // Search for a writeable settings file, create one if it doesnt exist
-    file = xfce_panel_plugin_save_location(applet->panel_applet, true);
-
-    if (file)
-    {
-      // Opening setting file
-      XfceRc* settings = xfce_rc_simple_open(file, false);
-      g_free(file);
-
-      // Saving color
-      xfce_rc_set_group(settings, dir.c_str());
-      xfce_rc_write_int_entry(settings, "color", int(fill_color));
-
-      // Close settings file
-      xfce_rc_close(settings);
-    }
-    else
-    {
-      // Unable to obtain writeable config file - informing user
-      std::cerr << _("Unable to obtain writeable config file path in "
-        "order to update color in Bar::draw call!\n");
-    }
-  }
-  
+{ 
   unsigned int outline_color = outlineified(fill_color);
-  
+
   // calculate parameters
   int box_size;
   // use min_spacing at least, except for last box which doesn't need spacing
@@ -274,7 +217,68 @@ void BarView::do_update()
 
 void BarView::do_attach(Monitor *monitor)
 {
-  bars.push_back(new Bar(monitor, this->horizontal));
+  unsigned int fill_color = 0;
+  bool color_missing = true;
+
+  // Obtaining color
+  // Fetching assigned settings group
+  Glib::ustring dir = monitor->get_settings_dir();
+
+  // Search for settings file
+  gchar* file = xfce_panel_plugin_lookup_rc_file(applet->panel_applet);
+
+  if (file)
+  {
+    // One exists - loading readonly settings
+    XfceRc* settings = xfce_rc_simple_open(file, true);
+    g_free(file);
+
+    // Loading color
+    xfce_rc_set_group(settings, dir.c_str());
+    if (xfce_rc_has_entry(settings, "fill_color"))
+    {
+      fill_color = xfce_rc_read_int_entry(settings, "fill_color",
+        applet->get_fg_color());
+      color_missing = false;
+    }
+
+    // Close settings file
+    xfce_rc_close(settings);
+  }
+
+  /* Saving color if it was not recorded. XFCE4 configuration is done in
+   * read and write stages, so this needs to be separated */
+  if (color_missing)
+  {
+    // Setting color
+    fill_color = applet->get_fg_color();
+
+    // Search for a writeable settings file, create one if it doesnt exist
+    file = xfce_panel_plugin_save_location(applet->panel_applet, true);
+
+    if (file)
+    {
+      // Opening setting file
+      XfceRc* settings = xfce_rc_simple_open(file, false);
+      g_free(file);
+
+      // Saving color
+      xfce_rc_set_group(settings, dir.c_str());
+      xfce_rc_write_int_entry(settings, "fill_color", int(fill_color));
+
+      // Close settings file
+      xfce_rc_close(settings);
+    }
+    else
+    {
+      // Unable to obtain writeable config file - informing user
+      std::cerr << _("Unable to obtain writeable config file path in "
+        "order to set color in BarView::do_attach call!\n");
+    }
+  }
+
+  // Instantiating bar with determined color
+  bars.push_back(new Bar(monitor, fill_color, this->horizontal));
 }
 
 void BarView::do_detach(Monitor *monitor)
