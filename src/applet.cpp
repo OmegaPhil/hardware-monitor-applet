@@ -202,7 +202,7 @@ Applet::Applet(XfcePanelPlugin *plugin)
   }
 
   // Configuring viewer type
-  viewer_type_listener(viewer_type, use_background_color, background_color);
+  viewer_type_listener(viewer_type);
 
   /* Actually setting the viewer size has no effect in this function -
    * seems that it needs to be done in or after the mainloop kicks off */
@@ -294,9 +294,7 @@ void Applet::set_view(View *v)
     view->attach(*i);
 }
 
-// Note that the last two parameters have defaults in the declaration
-void Applet::viewer_type_listener(const Glib::ustring viewer_type,
-  bool use_background_color, int background_color)
+void Applet::viewer_type_listener(const Glib::ustring viewer_type)
 {
   if (viewer_type == "curve")
   {
@@ -340,12 +338,34 @@ void Applet::viewer_type_listener(const Glib::ustring viewer_type,
       set_view(new ColumnView);
   }
 
-  // Setting the view background colour if desired
-  if (use_background_color)
-      view->set_background(background_color);
+  // Make sure the view sets the background
+  background_color_listener(background_color);
 
   // Update recorded viewer type
   this->viewer_type = viewer_type;
+}
+
+void Applet::background_color_listener(unsigned int background_color)
+{
+  if (use_background_color && view.get())
+    view->set_background(background_color);
+
+  // Update background_color
+  this->background_color = background_color;
+}
+
+void Applet::use_background_color_listener(gboolean use_background_color)
+{
+  if (view.get())
+  {
+    if (use_background_color)
+      view->set_background(background_color);
+    else
+      view->unset_background();
+  }
+
+  // Update use_background_color
+  this->use_background_color = use_background_color;
 }
 
 bool Applet::main_loop()

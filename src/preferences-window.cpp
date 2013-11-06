@@ -288,6 +288,9 @@ void PreferencesWindow::background_color_listener(unsigned int background_color)
     a = background_color;
 
   update_colorbutton_if_different(background_colorbutton, r, g, b, a);
+
+  // Actually updating the background color
+  applet.background_color_listener(background_color);
 }
 
 void PreferencesWindow::use_background_color_listener(bool use_background_color)
@@ -296,6 +299,9 @@ void PreferencesWindow::use_background_color_listener(bool use_background_color)
     background_color_radiobutton->set_active();
   else
     panel_background_radiobutton->set_active();
+
+  // Actually updating the background color usage state
+  applet.use_background_color_listener(use_background_color);
 }
 
 void PreferencesWindow::size_listener(int viewer_size)
@@ -337,27 +343,34 @@ void PreferencesWindow::monitor_color_listener(unsigned int color)
 
 namespace 
 {
-  // helper for avoiding clipping when shifting values
+  // Helper for avoiding clipping when shifting values
   unsigned int pack_int(unsigned int r, unsigned int g, unsigned int b,
 		      unsigned int a)
   {
     return ((r & 255) << 24) | ((g & 255) << 16) | ((b & 255) << 8) | (a & 255);
   }
 
+  // Return packed int from color button
+  unsigned int get_colorbutton_int(Gtk::ColorButton *button)
+  {
+
+    // Extract info from button
+    unsigned char a, r, g, b;
+
+    a = button->get_alpha() >> 8;
+
+    Gdk::Color c = button->get_color();
+    r = c.get_red() >> 8;
+    g = c.get_green() >> 8;
+    b = c.get_blue() >> 8;
+
+    return int(pack_int(r, g, b, a));
+  }
 }
 
-void PreferencesWindow::sync_conf_with_colorbutton(std::string settings_dir,
-  std::string setting_name, Gtk::ColorButton *button)
+void PreferencesWindow::sync_conf_with_colorbutton(Glib::ustring settings_dir,
+  Glib::ustring setting_name, Gtk::ColorButton *button)
 {
-  // extract info from button
-  unsigned char a, r, g, b;
-    
-  a = button->get_alpha() >> 8;
-  
-  Gdk::Color c = button->get_color();
-  r = c.get_red() >> 8;
-  g = c.get_green() >> 8;
-  b = c.get_blue() >> 8;
 
   // Search for a writeable settings file, create one if it doesnt exist
   gchar* file = xfce_panel_plugin_save_location(applet.panel_applet, true);
@@ -374,7 +387,7 @@ void PreferencesWindow::sync_conf_with_colorbutton(std::string settings_dir,
     
     // Updating configuration
     xfce_rc_write_int_entry(settings, setting_name.c_str(),
-      int(pack_int(r, g, b, a)));
+      get_colorbutton_int(button));
 
     // Close settings file
     xfce_rc_close(settings);
@@ -394,6 +407,10 @@ void PreferencesWindow::on_background_colorbutton_set()
   // Settings dir here is the default XFCE4 settings group
   sync_conf_with_colorbutton("[NULL]", "background_color",
 			     background_colorbutton);
+
+  // Actually apply the color change
+  applet.background_color_listener(
+    get_colorbutton_int(background_colorbutton));
 }
 
 void PreferencesWindow::on_background_color_radiobutton_toggled()

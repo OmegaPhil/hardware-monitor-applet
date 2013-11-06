@@ -148,8 +148,8 @@ private:
   // for converting between size_scale units and pixels
   int size_scale_to_pixels(int size);
   int pixels_to_size_scale(int pixels);
-  void sync_conf_with_colorbutton(std::string settings_dir,
-    std::string setting_name, Gtk::ColorButton *button);
+  void sync_conf_with_colorbutton(Glib::ustring settings_dir,
+    Glib::ustring setting_name, Gtk::ColorButton *button);
   void connect_monitor_colorbutton(Gtk::ColorButton *colorbutton);
 
   void save_font_name(Glib::ustring font_name);
