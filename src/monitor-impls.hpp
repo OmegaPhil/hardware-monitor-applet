@@ -3,8 +3,8 @@
  * Copyright (c) 2003, 04, 05 Ole Laursen.
  * Copyright (c) 2013 OmegaPhil (OmegaPhil+hardware.monitor@gmail.com)
  *
- * This program is free software; you can redistribute it and/or 
- * modify it under the terms of the GNU General Public License as 
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License as
  * published by the Free Software Foundation; either version 3 of the
  * License, or (at your option) any later version.
  *
@@ -40,8 +40,8 @@
 class CpuUsageMonitor: public Monitor
 {
 public:
-  CpuUsageMonitor();		// monitor all cpus
-  CpuUsageMonitor(int cpu_no);	// monitor only cpu no.
+  CpuUsageMonitor();    // monitor all cpus
+  CpuUsageMonitor(int cpu_no);  // monitor only cpu no.
 
   virtual double max();
   virtual Glib::ustring format_value(double val);
@@ -51,13 +51,13 @@ public:
   virtual void save(XfceRc *settings);
 
   static int const max_no_cpus;
-  
+
 private:
   virtual double do_measure();
-  
+
   static int const all_cpus = -1;
   int cpu_no;
-  
+
   // we need to save these values to compute the difference next time the
   // monitor is updated
   guint64 total_time, nice_time, idle_time, iowait_time;
@@ -68,7 +68,7 @@ class SwapUsageMonitor: public Monitor
 {
 public:
   SwapUsageMonitor();
-  
+
   virtual double max();
   virtual Glib::ustring format_value(double val);
   virtual Glib::ustring get_name();
@@ -78,16 +78,16 @@ public:
 
 private:
   virtual double do_measure();
-  
-  guint64 max_value;		// maximum available swap
+
+  guint64 max_value;    // maximum available swap
 };
-	
-	
+
+
 class LoadAverageMonitor: public Monitor
 {
 public:
   LoadAverageMonitor();
-		
+
   virtual double max();
   virtual Glib::ustring format_value(double val);
   virtual Glib::ustring get_name();
@@ -95,19 +95,19 @@ public:
   virtual int update_interval();
   virtual void save(XfceRc *settings);
   virtual void load(XfceRc *settings);
-		
+
 private:
   virtual double do_measure();
-  
-  double max_value;		// currently monitored max number of processes
+
+  double max_value;   // currently monitored max number of processes
 };
-	
-	
+
+
 class MemoryUsageMonitor: public Monitor
 {
 public:
   MemoryUsageMonitor();
-  
+
   virtual double max();
   virtual Glib::ustring format_value(double val);
   virtual Glib::ustring get_name();
@@ -117,16 +117,16 @@ public:
 
 private:
   virtual double do_measure();
-  
-  guint64 max_value;		// maximum available physical RAM
+
+  guint64 max_value;    // maximum available physical RAM
 };
 
-	
+
 class DiskUsageMonitor: public Monitor
 {
 public:
   DiskUsageMonitor(const std::string &mount_dir, bool show_free);
-		
+
   virtual double max();
   virtual Glib::ustring format_value(double val);
   virtual Glib::ustring get_name();
@@ -136,8 +136,8 @@ public:
 
 private:
   virtual double do_measure();
-  
-  guint64 max_value;		// maximum available disk blocks
+
+  guint64 max_value;    // maximum available disk blocks
 
   std::string mount_dir;
   bool show_free;
@@ -149,10 +149,10 @@ public:
   enum Direction {
     all_data, incoming_data, outgoing_data
   };
-  
+
   NetworkLoadMonitor(const Glib::ustring &interface, int interface_no,
-		     Direction direction);
-		
+         Direction direction);
+
   virtual double max();
   virtual Glib::ustring format_value(double val);
   virtual Glib::ustring get_name();
@@ -165,15 +165,15 @@ public:
 
 private:
   virtual double do_measure();
-  
-  guint64 max_value;		// maximum measured capacity of line
-  long int time_difference;	// no. of msecs. between the last two calls
-		
-  guint64 byte_count;		// number of bytes at last call
+
+  guint64 max_value;    // maximum measured capacity of line
+  long int time_difference; // no. of msecs. between the last two calls
+
+  guint64 byte_count;   // number of bytes at last call
   long int time_stamp_secs, time_stamp_usecs; // time stamp for last call
 
-  Glib::ustring interface;	// e.g. "eth"
-  int interface_no;		// e.g. 0
+  Glib::ustring interface;  // e.g. "eth"
+  int interface_no;   // e.g. 0
   Direction direction;
 
   typedef std::list<NetworkLoadMonitor *> nlm_seq;
@@ -184,8 +184,8 @@ private:
 class TemperatureMonitor: public Monitor
 {
 public:
-  TemperatureMonitor(int no);	// no. in the temperature features
-		
+  TemperatureMonitor(int no); // no. in the temperature features
+
   virtual double max();
   virtual Glib::ustring format_value(double val);
   virtual Glib::ustring get_name();
@@ -196,7 +196,7 @@ public:
 
 private:
   virtual double do_measure();
-  
+
   double max_value;
   int chip_no, feature_no, sensors_no;
   std::string description;
@@ -206,8 +206,8 @@ private:
 class FanSpeedMonitor: public Monitor
 {
 public:
-  FanSpeedMonitor(int no);	// no. in the fan features
-		
+  FanSpeedMonitor(int no);  // no. in the fan features
+
   virtual double max();
   virtual Glib::ustring format_value(double val);
   virtual Glib::ustring get_name();
@@ -218,7 +218,7 @@ public:
 
 private:
   virtual double do_measure();
-  
+
   double max_value;
   int chip_no, feature_no, sensors_no;
   std::string description;
@@ -232,11 +232,11 @@ public:
   static Sensors &instance();
 
   static double const invalid_max;
-  
+
   struct FeatureInfo
   {
     int chip_no, feature_no;
-    std::string description;	// description from sensors.conf
+    std::string description;  // description from sensors.conf
     double max;
   };
   typedef std::vector<FeatureInfo> FeatureInfoSequence;

@@ -39,7 +39,7 @@ CanvasView::CanvasView(bool keeps_history)
 
 CanvasView::~CanvasView()
 {
-  draw_timer.disconnect();	// FIXME: is this enough to prevent crash?
+  draw_timer.disconnect();  // FIXME: is this enough to prevent crash?
 }
 
 void CanvasView::do_display()
@@ -75,8 +75,8 @@ void CanvasView::do_set_background(unsigned int color)
 {
   Gdk::Color c;
   c.set_rgb(((color >> 24) & 0xff) * 256,
-	    ((color >> 16) & 0xff) * 256,
-	    ((color >>  8) & 0xff) * 256);
+      ((color >> 16) & 0xff) * 256,
+      ((color >>  8) & 0xff) * 256);
   
   canvas->modify_bg(Gtk::STATE_NORMAL, c);
   canvas->modify_bg(Gtk::STATE_ACTIVE, c);

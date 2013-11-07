@@ -29,7 +29,7 @@
 
 
 ChooseMonitorWindow::ChooseMonitorWindow(Glib::RefPtr<Gdk::Pixbuf> icon,
-					 Gtk::Window &parent)
+                                         Gtk::Window &parent)
 {
   ui = get_glade_xml("choose_monitor_window");
 
@@ -73,28 +73,28 @@ ChooseMonitorWindow::ChooseMonitorWindow(Glib::RefPtr<Gdk::Pixbuf> icon,
   
   cpu_usage_radiobutton->signal_toggled()
     .connect(sigc::mem_fun(*this, &ChooseMonitorWindow::
-			on_cpu_usage_radiobutton_toggled));
+                        on_cpu_usage_radiobutton_toggled));
 
   disk_usage_radiobutton->signal_toggled()
     .connect(sigc::mem_fun(*this, &ChooseMonitorWindow::
-			on_disk_usage_radiobutton_toggled));
+                        on_disk_usage_radiobutton_toggled));
 
   network_load_radiobutton->signal_toggled()
     .connect(sigc::mem_fun(*this, &ChooseMonitorWindow::
-			on_network_load_radiobutton_toggled));
+                        on_network_load_radiobutton_toggled));
 
   temperature_radiobutton->signal_toggled()
     .connect(sigc::mem_fun(*this, &ChooseMonitorWindow::
-			on_temperature_radiobutton_toggled));
+                        on_temperature_radiobutton_toggled));
 
   fan_speed_radiobutton->signal_toggled()
     .connect(sigc::mem_fun(*this, &ChooseMonitorWindow::
-			on_fan_speed_radiobutton_toggled));
+                        on_fan_speed_radiobutton_toggled));
 
   // note 1 off to avoid counting from zero in the interface
   cpu_no_spinbutton->set_range(1, CpuUsageMonitor::max_no_cpus);
 
-#if !HAVE_LIBSENSORS		// no sensors support, no options for it
+#if !HAVE_LIBSENSORS            // no sensors support, no options for it
   device_notebook->get_nth_page(3)->hide();
 #endif
 
@@ -107,13 +107,13 @@ ChooseMonitorWindow::ChooseMonitorWindow(Glib::RefPtr<Gdk::Pixbuf> icon,
     Gtk::Menu *menu = manage(new Gtk::Menu());
     int counter = 1;
     for (Sensors::FeatureInfoSequence::iterator i = seq.begin(),
-	   end = seq.end(); i != end; ++i) {
+           end = seq.end(); i != end; ++i) {
       Glib::ustring s;
       if (!i->description.empty())
-	// %2 is a descriptive string from sensors.conf
-	s = String::ucompose(_("Sensor %1: \"%2\""), counter, i->description);
+        // %2 is a descriptive string from sensors.conf
+        s = String::ucompose(_("Sensor %1: \"%2\""), counter, i->description);
       else
-	s = String::ucompose(_("Sensor %1"), counter);
+        s = String::ucompose(_("Sensor %1"), counter);
       
       menu->append(*manage(new Gtk::MenuItem(s)));
       ++counter;
@@ -131,13 +131,13 @@ ChooseMonitorWindow::ChooseMonitorWindow(Glib::RefPtr<Gdk::Pixbuf> icon,
     Gtk::Menu *menu = manage(new Gtk::Menu());
     int counter = 1;
     for (Sensors::FeatureInfoSequence::iterator i = seq.begin(),
-	   end = seq.end(); i != end; ++i) {
+           end = seq.end(); i != end; ++i) {
       Glib::ustring s;
       if (!i->description.empty())
-	// %2 is a descriptive string from sensors.conf
-	s = String::ucompose(_("Fan %1: \"%2\""), counter, i->description);
+        // %2 is a descriptive string from sensors.conf
+        s = String::ucompose(_("Fan %1: \"%2\""), counter, i->description);
       else
-	s = String::ucompose(_("Fan %1"), counter);
+        s = String::ucompose(_("Fan %1"), counter);
       
       menu->append(*manage(new Gtk::MenuItem(s)));
       ++counter;
@@ -183,108 +183,108 @@ Monitor *ChooseMonitorWindow::run(XfcePanelPlugin* panel_applet,
 
       if (type == "memory_usage")
       {
-	device_notebook->set_current_page(1);
-	memory_usage_radiobutton->set_active();
+        device_notebook->set_current_page(1);
+        memory_usage_radiobutton->set_active();
       }
       else if (type == "load_average")
       {
-	device_notebook->set_current_page(0);
-	load_average_radiobutton->set_active();
+        device_notebook->set_current_page(0);
+        load_average_radiobutton->set_active();
       }
       else if (type == "disk_usage")
       {
-	device_notebook->set_current_page(1); 
-	disk_usage_radiobutton->set_active();
+        device_notebook->set_current_page(1);
+        disk_usage_radiobutton->set_active();
       }
       else if (type == "swap_usage")
       {
-	device_notebook->set_current_page(1);
-	swap_usage_radiobutton->set_active();
+        device_notebook->set_current_page(1);
+        swap_usage_radiobutton->set_active();
       }
       else if (type == "network_load")
       {
-	device_notebook->set_current_page(2);
-	network_load_radiobutton->set_active();
+        device_notebook->set_current_page(2);
+        network_load_radiobutton->set_active();
       }
       else if (type == "temperature")
       {
-	device_notebook->set_current_page(3);
-	temperature_radiobutton->set_active();
+        device_notebook->set_current_page(3);
+        temperature_radiobutton->set_active();
       }
       else
       {
-	device_notebook->set_current_page(0);
-	// FIXME: use schema?
-	cpu_usage_radiobutton->set_active();
+        device_notebook->set_current_page(0);
+        // FIXME: use schema?
+        cpu_usage_radiobutton->set_active();
       }
       
       // Fill in cpu info
       if (xfce_rc_has_entry(settings, "cpu_no"))
       {
-	int no = xfce_rc_read_int_entry(settings, "cpu_no", -1);
-	if (no >= 0 && no < CpuUsageMonitor::max_no_cpus) {
-	  one_cpu_radiobutton->set_active();
-	  cpu_no_spinbutton->set_value(no + 1);
-	}
-	else {
-	  all_cpus_radiobutton->set_active();
-	}
+        int no = xfce_rc_read_int_entry(settings, "cpu_no", -1);
+        if (no >= 0 && no < CpuUsageMonitor::max_no_cpus) {
+          one_cpu_radiobutton->set_active();
+          cpu_no_spinbutton->set_value(no + 1);
+        }
+        else {
+          all_cpus_radiobutton->set_active();
+        }
       }
 
       // Fill in disk usage info
       if (xfce_rc_has_entry(settings, "mount_dir"))
       {
-	Glib::ustring mount_dir = xfce_rc_read_entry(settings,
-	  "mount_dir", "");
-	mount_dir_entry->set_text(mount_dir);
+        Glib::ustring mount_dir = xfce_rc_read_entry(settings,
+          "mount_dir", "");
+        mount_dir_entry->set_text(mount_dir);
       }
       if (xfce_rc_has_entry(settings, "show_free"))
       {
-	bool show_free  = xfce_rc_read_bool_entry(settings,
-	  "show_free", false);
-	show_free_checkbutton->set_active(show_free);
+        bool show_free  = xfce_rc_read_bool_entry(settings,
+          "show_free", false);
+        show_free_checkbutton->set_active(show_free);
       }
 
       // Fill in network load info
       if (xfce_rc_has_entry(settings, "interface"))
       {
-	Glib::ustring interface = xfce_rc_read_entry(settings,
-	  "interface", "eth");
+        Glib::ustring interface = xfce_rc_read_entry(settings,
+          "interface", "eth");
 
-	int interface_no = xfce_rc_read_int_entry(settings,
-	  "interface_no", 0);
-	
-	if (interface == "eth" && interface_no == 0)
-	  network_type_optionmenu->set_history(0);
-	else if (interface == "eth" && interface_no == 1)
-	  network_type_optionmenu->set_history(1);
-	else if (interface == "eth" && interface_no == 2)
-	  network_type_optionmenu->set_history(2);
-	else if (interface == "ppp")
-	  network_type_optionmenu->set_history(3);
-	else if (interface == "slip")
-	  network_type_optionmenu->set_history(4);
-	else if (interface == "wlan")
-	  network_type_optionmenu->set_history(5);
-	else
-	  network_type_optionmenu->set_history(0);
+        int interface_no = xfce_rc_read_int_entry(settings,
+          "interface_no", 0);
+
+        if (interface == "eth" && interface_no == 0)
+          network_type_optionmenu->set_history(0);
+        else if (interface == "eth" && interface_no == 1)
+          network_type_optionmenu->set_history(1);
+        else if (interface == "eth" && interface_no == 2)
+          network_type_optionmenu->set_history(2);
+        else if (interface == "ppp")
+          network_type_optionmenu->set_history(3);
+        else if (interface == "slip")
+          network_type_optionmenu->set_history(4);
+        else if (interface == "wlan")
+          network_type_optionmenu->set_history(5);
+        else
+          network_type_optionmenu->set_history(0);
       }
 
       if (xfce_rc_has_entry(settings, "interface_direction"))
       {
-	int direction = xfce_rc_read_int_entry(settings,
-	  "interface_direction", NetworkLoadMonitor::all_data);
+        int direction = xfce_rc_read_int_entry(settings,
+          "interface_direction", NetworkLoadMonitor::all_data);
 
-	if (direction == NetworkLoadMonitor::incoming_data)
-	  network_direction_optionmenu->set_history(1);
-	else if (direction == NetworkLoadMonitor::outgoing_data)
-	  network_direction_optionmenu->set_history(2);
-	else if (direction == NetworkLoadMonitor::all_data)
-	  network_direction_optionmenu->set_history(0);
+        if (direction == NetworkLoadMonitor::incoming_data)
+          network_direction_optionmenu->set_history(1);
+        else if (direction == NetworkLoadMonitor::outgoing_data)
+          network_direction_optionmenu->set_history(2);
+        else if (direction == NetworkLoadMonitor::all_data)
+          network_direction_optionmenu->set_history(0);
       }
 
       int temperature_no = xfce_rc_read_int_entry(settings,
-	  "temperature_no", 0);
+          "temperature_no", 0);
 
       temperature_optionmenu->set_history(temperature_no);
     }
@@ -311,79 +311,79 @@ Monitor *ChooseMonitorWindow::run(XfcePanelPlugin* panel_applet,
       Monitor *mon = 0;
 
       if (cpu_usage_radiobutton->get_active())
-	if (one_cpu_radiobutton->get_active())
-	  mon = new CpuUsageMonitor(int(cpu_no_spinbutton->get_value()) - 1);
-	else
-	  mon = new CpuUsageMonitor;
+        if (one_cpu_radiobutton->get_active())
+          mon = new CpuUsageMonitor(int(cpu_no_spinbutton->get_value()) - 1);
+        else
+          mon = new CpuUsageMonitor;
       else if (memory_usage_radiobutton->get_active())
-	mon = new MemoryUsageMonitor;
+        mon = new MemoryUsageMonitor;
       else if (swap_usage_radiobutton->get_active())
-	mon = new SwapUsageMonitor;
+        mon = new SwapUsageMonitor;
       else if (load_average_radiobutton->get_active())
-	mon = new LoadAverageMonitor;
+        mon = new LoadAverageMonitor;
       else if (disk_usage_radiobutton->get_active()) {
-	Glib::ustring mount_dir = mount_dir_entry->get_text();
-	bool show_free = show_free_checkbutton->get_active();
-	// FIXME: check that mount_dir is valid
-	mon = new DiskUsageMonitor(mount_dir, show_free);
+        Glib::ustring mount_dir = mount_dir_entry->get_text();
+        bool show_free = show_free_checkbutton->get_active();
+        // FIXME: check that mount_dir is valid
+        mon = new DiskUsageMonitor(mount_dir, show_free);
       }
       else if (network_load_radiobutton->get_active()) {
-	Glib::ustring interface;
-	int interface_no;
-	
-	switch (network_type_optionmenu->get_history()) {
-	case 1:
-	  interface = "eth";
-	  interface_no = 1;
-	  break;
-	  
-	case 2:
-	  interface = "eth";
-	  interface_no = 2;
-	  break;
-	  
-	case 3:
-	  interface = "ppp";
-	  interface_no = 0;
-	  break;
+        Glib::ustring interface;
+        int interface_no;
 
-	case 4:
-	  interface = "slip";
-	  interface_no = 0;
-	  break;
+        switch (network_type_optionmenu->get_history()) {
+        case 1:
+          interface = "eth";
+          interface_no = 1;
+          break;
 
-	case 5:
-	  interface = "wlan";
-	  interface_no = 0;
-	  break;
+        case 2:
+          interface = "eth";
+          interface_no = 2;
+          break;
 
-	default:
-	  interface = "eth";
-	  interface_no = 0;
-	  break;
-	}
+        case 3:
+          interface = "ppp";
+          interface_no = 0;
+          break;
 
-	NetworkLoadMonitor::Direction dir;
-	switch (network_direction_optionmenu->get_history()) {
-	case NetworkLoadMonitor::incoming_data:
-	  dir = NetworkLoadMonitor::incoming_data;
-	  break;
+        case 4:
+          interface = "slip";
+          interface_no = 0;
+          break;
 
-	case NetworkLoadMonitor::outgoing_data:
-	  dir = NetworkLoadMonitor::outgoing_data;
-	  break;
-	  
-	default:
-	  dir = NetworkLoadMonitor::all_data;
-	  break;
-	}
-	
-	mon = new NetworkLoadMonitor(interface, interface_no, dir);
+        case 5:
+          interface = "wlan";
+          interface_no = 0;
+          break;
+
+        default:
+          interface = "eth";
+          interface_no = 0;
+          break;
+        }
+
+        NetworkLoadMonitor::Direction dir;
+        switch (network_direction_optionmenu->get_history()) {
+        case NetworkLoadMonitor::incoming_data:
+          dir = NetworkLoadMonitor::incoming_data;
+          break;
+
+        case NetworkLoadMonitor::outgoing_data:
+          dir = NetworkLoadMonitor::outgoing_data;
+          break;
+
+        default:
+          dir = NetworkLoadMonitor::all_data;
+          break;
+        }
+
+        mon = new NetworkLoadMonitor(interface, interface_no, dir);
       }
       else if (temperature_radiobutton->get_active())
-	mon = new TemperatureMonitor(temperature_optionmenu->get_history());
+        mon = new TemperatureMonitor(temperature_optionmenu->get_history());
       else if (fan_speed_radiobutton->get_active())
-	mon = new FanSpeedMonitor(fan_speed_optionmenu->get_history());
+        mon = new FanSpeedMonitor(fan_speed_optionmenu->get_history());
 
       return mon;
     }

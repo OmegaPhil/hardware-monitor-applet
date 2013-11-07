@@ -37,11 +37,11 @@
 
 
 void PreferencesWindow::connect_monitor_colorbutton(Gtk::ColorButton
-						    *colorbutton)
+                *colorbutton)
 {
   colorbutton->signal_color_set()
     .connect(sigc::bind(sigc::mem_fun(*this, &PreferencesWindow::on_monitor_colorbutton_set),
-			colorbutton));
+      colorbutton));
 }
 
 PreferencesWindow::PreferencesWindow(Applet &applet_, monitor_seq monitors)
@@ -58,32 +58,32 @@ PreferencesWindow::PreferencesWindow(Applet &applet_, monitor_seq monitors)
   ui->get_widget("curve_radiobutton", curve_radiobutton);
   curve_radiobutton->signal_toggled()
     .connect(sigc::mem_fun(*this, &PreferencesWindow::
-			on_curve_radiobutton_toggled));
+      on_curve_radiobutton_toggled));
   
   ui->get_widget("bar_radiobutton", bar_radiobutton);
   bar_radiobutton->signal_toggled()
     .connect(sigc::mem_fun(*this, &PreferencesWindow::
-			on_bar_radiobutton_toggled));
+      on_bar_radiobutton_toggled));
   
   ui->get_widget("vbar_radiobutton", vbar_radiobutton);
   vbar_radiobutton->signal_toggled()
     .connect(sigc::mem_fun(*this, &PreferencesWindow::
-			on_vbar_radiobutton_toggled));
+      on_vbar_radiobutton_toggled));
   
   ui->get_widget("column_radiobutton", column_radiobutton);
   column_radiobutton->signal_toggled()
     .connect(sigc::mem_fun(*this, &PreferencesWindow::
-			on_column_radiobutton_toggled));
+      on_column_radiobutton_toggled));
   
   ui->get_widget("text_radiobutton", text_radiobutton);
   text_radiobutton->signal_toggled()
     .connect(sigc::mem_fun(*this, &PreferencesWindow::
-			on_text_radiobutton_toggled));
+      on_text_radiobutton_toggled));
 
   ui->get_widget("flame_radiobutton", flame_radiobutton);
   flame_radiobutton->signal_toggled()
     .connect(sigc::mem_fun(*this, &PreferencesWindow::
-			on_flame_radiobutton_toggled));
+      on_flame_radiobutton_toggled));
   
   ui->get_widget("size_outer_vbox", size_outer_vbox);
 
@@ -96,7 +96,7 @@ PreferencesWindow::PreferencesWindow(Applet &applet_, monitor_seq monitors)
   ui->get_widget("font_checkbutton", font_checkbutton);
   font_checkbutton->signal_toggled()
     .connect(sigc::mem_fun(*this, &PreferencesWindow::
-			on_font_checkbutton_toggled));
+      on_font_checkbutton_toggled));
 
   ui->get_widget("fontbutton", fontbutton);
   fontbutton->signal_font_set()
@@ -106,13 +106,13 @@ PreferencesWindow::PreferencesWindow(Applet &applet_, monitor_seq monitors)
   ui->get_widget("background_colorbutton", background_colorbutton);
   background_colorbutton->signal_color_set()
     .connect(sigc::mem_fun(*this, &PreferencesWindow::
-			on_background_colorbutton_set));
+      on_background_colorbutton_set));
 
   ui->get_widget("panel_background_radiobutton", panel_background_radiobutton);
   ui->get_widget("background_color_radiobutton", background_color_radiobutton);
   background_color_radiobutton->signal_toggled()
     .connect(sigc::mem_fun(*this, &PreferencesWindow::
-			on_background_color_radiobutton_toggled));
+      on_background_color_radiobutton_toggled));
   
   
   // connect the Monitor tab widgets
@@ -205,10 +205,10 @@ void PreferencesWindow::show()
 namespace 
 {
   void update_colorbutton_if_different(Gtk::ColorButton *colorbutton,
-				       unsigned char r,
-				       unsigned char g,
-				       unsigned char b,
-				       unsigned char a)
+               unsigned char r,
+               unsigned char g,
+               unsigned char b,
+               unsigned char a)
   {
     unsigned char pa, pr, pg, pb;
     
@@ -345,7 +345,7 @@ namespace
 {
   // Helper for avoiding clipping when shifting values
   unsigned int pack_int(unsigned int r, unsigned int g, unsigned int b,
-		      unsigned int a)
+          unsigned int a)
   {
     return ((r & 255) << 24) | ((g & 255) << 16) | ((b & 255) << 8) | (a & 255);
   }
@@ -406,7 +406,7 @@ void PreferencesWindow::on_background_colorbutton_set()
 {
   // Settings dir here is the default XFCE4 settings group
   sync_conf_with_colorbutton("[NULL]", "background_color",
-			     background_colorbutton);
+           background_colorbutton);
 
   // Actually apply the color change
   applet.background_color_listener(

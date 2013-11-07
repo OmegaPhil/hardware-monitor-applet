@@ -34,7 +34,7 @@ inline Glib::RefPtr<Gnome::Glade::Xml> get_glade_xml(Glib::ustring root)
 {
   try {
     return Gnome::Glade::Xml::create(HARDWARE_MONITOR_GLADEDIR
-				     "ui.glade", root);
+             "ui.glade", root);
   }
   catch (Gnome::Glade::XmlError &error) {
     fatal_error(error.what());

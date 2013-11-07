@@ -59,7 +59,7 @@ XDT_CHECK_PACKAGE([LIBXFCE4UI], [libxfce4ui-1], [4.8.0])
 dnl Checks for libraries
 PKG_CHECK_MODULES([DEPS], [gtkmm-2.4 >= 2.6.0 \
                         libgnomecanvasmm-2.6 >= 2.6.0 \
-			libglademm-2.4 >= 2.4.0 \
+                        libglademm-2.4 >= 2.4.0 \
                         libgtop-2.0 >= 2.6.0])
 
 dnl Translations (XFCE4 xdt-i18n.m4) - this needs to be done before the
@@ -108,7 +108,7 @@ LDFLAGS=${_ldflags}
 
 dnl Create makefiles
 AC_CONFIG_FILES([Makefile 
-	src/Makefile
-	po/Makefile.in
+        src/Makefile
+        po/Makefile.in
 ])
 AC_OUTPUT

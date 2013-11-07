@@ -55,10 +55,10 @@ public:
 
   Gtk::Container &get_container();
 
-  unsigned int get_fg_color();	// return varying foreground colours
-  int get_size() const;		// in pixels
-  bool horizontal() const; 	// whether we're in horizontal mode
-  void set_view(View *view);	// use this view to monitor
+  unsigned int get_fg_color();  // return varying foreground colours
+  int get_size() const;   // in pixels
+  bool horizontal() const;  // whether we're in horizontal mode
+  void set_view(View *view);  // use this view to monitor
 
   /* The following have been created to access properties that used to
    * be publically available through GConf, but are private data in the
@@ -74,7 +74,7 @@ public:
   void background_color_listener(unsigned int background_color);
   void use_background_color_listener(gboolean use_background_color);
   
-  Glib::RefPtr<Gdk::Pixbuf> get_icon();	// get the application icon
+  Glib::RefPtr<Gdk::Pixbuf> get_icon(); // get the application icon
 
   void add_monitor(Monitor *monitor); // take over ownership of monitor
   void remove_monitor(Monitor *monitor); // get rid of the monitor

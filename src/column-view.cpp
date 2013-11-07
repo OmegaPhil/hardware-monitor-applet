@@ -42,7 +42,7 @@ public:
 
   void update(unsigned int max_samples); // gather info from monitor
   void draw(Gnome::Canvas::Canvas &canvas, // redraw columns on canvas
-	    Applet *applet, int width, int height); 
+      Applet *applet, int width, int height);
 
   Monitor *monitor;
   
@@ -70,7 +70,7 @@ void ColumnGraph::update(unsigned int max_samples)
 }
 
 void ColumnGraph::draw(Gnome::Canvas::Canvas &canvas,
-		       Applet *applet, int width, int height)
+           Applet *applet, int width, int height)
 {
   if (remaining_draws <= 0)
     return;
@@ -82,7 +82,7 @@ void ColumnGraph::draw(Gnome::Canvas::Canvas &canvas,
   ValueHistory::iterator vi = value_history.values.begin(),
     vend = value_history.values.end();
 
-  if (vi == vend)		// there must be at least one point
+  if (vi == vend)   // there must be at least one point
     return;
 
   // make sure we got a pixbuf and that it has the right size

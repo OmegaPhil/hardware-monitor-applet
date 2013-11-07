@@ -140,7 +140,7 @@ private:
 };
 
 inline PixelPosition get_position(const Glib::RefPtr<Gdk::Pixbuf> &pixbuf,
-				  int x, int y)
+          int x, int y)
 {
   unsigned char *data = pixbuf->get_pixels();
   int rowstride = pixbuf->get_rowstride();
@@ -164,7 +164,7 @@ public:
   {}
   
   PixelIterator(const Glib::RefPtr<Gdk::Pixbuf> &p,
-		unsigned int x, unsigned int y)
+    unsigned int x, unsigned int y)
     : xpos(x), width(p->get_width()), channels(p->get_n_channels()),
       padding(p->get_rowstride() - width * channels) 
   {

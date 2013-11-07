@@ -216,7 +216,7 @@ Applet::Applet(XfcePanelPlugin *plugin)
   if (settings)
     xfce_rc_close(settings);
 
-	/* Connect plugin signals to functions - since I'm not really interested
+  /* Connect plugin signals to functions - since I'm not really interested
    * in the plugin but the applet pointer, swapped results in the signal
    * handler getting the applet reference first - the plugin pointer is
    * passed next, but since the handler only takes one parameter this is
@@ -234,17 +234,17 @@ Applet::Applet(XfcePanelPlugin *plugin)
     this);
 
   // Hooking into save signal
-	g_signal_connect_swapped(panel_applet, "save", G_CALLBACK(save_monitors),
+  g_signal_connect_swapped(panel_applet, "save", G_CALLBACK(save_monitors),
     this);
 
   /* Not needed as the canvas resizes on the fly
   // Hooking into size changed signal
-	g_signal_connect(panel_applet, "size-changed", G_CALLBACK(size_changed),
+  g_signal_connect(panel_applet, "size-changed", G_CALLBACK(size_changed),
     this);
   */
 
   // Adding configure and about to the applet's right-click menu
-	xfce_panel_plugin_menu_show_configure(panel_applet);
+  xfce_panel_plugin_menu_show_configure(panel_applet);
   xfce_panel_plugin_menu_show_about(panel_applet);
 
   /* Add applet to panel - I need to turn the Applet (which inherits from
@@ -382,7 +382,7 @@ bool Applet::main_loop()
     // Note to translators: %1 is the name of a monitor, e.g. "CPU 1", and %2 is
     // the current measurement, e.g. "78%"
     Glib::ustring next = String::ucompose(_("%1: %2"), mon.get_short_name(),
-					  mon.format_value(mon.value()));
+            mon.format_value(mon.value()));
     if (tip.empty())
       tip = next;
     else
@@ -786,7 +786,7 @@ void Applet::on_about_activated()
     about->set_logo(icon);
     about->set_icon(icon);
     about->signal_response().connect(
-    				sigc::hide(sigc::mem_fun(*about, &Gtk::Widget::hide)));
+            sigc::hide(sigc::mem_fun(*about, &Gtk::Widget::hide)));
     about->show();
   }
   else {

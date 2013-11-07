@@ -57,7 +57,7 @@ void Text::add_to_table(Gtk::Table &table, int col, int row)
 {
   label.reset(new Gtk::Label);
   table.attach(*label, col, col + 1, row, row + 1,
-	       Gtk::EXPAND | Gtk::FILL | Gtk::SHRINK, Gtk::SHRINK);
+         Gtk::EXPAND | Gtk::FILL | Gtk::SHRINK, Gtk::SHRINK);
   label->set_alignment(0, 0.5);
 }
 
@@ -136,8 +136,8 @@ void TextView::do_set_background(unsigned int color)
 {
   Gdk::Color c;
   c.set_rgb(((color >> 24) & 0xff) * 256,
-	    ((color >> 16) & 0xff) * 256,
-	    ((color >>  8) & 0xff) * 256);
+      ((color >> 16) & 0xff) * 256,
+      ((color >>  8) & 0xff) * 256);
   
   background_box.modify_bg(Gtk::STATE_NORMAL, c);
   background_box.modify_bg(Gtk::STATE_ACTIVE, c);

@@ -20,8 +20,8 @@
  */
 
 #include <vector>
-#include <cmath>		// for ceil/floor
-#include <algorithm>		// for max/min
+#include <cmath>    // for ceil/floor
+#include <algorithm>    // for max/min
 
 #include <libgnomecanvasmm/rect.h>
 
@@ -42,8 +42,8 @@ public:
 
   void update();
   void draw(Gnome::Canvas::Canvas &canvas,
-	    Applet *applet, int width, int height, int no, int total,
-	    double time_offset); 
+      Applet *applet, int width, int height, int no, int total,
+      double time_offset);
 
   Monitor *monitor;
   
@@ -99,8 +99,8 @@ unsigned int outlineified(unsigned int color)
 }
 
 void Bar::draw(Gnome::Canvas::Canvas &canvas,
-	       Applet *applet, int width, int height, int no, int total,
-	       double time_offset)
+         Applet *applet, int width, int height, int no, int total,
+         double time_offset)
 { 
   unsigned int outline_color = outlineified(fill_color);
 
@@ -139,7 +139,7 @@ void Bar::draw(Gnome::Canvas::Canvas &canvas,
   unsigned int no_boxes = int(std::ceil(box_frac));
   double alpha = box_frac - std::floor(box_frac);
 
-  if (alpha == 0)		// x.0 should give an opaque last box
+  if (alpha == 0)   // x.0 should give an opaque last box
     alpha = 1;
   
   // trim/expand boxes list
@@ -167,10 +167,10 @@ void Bar::draw(Gnome::Canvas::Canvas &canvas,
       coord += box_size + box_spacing;
     }
     else {
-	    rect.property_x1() = double(width) * no / total + 1;
-	    rect.property_x2() = double(width) * (no + 1) / total - 1;
-	    rect.property_y1() = coord;
-	    rect.property_y2() = coord - box_size;
+      rect.property_x1() = double(width) * no / total + 1;
+      rect.property_x2() = double(width) * (no + 1) / total - 1;
+      rect.property_y1() = coord;
+      rect.property_y2() = coord - box_size;
       
       coord -= (box_size + box_spacing);
     }

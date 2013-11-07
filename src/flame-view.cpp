@@ -42,7 +42,7 @@ public:
   Flame(Monitor *monitor, unsigned int color);
 
   void update(Gnome::Canvas::Canvas &canvas,
-	      Applet *applet, int width, int height, int no, int total); 
+        Applet *applet, int width, int height, int no, int total);
 
   void burn();
   
@@ -55,7 +55,7 @@ private:
 
   std::vector<unsigned char> fuel;
   int next_refuel;
-  int cooling; 			// cooling factor
+  int cooling;      // cooling factor
 
   void recompute_fuel();
   unsigned int color;
@@ -66,7 +66,7 @@ Flame::Flame(Monitor *m, unsigned int c)
 {}
 
 void Flame::update(Gnome::Canvas::Canvas &canvas,
-		   Applet *applet, int width, int height, int no, int total)
+       Applet *applet, int width, int height, int no, int total)
 {
   // Then make sure layer is correctly setup
   if (flame.get() == 0)
@@ -85,7 +85,7 @@ void Flame::update(Gnome::Canvas::Canvas &canvas,
     if (pixbuf->get_width() != width || pixbuf->get_height() != height)
     {
       Glib::RefPtr<Gdk::Pixbuf> new_pixbuf =
-	Gdk::Pixbuf::create(Gdk::COLORSPACE_RGB, true, 8, width, height);
+  Gdk::Pixbuf::create(Gdk::COLORSPACE_RGB, true, 8, width, height);
       new_pixbuf->fill(color & 0xFFFFFF00);
       
       flame->property_pixbuf() = new_pixbuf;
@@ -107,7 +107,7 @@ void Flame::update(Gnome::Canvas::Canvas &canvas,
           pixel.green() = green;
           pixel.blue() = blue;
         }
-	
+
         flame->property_pixbuf() = pixbuf;
       }
     }
@@ -213,13 +213,13 @@ void Flame::burn()
   (left_alpha + 6 * pos_alpha + right_alpha + 8 * below_alpha) / 16;
 
       pos.pixel().alpha()
-	= std::max(((256 + cooling) * tmp - cooling * 256) / 256, 0);
+  = std::max(((256 + cooling) * tmp - cooling * 256) / 256, 0);
   
 #if 0
       if (std::rand() / 4 == 0)
-	pos.pixel().alpha()
-	  = (pos.pixel().alpha() * y * 2
-	     + random_between(0, 255) * (height - y)) / height / 3;
+  pos.pixel().alpha()
+    = (pos.pixel().alpha() * y * 2
+       + random_between(0, 255) * (height - y)) / height / 3;
 #endif
 
       left_alpha = pos_alpha;

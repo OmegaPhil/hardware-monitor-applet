@@ -3,8 +3,8 @@
  * Copyright (c) 2003, 04 Ole Laursen.
  * Copyright (c) 2013 OmegaPhil (OmegaPhil+hardware.monitor@gmail.com)
  *
- * This program is free software; you can redistribute it and/or 
- * modify it under the terms of the GNU General Public License as 
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License as
  * published by the Free Software Foundation; either version 3 of the
  * License, or (at your option) any later version.
  *
@@ -50,9 +50,9 @@ public:
   void unset_background();
 
   bool const keeps_history;
-  
+
 protected:
-  Applet *applet;		// store pointer for reference  
+  Applet *applet;   // store pointer for reference
 
 private:
   // for derived classes to override
@@ -60,7 +60,7 @@ private:
   virtual void do_update() = 0;
   virtual void do_attach(Monitor *monitor) = 0;
   virtual void do_detach(Monitor *monitor) = 0;
-  
+
   virtual void do_set_background(unsigned int color) = 0;
   virtual void do_unset_background() = 0;
 };

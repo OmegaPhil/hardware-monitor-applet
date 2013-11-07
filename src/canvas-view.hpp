@@ -53,9 +53,9 @@ protected:
 
   int width() const;
   int height() const;
-  void resize_canvas();		// resize canvas according to width and height
+  void resize_canvas();   // resize canvas according to width and height
 
-  int size;			// in pixels, width when vertical, else height
+  int size;     // in pixels, width when vertical, else height
 
   std::auto_ptr<Gnome::Canvas::Canvas> canvas;
 

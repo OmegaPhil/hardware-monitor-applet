@@ -3,8 +3,8 @@
  * Copyright (c) 2003, 04, 05 Ole Laursen.
  * Copyright (c) 2013 OmegaPhil (OmegaPhil+hardware.monitor@gmail.com)
  *
- * This program is free software; you can redistribute it and/or 
- * modify it under the terms of the GNU General Public License as 
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License as
  * published by the Free Software Foundation; either version 3 of the
  * License, or (at your option) any later version.
  *
@@ -22,7 +22,7 @@
 #include <string>
 #include <iomanip>
 #include <ostream>
-#include <sys/time.h>	      // for high-precision timing for the network load
+#include <sys/time.h>       // for high-precision timing for the network load
 #include <vector>
 #include <algorithm>
 #include <cstdio>
@@ -45,7 +45,7 @@
 
 // decay factor for maximum values (log_0.999(0.9) = 105 iterations before
 // reduced 10%)
-double const max_decay = 0.999; 
+double const max_decay = 0.999;
 
 
 //
@@ -69,13 +69,13 @@ load_monitors(XfceRc* settings)
       // Skipping default group
       if (g_strcmp0(settings_monitors[i], "[NULL]") == 0)
         continue;
-      
+
       // Setting the correct group prior to loading settings
       xfce_rc_set_group(settings, settings_monitors[i]);
-      
+
       // Obtaining monitor type
       Glib::ustring type = xfce_rc_read_entry(settings, "type", "");
-      
+
       if (type == "cpu_usage")
       {
         // Obtaining cpu_no
@@ -115,14 +115,14 @@ load_monitors(XfceRc* settings)
         // Fetching interface number
         int inter_no = xfce_rc_read_int_entry(settings, "interface_no",
           0);
-        
+
         // Fetching interface 'direction' setting
         int inter_direction = xfce_rc_read_int_entry(settings,
           "interface_direction", NetworkLoadMonitor::all_data);
 
         // Converting direction setting into dedicated type
         NetworkLoadMonitor::Direction dir;
-        
+
         if (inter_direction == NetworkLoadMonitor::incoming_data)
           dir = NetworkLoadMonitor::incoming_data;
         else if (inter_direction == NetworkLoadMonitor::outgoing_data)
@@ -146,7 +146,7 @@ load_monitors(XfceRc* settings)
       {
         // Fetching fan number
         int fan_no = xfce_rc_read_int_entry(settings, "fan_no", 0);
-        
+
         // Creating fan monitor
         monitors.push_back(new FanSpeedMonitor(fan_no));
       }
@@ -210,7 +210,7 @@ Precision decimal_digits(double val, int n)
 
     p.n = n;
   }
-  
+
   return p;
 }
 
@@ -235,11 +235,11 @@ CpuUsageMonitor::CpuUsageMonitor(int cpu)
 double CpuUsageMonitor::do_measure()
 {
   glibtop_cpu cpu;
-	
+
   glibtop_get_cpu(&cpu);
 
   guint64 t, n, i, io;
-	
+
   if (cpu_no == all_cpus) {
     t = cpu.total;
     n = cpu.nice;
@@ -252,7 +252,7 @@ double CpuUsageMonitor::do_measure()
     i = cpu.xcpu_idle[cpu_no];
     io = cpu.xcpu_iowait[cpu_no];
   }
-	
+
   // calculate ticks since last call
   guint64
     dtotal = t - total_time,
@@ -333,9 +333,9 @@ SwapUsageMonitor::SwapUsageMonitor()
 double SwapUsageMonitor::do_measure()
 {
   glibtop_swap swp;
-	
+
   glibtop_get_swap(&swp);
-	
+
   max_value = swp.total;
 
   if (swp.total > 0)
@@ -352,7 +352,7 @@ double SwapUsageMonitor::max()
 Glib::ustring SwapUsageMonitor::format_value(double val)
 {
   val /= 1000000;
-  
+
   return String::ucompose(_("%1 Mb"), decimal_digits(val, 3), val);
 }
 
@@ -395,16 +395,16 @@ LoadAverageMonitor::LoadAverageMonitor()
 double LoadAverageMonitor::do_measure()
 {
   glibtop_loadavg loadavg;
-	
+
   glibtop_get_loadavg (&loadavg);
 
   double val = loadavg.loadavg[0];
-  
-  max_value *= max_decay;	// reduce gradually
-  
-  if (max_value < 1)		// make sure we don't get below 1
+
+  max_value *= max_decay; // reduce gradually
+
+  if (max_value < 1)    // make sure we don't get below 1
     max_value = 1;
-  
+
   if (val > max_value)
     max_value = val * 1.05;
 
@@ -480,7 +480,7 @@ MemoryUsageMonitor::MemoryUsageMonitor()
 double MemoryUsageMonitor::do_measure()
 {
   glibtop_mem mem;
-	
+
   glibtop_get_mem (&mem);
 
   max_value = mem.total;
@@ -495,11 +495,11 @@ double MemoryUsageMonitor::max()
 {
   return max_value;
 }
-	
+
 Glib::ustring MemoryUsageMonitor::format_value(double val)
 {
   val /= 1000000;
-  
+
   return String::ucompose(_("%1 Mb"), decimal_digits(val, 3), val);
 }
 
@@ -548,7 +548,7 @@ double DiskUsageMonitor::do_measure()
   max_value = fsusage.blocks * fsusage.block_size;
 
   double v = 0;
-  
+
   if (show_free) {
     if (fsusage.bavail > 0)
       v = fsusage.bavail * fsusage.block_size;
@@ -557,7 +557,7 @@ double DiskUsageMonitor::do_measure()
     if (fsusage.blocks > 0)
       v = (fsusage.blocks - fsusage.bfree) * fsusage.block_size;
   }
-  
+
   return v;
 }
 
@@ -618,7 +618,7 @@ void DiskUsageMonitor::save(XfceRc *settings)
 //
 
 NetworkLoadMonitor::NetworkLoadMonitor(const Glib::ustring &inter, int inter_no,
-				       Direction dir)
+               Direction dir)
   : max_value(1), byte_count(0), time_stamp_secs(0), time_stamp_usecs(0),
     interface(inter), interface_no(inter_no), direction(dir)
 {
@@ -629,9 +629,9 @@ double NetworkLoadMonitor::do_measure()
   glibtop_netload netload;
 
   glibtop_get_netload(&netload,
-		      String::ucompose("%1%2", interface, interface_no).c_str());
+          String::ucompose("%1%2", interface, interface_no).c_str());
   guint64 val, measured_bytes;
-    
+
   if (direction == all_data)
     measured_bytes = netload.bytes_total;
   else if (direction == incoming_data)
@@ -641,16 +641,16 @@ double NetworkLoadMonitor::do_measure()
 
   if (byte_count == 0) // no estimate initially
     val = 0;
-  else if (measured_bytes < byte_count)	// interface was reset
+  else if (measured_bytes < byte_count) // interface was reset
     val = 0;
   else
     val = measured_bytes - byte_count;
 
   byte_count = measured_bytes;
 
-  if (val != 0)			// reduce scale gradually
+  if (val != 0)     // reduce scale gradually
     max_value = guint64(max_value * max_decay);
-  
+
   if (val > max_value)
     max_value = guint64(val * 1.05);
 
@@ -662,7 +662,7 @@ double NetworkLoadMonitor::do_measure()
     else if (max_value > other.max_value)
       other.max_value = max_value;
   }
-  
+
   // calculate difference in msecs
   struct timeval tv;
   if (gettimeofday(&tv, 0) == 0) {
@@ -686,9 +686,9 @@ Glib::ustring NetworkLoadMonitor::format_value(double val)
   // 1000 ms = 1 s
   val = val / time_difference * 1000;
 
-  if (val <= 0)			// fix weird problem with negative values
+  if (val <= 0)     // fix weird problem with negative values
     val = 0;
-  
+
   if (val >= 1000 * 1000 * 1000) {
     val /= 1000 * 1000 * 1000;
     return String::ucompose(_("%1 GB/s"), decimal_digits(val, 3), val);
@@ -701,14 +701,14 @@ Glib::ustring NetworkLoadMonitor::format_value(double val)
     val /= 1000;
     return String::ucompose(_("%1 kB/s"), decimal_digits(val, 3), val);
   }
-  else 
+  else
     return String::ucompose(_("%1 B/s"), decimal_digits(val, 3), val);
 }
 
 Glib::ustring NetworkLoadMonitor::get_name()
 {
   Glib::ustring str;
-  
+
   if (interface == "eth" && interface_no == 0)
     str = _("Ethernet (first)");
   else if (interface == "eth" && interface_no == 1)
@@ -733,14 +733,14 @@ Glib::ustring NetworkLoadMonitor::get_name()
     // %1 is the network connection, e.g. "Ethernet (first)", out signifies
     // that this is outgoing data
     str = String::ucompose(_("%1, out"), str);
-  
+
   return str;
 }
 
 Glib::ustring NetworkLoadMonitor::get_short_name()
 {
   Glib::ustring str;
-  
+
   if (interface == "eth")
     // short for an ethernet card
     str = String::ucompose(_("Eth. %1"), interface_no + 1);
@@ -808,7 +808,7 @@ void NetworkLoadMonitor::possibly_add_sync_with(Monitor *other)
 {
   if (NetworkLoadMonitor *o = dynamic_cast<NetworkLoadMonitor *>(other))
     if (interface == o->interface && interface_no == o->interface_no
-	&& direction != o->direction)
+  && direction != o->direction)
       sync_monitors.push_back(o);
 }
 
@@ -834,7 +834,7 @@ Sensors::Sensors()
 
   int i = 0;
   const sensors_chip_name *c;
-  
+
   while ((c = sensors_get_detected_chips(0, &i)))
     chips.push_back(*c);
 #endif
@@ -844,7 +844,7 @@ Sensors::~Sensors()
 {
 #if HAVE_LIBSENSORS
   chips.clear();
-  
+
   sensors_cleanup();
 #endif
 }
@@ -859,7 +859,7 @@ Sensors &Sensors::instance()
 Sensors::FeatureInfoSequence Sensors::get_features(std::string base)
 {
   FeatureInfoSequence vec;
-  
+
 #if HAVE_LIBSENSORS
   const sensors_feature *feature;
 
@@ -870,23 +870,23 @@ Sensors::FeatureInfoSequence Sensors::get_features(std::string base)
     while ((feature = sensors_get_features(chip, &i1))) {
       std::string name = feature->name;
       if (name.find(base) != std::string::npos) {
-	FeatureInfo info;
-	info.chip_no = i;
-	info.feature_no = feature->number;
-	info.max = invalid_max;
+  FeatureInfo info;
+  info.chip_no = i;
+  info.feature_no = feature->number;
+  info.max = invalid_max;
 
-	char *desc = sensors_get_label(chip, feature);
-	if (desc) {
-	  info.description = desc;
-	  std::free(desc);
-	}
-	  
-	vec.push_back(info);
+  char *desc = sensors_get_label(chip, feature);
+  if (desc) {
+    info.description = desc;
+    std::free(desc);
+  }
+
+  vec.push_back(info);
 
         // now see if we can find a max
         const sensors_subfeature *subfeature;
         int i2 = 0;
-        
+
         while ((subfeature = sensors_get_all_subfeatures(chip, feature, &i2))) {
           std::string subname = subfeature->name;
           // check whether this is a max value for the last feature
@@ -903,7 +903,7 @@ Sensors::FeatureInfoSequence Sensors::get_features(std::string base)
     }
   }
 #endif
-  
+
   return vec;
 }
 
@@ -916,7 +916,7 @@ Sensors::FeatureInfoSequence Sensors::get_fan_features()
 {
   return get_features("fan");
 }
-  
+
 double Sensors::get_value(int chip_no, int feature_no)
 {
 #if HAVE_LIBSENSORS
@@ -947,20 +947,20 @@ TemperatureMonitor::TemperatureMonitor(int no)
 {
   Sensors::FeatureInfo info
     = Sensors::instance().get_temperature_features()[sensors_no];
-  
+
   chip_no = info.chip_no;
   feature_no = info.feature_no;
   description = info.description;
   if (info.max != Sensors::invalid_max)
     max_value = info.max;
   else
-    max_value = 40;	       // set a reasonable default (40 Celcius degrees)
+    max_value = 40;        // set a reasonable default (40 Celcius degrees)
 }
 
 double TemperatureMonitor::do_measure()
 {
   double val = Sensors::instance().get_value(chip_no, feature_no);
-  
+
   if (val > max_value)
     max_value = val;
 
@@ -983,7 +983,7 @@ Glib::ustring TemperatureMonitor::get_name()
   if (!description.empty())
     // %2 is a descriptive string from sensors.conf
     return String::ucompose(_("Temperature %1: \"%2\""),
-			    sensors_no + 1, description);
+          sensors_no + 1, description);
   else
     return String::ucompose(_("Temperature %1"), sensors_no + 1);
 }
@@ -1039,20 +1039,20 @@ FanSpeedMonitor::FanSpeedMonitor(int no)
 {
   Sensors::FeatureInfo info
     = Sensors::instance().get_fan_features()[sensors_no];
-  
+
   chip_no = info.chip_no;
   feature_no = info.feature_no;
   description = info.description;
   if (info.max != Sensors::invalid_max)
     max_value = info.max;
   else
-    max_value = 1;		// 1 rpm isn't realistic, but whatever
+    max_value = 1;    // 1 rpm isn't realistic, but whatever
 }
 
 double FanSpeedMonitor::do_measure()
 {
   double val = Sensors::instance().get_value(chip_no, feature_no);
-  
+
   if (val > max_value)
     max_value = val;
 
@@ -1075,7 +1075,7 @@ Glib::ustring FanSpeedMonitor::get_name()
   if (!description.empty())
     // %2 is a descriptive string from sensors.conf
     return String::ucompose(_("Fan %1 speed: \"%2\""),
-			    sensors_no + 1, description);
+          sensors_no + 1, description);
   else
     return String::ucompose(_("Fan %1 speed"), sensors_no + 1);
 }

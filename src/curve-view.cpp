@@ -19,7 +19,7 @@
  * USA.
  */
 
-#include <algorithm>		// for max/min[_element]()
+#include <algorithm>    // for max/min[_element]()
 
 #include <libgnomecanvasmm/line.h>
 #include <libgnomecanvasmm/point.h>
@@ -41,7 +41,7 @@ public:
 
   void update(unsigned int max_samples); // gather info from monitor
   void draw(Gnome::Canvas::Canvas &canvas, // redraw curve on canvas
-	    int width, int height);
+      int width, int height);
 
   Monitor *monitor;
   
@@ -104,7 +104,7 @@ void Curve::draw(Gnome::Canvas::Canvas &canvas, int width, int height)
 
   // start from right
   double x = width + CurveView::pixels_per_sample * time_offset;
-	
+
   do {
     double y = line_width/2 + (1 - (*vi / max)) * (height - line_width/2);
     if (y < 0)
