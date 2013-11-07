@@ -1,10 +1,10 @@
 Hardware Monitor
 ----------------
 
-Hardware Monitor is a monitor applet for the Gnome panel. It supports
-a variety of monitoring capabilities (CPU usage, network throughput
-etc.) and different kinds of viewers (curves, bars, columns, text,
-flames).
+Hardware Monitor is a monitor applet for the XFCE4 panel (originally
+the GNOME panel). It supports a variety of monitoring capabilities
+(CPU usage, network throughput etc.) and different kinds of viewers
+(curves, bars, columns, text, flames).
 
 It is licensed under the GNU GPL.
 
@@ -12,14 +12,18 @@ It is licensed under the GNU GPL.
 Requirements
 ------------
 
-You need a modern Gnome desktop (i.e. at least Gnome 2.6) with the
-related libraries and the C++ wrappers for GTK+ and Gnome libraries,
-gtkmm and gnomemm (more specifically gtkmm, gconfmm and libglademm).
+You need a modern XFCE4 desktop (i.e. at least XFCE 4.4 I think) with
+the related libraries and the C++ wrappers for GTK+ and the Gnome
+canvas library - gtkmm, libglademm and libgnomecanvasmm.
 These can be fetched from http://www.gtkmm.org, or are alternatively
 probably available as packages from your distributor.
 
 Also, to compile the program you need the development files for the
-Gnome panel-applet library and libgtop.
+XFCE4 panel, the XFCE4 user interface library libgtop. The following
+are the correct packages on Debian Testing as of 7.11.13:
+
+libglademm-2.4-dev libgnomecanvasmm-2.6-dev libgtkmm-2.4-dev libgtop2-dev
+libxfce4ui-1-dev xfce4-panel-dev
 
 If you have libsensors from the lm-sensors package installed at
 compile time, the configure script will detect it and add support for
@@ -31,10 +35,10 @@ Compiling from source
 ---------------------
 
 Note that when you compile from source, the file
-HardwareMonitor.server must end up a place where the panel can find
+hardware-monitor.desktop must end up a place where the panel can find
 it. Else you will not be able to find the applet in the right-click
-panel menu. This place is usually /usr/lib/bonobo/servers/. If you run
-configure with 
+panel menu. This place is usually /usr/share/xfce4/panel/plugins/. If you
+run configure with 
 
   ./configure --prefix=/usr
 
@@ -43,6 +47,6 @@ and install the applet, it will most likely work.
 Bugs
 ----
 
-Report bugs and suggestions to the maintainer:
+Report bugs and suggestions to OmegaPhil:
 
   $ cat MAINTAINERS

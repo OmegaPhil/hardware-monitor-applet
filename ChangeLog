@@ -1,3 +1,11 @@
+2013-11-07  Omega Weapon <OmegaPhil+HardwareMonitor@gmail.com>
+
+	Release 1.4.4
+	
+	* Ported to XFCE4, remaining GNOME dependency is libgnomecanvas
+	* NEWS: released 1.4.4
+	* MAINAINERS: Added myself as new maintainer
+
 2010-06-13  Neil Bird  <neilbird@src.gnome.org>
 
 	Release 1.4.3
