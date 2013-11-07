@@ -3,10 +3,13 @@
 
 # Ignore generated make and autotools files
 aclocal.m4
+ar-lib
 autom4te.cache
+compile
 config.cache
 config.guess
 config.h
+config.h.in
 config.log
 config.status
 config.sub
@@ -14,7 +17,9 @@ configure
 depcomp
 INSTALL
 install-sh
+ltmain.sh
 Makefile
+Makefile.in
 missing
 
 # Ignore custom build directory
