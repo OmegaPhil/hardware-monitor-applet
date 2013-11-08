@@ -44,15 +44,15 @@ public:
   virtual ~Monitor()
   {}
 
-  // update the measured value from device
+  // Update the measured value from device
   void measure()
   {
     measured_value = do_measure();
-    if (measured_value < 0) // safety check
+    if (measured_value < 0)  // Safety check
       measured_value = 0;
   }
   
-  // fetch the currently measured value
+  // Fetch the currently measured value
   double value()
   {
     return measured_value;
@@ -68,37 +68,40 @@ public:
     return settings_dir;
   }
   
-  // the max value that the monitor may attain
+  // The max value that the monitor may attain
   virtual double max() = 0;
 
-  // convert float to string which represents an actual number with the
-  // appropriate unit
+  // Indicate whether the monitor's max is fixed or not
+  virtual bool fixed_max() = 0;
+
+  /* Convert float to string which represents an actual number with the
+   * appropriate unit */
   virtual Glib::ustring format_value(double val) = 0;
 
-  // return a descriptive name
+  // Return a descriptive name
   virtual Glib::ustring get_name() = 0;
 
-  // return a short name
+  // Return a short name
   virtual Glib::ustring get_short_name() = 0;
 
-  // the interval between updates in milliseconds
+  // The interval between updates in milliseconds
   virtual int update_interval() = 0;
 
-  // save information about the monitor
+  // Save information about the monitor
   virtual void save(XfceRc *settings) = 0;
 
-  // load any internal monitor state
+  // Load any internal monitor state
   virtual void load(XfceRc *settings)
   {
   }
 
-  // if other is watching the same thing as this monitor, it might be
-  // a good idea to sync maxima with it
+  /* If other is watching the same thing as this monitor, it might be
+   * a good idea to sync maxima with it */
   virtual void possibly_add_sync_with(Monitor *other)
   {
   }
 
-  // remove a synchronisation
+  // Remove a synchronisation
   virtual void remove_sync_with(Monitor *other)
   {
   }
@@ -107,7 +110,8 @@ protected:
   double measured_value;
   
 private:
-  // perform actual measurement, for derived classes
+
+  // Perform actual measurement, for derived classes
   virtual double do_measure() = 0;
 
   Glib::ustring settings_dir;
@@ -115,7 +119,7 @@ private:
 
 
 //
-// helpers implemented in monitor-impls.cpp
+// Helpers implemented in monitor-impls.cpp
 //
 
 typedef std::list<Monitor *> monitor_seq;

@@ -33,6 +33,8 @@ public:
 
   // perform a measurement if needed, new_value is set to true if it was
   void update(unsigned int max_samples, bool &new_value);
+
+  double get_max_value();
   
   // the past values
   typedef std::deque<double> sequence;
@@ -41,7 +43,8 @@ public:
 
 private:
   Monitor *monitor;
-  int wait_iterations, waits_remaining;
+  int wait_iterations, waits_remaining, max_count;
+  double max_value;
 };
 
 

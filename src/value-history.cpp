@@ -19,6 +19,9 @@
  * USA.
  */
 
+#include <algorithm>
+#include <iostream>
+
 #include "value-history.hpp"
 #include "monitor.hpp"
 #include "applet.hpp"
@@ -31,6 +34,13 @@ ValueHistory::ValueHistory(Monitor *mon)
   waits_remaining = 0;
 }
 
+double ValueHistory::get_max_value()
+{
+  /* This is used so that the maximum displayed point on the graph is
+   * always known */
+  return max_value;
+}
+
 void ValueHistory::update(unsigned int max_samples, bool &new_value)
 {
   --waits_remaining;
@@ -38,14 +48,55 @@ void ValueHistory::update(unsigned int max_samples, bool &new_value)
   if (waits_remaining <= 0) {
     new_value = true;
     monitor->measure();
-    values.push_front(monitor->value());
+
+    // Fetching new measurement
+    double measurement = monitor->value();
+
+    // Dealing with new max measurements
+    if (measurement > max_value)
+    {
+      max_value = measurement;
+      max_count = 1;
+    }
+    else if (measurement == max_value)
+      ++max_count;
+
+    // Saving data and resetting waits
+    values.push_front(measurement);
     waits_remaining = wait_iterations;
   }
   else
     new_value = false;
   
-  // get rid of extra samples (there may be more than one if user changes
-  // configuration)
+  /* Get rid of extra samples (there may be more than one if user changes
+   * configuration */
   while (values.size() > max_samples)
+  {
+    // Removing last value - saving to allow one pop_back at the top
+    double last_value = values.back();
     values.pop_back();
+
+    // Detecting dropping max values
+    if (last_value == max_value)
+    {
+      --max_count;
+
+      /* Determining the new maximum value and count if all of the
+       * previous maxes have been dropped */
+      if (max_count < 1)
+      {
+
+        // Debug code
+        /*std::cout << "ValueHistory::update: Dropping samples, dropping "
+        "max detected: " << max_value << ", count: " << max_count << "\n";*/
+
+        max_value = *std::max_element(values.begin(), values.end());
+        max_count = std::count(values.begin(), values.end(), max_value);
+
+        // Debug code
+        /*std::cout << "New max: " << max_value << ", new count: " <<
+          max_count << "\n";*/
+      }
+    }
+  }
 }

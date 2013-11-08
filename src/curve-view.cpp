@@ -39,9 +39,10 @@ class Curve
 public:
   Curve(Monitor *monitor, unsigned int color);
 
-  void update(unsigned int max_samples); // gather info from monitor
-  void draw(Gnome::Canvas::Canvas &canvas, // redraw curve on canvas
-      int width, int height);
+  void update(unsigned int max_samples);  // Gather info from monitor
+  void draw(Gnome::Canvas::Canvas &canvas,  // Redraw curve on canvas
+      int width, int height, double max);
+  double get_max_value();  // Used to get overall max across curves
 
   Monitor *monitor;
   
@@ -66,7 +67,8 @@ void Curve::update(unsigned int max_samples)
     remaining_draws = CanvasView::draw_iterations;
 }
 
-void Curve::draw(Gnome::Canvas::Canvas &canvas, int width, int height)
+void Curve::draw(Gnome::Canvas::Canvas &canvas, int width, int height,
+  double max)
 {
   if (remaining_draws <= 0)
     return;
@@ -94,8 +96,13 @@ void Curve::draw(Gnome::Canvas::Canvas &canvas, int width, int height)
 
   line->property_fill_color_rgba() = color;
   line->property_width_units() = line_width;
+
+  /* Use the actual maxima associated with all curves in the view, unless
+   * the monitor has a fixed max (variable maxes should not be used with
+   * monitors like the CPU usage monitor) */
+  if (monitor->fixed_max())
+      max = monitor->max();
   
-  double max = monitor->max();
   if (max <= 0)
     max = 0.0000001;
 
@@ -120,6 +127,12 @@ void Curve::draw(Gnome::Canvas::Canvas &canvas, int width, int height)
   //std::cout << "In CurveView::draw!\n" << color << "\n";
 }
 
+double Curve::get_max_value()
+{
+  /* Used as part of determination of the max value for all curves in
+   * the view */
+  return value_history.get_max_value();
+}
 
 //
 // class CurveView
@@ -228,6 +241,14 @@ void CurveView::do_detach(Monitor *monitor)
 
 void CurveView::do_draw_loop()
 {
+  double max = 0;
+
+  // Obtain maximum value of all curves in the view
   for (curve_iterator i = curves.begin(), end = curves.end(); i != end; ++i)
-    (*i)->draw(*canvas, width(), height());
+    if ((*i)->get_max_value() > max)
+      max = (*i)->get_max_value();
+
+  // Draw the curves with the unified max value
+  for (curve_iterator i = curves.begin(), end = curves.end(); i != end; ++i)
+    (*i)->draw(*canvas, width(), height(), max);
 }

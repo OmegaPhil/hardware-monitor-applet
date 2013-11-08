@@ -44,6 +44,7 @@ public:
   CpuUsageMonitor(int cpu_no);  // monitor only cpu no.
 
   virtual double max();
+  virtual bool fixed_max();
   virtual Glib::ustring format_value(double val);
   virtual Glib::ustring get_name();
   virtual Glib::ustring get_short_name();
@@ -70,6 +71,7 @@ public:
   SwapUsageMonitor();
 
   virtual double max();
+  virtual bool fixed_max();
   virtual Glib::ustring format_value(double val);
   virtual Glib::ustring get_name();
   virtual Glib::ustring get_short_name();
@@ -89,6 +91,7 @@ public:
   LoadAverageMonitor();
 
   virtual double max();
+  virtual bool fixed_max();
   virtual Glib::ustring format_value(double val);
   virtual Glib::ustring get_name();
   virtual Glib::ustring get_short_name();
@@ -109,6 +112,7 @@ public:
   MemoryUsageMonitor();
 
   virtual double max();
+  virtual bool fixed_max();
   virtual Glib::ustring format_value(double val);
   virtual Glib::ustring get_name();
   virtual Glib::ustring get_short_name();
@@ -128,6 +132,7 @@ public:
   DiskUsageMonitor(const std::string &mount_dir, bool show_free);
 
   virtual double max();
+  virtual bool fixed_max();
   virtual Glib::ustring format_value(double val);
   virtual Glib::ustring get_name();
   virtual Glib::ustring get_short_name();
@@ -154,6 +159,7 @@ public:
          Direction direction);
 
   virtual double max();
+  virtual bool fixed_max();
   virtual Glib::ustring format_value(double val);
   virtual Glib::ustring get_name();
   virtual Glib::ustring get_short_name();
@@ -187,6 +193,7 @@ public:
   TemperatureMonitor(int no); // no. in the temperature features
 
   virtual double max();
+  virtual bool fixed_max();
   virtual Glib::ustring format_value(double val);
   virtual Glib::ustring get_name();
   virtual Glib::ustring get_short_name();
@@ -209,6 +216,7 @@ public:
   FanSpeedMonitor(int no);  // no. in the fan features
 
   virtual double max();
+  virtual bool fixed_max();
   virtual Glib::ustring format_value(double val);
   virtual Glib::ustring get_name();
   virtual Glib::ustring get_short_name();

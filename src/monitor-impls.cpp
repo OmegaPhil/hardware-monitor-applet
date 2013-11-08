@@ -20,6 +20,7 @@
  */
 
 #include <string>
+#include <iostream>
 #include <iomanip>
 #include <ostream>
 #include <sys/time.h>       // for high-precision timing for the network load
@@ -43,8 +44,9 @@
 #include "i18n.hpp"
 
 
-// decay factor for maximum values (log_0.999(0.9) = 105 iterations before
-// reduced 10%)
+/* Decay factor for maximum values (log_0.999(0.9) = 105 iterations
+ * before reduced 10%). This is now no longer used for CurveView - the
+ * actual max value across the ValueHistories is used */
 double const max_decay = 0.999;
 
 
@@ -281,6 +283,11 @@ double CpuUsageMonitor::max()
   return 1;
 }
 
+bool CpuUsageMonitor::fixed_max()
+{
+  return true;
+}
+
 Glib::ustring CpuUsageMonitor::format_value(double val)
 {
   return String::ucompose(_("%1%%"), precision(1), 100 * val);
@@ -347,6 +354,11 @@ double SwapUsageMonitor::do_measure()
 double SwapUsageMonitor::max()
 {
   return max_value;
+}
+
+bool SwapUsageMonitor::fixed_max()
+{
+  return false;
 }
 
 Glib::ustring SwapUsageMonitor::format_value(double val)
@@ -417,6 +429,11 @@ double LoadAverageMonitor::do_measure()
 double LoadAverageMonitor::max()
 {
   return max_value;
+}
+
+bool LoadAverageMonitor::fixed_max()
+{
+  return false;
 }
 
 Glib::ustring LoadAverageMonitor::format_value(double val)
@@ -496,6 +513,11 @@ double MemoryUsageMonitor::max()
   return max_value;
 }
 
+bool MemoryUsageMonitor::fixed_max()
+{
+  return false;
+}
+
 Glib::ustring MemoryUsageMonitor::format_value(double val)
 {
   val /= 1000000;
@@ -564,6 +586,11 @@ double DiskUsageMonitor::do_measure()
 double DiskUsageMonitor::max()
 {
   return max_value;
+}
+
+bool DiskUsageMonitor::fixed_max()
+{
+  return false;
 }
 
 Glib::ustring DiskUsageMonitor::format_value(double val)
@@ -639,16 +666,18 @@ double NetworkLoadMonitor::do_measure()
   else
     measured_bytes = netload.bytes_out;
 
-  if (byte_count == 0) // no estimate initially
+  if (byte_count == 0) // No estimate initially
     val = 0;
-  else if (measured_bytes < byte_count) // interface was reset
+  else if (measured_bytes < byte_count) // Interface was reset
     val = 0;
   else
     val = measured_bytes - byte_count;
 
   byte_count = measured_bytes;
 
-  if (val != 0)     // reduce scale gradually
+  /* Note - max_value is no longer used to determine the graph max for
+   * Curves - the actual maxima stored in the ValueHistories are used */
+  if (val != 0)     // Reduce scale gradually
     max_value = guint64(max_value * max_decay);
 
   if (val > max_value)
@@ -673,12 +702,21 @@ double NetworkLoadMonitor::do_measure()
     time_stamp_usecs = tv.tv_usec;
   }
 
+  // Debug code
+  /*std::cout << "NetworkLoadMonitor::do_measure: val: " << val <<
+    ", max_value: " << max_value << "\n";*/
+
   return val;
 }
 
 double NetworkLoadMonitor::max()
 {
   return max_value;
+}
+
+bool NetworkLoadMonitor::fixed_max()
+{
+  return false;
 }
 
 Glib::ustring NetworkLoadMonitor::format_value(double val)
@@ -972,6 +1010,12 @@ double TemperatureMonitor::max()
   return max_value;
 }
 
+bool TemperatureMonitor::fixed_max()
+{
+  return false;
+}
+
+
 Glib::ustring TemperatureMonitor::format_value(double val)
 {
   // %2 contains the degree sign (the following 'C' stands for Celsius)
@@ -1062,6 +1106,11 @@ double FanSpeedMonitor::do_measure()
 double FanSpeedMonitor::max()
 {
   return max_value;
+}
+
+bool FanSpeedMonitor::fixed_max()
+{
+  return false;
 }
 
 Glib::ustring FanSpeedMonitor::format_value(double val)
