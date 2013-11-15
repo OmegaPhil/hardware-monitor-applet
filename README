@@ -42,10 +42,11 @@ run configure with
 
   ./configure --prefix=/usr
 
-and install the applet, it will most likely work.
+and install the applet, it will work.
 
 To set up the build environment for the usual ./configure && make &&
-make install, run the provided autogen.sh script first.
+make install, run the provided autogen.sh script first - autoconf, libtool
+and intltool need to be installed for this script to work.
 
 
 Bugs
