@@ -19,9 +19,10 @@ dnl Initialising autoconf - this provides PACKAGE_NAME and PACKAGE_VERSION
 dnl output variables
 AC_INIT([hardware-monitor], [1.4.4])
 
-dnl Initialise automake with minimum version 1.13.2 (based off https://www.flameeyes.eu/autotools-mythbuster/forwardporting/automake.html),
+dnl Initialise automake with minimum version 1.11.6 (as of 17.11.13 Debian
+dnl Stable (Wheezy) has this version - http://mail.xfce.org/pipermail/xfce4-dev/2013-November/030523.html)
 dnl enabling all warnings and errors
-AM_INIT_AUTOMAKE([1.13.2 -Wall -Werror])
+AM_INIT_AUTOMAKE([1.11.6 -Wall -Werror])
 
 dnl Collecting all macro definitions together into this header
 AM_CONFIG_HEADER(config.h)
