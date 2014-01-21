@@ -28,7 +28,9 @@
 
 #include <gtkmm/main.h>
 #include <cassert>
-#include <unistd.h>  // for nice
+#include <cerrno>  // Dealing with nice error
+#include <cstring>  // Dealing with nice error
+#include <unistd.h>  // For nice
 #include <libgnomecanvasmm/init.h>
 
 extern "C"
@@ -50,10 +52,16 @@ extern "C"
 #include "preferences-window.hpp"
 #include "i18n.hpp"
 
+
 // XFCE4 functions to create and destroy applet
 extern "C" void applet_construct(XfcePanelPlugin* plugin)
 {
-  nice(5);  // Don't eat up too much CPU
+  // Don't eat up too much CPU
+  if (nice(5) == -1)
+  {
+    std::cerr << "Unable to nice hardware-monitor-applet: %s" <<
+      std::strerror(errno) << "\n";
+  }
 
   try {
 
