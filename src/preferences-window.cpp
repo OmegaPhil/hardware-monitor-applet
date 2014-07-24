@@ -54,84 +54,93 @@ PreferencesWindow::PreferencesWindow(Applet &applet_, monitor_seq monitors)
   window->set_icon(applet.get_icon());
   
 
-  // connect the Viewer tab widgets
+  // Connect the Viewer tab widgets
   ui->get_widget("curve_radiobutton", curve_radiobutton);
   curve_radiobutton->signal_toggled()
-    .connect(sigc::mem_fun(*this, &PreferencesWindow::
-      on_curve_radiobutton_toggled));
+    .connect(sigc::mem_fun(*this,
+                    &PreferencesWindow::on_curve_radiobutton_toggled));
   
   ui->get_widget("bar_radiobutton", bar_radiobutton);
   bar_radiobutton->signal_toggled()
-    .connect(sigc::mem_fun(*this, &PreferencesWindow::
-      on_bar_radiobutton_toggled));
+    .connect(sigc::mem_fun(*this,
+                      &PreferencesWindow::on_bar_radiobutton_toggled));
   
   ui->get_widget("vbar_radiobutton", vbar_radiobutton);
   vbar_radiobutton->signal_toggled()
-    .connect(sigc::mem_fun(*this, &PreferencesWindow::
-      on_vbar_radiobutton_toggled));
+    .connect(sigc::mem_fun(*this,
+                     &PreferencesWindow::on_vbar_radiobutton_toggled));
   
   ui->get_widget("column_radiobutton", column_radiobutton);
   column_radiobutton->signal_toggled()
-    .connect(sigc::mem_fun(*this, &PreferencesWindow::
-      on_column_radiobutton_toggled));
+    .connect(sigc::mem_fun(*this,
+                   &PreferencesWindow::on_column_radiobutton_toggled));
   
   ui->get_widget("text_radiobutton", text_radiobutton);
   text_radiobutton->signal_toggled()
-    .connect(sigc::mem_fun(*this, &PreferencesWindow::
-      on_text_radiobutton_toggled));
+    .connect(sigc::mem_fun(*this,
+                     &PreferencesWindow::on_text_radiobutton_toggled));
 
   ui->get_widget("flame_radiobutton", flame_radiobutton);
   flame_radiobutton->signal_toggled()
-    .connect(sigc::mem_fun(*this, &PreferencesWindow::
-      on_flame_radiobutton_toggled));
+    .connect(sigc::mem_fun(*this,
+                    &PreferencesWindow::on_flame_radiobutton_toggled));
   
   ui->get_widget("size_outer_vbox", size_outer_vbox);
 
   ui->get_widget("size_scale", size_scale);
   size_scale_cb =  size_scale->signal_value_changed()
-    .connect(sigc::mem_fun(*this, &PreferencesWindow::on_size_scale_changed));
+    .connect(sigc::mem_fun(*this,
+                           &PreferencesWindow::on_size_scale_changed));
 
   ui->get_widget("font_outer_vbox", font_outer_vbox);
 
   ui->get_widget("font_checkbutton", font_checkbutton);
   font_checkbutton->signal_toggled()
-    .connect(sigc::mem_fun(*this, &PreferencesWindow::
-      on_font_checkbutton_toggled));
+    .connect(sigc::mem_fun(*this,
+                     &PreferencesWindow::on_font_checkbutton_toggled));
 
   ui->get_widget("fontbutton", fontbutton);
   fontbutton->signal_font_set()
-    .connect(sigc::mem_fun(*this, &PreferencesWindow::on_fontbutton_set));
+    .connect(sigc::mem_fun(*this,
+                           &PreferencesWindow::on_fontbutton_set));
 
 
   ui->get_widget("background_colorbutton", background_colorbutton);
   background_colorbutton->signal_color_set()
-    .connect(sigc::mem_fun(*this, &PreferencesWindow::
-      on_background_colorbutton_set));
+    .connect(sigc::mem_fun(*this,
+                    &PreferencesWindow::on_background_colorbutton_set));
 
-  ui->get_widget("panel_background_radiobutton", panel_background_radiobutton);
-  ui->get_widget("background_color_radiobutton", background_color_radiobutton);
+  ui->get_widget("panel_background_radiobutton",
+                 panel_background_radiobutton);
+  ui->get_widget("background_color_radiobutton",
+                 background_color_radiobutton);
   background_color_radiobutton->signal_toggled()
-    .connect(sigc::mem_fun(*this, &PreferencesWindow::
-      on_background_color_radiobutton_toggled));
+    .connect(sigc::mem_fun(*this,
+          &PreferencesWindow::on_background_color_radiobutton_toggled));
   
   
-  // connect the Monitor tab widgets
+  // Connect the Monitor tab widgets
   Gtk::Button *add_button;
   ui->get_widget("add_button", add_button);
   add_button->signal_clicked()
-    .connect(sigc::mem_fun(*this, &PreferencesWindow::on_add_button_clicked));
+    .connect(sigc::mem_fun(*this,
+             &PreferencesWindow::on_add_button_clicked));
 
   ui->get_widget("remove_button", remove_button);
   remove_button->signal_clicked()
-    .connect(sigc::mem_fun(*this, &PreferencesWindow::on_remove_button_clicked));
+    .connect(sigc::mem_fun(*this,
+                           &PreferencesWindow::on_remove_button_clicked)
+            );
 
   ui->get_widget("change_button", change_button);
   change_button->signal_clicked()
-    .connect(sigc::mem_fun(*this, &PreferencesWindow::on_change_button_clicked));
+    .connect(sigc::mem_fun(*this,
+                        &PreferencesWindow::on_change_button_clicked));
 
   ui->get_widget("monitor_treeview", monitor_treeview);
   monitor_treeview->get_selection()->signal_changed()
-    .connect(sigc::mem_fun(*this, &PreferencesWindow::on_selection_changed));
+    .connect(sigc::mem_fun(*this,
+                           &PreferencesWindow::on_selection_changed));
 
   ui->get_widget("monitor_options", monitor_options);
 
@@ -168,11 +177,12 @@ PreferencesWindow::PreferencesWindow(Applet &applet_, monitor_seq monitors)
   size_listener(applet.get_viewer_size());
   font_listener(applet.get_viewer_font());
 
-  for (monitor_iter i = monitors.begin(), end = monitors.end(); i != end; ++i)
+  for (monitor_iter i = monitors.begin(), end = monitors.end();
+       i != end; ++i)
     add_to_monitors_list(*i);
   
-  // Deselect all to allow the user to discover the relationship
-  // between the greyed-out buttons and the treeview
+  /* Deselect all to allow the user to discover the relationship
+   * between the greyed-out buttons and the treeview */
   monitor_treeview->get_selection()->unselect_all();
 
   // Make sure background colorbutton is grayed out
@@ -183,7 +193,8 @@ PreferencesWindow::PreferencesWindow(Applet &applet_, monitor_seq monitors)
   ui->get_widget("close_button", close_button);
 
   close_button->signal_clicked()
-    .connect(sigc::mem_fun(*this, &PreferencesWindow::on_close_button_clicked));
+    .connect(sigc::mem_fun(*this,
+                          &PreferencesWindow::on_close_button_clicked));
 
   window->signal_delete_event()
     .connect(sigc::mem_fun(*this, &PreferencesWindow::on_closed));
