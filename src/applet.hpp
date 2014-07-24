@@ -69,7 +69,7 @@ public:
   int get_viewer_size() const;
   void set_viewer_size(const int size);
   const Glib::ustring get_viewer_font();
-  void set_viewer_font(const Glib::ustring font_name);
+  void set_viewer_font(const Glib::ustring font_details);
   void viewer_type_listener(const Glib::ustring viewer_type);
   void background_color_listener(unsigned int background_color);
   void use_background_color_listener(gboolean use_background_color);

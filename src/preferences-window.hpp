@@ -151,7 +151,7 @@ private:
     Glib::ustring setting_name, Gtk::ColorButton *button);
   void connect_monitor_colorbutton(Gtk::ColorButton *colorbutton);
 
-  void save_font_name(Glib::ustring font_name);
+  void save_font_details(Glib::ustring font_details);
   
   Applet &applet;
 };

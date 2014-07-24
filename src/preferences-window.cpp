@@ -734,22 +734,22 @@ void PreferencesWindow::on_font_checkbutton_toggled()
   
   fontbutton->set_sensitive(active);
 
-  // Obtaining font_name to set
-  Glib::ustring font_name;
+  // Obtaining font_details to set
+  Glib::ustring font_details;
   if (active)
-    font_name = fontbutton->get_font_name();
+    font_details = fontbutton->get_font_name();
   else
-    font_name = "";
+    font_details = "";
 
   // Saving
-  save_font_name(font_name);
-  font_listener(font_name);
+  save_font_details(font_details);
+  font_listener(font_details);
 }
 
 void PreferencesWindow::on_fontbutton_set()
 {
   // Saving
-  save_font_name(fontbutton->get_font_name());
+  save_font_details(fontbutton->get_font_name());
 }
 
 void PreferencesWindow::on_add_button_clicked()
@@ -917,13 +917,13 @@ int PreferencesWindow::pixels_to_size_scale(int pixels)
   return min_i;
 }
 
-void PreferencesWindow::save_font_name(Glib::ustring font_name)
+void PreferencesWindow::save_font_details(Glib::ustring font_details)
 {
-  applet.set_viewer_font(font_name);
-  
+  applet.set_viewer_font(font_details);
+
   // Search for a writeable settings file, create one if it doesnt exist */
   gchar* file = xfce_panel_plugin_save_location(applet.panel_applet, true);
-    
+
   if (file)
   {
     // Opening setting file
@@ -934,7 +934,7 @@ void PreferencesWindow::save_font_name(Glib::ustring font_name)
     xfce_rc_set_group(settings, "[NULL]");
 
     // Updating configuration
-    xfce_rc_write_entry(settings, "viewer_font", font_name.c_str());
+    xfce_rc_write_entry(settings, "viewer_font", font_details.c_str());
 
     // Close settings file
     xfce_rc_close(settings);
@@ -943,6 +943,6 @@ void PreferencesWindow::save_font_name(Glib::ustring font_name)
   {
     // Unable to obtain writeable config file - informing user and exiting
     std::cerr << _("Unable to obtain writeable config file path in order to"
-      " save viewer font in save_font_name!\n");
-  }  
+      " save viewer font in save_font_details!\n");
+  }
 }

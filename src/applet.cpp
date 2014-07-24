@@ -529,9 +529,9 @@ const Glib::ustring Applet::get_viewer_font()
   return viewer_font;
 }
 
-void Applet::set_viewer_font(const Glib::ustring font_name)
+void Applet::set_viewer_font(const Glib::ustring font_details)
 {
-  viewer_font = font_name;
+  viewer_font = font_details;
 }
 
 void Applet::add_monitor(Monitor *monitor)
