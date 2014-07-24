@@ -329,9 +329,13 @@ void PreferencesWindow::font_listener(const Glib::ustring viewer_font)
   if (viewer_font.empty())
     font_checkbutton->set_active(false);
   else {
-    font_checkbutton->set_active(true);
     if (fontbutton->get_font_name() != viewer_font)
       fontbutton->set_font_name(viewer_font);
+
+    /* Must toggle this after setting the font name, otherwise
+     * on_font_checkbutton_toggled triggers and overwrites the saved
+     * font details with the default ones */
+    font_checkbutton->set_active(true);
   }
 }
 
