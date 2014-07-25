@@ -1,3 +1,18 @@
+Version 1.4.5 (2014-07-25)
+--------------------------
+
+CPU usage monitor now has a fixed max value of 100% usage - output
+is no longer scaled to a changing maximum value - this allows for a
+regular CPU graph
+Curve monitor now uses the maximum value in its data history (which
+spans the visible line) to determine the graph maximum - there is no
+longer a gradual decay from some previous maximum. This allows for a
+normal network bandwidth graph to be configured - useful scale at
+all times, and the line is not clipped
+Text monitor font customisation no longer overwritten on preferences
+dialog display or startup - thanks to ShapeShifter499 for bug report
+https://github.com/OmegaPhil/hardware-monitor-applet/issues/6
+
 Version 1.4.4 (2013-11-07)
 --------------------------
 
