@@ -1,7 +1,7 @@
 /* The choose monitor window.
  *
  * Copyright (c) 2003, 04 Ole Laursen.
- * Copyright (c) 2013 OmegaPhil (OmegaPhil+hardware.monitor@gmail.com)
+ * Copyright (c) 2013 OmegaPhil (OmegaPhil00@startmail.com)
  *
  * This program is free software; you can redistribute it and/or 
  * modify it under the terms of the GNU General Public License as 

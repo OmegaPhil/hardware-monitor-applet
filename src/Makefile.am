@@ -4,7 +4,7 @@
 #
 # XFCE4 modifications copyright:
 #
-# 2013 OmegaPhil (OmegaPhil+hardware.monitor@gmail.com)
+# 2013 OmegaPhil (OmegaPhil00@startmail.com)
 
 
 # Defining libraries to be built and their installation destination

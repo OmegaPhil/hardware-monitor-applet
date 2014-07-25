@@ -1,7 +1,7 @@
 /* Implementation of the Applet class.
  *
  * Copyright (c) 2003, 04, 05 Ole Laursen.
- * Copyright (c) 2013-2014 OmegaPhil (OmegaPhil+hardware.monitor@gmail.com)
+ * Copyright (c) 2013-2014 OmegaPhil (OmegaPhil00@startmail.com)
  *
  * This program is free software; you can redistribute it and/or 
  * modify it under the terms of the GNU General Public License as 
@@ -768,7 +768,7 @@ void Applet::on_about_activated()
 {
   std::vector<Glib::ustring> authors;
   authors.push_back("Ole Laursen <olau@hardworking.dk>");
-  authors.push_back("OmegaPhil <OmegaPhil+hardware.monitor@gmail.com>");
+  authors.push_back("OmegaPhil <OmegaPhil00@startmail.com>");
   
   std::vector<Glib::ustring> documenters;
   // add documenters here
