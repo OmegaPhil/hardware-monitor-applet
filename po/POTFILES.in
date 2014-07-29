@@ -1,9 +1,12 @@
 # List of source files containing translatable strings.
 # Please keep this file sorted alphabetically.
+hardware-monitor.desktop.in
 src/applet.cpp
 src/bar-view.cpp
 src/choose-monitor-window.cpp
+src/column-view.cpp
 src/curve-view.cpp
+src/flame-view.cpp
 src/ui.glade
 src/helpers.cpp
 src/monitor-impls.cpp
