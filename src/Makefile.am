@@ -52,7 +52,7 @@ libhardware_monitor_la_LIBADD = \
                         $(DEPS_LIBS) $(SENSORS_LIBS)
 
 
-AM_CXXFLAGS = $(DEPS_CFLAGS) $(SENSORS_CFLAGS) -Wall -O3
+AM_CXXFLAGS = $(DEPS_CFLAGS) $(SENSORS_CFLAGS)
 
 glade_DATA = ui.glade
 gladedir = $(datadir)/$(PACKAGE_NAME)/glade
