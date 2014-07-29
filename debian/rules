@@ -14,7 +14,3 @@
 
 override_dh_autoreconf:
 	dh_autoreconf ./autogen.sh
-
-override_dh_clean:
-	dh_clean
-	rm -f HardwareMonitor.server HardwareMonitor.server.in
