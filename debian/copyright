@@ -1,0 +1,13 @@
+This package was debianized by Sven Luther <luther@debian.org> on
+Sun, 30 Mar 2003 13:11:11 +0200.
+Omega Weapon <OmegaPhil00@startmail.com> has now taken on this Debian
+packaging on Tue, 29 Jul 2014 17:31:01 +0100.
+
+Upstream Author: Omega Weapon <OmegaPhil00@startmail.com>
+
+Copyright:
+
+Hardware monitor is under the GNU GENERAL PUBLIC LICENSE, either version 3
+or (at your option) any later version. GPLv3 can be be found on Debian systems
+under /usr/share/common-licenses/GPL-3.
+
