@@ -13,18 +13,28 @@ export DEB_BUILD_MAINT_OPTIONS = hardening=+all
 # see ENVIRONMENT in dpkg-buildflags(1)
 # package maintainers to append CFLAGS
 export DEB_CFLAGS_MAINT_APPEND  = -Wall -pedantic
+
 # package maintainers to append LDFLAGS
-export DEB_LDFLAGS_MAINT_APPEND = -Wl,--as-needed
+# '-Wl,' is needed infront of every flag so that gcc passes through to
+# ldd intact
+# --as-needed: Reduce number of libraries marked as needed
+# -O1: Optimise linking
+# -z,defs: Undefined symbols not allowed in object files
+export DEB_LDFLAGS_MAINT_APPEND = -Wl,--as-needed -Wl,-O1 -Wl,-z,defs
 
 # main packaging script based on dh7 syntax
 %:
 	dh $@ --parallel --with=autoreconf
 
 override_dh_auto_configure:
+
+	# Prevent pointless static object file compilation
 	dh_auto_configure -- --disable-static
 
 override_dh_auto_install:
 	dh_auto_install
+
+	# Remove libtool archives - not allowed
 	find debian/hardware-monitor/usr/lib -name '*.la' -delete
 
 override_dh_autoreconf:
