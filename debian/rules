@@ -26,11 +26,6 @@ export DEB_LDFLAGS_MAINT_APPEND = -Wl,--as-needed -Wl,-O1 -Wl,-z,defs
 %:
 	dh $@ --parallel --with=autoreconf
 
-override_dh_auto_configure:
-
-	# Prevent pointless static object file compilation
-	dh_auto_configure -- --disable-static
-
 override_dh_auto_install:
 	dh_auto_install
 
