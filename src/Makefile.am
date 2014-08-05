@@ -9,10 +9,10 @@
 
 # Defining libraries to be built and their installation destination
 plugindir = $(libdir)/xfce4/panel/plugins
-plugin_LTLIBRARIES = libhardware-monitor.la
+plugin_LTLIBRARIES = libhardwaremonitor.la
 
 # List of source files needed to build the library
-libhardware_monitor_la_SOURCES = \
+libhardwaremonitor_la_SOURCES = \
                       applet.cpp applet.hpp \
                       bar-view.cpp bar-view.hpp \
                       choose-monitor-window.cpp choose-monitor-window.hpp \
@@ -33,20 +33,20 @@ libhardware_monitor_la_SOURCES = \
                       value-history.cpp value-history.hpp \
                       ucompose.hpp
 
-libhardware_monitor_la_LDFLAGS = \
+libhardwaremonitor_la_LDFLAGS = \
                       -avoid-version \
                       -module \
                       -no-undefined \
     -export-symbols-regex '^xfce_panel_module_(preinit|init|construct)'
 
 
-libhardware_monitor_la_CPPFLAGS = \
+libhardwaremonitor_la_CPPFLAGS = \
                         -DHARDWARE_MONITOR_GLADEDIR=\""$(gladedir)/"\" \
                         -DPACKAGE_LOCALE_DIR=\"$(localedir)\" \
                         @LIBXFCE4PANEL_CFLAGS@ \
                         @LIBXFCE4UI_CFLAGS@
 
-libhardware_monitor_la_LIBADD = \
+libhardwaremonitor_la_LIBADD = \
                         @LIBXFCE4PANEL_LIBS@ \
                         @LIBXFCE4UI_LIBS@ \
                         $(DEPS_LIBS) $(SENSORS_LIBS)
