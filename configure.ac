@@ -17,7 +17,7 @@ dnl
 
 dnl Initialising autoconf - this provides PACKAGE_NAME and PACKAGE_VERSION
 dnl output variables
-AC_INIT([hardware-monitor], [1.4.5])
+AC_INIT([xfce4-hardware-monitor-plugin], [1.4.5])
 
 dnl Initialise automake with minimum version 1.11.6 (as of 17.11.13 Debian
 dnl Stable (Wheezy) has this version - http://mail.xfce.org/pipermail/xfce4-dev/2013-November/030523.html)

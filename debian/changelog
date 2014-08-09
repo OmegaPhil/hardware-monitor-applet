@@ -1,4 +1,4 @@
-hardware-monitor (1.4.5-1) UNRELEASED; urgency=low
+xfce4-hardware-monitor-plugin (1.4.5-1) UNRELEASED; urgency=low
 
   * Take over packaging - based on the old GNOME package.
   * Package up the latest XFCE4 plugin code properly.

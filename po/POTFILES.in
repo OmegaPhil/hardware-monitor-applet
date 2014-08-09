@@ -1,6 +1,6 @@
 # List of source files containing translatable strings.
 # Please keep this file sorted alphabetically.
-hardware-monitor.desktop.in
+xfce4-hardware-monitor-plugin.desktop.in
 src/applet.cpp
 src/bar-view.cpp
 src/choose-monitor-window.cpp

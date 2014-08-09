@@ -30,7 +30,7 @@ override_dh_auto_install:
 	dh_auto_install
 
 	# Remove libtool archives - not allowed
-	find debian/hardware-monitor/usr/lib -name '*.la' -delete
+	find debian/xfce4-hardware-monitor-plugin/usr/lib -name '*.la' -delete
 
 override_dh_autoreconf:
 	dh_autoreconf ./autogen.sh

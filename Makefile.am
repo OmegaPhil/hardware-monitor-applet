@@ -22,7 +22,7 @@ desktop_DATA = $(PACKAGE_NAME).desktop
 
 # Icon
 icondir = $(datadir)/pixmaps
-icon_DATA = hardware-monitor-applet.png
+icon_DATA = xfce4-hardware-monitor-plugin.png
 
 EXTRA_DIST = $(icon_DATA) $(desktop_DATA) intltool-merge.in \
              intltool-extract.in intltool-update.in MAINTAINERS

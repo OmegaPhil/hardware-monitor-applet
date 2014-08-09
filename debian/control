@@ -1,5 +1,5 @@
-Source: hardware-monitor
-Section: gnome
+Source: xfce4-hardware-monitor-plugin
+Section: xfce
 Priority: optional
 Maintainer: Omega Weapon <OmegaPhil00@startmail.com>
 Build-Depends: debhelper (>= 9), libsensors4-dev,
@@ -8,7 +8,7 @@ Build-Depends: debhelper (>= 9), libsensors4-dev,
 Standards-Version: 3.9.5
 Homepage: https://github.com/OmegaPhil/hardware-monitor-applet/tree/xfce4-applet
 
-Package: hardware-monitor
+Package: xfce4-hardware-monitor-plugin
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: Monitor applet for the XFCE4 panel
