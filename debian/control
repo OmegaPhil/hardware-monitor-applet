@@ -1,7 +1,7 @@
 Source: xfce4-hardware-monitor-plugin
 Section: xfce
 Priority: optional
-Maintainer: Omega Weapon <OmegaPhil00@startmail.com>
+Maintainer: OmegaPhil <OmegaPhil00@startmail.com>
 Build-Depends: debhelper (>= 9), libsensors4-dev,
  libglademm-2.4-dev, libgnomecanvasmm-2.6-dev, libgtop2-dev (>= 2.0.5),
  libgtkmm-2.4-dev (>= 2.12.0), xfce4-panel-dev (>= 4.8.0),
