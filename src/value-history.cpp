@@ -28,10 +28,9 @@
 
 
 ValueHistory::ValueHistory(Monitor *mon)
-  : monitor(mon)
+  : monitor(mon), max_value(0), waits_remaining(0)
 {
   wait_iterations = monitor->update_interval() / Applet::update_interval;
-  waits_remaining = 0;
 }
 
 double ValueHistory::get_max_value()
