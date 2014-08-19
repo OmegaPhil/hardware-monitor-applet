@@ -24,6 +24,8 @@ desktop_DATA = $(PACKAGE_NAME).desktop
 icondir = $(datadir)/pixmaps
 icon_DATA = $(PACKAGE_NAME).png
 
-EXTRA_DIST = $(icon_DATA) $(desktop_DATA) intltool-merge.in \
+EXTRA_DIST = $(icon_DATA) $(desktop_DATA).in intltool-merge.in \
              intltool-extract.in intltool-update.in MAINTAINERS
 
+# Clean generated files
+CLEANFILES = $(desktop_DATA)
