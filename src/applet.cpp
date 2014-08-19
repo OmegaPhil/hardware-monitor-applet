@@ -158,7 +158,7 @@ Applet::Applet(XfcePanelPlugin *plugin)
   : panel_applet(plugin),
 
   // Setting defaults
-  icon_path("/usr/share/pixmaps/hardware-monitor-applet.png"),
+  icon_path("/usr/share/pixmaps/xfce4-hardware-monitor-plugin.png"),
   viewer_type("curve"),
   viewer_font(""),
   viewer_size(96),  // Arbitrary default, see later in this function for notes
