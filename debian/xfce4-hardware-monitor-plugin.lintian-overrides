@@ -1,0 +1,5 @@
+# Hardening flags are used during the build
+xfce4-hardware-monitor-plugin: hardening-no-fortify-functions usr/lib/x86_64-linux-gnu/xfce4/panel/plugins/libhardwaremonitor.so
+
+# Ignore me signing the package
+xfce4-hardware-monitor-plugin: misplaced-extra-member-in-deb

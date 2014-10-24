@@ -11,7 +11,7 @@ dnl
 
 dnl XFCE4 modifications copyright:
 dnl
-dnl 2013-2014 OmegaPhil (OmegaPhil00@startmail.com)
+dnl 2013-2014 OmegaPhil (OmegaPhil@startmail.com)
 dnl
 
 

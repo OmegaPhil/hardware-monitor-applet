@@ -1,11 +1,11 @@
 Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: hardware-monitor-applet
-Upstream-Contact: OmegaPhil <OmegaPhil00@startmail.com>
+Upstream-Contact: OmegaPhil <OmegaPhil@startmail.com>
 Source: https://github.com/OmegaPhil/hardware-monitor-applet/tree/xfce4-applet
 
 Files: *
 Copyright: 2003-2005 Ole Laursen
-           2013-2014 OmegaPhil <OmegaPhil00@startmail.com>
+           2013-2014 OmegaPhil <OmegaPhil@startmail.com>
 License: GPL-3+
 
 License: GPL-3+

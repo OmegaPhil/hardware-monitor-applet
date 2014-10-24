@@ -4,7 +4,7 @@
 #
 # XFCE4 modifications copyright:
 #
-# 2013 OmegaPhil (OmegaPhil00@startmail.com)
+# 2013 OmegaPhil (OmegaPhil@startmail.com)
 
 
 @SET_MAKE@
