@@ -9,6 +9,12 @@ the GNOME panel). It supports a variety of monitoring capabilities
 It is licensed under the GNU GPL.
 
 
+Breaking changes
+----------------
+
+1.4.6 upgrade: See NEWS/Changelog.
+
+
 Requirements
 ------------
 
@@ -47,6 +53,12 @@ and install the applet, it will work.
 To set up the build environment for the usual ./configure && make &&
 make install, run the provided autogen.sh script first - autoconf, libtool
 and intltool need to be installed for this script to work.
+
+
+Debian archives
+---------------
+
+See https://github.com/OmegaPhil/hardware-monitor-applet/tree/pkg
 
 
 Bugs
