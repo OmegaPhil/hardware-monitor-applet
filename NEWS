@@ -1,11 +1,18 @@
 Version 1.4.6 (2014-10-24)
 --------------------------
 
-This is mainly a release to get the project properly Debian-packaged, there is little to no improvement for a normal user.
+This is mainly a release to get the project properly Debian-packaged,
+there is little to no improvement for a normal user.
 
-UNFORTUNATELY THIS INCLUDES A BREAKING CHANGE - the project has been renamed from hardware-monitor to xfce4-hardware-monitor-plugin, meaning that your current configuration will not automatically apply to the upgraded plugin - i.e. all plugin instances will disappear from the panel the next time you login to XFCE4.
+UNFORTUNATELY THIS INCLUDES A BREAKING CHANGE - the project has been
+renamed from hardware-monitor to xfce4-hardware-monitor-plugin, meaning
+that your current configuration will not automatically apply to the
+upgraded plugin - i.e. all plugin instances will disappear from the panel
+the next time you login to XFCE4.
 
-To prevent this from happening, please run the  '1.4.6-upgrade-fix-xfce4-config.bash' script in this project's root directory after upgrading and before logging out/shutting down.
+To prevent this from happening, please run the
+'1.4.6-upgrade-fix-xfce4-config.bash' script in this project's root
+directory after upgrading and before logging out/shutting down.
 
 Version 1.4.5 (2014-07-25)
 --------------------------
