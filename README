@@ -1,3 +1,6 @@
+26.11.14: Now accepted/moved into XFCE4 panel-plugins! http://git.xfce.org/panel-plugins/xfce4-hardware-monitor-plugin/
+
+
 Hardware Monitor
 ----------------
 
@@ -58,7 +61,7 @@ and intltool need to be installed for this script to work.
 Debian archives
 ---------------
 
-See https://github.com/OmegaPhil/hardware-monitor-applet/tree/pkg
+See http://git.xfce.org/panel-plugins/xfce4-hardware-monitor-plugin/tree/?h=pkg
 
 
 Bugs
